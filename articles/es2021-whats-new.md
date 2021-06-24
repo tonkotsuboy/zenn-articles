@@ -144,11 +144,11 @@ Promise.any([
 
 次のコードで`Promise.any()`の挙動を確認してみましょう。3つのPromiseは、それぞれ次の挙動をします。
 
-- promise1: 1秒後に「reject」されます
-- promise2: 2秒後にresolveします
-- promise2: 3秒後にresolveします
+- `promise1`: 1秒後に「reject」されます
+- `promise2`: 2秒後にresolveします
+- `promise2`: 3秒後にresolveします
 
-promise1は一番完了が早いですが、rejectされるため無視されます。promise2がresolveされるのが一番早いため、`Promise.any`ではpromise2をもってresolveします。
+`promise1`は一番完了が早いですが、rejectされるため無視されます。`promise2`がresolveされるのが一番早いため、`Promise.any`では`promise2`をもってresolveします。
 
 ```js
 // 1秒後に「reject」されるPromise
@@ -175,9 +175,25 @@ Promise.any([promise1, promise2, promise3]).then((resolve) => {
 
 ![](https://storage.googleapis.com/zenn-user-upload/55cd17d21a0efef0a4ab81d4.png)
 
-## 他のPromiseの複数処理
+resolveされるPromiseが1つもない場合は、`AggregateError`でrejectされます。
 
-ES2015で導入された`Promise.all()`、ES2020で導入された`Promise.allSettled()`など、`Promise`の複数処理はいくつかあります。この機会にそれぞれとの違いを確認しておくとよいでしょう。
+## `Promise.race()`との違い
+
+`Promise.any()`に似た処理として、`Promise.race()`があります。
+
+■ `Promise.any()`
+引数のPromiseが最初に「**resolveした時点で**」終了する
+
+■ `Promise.race()`
+引数のPromiseが最初に「**終了（resolveまたはreject）した時点で**」終了する
+
+▼ `Promise.race()`の実行結果
+
+![](https://storage.googleapis.com/zenn-user-upload/f18a1e1318f2e9fe6f7fa919.png)
+
+## 他のPromiseの複数処理 
+
+ES2015で導入された`Promise.all()`、ES2020で導入された`Promise.allSettled()`など、`Promise`の複数処理はいくつかあります。この機会にそれぞれとの違いを確認しておくとよいでしょうw。
 
 https://twitter.com/tonkotsuboy_com/status/1252519470523772929?conversation=none
 
@@ -331,7 +347,7 @@ WeakRefの詳しい内容は、[@uhyo](https://twitter.com/uhyo_)さんの解説
 # ES2021を使って便利に開発しよう
 
 本記事では正式仕様としてリリースされたES2021の新機能を紹介しました。どれも開発をラクにしてくれるものばかりで、筆者も積極的に開発の現場で使っています。ECMAScriptは次のES2022に向けて仕様策定がすでに始まっています。`top level await`やclass fieldなど、また便利な機能が入ってきそうです。新しい機能をキャッチアップし、楽しく開発していきましょう。
--kG-Rzk8WHUi2i@
+
 ES2021のLanguage Specificationは、こちらから確認できます。
 
 - [ECMAScript® 2021 Language Specification](https://262.ecma-international.org/12.0/)
