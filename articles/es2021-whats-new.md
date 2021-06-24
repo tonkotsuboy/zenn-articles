@@ -313,6 +313,8 @@ WeakRefの詳しい内容は、[@uhyo](https://twitter.com/uhyo_)さんの解説
 - TypeScript
 - Node.js
 
+「[ECMAScript compatibility table](https://kangax.github.io/compat-table/es2016plus/)」で、細かい対応バージョンを確認できます。
+※ 執筆時点では、TypeScriptの最新対応状況が反映されていないようです
 
 # ES2021を使って便利に開発しよう
 
