@@ -2,7 +2,7 @@
 title: "正式仕様リリース！ JavaScriptの最新仕様ES2021で追加された新機能まとめ"
 emoji: "💐"
 type: "tech" # tech: 技術記事 / idea: アイデア
-topics: ["javascript", "tech"]
+topics: ["javascript"]
 published: true
 ---
 
