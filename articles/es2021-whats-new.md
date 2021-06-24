@@ -304,11 +304,15 @@ WeakRefの詳しい内容は、[@uhyo](https://twitter.com/uhyo_)さんの解説
 
 # 対応環境
 
-本記事で紹介したES2021の全機能は、すべてのモダンブラウザで使用可能です。各環境のECMAScriptの対応状況を確認できる「[ECMAScript compatibility table](https://kangax.github.io/compat-table/es2016plus/)」でも、すべての機能がGreenになっています。
+本記事で紹介したES2021の全機能は、各環境で使用可能です。
 
-![](https://storage.googleapis.com/zenn-user-upload/65e8205bc2ac8feffde8da4d.png)
+- Google Chrome
+- Firefox
+- Safari
+- Microsoft Edge
+- TypeScript
+- Node.js
 
-Node.jsでも全機能が使えます。TypeScriptについても、（ECMAScript compatibility tableへの反映が遅れているようですが）全機能が使えます。
 
 # ES2021を使って便利に開発しよう
 
