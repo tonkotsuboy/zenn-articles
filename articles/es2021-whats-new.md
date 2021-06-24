@@ -146,7 +146,7 @@ https://twitter.com/tonkotsuboy_com/status/1252519470523772929?conversation=none
 
 `replaceAll()`は、`replace()`と異なり文字列の引数でもすべての文字列を置換できます。
 
-## `文字列.stringAll()`の挙動確認
+## `文字列.replaceAll()`の挙動確認
 
 「猫田猫男は猫好きだ」という文字列の、「猫」を「犬」に変換する例で考えてみましょう。文字列`"猫"`を引数にして`replace()`メソッドを使った場合、最初の「`"猫"`」しか置換されません。
 
