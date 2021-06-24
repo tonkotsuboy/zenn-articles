@@ -66,6 +66,59 @@ console.log(222_222 * 2);
 - [tc39/proposal\-numeric\-separator](https://github.com/tc39/proposal-numeric-separator)
 - [数値の区切り文字 - MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Lexical_grammar#:~:text=%E6%95%B0%E5%80%A4%E3%81%AE%E5%8C%BA%E5%88%87%E3%82%8A%E6%96%87%E5%AD%97)
 
+# マッチした文字列をすべて置換できる`文字列.replaceAll()`
+
+| 構文              | 戻り値       |
+|:----------------|:----------|
+| `文字列.replaceAll(文字列または正規表現, 文字列)` | `String` |
+
+▼ 簡単な例
+
+```js
+"👺👺👺😈😈😈".replaceAll("😈", "🔥");
+// 結果: "👺👺👺🔥🔥🔥"
+```
+
+## 説明
+
+`replaceAll()`とは、引数にマッチした文字列をすべて置換できるメソッドです。
+
+従来、文字列の置換用のメソッドとして、`文字列.replace()`メソッドがありました。`replace()`メソッドは、正規表現または文字列を引数に取り、マッチした文字列を置換するメソッドです。引数が文字列の場合、「**最初にマッチした文字列だけを**」置換します。すべての文字列を置換するためには、引数に正規表現を使う必要がありました。
+
+`replaceAll()`は、`replace()`と異なり文字列の引数でもすべての文字列を置換できます。
+
+## `文字列.replaceAll()`の挙動確認
+
+「猫田猫男は猫好きだ」という文字列の、「猫」を「犬」に変換する例で考えてみましょう。文字列`"猫"`を引数にして`replace()`メソッドを使った場合、最初の「`"猫"`」しか置換されません。
+
+```js
+"猫田猫男は猫好きだ".replace("猫", "犬");
+// 結果: "犬田猫男は猫好きだ"
+```
+
+すべての「猫」を「犬」に変換するためには、引数を正規表現にして`g`フラグを指定し、「`/猫/g`」とする必要があります。
+
+```js
+"猫田猫男は猫好きだ".replace(/猫/g, "犬");
+// 結果: "犬田犬男は犬好きだ"
+```
+
+ES2021の`replaceAll()`を使えば、正規表現を使わずとも引数の文字列すべてを置換できます。よりシンプルに文字列の一括置換ができるようになったと言えるでしょう。
+
+```js
+"猫田猫男は猫好きだ".replaceAll("猫", "犬");
+// 結果: 「"犬田犬男は犬好きだ"」
+```
+
+▼ 実行結果
+
+![](https://storage.googleapis.com/zenn-user-upload/60296dd5b5e80e3071caaed9.png)
+
+## 関連資料
+
+- [tc39/proposal\-string\-replaceall](https://github.com/tc39/proposal-string-replaceall)
+- [String\.prototype\.replaceAll\(\) \- MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/String/replaceAll)
+
 # 複数のPromiseのうち、どれか1つの解決を待つPromise.any
 
 | 構文              | 戻り値       |
@@ -124,59 +177,6 @@ https://twitter.com/tonkotsuboy_com/status/1252519470523772929?conversation=none
 
 - [tc39/proposal\-promise\-any](https://github.com/tc39/proposal-promise-any)
 - [Promise\.any\(\) \- MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise/any)
-
-# マッチした文字列をすべて置換できる`文字列.replaceAll()`
-
-| 構文              | 戻り値       |
-|:----------------|:----------|
-| `文字列.replaceAll(文字列または正規表現, 文字列)` | `String` |
-
-▼ 簡単な例
-
-```js
-"👺👺👺😈😈😈".replaceAll("😈", "🔥");
-// 結果: "👺👺👺🔥🔥🔥"
-```
-
-## 説明
-
-`replaceAll()`とは、引数にマッチした文字列をすべて置換できるメソッドです。
-
-従来、文字列の置換用のメソッドとして、`文字列.replace()`メソッドがありました。`replace()`メソッドは、正規表現または文字列を引数に取り、マッチした文字列を置換するメソッドです。引数が文字列の場合、「**最初にマッチした文字列だけを**」置換します。すべての文字列を置換するためには、引数に正規表現を使う必要がありました。
-
-`replaceAll()`は、`replace()`と異なり文字列の引数でもすべての文字列を置換できます。
-
-## `文字列.replaceAll()`の挙動確認
-
-「猫田猫男は猫好きだ」という文字列の、「猫」を「犬」に変換する例で考えてみましょう。文字列`"猫"`を引数にして`replace()`メソッドを使った場合、最初の「`"猫"`」しか置換されません。
-
-```js
-"猫田猫男は猫好きだ".replace("猫", "犬");
-// 結果: "犬田猫男は猫好きだ"
-```
-
-すべての「猫」を「犬」に変換するためには、引数を正規表現にして`g`フラグを指定し、「`/猫/g`」とする必要があります。
-
-```js
-"猫田猫男は猫好きだ".replace(/猫/g, "犬");
-// 結果: "犬田犬男は犬好きだ"
-```
-
-ES2021の`replaceAll()`を使えば、正規表現を使わずとも引数の文字列すべてを置換できます。よりシンプルに文字列の一括置換ができるようになったと言えるでしょう。
-
-```js
-"猫田猫男は猫好きだ".replaceAll("猫", "犬");
-// 結果: 「"犬田犬男は犬好きだ"」
-```
-
-▼ 実行結果
-
-![](https://storage.googleapis.com/zenn-user-upload/60296dd5b5e80e3071caaed9.png)
-
-## 関連資料
-
-- [tc39/proposal\-string\-replaceall](https://github.com/tc39/proposal-string-replaceall)
-- [String\.prototype\.replaceAll\(\) \- MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/String/replaceAll)
 
 # `null`のときのみ値を代入できるLogical Assignment Operators (`??=`)
 
