@@ -178,11 +178,13 @@ https://twitter.com/tonkotsuboy_com/status/1252519470523772929?conversation=none
 - [tc39/proposal\-promise\-any](https://github.com/tc39/proposal-promise-any)
 - [Promise\.any\(\) \- MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise/any)
 
-# `null`のときのみ値を代入できるLogical Assignment Operators (`??=`)
+# `??`や`||`や`&&`と`=`を組み合わせて使える演算子
 
 | 構文        |
 |:----------|
 | `a ??= b` |
+| `a ||= b` |
+| `a &&= b` |
 
 ▼ 簡単な例
 
@@ -198,6 +200,10 @@ console.log(b); // 結果： "🐷"
 
 ## 説明
 
+`??=`演算子、`||=`演算子、`&&=`演算子とは、`??`・`||`・`&&`と`=`を組み合わせられる演算子です。
+
+## `??=`演算子
+
 `??=`演算子とは、`a`が`null`か`undefined`のときに、`a`に`b`を代入するための演算子です。
 
 ES2020では、`??`演算子が実装されました。`a ?? b`という形で用い、`a`が`null`または`undefined`のときのみ`b`を返せます。`||`演算子は`a`がfalsyなもの（`0`や`""`や`false`）のときも`b`を返すのに対して、厳密に`null`や`undefined`を判定できるので、開発の現場では重宝する処理です。
@@ -208,8 +214,6 @@ ES2020では、`??`演算子が実装されました。`a ?? b`という形で�
 // aがnullかundefinedのときに、aにbを代入する
 a ?? (a = b);
 ```
-
-## `??=`の挙動確認
 
 `const human = { name: "田中" }`というオブジェクトのプロパティを通して、`??=`の挙動を確認してみましょう。
 
@@ -231,12 +235,7 @@ console.log(human);
 
 ![](https://storage.googleapis.com/zenn-user-upload/8173c94a52f1f42572e5e309.png)
 
-
-## `||=`や`&&=`も使えるようになった
-
-ES2021では、`||=`や`&&=`も使えるようになりました。
-
-■ `a ||= b`
+## `||=`演算子
 
 `a`がfalsyなものの場合に、`a`に`b`を代入します。
 
@@ -250,7 +249,13 @@ b ||= "🐈";
 console.log(b); // 結果： "🐷"
 ```
 
-■ `&&=`
+`||=`は、たとえばHTML要素の`innerHTML`のデフォルト値を設定するようなケースで使えます。次のコードでは、`.foo`要素の中身が空の場合に、`<p>値なし</p>`の要素を代入できます。
+
+```js
+document.querySelector(".foo").innerHTML ||= "<p>値なし</p>";
+```
+
+## `&&=`演算子
 
 `a`がtruthyなものの場合に、`a`に`b`を代入します。
 
@@ -263,7 +268,6 @@ let b = "🐷";
 b &&= "🐈";
 console.log(b); // 結果： "🐈"
 ```
-
 
 ## 関連資料
 
@@ -319,7 +323,7 @@ WeakRefの詳しい内容は、[@uhyo](https://twitter.com/uhyo_)さんの解説
 # ES2021を使って便利に開発しよう
 
 本記事では正式仕様としてリリースされたES2021の新機能を紹介しました。どれも開発をラクにしてくれるものばかりで、筆者も積極的に開発の現場で使っています。ECMAScriptは次のES2022に向けて仕様策定がすでに始まっています。`top level await`やclass fieldなど、また便利な機能が入ってきそうです。新しい機能をキャッチアップし、楽しく開発していきましょう。
-
+-kG-Rzk8WHUi2i@
 ES2021のLanguage Specificationは、こちらから確認できます。
 
 - [ECMAScript® 2021 Language Specification](https://262.ecma-international.org/12.0/)
