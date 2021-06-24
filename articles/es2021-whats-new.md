@@ -34,7 +34,7 @@ JavaScriptの仕様はECMAScriptで、ECMAScript 2015（ES2015）、ECMAScript 2
 
 ```js
 100_000_000;  // 1億（100,000,000）
-12_234 // 1万2234（12,234）
+12_234; // 1万2234（12,234）
 `${1_000_000}ドルの夜景`;  // 100万ドルの夜景
 ````
 
@@ -80,7 +80,7 @@ Promise.any([
 ]).then(first => {
   // 3つのpromiseのうち、最初に解決したpromiseが出力される
   console.log(first)
-})
+});
 ```
 
 ## 説明
@@ -206,12 +206,12 @@ ES2020では、`??`演算子が実装されました。`a ?? b`という形で�
 
 ```js
 // aがnullかundefinedのときに、aにbを代入する
-a ?? (a = b)
+a ?? (a = b);
 ```
 
 ## `??=`の挙動確認
 
-`const human = { name: "田中" };`というオブジェクトのプロパティを通して、`??=`の挙動を確認してみましょう。
+`const human = { name: "田中" }`というオブジェクトのプロパティを通して、`??=`の挙動を確認してみましょう。
 
 `human.age ??= 18`で`age`プロパティに`18`の代入を試みています。`age`プロパティは`undefined`なので、`18`が代入されます。
 
@@ -223,13 +223,13 @@ human.age ??= 18;
 // hunan.ageはundefinedなので18が代入される
 human.name ??= "鈴木";
 // hunan.ageはnullではないので何も代入されない
-console.log(human)
+console.log(human);
 // 結果: {name: "田中", age: 18}
 ```
 
 ▼ 実行結果
 
-![](https://storage.googleapis.com/zenn-user-upload/be8b3faf7ae6766febffa64a.png)
+![](https://storage.googleapis.com/zenn-user-upload/8173c94a52f1f42572e5e309.png)
 
 
 ## `||=`や`&&=`も使えるようになった
@@ -320,6 +320,8 @@ WeakRefの詳しい内容は、[@uhyo](https://twitter.com/uhyo_)さんの解説
 
 本記事では正式仕様としてリリースされたES2021の新機能を紹介しました。どれも開発をラクにしてくれるものばかりで、筆者も積極的に開発の現場で使っています。ECMAScriptは次のES2022に向けて仕様策定がすでに始まっています。`top level await`やclass fieldなど、また便利な機能が入ってきそうです。新しい機能をキャッチアップし、楽しく開発していきましょう。
 
-ES2021のLanguage Specificationは、こちらから確認できます。ページを開くと重いので、ご注意ください。
+ES2021のLanguage Specificationは、こちらから確認できます。
+※ ページは重いので、ご注意ください。
 
 - [ECMAScript® 2021 Language Specification](https://262.ecma-international.org/12.0/)
+
