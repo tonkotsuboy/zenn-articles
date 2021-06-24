@@ -260,7 +260,7 @@ a &&= "🐈";
 console.log(a); // 結果： null
 
 let b = "🐷";
-b ||= "🐈";
+b &&= "🐈";
 console.log(b); // 結果： "🐈"
 ```
 
