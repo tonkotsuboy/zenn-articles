@@ -119,7 +119,7 @@ ES2021の`replaceAll()`を使えば、正規表現を使わずとも引数の文
 - [tc39/proposal\-string\-replaceall](https://github.com/tc39/proposal-string-replaceall)
 - [String\.prototype\.replaceAll\(\) \- MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/String/replaceAll)
 
-# 複数のPromiseのうち、最初のresolveを待つPromise.any
+# 複数のPromiseのうち、最初のresolveを待つ`Promise.any`
 
 | 構文              | 戻り値       |
 |:----------------|:----------|
@@ -201,6 +201,7 @@ https://twitter.com/tonkotsuboy_com/status/1252519470523772929?conversation=none
 
 - [tc39/proposal\-promise\-any](https://github.com/tc39/proposal-promise-any)
 - [Promise\.any\(\) \- MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise/any)
+[Promise\.race\(\) \- MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise/race)
 
 # `??`や`||`や`&&`と`=`を組み合わせて使える演算子
 
@@ -346,10 +347,9 @@ WeakRefの詳しい内容は、[@uhyo](https://twitter.com/uhyo_)さんの解説
 
 # ES2021を使って便利に開発しよう
 
-本記事では正式仕様としてリリースされたES2021の新機能を紹介しました。どれも開発をラクにしてくれるものばかりで、筆者も積極的に開発の現場で使っています。ECMAScriptは次のES2022に向けて仕様策定がすでに始まっています。`top level await`やclass fieldなど、また便利な機能が入ってきそうです。新しい機能をキャッチアップし、楽しく開発していきましょう。
+本記事では正式仕様としてリリースされたES2021の新機能を紹介しました。どれも開発をラクにしてくれるものばかりで、筆者も積極的に開発の現場で使っています。ECMAScriptは次のES2022に向けて仕様策定がすでに始まっています。top levelでの`await`やclass fieldなど、また便利な機能が入ってきそうです。新しい機能をキャッチアップし、楽しく開発していきましょう。
 
 ES2021のLanguage Specificationは、こちらから確認できます。
-
 - [ECMAScript® 2021 Language Specification](https://262.ecma-international.org/12.0/)
 
 TwitterでもJavaScriptやCSSの最新情報を発信しています！
