@@ -119,7 +119,7 @@ ES2021の`replaceAll()`を使えば、正規表現を使わずとも引数の文
 - [tc39/proposal\-string\-replaceall](https://github.com/tc39/proposal-string-replaceall)
 - [String\.prototype\.replaceAll\(\) \- MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/String/replaceAll)
 
-# 複数のPromiseのうち、どれか1つの解決を待つPromise.any
+# 複数のPromiseのうち、最初のresolveを待つPromise.any
 
 | 構文              | 戻り値       |
 |:----------------|:----------|
@@ -138,24 +138,32 @@ Promise.any([
 
 ## 説明
 
-`Promise`では非同期処理を扱えますが、制作の現場では複数の非同期処理を同時に扱いたいことが多いでしょう。`Promise.any`とは、複数のPromiseのうち、どれか1つでも終了したらその時点で解決されるPromiseです。全部のPromiseの終了を待たなくてもいいので、どれか1つだけでも終了したときに処理をしたいときに使えます。
+`Promise`では非同期処理を扱えますが、制作の現場では複数の非同期処理を同時に扱いたいことが多いでしょう。`Promise.any`とは、複数のPromiseのうち、どれか1つでもresolveしたらその時点で解決されるPromiseです。最初のresolveがあるまでは、rejectは無視されます。
 
 ## `Promise.any()`の挙動確認コード
 
-次のコードで`Promise.any()`の挙動を確認してみましょう。3つのPromiseは、それぞれ解決する時間が違います。`promise2`が一番終了する時間が早いため、`promise2`が終了する2秒の時点で`Promise.any`は解決します。
+次のコードで`Promise.any()`の挙動を確認してみましょう。3つのPromiseは、それぞれ次の挙動をします。
+
+- promise1: 1秒後に「reject」されます
+- promise2: 2秒後にresolveします
+- promise2: 3秒後にresolveします
+
+promise1は一番完了が早いですが、rejectされるため無視されます。promise2がresolveされるのが一番早いため、`Promise.any`ではpromise2をもってresolveします。
 
 ```js
-// 6秒後に解決するPromise
-const promise1 = new Promise((resolve) =>
-  setTimeout(resolve, 6000, "promise1")
+// 1秒後に「reject」されるPromise
+const promise1 = new Promise((resolve, reject) =>
+  setTimeout(reject, 1000, "promise1")
 );
-// 2秒後に解決するPromise
+
+// 2秒後にresolveするPromise
 const promise2 = new Promise((resolve) =>
   setTimeout(resolve, 2000, "promise2")
 );
-// 4秒後に解決するPromise
+
+// 3秒後にresolveするPromise
 const promise3 = new Promise((resolve) =>
-  setTimeout(resolve, 4000, "promise3")
+  setTimeout(resolve, 3000, "promise3")
 );
 
 Promise.any([promise1, promise2, promise3]).then((resolve) => {
@@ -165,7 +173,7 @@ Promise.any([promise1, promise2, promise3]).then((resolve) => {
 
 ▼ 実行結果
 
-![](https://storage.googleapis.com/zenn-user-upload/361a47f0545d18da0676d32f.png)
+![](https://storage.googleapis.com/zenn-user-upload/55cd17d21a0efef0a4ab81d4.png)
 
 ## 他のPromiseの複数処理
 
