@@ -321,7 +321,8 @@ WeakRefの詳しい内容は、[@uhyo](https://twitter.com/uhyo_)さんの解説
 本記事では正式仕様としてリリースされたES2021の新機能を紹介しました。どれも開発をラクにしてくれるものばかりで、筆者も積極的に開発の現場で使っています。ECMAScriptは次のES2022に向けて仕様策定がすでに始まっています。`top level await`やclass fieldなど、また便利な機能が入ってきそうです。新しい機能をキャッチアップし、楽しく開発していきましょう。
 
 ES2021のLanguage Specificationは、こちらから確認できます。
-※ ページは重いので、ご注意ください。
 
 - [ECMAScript® 2021 Language Specification](https://262.ecma-international.org/12.0/)
 
+TwitterでもJavaScriptやCSSの最新情報を発信しています！
+https://twitter.com/tonkotsuboy_com
