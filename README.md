@@ -1,3 +1,3 @@
-# Zenn CLI
+Zenn.devで公開している記事の管理リポジトリ
 
-* [📘 How to use](https://zenn.dev/zenn/articles/zenn-cli-guide)
+https://zenn.dev/tonkotsuboy_com
