@@ -6,7 +6,7 @@ topics: ["css"]
 published: true
 ---
 
-この記事は[マネーフォワードアドベントカレンダー2021🎄](https://adventar.org/calendars/6182)の13日目の記事です。
+この記事は[マネーフォワードアドベントカレンダー2021](https://adventar.org/calendars/6182)の13日目の記事です。
 
 ブラウザは日々進化しています。2021年もブラウザには多くの新機能が追加されました。
 
@@ -41,7 +41,7 @@ published: true
 <iframe src="動画URL"></iframe>
 ```
 
-### 昔のやりかた: `padding-top`と絶対配置
+## 昔のやりかた: `padding-top`と絶対配置
 
 昔は、`iframe`のラッパー要素を作り、`padding-top: 56.25%;`（もしくは`padding-top: calc(100% * 16 / 9);` を指定し、`iframe`を`absolute`で絶対配置する必要がありました。
 
@@ -69,7 +69,7 @@ iframe {
 }
 ```
 
-### `aspect-ratio`を使ったやり方
+## `aspect-ratio`を使ったやり方
 
 `aspect-ratio`プロパティを使うと、ラッパー要素や絶対配置は不要で、`iframe`に`aspect-ratio`プロパティを指定するだけで、アスペクト比が固定されます。
 
@@ -84,13 +84,13 @@ iframe {
 
 私は**ウェブ業界に入った頃から前述の`padding-top`によるハックを使っていましたが、なんでこんな面倒くさいことをしなければならないんだろう？🤔**とずっと疑問に思っていました。`aspect-ratio`の登場で、直感的にアスペクト比を指定できるようになり助かっています。
 
-デモはつぎのとおりです。
+デモはつぎのとおりです。新しいタブでデモを開くとわかりやすいのですが、YouTubeの動画が画面サイズがウインドウいっぱいに広がりつつ、アスペクト比が16:9に保たれています。
 
 @[codepen](https://codepen.io/tonkotsuboy/pen/wvrogEw)
 
 - [新しいタブでデモを開く](https://codepen.io/tonkotsuboy/pen/wvrogEw)
 
-### `aspect-ratio`の対応ブラウザ
+## `aspect-ratio`の対応ブラウザ
 
 `aspect-ratio`プロパティは、2021年9月に登場したSafari 15が対応したことで、全モダンブラウザで使えるようになりました。
 
@@ -166,7 +166,7 @@ Flexboxの`gap`プロパティを使えば、次のように記述できます�
 
 - [新しいタブでデモを開く](https://codepen.io/tonkotsuboy/pen/eYGBywQ)
 
-### Flexbox用`gap`の対応ブラウザ
+## Flexbox用`gap`の対応ブラウザ
 
 Flexbox用`gap`プロパティは、2021年4月に登場したSafari 14が対応したことで、全モダンブラウザで使えるようになりました。
 
@@ -197,7 +197,6 @@ Flexbox用`gap`プロパティは、2021年4月に登場したSafari 14が対応
 
 https://www.youtube.com/watch?v=j5VG43nNq_k
 
-
 リンク部分のHTMLは次のようになっています。
 
 ```html
@@ -216,7 +215,7 @@ https://www.youtube.com/watch?v=j5VG43nNq_k
 
 JavaScriptでは、カレント状態の`a.link`要素に対して、`.current` クラスが付与されるようになっています。
 
-### 昔のやり方
+## 昔のやり方
 
 `.link-list`内の`a`の、`:hover`と`.current`に対して同じスタイルを指定したい場合、従来は次のように指定していました。
 
@@ -228,7 +227,7 @@ JavaScriptでは、カレント状態の`a.link`要素に対して、`.current` 
 }
 ```
 
-### `:is()`を使ってセレクタリストをまとめる
+## `:is()`を使ってセレクタリストをまとめる
 
 `:is()`を使うと、次のようにセレクタリストをまとめられます。
 
@@ -245,7 +244,7 @@ JavaScriptでは、カレント状態の`a.link`要素に対して、`.current` 
 
 - [新しいタブでデモを開く](https://codepen.io/tonkotsuboy/pen/XWeNpbK)
 
-### 詳細度が常に`0`の`:where()`
+## 詳細度が常に`0`の`:where()`
 
 `:is()`と似た疑似クラスで、`:where()`があります。`:is()`は`()`内の詳細度になるのに対し、`:where()`の詳細度はつねに`0`です。
 
@@ -274,7 +273,7 @@ div a {
 }
 ```
 
-### `:not()`でもセレクタリストが指定できるように
+## `:not()`でもセレクタリストが指定できるように
 
 `:not()`でもセレクタリストが指定できるようになりました。
 
@@ -287,7 +286,7 @@ a:not(:hover, .current) {
 }
 ```
 
-### `:is()`の対応ブラウザ
+## `:is()`の対応ブラウザ
 
 `:is()`は、2021年9月に登場したSafari 15が対応したことで、全モダンブラウザで使えるようになりました。
 
