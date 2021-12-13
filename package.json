@@ -5,7 +5,10 @@
   "repository": "https://github.com/tonkotsuboy/zen-articles.git",
   "author": "takeshi.kano <10419447+tonkotsuboy@users.noreply.github.com>",
   "license": "MIT",
+  "scripts": {
+    "preview": "zenn preview"
+  },
   "dependencies": {
-    "zenn-cli": "^0.1.89"
+    "zenn-cli": "^0.1.99"
   }
 }
