@@ -290,9 +290,9 @@ a:not(:hover, .current) {
 }
 ```
 
-## `:is()`・`where()`・セレクタリストをとる`not()`の対応ブラウザ
+## `:is()`・`:where()`・セレクタリストをとる`:not()`の対応ブラウザ
 
-`:is()`・`where()`・セレクタリストをとる`not()`は、2021年1月に登場したChrome 88が対応したことで、全モダンブラウザで使えるようになりました。
+`:is()`・`:where()`・セレクタリストをとる`:not()`は、2021年1月に登場したChrome 88が対応したことで、全モダンブラウザで使えるようになりました。
 
 [![](/images/2021-css-new-features/caniuse_is-pseudo.png)](https://caniuse.com/css-matches-pseudo)
 
