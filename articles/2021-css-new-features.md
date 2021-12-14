@@ -98,6 +98,8 @@ iframe {
 
 - [Can I use - aspect-ratio](https://caniuse.com/mdn-css_properties_aspect-ratio)
 
+https://twitter.com/tonkotsuboy_com/status/1440137120186699780
+
 # Flexboxで`gap`プロパティを使う
 
 `gap`プロパティとは、行や列の隙間を指定するためのプロパティです。昔はCSS Gridのアイテムに対してのみ有効でしたが、2021年からはFlexboxのアイテムに対しても使えるようになりました。
@@ -173,6 +175,8 @@ Flexbox用`gap`プロパティは、2021年4月に登場したSafari 14が対応
 [![](/images/2021-css-new-features/caniuse_gap.png)](https://caniuse.com/flexbox-gap)
 
 - [Can I use - gap property for Flexbox](https://caniuse.com/flexbox-gap)
+
+https://twitter.com/tonkotsuboy_com/status/1386886571710816256
 
 # セレクターリストをまとめてスタイルをあてる `:is()`擬似クラス
 
@@ -288,7 +292,7 @@ a:not(:hover, .current) {
 
 ## `:is()`・`where()`・セレクタリストをとる`not()`の対応ブラウザ
 
-`:is()`・`where()`・セレクタリストをとる`not()`は、2021年10月に登場したChrome 88が対応したことで、全モダンブラウザで使えるようになりました。
+`:is()`・`where()`・セレクタリストをとる`not()`は、2021年1月に登場したChrome 88が対応したことで、全モダンブラウザで使えるようになりました。
 
 [![](/images/2021-css-new-features/caniuse_is-pseudo.png)](https://caniuse.com/css-matches-pseudo)
 
