@@ -286,13 +286,17 @@ a:not(:hover, .current) {
 }
 ```
 
-## `:is()`の対応ブラウザ
+## `:is()`・`where()`・セレクタリストをとる`not()`の対応ブラウザ
 
-`:is()`は、2021年9月に登場したSafari 15が対応したことで、全モダンブラウザで使えるようになりました。
+`:is()`・`where()`・セレクタリストをとる`not()`は、2021年10月に登場したChrome 88が対応したことで、全モダンブラウザで使えるようになりました。
 
 [![](/images/2021-css-new-features/caniuse_is-pseudo.png)](https://caniuse.com/css-matches-pseudo)
 
 - [Can I use - :is() CSS pseudo-class](https://caniuse.com/css-matches-pseudo)
+- [Can I use - CSS selector: :where()](https://caniuse.com/mdn-css_selectors_where)
+- [Can I use - selector list argument of :not()](https://caniuse.com/css-not-sel-list)
+
+細かいことを言うと、`:is()`や`:where()`はSafari 15以前から対応していましたが、[Forgiving Selector](https://developer.mozilla.org/ja/docs/Web/CSS/:is#forgiving_selector_parsing)に対応したのは15からです。
 
 # 新しいCSSで便利に開発しよう
 
