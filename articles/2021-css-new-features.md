@@ -41,7 +41,7 @@ published: true
 <iframe src="動画URL"></iframe>
 ```
 
-## 昔のやりかた: `padding-top`と絶対配置
+## 昔の方法: `padding-top`と絶対配置
 
 昔は、`iframe`のラッパー要素を作り、`padding-top: 56.25%;`（もしくは`padding-top: calc(100% * 16 / 9);` を指定し、`iframe`を`absolute`で絶対配置する必要がありました。
 
@@ -69,7 +69,7 @@ iframe {
 }
 ```
 
-## `aspect-ratio`を使ったやり方
+## 2021年の方法: `aspect-ratio`を使う
 
 `aspect-ratio`プロパティを使うと、ラッパー要素や絶対配置は不要で、`iframe`に`aspect-ratio`プロパティを指定するだけで、アスペクト比が固定されます。
 
@@ -138,18 +138,28 @@ HTMLは次のようになっています。
 </div>
 ```
 
-従来であれば、`margin`を使って次のように指定していました。最初や最後のアイテムの`margin`を`0`にするなどして調整する必要があります。また、複数行になった場合には、最初の行や最後の行での`margin`の調整も必要で、煩雑でした。
+## 昔の方法: `margin`を使う
+
+昔は、`margin`を使って次のように指定していました。最初や最後のアイテムの`margin`を`0`にする、コンテナにネガティブマージンを使うなど、調整する必要があります。また、複数行になった場合には、最初の行や最後の行での`margin`の調整も必要で、煩雑でした。
 
 ```css
 .container {
   display: flex;
-  margin: 0 16px;
+  margin-left: -8px;
+  margin-right: -8px;
+}
+
+.box {
+  margin-left: 8px;
+  margin-right: 8px;
 }
 
 .box:first-child {
   margin-left: 0;
 }
 ```
+
+## 2021年の方法: `gap`プロパティを使う
 
 Flexboxの`gap`プロパティを使えば、次のように記述できます。スタイルの指定はコンテナーに対してだけであり、`margin`のときのようにアイテムに個別のスタイルを指定する必要はありません。複数行のときも然りです。
 
@@ -219,7 +229,7 @@ https://www.youtube.com/watch?v=j5VG43nNq_k
 
 JavaScriptでは、カレント状態の`a.link`要素に対して、`.current` クラスが付与されるようになっています。
 
-## 昔のやり方
+## 昔の方法: 別々に書く
 
 `.link-list`内の`a`の、`:hover`と`.current`に対して同じスタイルを指定したい場合、従来は次のように指定していました。
 
@@ -231,7 +241,7 @@ JavaScriptでは、カレント状態の`a.link`要素に対して、`.current` 
 }
 ```
 
-## `:is()`を使ってセレクタリストをまとめる
+## 2021年の方法: `:is()`を使ってセレクタリストをまとめる
 
 `:is()`を使うと、次のようにセレクタリストをまとめられます。
 
