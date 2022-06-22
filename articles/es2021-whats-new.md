@@ -258,7 +258,7 @@ const human = { name: "田中" };
 human.age ??= 18;
 // hunan.ageはundefinedなので18が代入される
 human.name ??= "鈴木";
-// hunan.ageはnullではないので何も代入されない
+// hunan.nameはnullではないので何も代入されない
 console.log(human);
 // 結果: {name: "田中", age: 18}
 ```
