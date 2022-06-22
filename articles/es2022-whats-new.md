@@ -7,7 +7,11 @@ published: true
 ---
 JavaScriptの仕様はECMAScriptで、ECMAScript 2015（ES2015）、ECMAScript 2016（ES2016）...というように毎年進化を続けています。
 
-2022年6月までの最新仕様はES2021でしたが、本日6月22日にES2022が正式仕様として承認されました。
+2022年6月までの最新仕様はES2021でした。
+
+https://zenn.dev/tonkotsuboy_com/articles/es2021-whats-new
+
+本日6月22日、ES2022は正式仕様として承認されました。
 
 - [Ecma International approves new standards \- Ecma International](https://www.ecma-international.org/news/ecma-international-approves-new-standards-5/)
 
@@ -15,7 +19,15 @@ JavaScriptの仕様はECMAScriptで、ECMAScript 2015（ES2015）、ECMAScript 2
 
 本記事では、ES2022すべての新機能を詳しく紹介します。
 
-この記事を読むと、インスタンスの配列の最終要素取得には`at()`を使うように
+- クラスフィールド宣言
+- プライベートなメンバー
+- `instanceof`の代わりの`in`
+- トップレベルでの`await`
+- 配列の最後の要素を取得できる`at()`
+- `hasOwnProperty`の代わりの`Object.hasOwn()`
+- staticイニシャライザー
+- エラーのチェインの `Error.cause`
+- 正規表現の`d`フラグ
 
 # クラスフィールド宣言ができるようになった
 
@@ -495,7 +507,7 @@ document.querySelector("button").textContent = translations.button;
 
 ### コラム: tc39のサンプルコードは注意
 
-念のためにお伝えしておくと、tc39のREADMEに記述されている次のコードは、実用にはオススメできません。
+念のためにお伝えしておくと、[tc39のREADMEに記述されている](https://github.com/tc39/proposal-top-level-await#dynamic-dependency-pathing)次のコードは、実用にはオススメできません。
 
 ```js
 const strings = await import(`/i18n/${navigator.language}`);
@@ -512,176 +524,6 @@ const strings = await import(`/i18n/${navigator.language}`);
 
 - [Top-level await - tc39](https://github.com/tc39/proposal-top-level-await)
 - [top-level awaitがどのようにES Modulesに影響するのか完全に理解する](https://qiita.com/uhyo/items/0e2e9eaa30ec2ff05260)
-
-# JavaScriptで「staticイニシャライザー」ができるように
-
-staticイニシャライザーとは、クラス定義時に初期化処理を一度だけ実行できるブロックのことです。Javaなどの世界ではすでにある仕組みです。
-
-## 簡単な例
-
-```js
-class MyClass {
-  static x;
-  
-  static {
-    this.x = "こんにちは"
-  }
-}
-
-console.log(MyClass.x); // こんにちは
-```
-
-## staticイニシャライザーがない場合の問題点
-
-ひょんなことから、`enum`（列挙型）を作る必要が出てきたとしましょう。列挙型とは、似た値を集めたものです。たとえば、果物用の列挙型を作成し、`FruitsEnum.apple`や`FruitsEnum.grape`のような形で扱えるようにしてみましょう。
-
-次のような `FruitsEnum` の実装が考えられます。
-
-```js
-class FruitsEnum {
-  static apple = Symbol("りんご");
-  static orange = Symbol("みかん");
-  static grape = Symbol("ぶどう");
-}
-```
-
-`FruitsEnum`から、すべてのキーを取得できるスタティックなフィールド`allFruits`をクラス内に実装したいとします。
-
- staticイニシャライザーが使えない時代は、次のようにクラス外に処理を記述する必要がありました。
-
-```js
-class FruitsEnum {
-  static apple = Symbol("りんご");
-  static orange = Symbol("みかん");
-  static grape = Symbol("ぶどう");
-
-  static allFruits;
-}
-
-FruitsEnum.allFruits = Object
-  .keys(FruitsEnum)  // 各キーを取得する
-  .filter(key => key !== "allFruits");  // allFruitsを除外する
-
-console.log(FruitsEnum.allFruits);
-// [apple, orange, grape]
-```
-## staticイニシャライザーを使えば、クラス内に処理を記述できる
-
-staticイニシャライザーを使えば、次のようにクラス内に処理を記述できます。クラスの外部に処理を記述しなくてよくなるので、処理のまとまりがわかりやすくなります。
-
-```js
-class FruitsEnum {
-  static apple = Symbol("りんご");
-  static orange = Symbol("みかん");
-  static grape = Symbol("ぶどう");
-
-  static {
-    this.allFruits = Object.keys(this);
-  }
-}
-
-console.log(FruitsEnum.allFruits);
-// [apple, orange, grape]
-```
-
-デモは次のとおりです。
-
-@[codepen](https://codepen.io/tonkotsuboy/pen/LYQoeqM)
-
-- [新しいタブでデモを開く](https://codepen.io/tonkotsuboy/pen/LYQoeqM)
-
-
-## 関連資料
-
-- [class static initialization blocks - tc39](https://github.com/tc39/proposal-class-static-block)
-- [ES2022 feature: class static initialization blocks](https://2ality.com/2021/09/class-static-block.html)
-
-
-# 正規表現で、マッチ部分の開始・終了インデックスを取得できる`d`フラグ
-
-`d`フラグとは、正規表現でマッチ部分の開始・終了インデックスを取得できるものです。
-
-## 構文
-
-```js
-const result = /正規表現/d.exec(文字列);
-console.log(result.indices);
-```
-
-■ 意味
-文字列から、正規表現にマッチする部分を取得してください。
-取得したら、`indices` プロパティにマッチ部分の開始・終了インデックスを格納してください。
-
-## 前提知識① 正規表現でマッチ部分の情報を取得する
-
-`/正規表現/.exec(文字列)`や、`文字列.match(正規表現)`を実行すると、正規表現にマッチした文字列の情報を取得できます。たとえば、次のコードは`/私の姓は(.*)、名前は(.*)です/`という正規表現にマッチする文字列の情報を取得しています。
-
-```js
-// 正規表現
-const regrex = /私の姓は(.*)、名前は(.*)です/;
-
-const result = '私の姓は山田、名前は太郎です'.match(regrex);
-console.table(result);
-```
-
-実行結果は次の通り。「`山田`」と「`太郎`」という文字列が取得できているのがわかります。
-
-![](/images/es2022-whats-new/dflag-1.png)
-
-## 前提知識② フラグとマッチ部分に名前をつける
-
-ES2018では、Named Capture Groupsという仕様が入りました。正規表現で`?<名前>`とすることで、マッチした部分に名前をつけることができ、マッチ部分の情報を探しやすくなります。なお、この場合は`u`フラグが必要です
-
-
-```js
-const regrex = /私の姓は(?<family>.*)、名前は(?<name>.*)です/u;
-
-const result = '私の姓は山田、名前は太郎です'.match(regrex);
-console.table(result);
-
-console.log(result.groups.family);  // 山田
-console.log(result.groups.name);  // 太郎
-```
-
-実行結果は次のとおりです。
-
-![](/images/es2022-whats-new/dflag-2.png)
-
-## `d` フラグでマッチ部分の開始・終了インデックスを取得する
-
-本題の`d`フラグです。`d`フラグを使うと、マッチ部分の開始・終了インデックスを取得できます。前述のNamed Capture Groupsとあわせて使うことで、マッチ部分に名前をつけつつ、簡単に開始・終了インデックスを取得できるようになります。
-
-
-```js
-const regrex = /私の姓は(?<family>.*)、名前は(?<name>.*)です/du;
-
-const result = '私の姓は山田、名前は太郎です'.match(regrex);
-console.log(result);
-
-// ☆ indicesプロパティでマッチ部分の開始・終了インデックスを取得する
-const indicesGroups = result.indices.groups;
-console.log(indicesGroups.family);  // [4, 6]
-console.log(indicesGroups.name);  // [10, 12]
-```
-
-![](/images/es2022-whats-new/dflag-3.png)
-
-「☆ indicesプロパティでマッチ部分の開始・終了インデックスを取得する」のところでは、それぞれ`[4, 6]`と`[10, 12]`という配列が取得されています。次のことを示します。
-
-- 「山田」という文字列の開始インデックスは`4`、終了インデックスは`6`
-- 「太郎」という文字列の開始インデックスは`10`、終了インデックスは`12`
-
-デモは次のとおりです。
-
-@[codepen](https://codepen.io/tonkotsuboy/pen/dydEbBO)
-
-- [新しいタブでデモを開く](https://codepen.io/tonkotsuboy/pen/dydEbBO)
-
-## 関連資料
-
-- [RegExp Match Indices for ECMAScript - tc39](https://github.com/tc39/proposal-regexp-match-indices)
-- [RegExp Named Capture Groups - tc39](https://github.com/tc39/proposal-regexp-named-groups)
-
 
 # 配列の「最後の要素」が簡単に取得できるようになる`at()`
 
@@ -816,6 +658,88 @@ console.log(Object.hasOwn(myObject, "name"));
 - [Accessible Object.prototype.hasOwnProperty() - tc39](https://github.com/tc39/proposal-accessible-object-hasownproperty)
 - [JavaScript は hasOwnProperty というプロパティ名を保護していません - MDN](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwnProperty#using_hasownproperty_as_a_property_name)
 
+# JavaScriptで「staticイニシャライザー」ができるように
+
+staticイニシャライザーとは、クラス定義時に初期化処理を一度だけ実行できるブロックのことです。Javaなどの世界ではすでにある仕組みです。
+
+## 簡単な例
+
+```js
+class MyClass {
+  static x;
+  
+  static {
+    this.x = "こんにちは"
+  }
+}
+
+console.log(MyClass.x); // こんにちは
+```
+
+## staticイニシャライザーがない場合の問題点
+
+ひょんなことから、`enum`（列挙型）を作る必要が出てきたとしましょう。列挙型とは、似た値を集めたものです。たとえば、果物用の列挙型を作成し、`FruitsEnum.apple`や`FruitsEnum.grape`のような形で扱えるようにしてみましょう。
+
+次のような `FruitsEnum` の実装が考えられます。
+
+```js
+class FruitsEnum {
+  static apple = Symbol("りんご");
+  static orange = Symbol("みかん");
+  static grape = Symbol("ぶどう");
+}
+```
+
+`FruitsEnum`から、すべてのキーを取得できるスタティックなフィールド`allFruits`をクラス内に実装したいとします。
+
+staticイニシャライザーが使えない時代は、次のようにクラス外に処理を記述する必要がありました。
+
+```js
+class FruitsEnum {
+  static apple = Symbol("りんご");
+  static orange = Symbol("みかん");
+  static grape = Symbol("ぶどう");
+
+  static allFruits;
+}
+
+FruitsEnum.allFruits = Object
+  .keys(FruitsEnum)  // 各キーを取得する
+  .filter(key => key !== "allFruits");  // allFruitsを除外する
+
+console.log(FruitsEnum.allFruits);
+// [apple, orange, grape]
+```
+## staticイニシャライザーを使えば、クラス内に処理を記述できる
+
+staticイニシャライザーを使えば、次のようにクラス内に処理を記述できます。クラスの外部に処理を記述しなくてよくなるので、処理のまとまりがわかりやすくなります。
+
+```js
+class FruitsEnum {
+  static apple = Symbol("りんご");
+  static orange = Symbol("みかん");
+  static grape = Symbol("ぶどう");
+
+  static {
+    this.allFruits = Object.keys(this);
+  }
+}
+
+console.log(FruitsEnum.allFruits);
+// [apple, orange, grape]
+```
+
+デモは次のとおりです。
+
+@[codepen](https://codepen.io/tonkotsuboy/pen/LYQoeqM)
+
+- [新しいタブでデモを開く](https://codepen.io/tonkotsuboy/pen/LYQoeqM)
+
+
+## 関連資料
+
+- [class static initialization blocks - tc39](https://github.com/tc39/proposal-class-static-block)
+- [ES2022 feature: class static initialization blocks](https://2ality.com/2021/09/class-static-block.html)
 
 # 複数のエラーをチェインし、原因を追跡しやすくできる`Error.cause`
 
@@ -991,6 +915,92 @@ try {
 - [Error Cause](https://github.com/tc39/proposal-error-cause)
 
 
+
+# 正規表現で、マッチ部分の開始・終了インデックスを取得できる`d`フラグ
+
+`d`フラグとは、正規表現でマッチ部分の開始・終了インデックスを取得できるものです。
+
+## 構文
+
+```js
+const result = /正規表現/d.exec(文字列);
+console.log(result.indices);
+```
+
+■ 意味
+文字列から、正規表現にマッチする部分を取得してください。
+取得したら、`indices` プロパティにマッチ部分の開始・終了インデックスを格納してください。
+
+## 前提知識① 正規表現でマッチ部分の情報を取得する
+
+`/正規表現/.exec(文字列)`や、`文字列.match(正規表現)`を実行すると、正規表現にマッチした文字列の情報を取得できます。たとえば、次のコードは`/私の姓は(.*)、名前は(.*)です/`という正規表現にマッチする文字列の情報を取得しています。
+
+```js
+// 正規表現
+const regrex = /私の姓は(.*)、名前は(.*)です/;
+
+const result = '私の姓は山田、名前は太郎です'.match(regrex);
+console.table(result);
+```
+
+実行結果は次の通り。「`山田`」と「`太郎`」という文字列が取得できているのがわかります。
+
+![](/images/es2022-whats-new/dflag-1.png)
+
+## 前提知識② フラグとマッチ部分に名前をつける
+
+ES2018では、Named Capture Groupsという仕様が入りました。正規表現で`?<名前>`とすることで、マッチした部分に名前をつけることができ、マッチ部分の情報を探しやすくなります。なお、この場合は`u`フラグが必要です
+
+
+```js
+const regrex = /私の姓は(?<family>.*)、名前は(?<name>.*)です/u;
+
+const result = '私の姓は山田、名前は太郎です'.match(regrex);
+console.table(result);
+
+console.log(result.groups.family);  // 山田
+console.log(result.groups.name);  // 太郎
+```
+
+実行結果は次のとおりです。
+
+![](/images/es2022-whats-new/dflag-2.png)
+
+## `d` フラグでマッチ部分の開始・終了インデックスを取得する
+
+本題の`d`フラグです。`d`フラグを使うと、マッチ部分の開始・終了インデックスを取得できます。前述のNamed Capture Groupsとあわせて使うことで、マッチ部分に名前をつけつつ、簡単に開始・終了インデックスを取得できるようになります。
+
+
+```js
+const regrex = /私の姓は(?<family>.*)、名前は(?<name>.*)です/du;
+
+const result = '私の姓は山田、名前は太郎です'.match(regrex);
+console.log(result);
+
+// ☆ indicesプロパティでマッチ部分の開始・終了インデックスを取得する
+const indicesGroups = result.indices.groups;
+console.log(indicesGroups.family);  // [4, 6]
+console.log(indicesGroups.name);  // [10, 12]
+```
+
+![](/images/es2022-whats-new/dflag-3.png)
+
+「☆ indicesプロパティでマッチ部分の開始・終了インデックスを取得する」のところでは、それぞれ`[4, 6]`と`[10, 12]`という配列が取得されています。次のことを示します。
+
+- 「山田」という文字列の開始インデックスは`4`、終了インデックスは`6`
+- 「太郎」という文字列の開始インデックスは`10`、終了インデックスは`12`
+
+デモは次のとおりです。
+
+@[codepen](https://codepen.io/tonkotsuboy/pen/dydEbBO)
+
+- [新しいタブでデモを開く](https://codepen.io/tonkotsuboy/pen/dydEbBO)
+
+## 関連資料
+
+- [RegExp Match Indices for ECMAScript - tc39](https://github.com/tc39/proposal-regexp-match-indices)
+- [RegExp Named Capture Groups - tc39](https://github.com/tc39/proposal-regexp-named-groups)
+
 # 対応環境
 
 本記事で紹介したES2022の全機能は、各環境で使用可能です。
@@ -1014,12 +1024,6 @@ ECMAScriptは次のES2023に向けて仕様策定がすでに始まっていま�
 
 ES2022のLanguage Specificationは、こちらから確認できます。
 - [ECMAScript® 2022 Language Specification](https://262.ecma-international.org/13.0/)
-
-ES2021の全新機能はこちらです。
-
-https://zenn.dev/tonkotsuboy_com/articles/es2021-whats-new
-
-
 
 TwitterでもJavaScriptやCSSの最新情報を発信しています！
 https://twitter.com/tonkotsuboy_com

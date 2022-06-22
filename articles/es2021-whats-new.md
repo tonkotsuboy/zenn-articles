@@ -6,6 +6,12 @@ topics: ["javascript"]
 published: true
 ---
 
+2022/06/22追記
+最新仕様ES2022がリリースされたので、新しく記事を書きました。
+
+https://zenn.dev/tonkotsuboy_com/articles/es2022-whats-new
+
+---
 
 JavaScriptの仕様はECMAScriptで、ECMAScript 2015（ES2015）、ECMAScript 2016（ES2016）...というように毎年進化を続けています。
 
