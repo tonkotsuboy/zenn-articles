@@ -1015,5 +1015,11 @@ ECMAScriptは次のES2023に向けて仕様策定がすでに始まっていま�
 ES2022のLanguage Specificationは、こちらから確認できます。
 - [ECMAScript® 2022 Language Specification](https://262.ecma-international.org/13.0/)
 
+ES2021の全新機能はこちらです。
+
+https://zenn.dev/tonkotsuboy_com/articles/es2021-whats-new
+
+
+
 TwitterでもJavaScriptやCSSの最新情報を発信しています！
 https://twitter.com/tonkotsuboy_com
