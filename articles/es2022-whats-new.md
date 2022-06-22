@@ -40,7 +40,7 @@ class Human {
 }
 ```
 
-## これまでJavaScriptでは、クラスフィールド宣言ができなかった
+## 従来のクラスフィールド宣言
 
 ES2015でJavaScriptにはクラス構文が導入されました。しかし、他の言語のクラス構文と異なり、**JavaScriptではクラスフィールド宣言ができませんでした**。フィールドを使いたいときは、次のように `construtor()`の中で宣言するしかありませんでした。
 
@@ -59,7 +59,7 @@ console.log(human.age); // 18
 
 ※ クラスメソッドはES2015から宣言可能です
 
-## ES2022でクラスフィールド宣言
+## ES2022ではクラスフィールド宣言できるように
 
 ES2022からは、他言語と同じようにクラスフィールド宣言ができるようになりました。より直感的に、クラスの取り扱いができるようになります。
 
@@ -166,10 +166,11 @@ foo.hello(); // 「こんにちは田中さん！」と出力される
 console.log(foo.#name);  // エラー
 ```
 
+▼ エラーが発生している様子
+
 ![](/images/es2022-whats-new/private-error.png)
 
 もちろん、読み取れないので、書き換えることも不可能です。
-
 
 
 ## メソッドやスタティックとも組み合わせられる
@@ -367,9 +368,9 @@ console.log(MyClass.isMyClass(foo)); // falseのまま
 
 デモは次のとおりです。
 
-@[codepen](https://codepen.io/tonkotsuboy/pen/RwQmbXg)
+@[codepen](https://codepen.io/tonkotsuboy/pen/RwQmbXg?default-tab=js)
 
-- [新しいタブでデモを開く](https://codepen.io/tonkotsuboy/pen/RwQmbXg)
+- [新しいタブでデモを開く](https://codepen.io/tonkotsuboy/pen/RwQmbXg?editors=0010)
 
 
 ### コラム: tc39の「ブランドチェック」
@@ -566,9 +567,9 @@ console.log(myArray.at(-1)); // ぶどう
 
 デモはつぎのとおりです。
 
-@[codepen](https://codepen.io/tonkotsuboy/pen/vYdwWKZ)
+@[codepen](https://codepen.io/tonkotsuboy/pen/vYdwWKZ?default-tab=js)
 
-- [新しいタブでデモを開く](https://codepen.io/tonkotsuboy/pen/vYdwWKZ)
+- [新しいタブでデモを開く](https://codepen.io/tonkotsuboy/pen/vYdwWKZ?editors=0010)
 
 ## 関連資料
 
@@ -591,8 +592,6 @@ Object.hasOwn(オブジェクト, プロパティ);
 真偽値
 
 ## 従来は`hasOwnProperty()`で面倒な記述が必要だった
-
-`hasOwn()`メソッドを使うと、オブジェクトが指定のオブジェクトを持っているかどうかを簡単に調べられます。
 
 従来、同様の判定をするメソッドとして `hasOwnProperty()` メソッドがありました。しかし、安易に`hasOwnProperty()`を使うのは危険です。対象のオブジェクトが同名の`hasOwnProperty`という名前のメソッドを持っていた場合、上書きされてしまうためです。
 
@@ -624,8 +623,6 @@ Object.prototype.hasOwnProperty.call(myObject, 'name'); // true
 ![](/images/es2022-whats-new/hasown-error.png)
 
 
-https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwnProperty#using_hasownproperty_as_a_property_name
-
 ## ES2022からは`hasOwn()`でシンプルに記述できる
 
 ES2022で実装された`hasOwn()`メソッドを使えば、前述のようなプロトタイプのプロパティを使うことなく、シンプルにプロパティの確認ができます。
@@ -655,9 +652,9 @@ console.log(Object.hasOwn(myObject, "name"));
 ```
 
 
-@[codepen](https://codepen.io/tonkotsuboy/pen/oNErWJN)
+@[codepen](https://codepen.io/tonkotsuboy/pen/oNErWJN?default-tab=js)
 
-- [新しいタブでデモを開く](https://codepen.io/tonkotsuboy/pen/oNErWJN)
+- [新しいタブでデモを開く](https://codepen.io/tonkotsuboy/pen/oNErWJN?editors=0010)
 
 ## 関連資料
 
@@ -668,7 +665,7 @@ console.log(Object.hasOwn(myObject, "name"));
 
 staticイニシャライザーとは、クラス定義時に初期化処理を一度だけ実行できるブロックのことです。Javaなどの世界ではすでにある仕組みです。
 
-## 簡単な例
+▼ 簡単な例
 
 ```js
 class MyClass {
@@ -682,7 +679,7 @@ class MyClass {
 console.log(MyClass.x); // こんにちは
 ```
 
-## staticイニシャライザーがない場合の問題点
+## staticイニシャライザーがなぜ必要か？
 
 ひょんなことから、`enum`（列挙型）を作る必要が出てきたとしましょう。列挙型とは、似た値を集めたものです。たとえば、果物用の列挙型を作成し、`FruitsEnum.apple`や`FruitsEnum.grape`のような形で扱えるようにしてみましょう。
 
@@ -737,9 +734,9 @@ console.log(FruitsEnum.allFruits);
 
 デモは次のとおりです。
 
-@[codepen](https://codepen.io/tonkotsuboy/pen/LYQoeqM)
+@[codepen](https://codepen.io/tonkotsuboy/pen/LYQoeqM?default-tab=js)
 
-- [新しいタブでデモを開く](https://codepen.io/tonkotsuboy/pen/LYQoeqM)
+- [新しいタブでデモを開く](https://codepen.io/tonkotsuboy/pen/LYQoeqM?editors=0010)
 
 
 ## 関連資料
@@ -911,9 +908,9 @@ try {
 
 デモは次のとおりです。
 
-@[codepen](https://codepen.io/tonkotsuboy/pen/RwQmjGZ)
+@[codepen](https://codepen.io/tonkotsuboy/pen/poamWLK?default-tab=js)
 
-- [新しいタブでデモを開く](https://codepen.io/tonkotsuboy/pen/RwQmjGZ)
+- [新しいタブでデモを開く](https://codepen.io/tonkotsuboy/pen/poamWLK?editors=0010)
 
 
 ## 関連資料
@@ -998,9 +995,9 @@ console.log(indicesGroups.name);  // [10, 12]
 
 デモは次のとおりです。
 
-@[codepen](https://codepen.io/tonkotsuboy/pen/dydEbBO)
+@[codepen](https://codepen.io/tonkotsuboy/pen/dydEbBO?default-tab=js)
 
-- [新しいタブでデモを開く](https://codepen.io/tonkotsuboy/pen/dydEbBO)
+- [新しいタブでデモを開く](https://codepen.io/tonkotsuboy/pen/dydEbBO?editors=0010)
 
 ## 関連資料
 
@@ -1015,7 +1012,6 @@ console.log(indicesGroups.name);  // [10, 12]
 - Firefox
 - Safari
 - Microsoft Edge
-- TypeScript
 - Node.js
 
 「[ECMAScript compatibility table](https://kangax.github.io/compat-table/es2016plus/)」の「2022 features」で、細かい対応バージョンを確認できます。
