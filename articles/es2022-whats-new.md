@@ -1,5 +1,5 @@
 ---
-title: "正式仕様リリース！ JavaScriptの最新仕様ES2022で追加された全ての新機能"
+title: "正式仕様リリース！ JavaScriptの最新仕様ES2022で追加された「全」新機能"
 emoji: "🌼"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["javascript"]
