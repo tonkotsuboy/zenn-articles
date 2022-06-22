@@ -224,9 +224,9 @@ class MyClass {
 ```
 
 
-@[codepen](https://codepen.io/tonkotsuboy/pen/KKQLzJG)
+@[codepen](https://codepen.io/tonkotsuboy/pen/KKQLzJG?default-tab=js)
 
-- [新しいタブでデモを開く](https://codepen.io/tonkotsuboy/pen/KKQLzJG)
+- [新しいタブでデモを開く](https://codepen.io/tonkotsuboy/pen/KKQLzJG?editors=0010)
 
 ## 関連資料
 
