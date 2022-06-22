@@ -161,11 +161,15 @@ foo.hello(); // 「こんにちは田中さん！」と出力される
 ```
 
 上記の処理のあとに、次のコードを記述するとエラーになります。プライベートなフィールドなので、クラスの外から読み取れないのです。
-もちろん、読み取れないので、書き換えることも不可能です。
 
 ```js
 console.log(foo.#name);  // エラー
 ```
+
+![](/images/es2022-whats-new/private-error.png)
+
+もちろん、読み取れないので、書き換えることも不可能です。
+
 
 
 ## メソッドやスタティックとも組み合わせられる
@@ -217,7 +221,6 @@ class MyClass {
 }
 ```
 
-デモは次のとおりです。
 
 @[codepen](https://codepen.io/tonkotsuboy/pen/KKQLzJG)
 
@@ -429,6 +432,9 @@ await new Promise((resolve) => {
 });
 ```
 
+@[tweet](https://twitter.com/tonkotsuboy_com/status/1440140078500646919)
+
+
 ## トップレベルでの `await` はモジュールでのみ使用可能
 
 トップレベルでの `await`は、モジュールでのみ使用可能です。
@@ -480,7 +486,7 @@ export const { translations } =
     await import("./i18n/lang-ja.js");
 ```
 
-メインの処理`index.js`では、ファイルの読み分けを行っている`lang.js`を静的な`import`（`import()`ではない）で読み込めます。**`lang.js`でのファイル読み込みが完了するまで`index.js`内の処理は遅延され、`translations` には必ずデータが入った状態でタイトルやテキストの書き換えが行われます**。
+メインの処理`index.js`では、ファイルの読み分けを行っている`lang.js`を静的な`import`（`import()`ではない）で読み込めます。**`lang.js`でのファイル読み込みが完了するまで`index.js`内の処理は遅延され、`translations` には必ずデータが入った状態でタイトルやテキストの書き換えが行われます**。このあたりの話は、「[top\-level awaitがどのようにES Modulesに影響するのか完全に理解する \- Qiita](https://qiita.com/uhyo/items/0e2e9eaa30ec2ff05260)」（著者: [@uhyo_](https://twitter.com/uhyo_)）でわかりやすく解説されています。
 
 ▼ index.js
 
@@ -536,7 +542,7 @@ const strings = await import(`/i18n/${navigator.language}`);
 ■ 意味
 `配列`の`インデックス`位置の要素を取得してください
 
-※ `文字列.at()`でもOK
+※ `文字列.at()`もES2022から使える機能です
 
 ## 従来は、配列の最後の要素を取得するのは煩雑だった
 
@@ -1025,5 +1031,6 @@ ECMAScriptは次のES2023に向けて仕様策定がすでに始まっていま�
 ES2022のLanguage Specificationは、こちらから確認できます。
 - [ECMAScript® 2022 Language Specification](https://262.ecma-international.org/13.0/)
 
-TwitterでもJavaScriptやCSSの最新情報を発信しています！
+TwitterでもJavaScriptやCSSの最新情報を発信しています。ES2023以降の情報や、ステージ3以下の便利そうなJavaScriptなども紹介します。
+
 https://twitter.com/tonkotsuboy_com
