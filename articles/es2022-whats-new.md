@@ -574,7 +574,7 @@ console.log(myArray.at(-1)); // ぶどう
 
 ## 関連資料
 
-- [.at() method on all the built-in indexables](https://github.com/tc39/proposal-relative-indexing-method)
+- [.at() method on all the built-in indexables - tc39] (https://github.com/tc39/proposal-relative-indexing-method)
 
 # オブジェクトが指定のプロパティを持っているかを簡単にチェックできる `Object.hasOwn()`
 
@@ -652,6 +652,7 @@ console.log(Object.hasOwn(myObject, "name"));
 // true
 ```
 
+デモは次のとおりです。
 
 @[codepen](https://codepen.io/tonkotsuboy/pen/oNErWJN?default-tab=js)
 
@@ -743,7 +744,7 @@ console.log(FruitsEnum.allFruits);
 ## 関連資料
 
 - [class static initialization blocks - tc39](https://github.com/tc39/proposal-class-static-block)
-- [ES2022 feature: class static initialization blocks](https://2ality.com/2021/09/class-static-block.html)
+- [ES2022 feature: class static initialization blocks - 2ality](https://2ality.com/2021/09/class-static-block.html)
 
 # 複数のエラーをチェインし、原因を追跡しやすくできる`Error.cause`
 
@@ -798,29 +799,29 @@ function2()
 const function1 = () => {
   try {
     if (Math.random() > 0.5) {
-      foo.bar
+      foo.bar;
     }
-  } catch(error) {
+  } catch (error) {
     // どうする？
   }
-}
+};
 
 // 50%の確率でエラー
 const function2 = () => {
   try {
     if (Math.random() > 0.5) {
-      baz.qux
+      baz.qux;
     }
-  } catch(error) {
+  } catch (error) {
     // どうする？
   }
-}
+};
 
 // function1とfunction2を実行する
 try {
-  function1()
-  function2()
-  console.log("成功です！")
+  function1();
+  function2();
+  console.log("成功です！");
 } catch (error) {
   console.log(error);
   console.log(error.cause);
@@ -831,7 +832,7 @@ try {
 
 ```js
 .catch(error) {
-  throw new Error("fooプロパティなんてないよ😡")
+  throw new Error("fooプロパティなんてないよ😡");
 }
 ```
 
@@ -845,13 +846,13 @@ try {
 class CustomError extends Error {
   constructor(message, cause) {
     super(message);
-    this.cause = cause
+    this.cause = cause;
   }
 }
 
 // 中略
 .catch(error) {
-  throw new CustomError("fooプロパティなんてないよ😡", error)
+  throw new CustomError("fooプロパティなんてないよ😡", error);
 }
 ```
 
