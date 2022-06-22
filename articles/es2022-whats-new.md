@@ -13,7 +13,7 @@ https://zenn.dev/tonkotsuboy_com/articles/es2021-whats-new
 
 本日6月22日、ES2022は正式仕様として承認され、ES2022が最新仕様となりました。
 
-- [Ecma International approves new standards \- Ecma International](https://www.ecma-international.org/news/ecma-international-approves-new-standards-5/)
+- [22.06.2022 Ecma International approves new standards \- Ecma International](https://www.ecma-international.org/news/ecma-international-approves-new-standards-6/)
 
 ブラウザ対応も完了しており、全モダンブラウザ（Google Chrome・Firefox・Safari・Microsoft Edge）でES2022の全機能が使えます。
 
@@ -383,7 +383,7 @@ console.log(MyClass.isMyClass(foo)); // falseのまま
 ## 関連資料
 
 - [Ergonomic brand checks for Private Fields - tc39](https://github.com/tc39/proposal-private-fields-in-in)
-- [Brand Check](https://github.com/tc39/how-we-work/blob/main/terminology.md#brand-check)
+- [Brand Check - tc39](https://github.com/tc39/how-we-work/blob/main/terminology.md#brand-check)
 
 # `async`なしでも`await`が使えるようになる、トップレベルでの`await` 
 
@@ -531,7 +531,7 @@ const strings = await import(`/i18n/${navigator.language}`);
 ## 関連資料
 
 - [Top-level await - tc39](https://github.com/tc39/proposal-top-level-await)
-- [top-level awaitがどのようにES Modulesに影響するのか完全に理解する](https://qiita.com/uhyo/items/0e2e9eaa30ec2ff05260)
+- [top-level awaitがどのようにES Modulesに影響するのか完全に理解する - Qiita](https://qiita.com/uhyo/items/0e2e9eaa30ec2ff05260)
 
 # 配列の「最後の要素」が簡単に取得できるようになる`at()`
 
@@ -574,7 +574,7 @@ console.log(myArray.at(-1)); // ぶどう
 
 ## 関連資料
 
-- [.at() method on all the built-in indexables - tc39] (https://github.com/tc39/proposal-relative-indexing-method)
+- [.at() method on all the built-in indexables - tc39](https://github.com/tc39/proposal-relative-indexing-method)
 
 # オブジェクトが指定のプロパティを持っているかを簡単にチェックできる `Object.hasOwn()`
 
@@ -919,9 +919,7 @@ try {
 
 ## 関連資料
 
-- [Error Cause](https://github.com/tc39/proposal-error-cause)
-
-
+- [Error Cause - tc39](https://github.com/tc39/proposal-error-cause)
 
 # 正規表現で、マッチ部分の開始・終了インデックスを取得できる`d`フラグ
 
