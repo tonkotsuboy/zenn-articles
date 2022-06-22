@@ -17,7 +17,8 @@ https://zenn.dev/tonkotsuboy_com/articles/es2021-whats-new
 
 ブラウザ対応も完了しており、全モダンブラウザ（Google Chrome・Firefox・Safari・Microsoft Edge）でES2022の全機能が使えます。
 
-本記事では、ES2022すべての新機能を詳しく紹介します。
+本記事では、ES2022すべての新機能を紹介します。「何が使えるようになったのか？
+」「どうしてそれが必要だったのか？」が、できるだけわかりやすいように解説しました。
 
 - クラスフィールド宣言
 - プライベートなメンバー
