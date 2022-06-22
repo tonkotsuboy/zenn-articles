@@ -1,14 +1,15 @@
 ---
-title: "正式仕様リリース！ JavaScriptの最新仕様ES2021で追加された新機能まとめ"
+title: "JavaScriptのES2021で追加された新機能まとめ"
 emoji: "💐"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["javascript"]
 published: true
 ---
 
+
 JavaScriptの仕様はECMAScriptで、ECMAScript 2015（ES2015）、ECMAScript 2016（ES2016）...というように毎年進化を続けています。
 
-2021年6月までの最新仕様はES2020でしたが、先日6月22日にES2021が正式仕様として承認されました。
+2021年6月までの最新仕様はES2020でしたが、先日2021年6月22日にES2021が正式仕様として承認されました。
 
 - [Ecma International approves new standards \- Ecma International](https://www.ecma-international.org/news/ecma-international-approves-new-standards-4/)
 
