@@ -7,11 +7,11 @@ published: true
 ---
 JavaScriptの仕様はECMAScriptで、ECMAScript 2015（ES2015）、ECMAScript 2016（ES2016）...というように毎年進化を続けています。
 
-2022年6月までの最新仕様はES2021でした。
+これまでの仕様はES2021でした。
 
 https://zenn.dev/tonkotsuboy_com/articles/es2021-whats-new
 
-本日6月22日、ES2022は正式仕様として承認されました。
+本日6月22日、ES2022は正式仕様として承認され、ES2022が最新仕様となりました。
 
 - [Ecma International approves new standards \- Ecma International](https://www.ecma-international.org/news/ecma-international-approves-new-standards-5/)
 
@@ -27,7 +27,7 @@ https://zenn.dev/tonkotsuboy_com/articles/es2021-whats-new
 - 配列の最後の要素を取得できる`at()`
 - `hasOwnProperty`の代わりの`Object.hasOwn()`
 - staticイニシャライザー
-- エラーのチェインの `Error.cause`
+- エラーをチェインできる `Error.cause`
 - 正規表現の`d`フラグ
 
 # クラスフィールド宣言ができるようになった
@@ -747,6 +747,8 @@ console.log(FruitsEnum.allFruits);
 
 # 複数のエラーをチェインし、原因を追跡しやすくできる`Error.cause`
 
+`Error.cause`とは、エラーを投げるときに`cause`プロパティにエラーオブジェクトを保持できるものです。エラーのチェインに便利です。
+
 ## 構文
 
 ```js
@@ -953,7 +955,7 @@ console.table(result);
 
 ## 前提知識② フラグとマッチ部分に名前をつける
 
-ES2018では、Named Capture Groupsという仕様が入りました。正規表現で`?<名前>`とすることで、マッチした部分に名前をつけることができ、マッチ部分の情報を探しやすくなります。なお、この場合は`u`フラグが必要です
+ES2018では、Named Capture Groupsという仕様が入りました。正規表現で`?<グループ名>`とすることで、マッチした部分にグループ名をつけることができ、マッチ部分の情報を探しやすくなります。なお、この場合は`u`フラグが必要です
 
 
 ```js
@@ -972,7 +974,7 @@ console.log(result.groups.name);  // 太郎
 
 ## `d` フラグでマッチ部分の開始・終了インデックスを取得する
 
-本題の`d`フラグです。`d`フラグを使うと、マッチ部分の開始・終了インデックスを取得できます。前述のNamed Capture Groupsとあわせて使うことで、マッチ部分に名前をつけつつ、簡単に開始・終了インデックスを取得できるようになります。
+本題の`d`フラグです。`d`フラグを使うと、マッチ部分の開始・終了インデックスを取得できます。前述のNamed Capture Groupsとあわせて使うことで、マッチ部分にグループ名をつけつつ、簡単に開始・終了インデックスを取得できるようになります。
 
 
 ```js
@@ -1023,7 +1025,7 @@ SafariのES2022対応が遅れていましたが、今年リリースされた15
 
 本記事では正式仕様としてリリースされたES2022の新機能を紹介しました。どれも開発をラクにしてくれるものばかりで、筆者も積極的に開発の現場で使っています。
 
-ECMAScriptは次のES2023に向けて仕様策定がすでに始まっています。`findLast()`や`findLastIndex()`など、また便利な機能が入ってきそうです。新しい機能をキャッチアップし、楽しく開発していきましょう。
+ECMAScriptは次のES2023に向けて仕様策定がすでに始まっています。[`findLast()`や`findLastIndex()`](https://github.com/tc39/proposal-array-find-from-last)など、また便利な機能が入ってきそうです。新しい機能をキャッチアップし、楽しく開発していきましょう。
 
 ES2022のLanguage Specificationは、こちらから確認できます。
 - [ECMAScript® 2022 Language Specification](https://262.ecma-international.org/13.0/)
