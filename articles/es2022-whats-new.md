@@ -541,9 +541,18 @@ const strings = await import(`/i18n/${navigator.language}`);
 理由は2つ。
 
 - `navigator.language`の数だけファイルを準備する必要があります。英語だけでも、`en`や`en-US`のファイルを作る必要があります
-- `strings`の型が`any`型にしか推論されなくなります。`navigator.language`を直接使っているので、ファイル名が一意に定まりません。前述の`lang.js`の記法では、ファイル名は `lang-en.js`か`lang-ja.js`のどちらかに定まります。よって、`translations`（tc39でいう`strings`変数）は`title`と`button`がそれぞれ`string`のオブジェクトと推論されます。
+- `strings`の型が`any`型にしか推論されなくなります。`navigator.language`を直接使っているので、ファイル名が一意に定まりません。記事内の`lang.js`の記法では、ファイル名は `lang-en.js`か`lang-ja.js`のどちらかに定まります。よって、`translations`（tc39でいう`strings`変数）は`title`と`button`がそれぞれ`string`のオブジェクトと推論されます。
+
+▼ 型が推論される様子（JavaScript・TypeScriptともに）
+
+![](/images/es2022-whats-new/await-inference.png)
+
 
 あくまで説明用の部分的なコードであると注意しましょう。
+
+
+
+
 
 ## 関連資料
 
