@@ -492,13 +492,15 @@ export const translations = {
 };
 ```
 
-トップレベル`await`を使えば次のようにできます。ブラウザーUIの言語設定（`navigator.language`）に英語（`en`）が含まれていれば `lang-en.js`を、そうでなければ `lang-ja.js`を読み込みます。読み込んだ結果を、さらに `export`します。
+トップレベル`await`を使えば次のようにできます。ブラウザーUIの言語設定（`navigator.language`）に英語が含まれていれば `lang-en.js`を、そうでなければ `lang-ja.js`を読み込みます。言語設定が英語かどうかを`/^en\b/.test(navigator.language)`で判定する理由は、 [@yasshさんのコメント](https://zenn.dev/link/comments/9ca772378682be)がわかりやすいです（コメントありがとうございます！）。
+
+読み込んだ結果を、さらに `export`します。
 
 ▼ lang.js
 
 ```js
 export const { translations } =
-  navigator.language.includes("en") ?
+  /^en\b/.test(navigator.language) ?
     await import("./i18n/lang-en.js"):
     await import("./i18n/lang-ja.js");
 ```
