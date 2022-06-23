@@ -173,6 +173,10 @@ console.log(foo.#name);  // エラー
 
 もちろん、読み取れないので、書き換えることも不可能です。
 
+ちなみに、なぜ `_`でも`private`でもなく`#`になったのは、次のドキュメントにまとまっていますので、興味があればご覧くださいませ。
+
+- [PRIVATE_SYNTAX_FAQ - tc39](https://github.com/tc39/proposal-class-fields/blob/main/PRIVATE_SYNTAX_FAQ.md)
+
 
 ## メソッドやスタティックとも組み合わせられる
 
@@ -223,10 +227,22 @@ class MyClass {
 }
 ```
 
-
 @[codepen](https://codepen.io/tonkotsuboy/pen/KKQLzJG?default-tab=js)
 
 - [新しいタブでデモを開く](https://codepen.io/tonkotsuboy/pen/KKQLzJG?editors=0010)
+
+## コラム: TypeScriptの`private`修飾子との違い
+
+TypeScriptでは、プライベートなメンバーを宣言できる`private`修飾子があります。ES2022の`#`との違いは、ラインタイム時にチェックされるかどうかです。TypeScriptの場合、`private`でメンバーを宣言したとしても、コンパイル後のJavaScriptではパブリックなメンバーとなります。
+
+▼ TypeScriptの`private`とES2022の`#`
+
+![](/images/es2022-whats-new/private-ts-2.png)
+
+- [確認コード](https://tsplay.dev/WvKx3w)
+
+筆者的には、コンパイル時・ランタイム時にチェックできるES2022の`#`を好みます。
+
 
 ## 関連資料
 
@@ -374,7 +390,7 @@ console.log(MyClass.isMyClass(foo)); // falseのまま
 - [新しいタブでデモを開く](https://codepen.io/tonkotsuboy/pen/RwQmbXg?editors=0010)
 
 
-### コラム: tc39の「ブランドチェック」
+## コラム: tc39の「ブランドチェック」
 
 あるコードで作られたデータが、特定のデータ型かどうかをチェックすることを、tc39では「ブランドチェック（brand check）」と呼んでいます。`Array.isArray(データ)`で引数のデータが配列かどうかをチェックすることは、ブランドチェックの好例です。**よく間違えられていますが、`instanceof`はブランドチェックではありません**。
 
@@ -513,7 +529,7 @@ document.querySelector("button").textContent = translations.button;
 
 - [新しいタブでデモを開く](https://tonkotsuboy.github.io/kanobox/20220621_toplevel_await/index.html)
 
-### コラム: tc39のサンプルコードは注意
+## コラム: tc39のサンプルコードは注意
 
 念のためにお伝えしておくと、[tc39のREADMEに記述されている](https://github.com/tc39/proposal-top-level-await#dynamic-dependency-pathing)次のコードは、実用にはオススメできません。
 
@@ -748,7 +764,7 @@ console.log(FruitsEnum.allFruits);
 
 # 複数のエラーをチェインし、原因を追跡しやすくできる`Error.cause`
 
-`Error.cause`とは、エラーを投げるときに`cause`プロパティにエラーオブジェクトを保持できるものです。エラーのチェインに便利です。
+`Error.cause`とは、エラーを投げるとき`cause`プロパティにエラーオブジェクトを保持できるものです。エラーのチェインに便利です。
 
 ## 構文
 
@@ -776,19 +792,19 @@ try {
 const function1 = () => {
   if (Math.random() > 0.5) {
     // fooが定義されていないというReferenceError
-    foo.bar
+    foo.bar;
   }
-}
+};
 
 const function2 = () => {
   if (Math.random() > 0.5) {
     // bazが定義されていないというReferenceError
-    baz.qux
+    baz.qux;
   }
-}
+};
 
-function1()
-function2()
+function1();
+function2();
 ```
 
 それぞれの関数内で、`try`・`catch`を使って例外をキャッチしましょう。このとき、`catch`の中身をどうするのかにはいくつかのアプローチがあります。

@@ -15,7 +15,7 @@ https://zenn.dev/tonkotsuboy_com/articles/es2022-whats-new
 
 JavaScriptの仕様はECMAScriptで、ECMAScript 2015（ES2015）、ECMAScript 2016（ES2016）...というように毎年進化を続けています。
 
-これまでの最新仕様はES2020でしたが、先日2021年6月22日にES2021が正式仕様として承認されました。
+これまでの仕様はES2020でしたが、先日2021年6月22日にES2021が正式仕様として承認されました。
 
 - [22.06.2021 Ecma International approves new standards \- Ecma International](https://www.ecma-international.org/news/ecma-international-approves-new-standards-4/)
 
