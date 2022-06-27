@@ -294,10 +294,9 @@ Object.setPrototypeOf(foo, myInstance);
 console.log(foo instanceof MyClass); // trueになってしまう！
 ```
 
-`foo`は、`MyClass`のインスタンスではありません。しかし、 オブジェクトのプロトタイプを書き換える`Object.setPrototypeOf`を用いると、`foo instanceof MyClass`が`true`になってしまうのです。
+`foo`は、`MyClass`のインスタンスではありません。しかし、オブジェクトのプロトタイプを書き換える`Object.setPrototypeOf`を用いると、`foo instanceof MyClass`が`true`になってしまうのです。
 
 `instanceof`はプロトタイプベースであり、正確に「インスタンスかどうか」をチェックできるものではないのです。
-
 
 ## 前提知識② プライベートフィールドでインスタンスのチェック
 
@@ -857,7 +856,7 @@ try {
 方法1: `throw new Error("文字列")`
 
 ```js
-.catch(error) {
+catch(error) {
   throw new Error("fooプロパティなんてないよ😡");
 }
 ```
@@ -877,7 +876,7 @@ class CustomError extends Error {
 }
 
 // 中略
-.catch(error) {
+catch(error) {
   throw new CustomError("fooプロパティなんてないよ😡", error);
 }
 ```
