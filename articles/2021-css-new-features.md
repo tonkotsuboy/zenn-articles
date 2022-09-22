@@ -4,6 +4,7 @@ emoji: "🌸"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["css"]
 published: true
+publication_name: moneyforward
 ---
 
 この記事は[マネーフォワードアドベントカレンダー2021](https://adventar.org/calendars/6182)の13日目の記事です。
