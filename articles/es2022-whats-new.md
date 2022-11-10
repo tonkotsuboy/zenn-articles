@@ -1034,17 +1034,18 @@ console.log(indicesGroups.name);  // [10, 12]
 
 # 対応環境
 
-本記事で紹介したES2022の全機能は、各環境で使用可能です。
+本記事で紹介したES2022の機能は、Safariを除く各環境で使用可能です。
 
 - Google Chrome
 - Firefox
-- Safari
 - Microsoft Edge
 - Node.js
 
 「[ECMAScript compatibility table](https://kangax.github.io/compat-table/es2016plus/)」の「2022 features」で、細かい対応バージョンを確認できます。
 
-SafariのES2022対応が遅れていましたが、今年リリースされた15.4ですべて対応しました。
+Safariについて、Safari 16時点ではStaticイニシャライザーのみ未対応です。Safari Technology Preview 157より対応しました。
+
+[Release Notes for Safari Technology Preview 157 \| WebKit](https://webkit.org/blog/13575/release-notes-for-safari-technology-preview-157/)
 
 # ES2022を使って便利に開発しよう
 
