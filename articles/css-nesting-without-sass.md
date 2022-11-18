@@ -26,7 +26,7 @@ publication_name: moneyforward
 
 機能はほぼSassのネストと同じですが、一部に違いがあります。
 
-本記事では、CSSネストの基本から、各シーンでのコード例について紹介します。
+本記事では、CSSネストの基本から各シーンでのコード例までを、デモを交えて紹介します。
 
 # ネストの基本
 
@@ -52,7 +52,7 @@ Sassのネストとほぼ同じです。
 
 CSSのネストに対応したブラウザでは、次のように記述できます。
 
-▼ CSSのネスト👩‍🎨記法①
+▼ CSSのネスト記法①👩‍🎨
 
 ```css
 .container {
@@ -63,6 +63,8 @@ CSSのネストに対応したブラウザでは、次のように記述でき�
 ```
 
 もしくは、 `&`を使って次のように記述します。
+
+▼ CSSのネスト記法②👩‍🎨
 
 ```css
 .container {
@@ -96,6 +98,8 @@ section {
 ```
 
 `h1`や`p`といった要素名のセレクターの場合は、`&`を使う必要があります。
+
+▼ CSSのネスト記法👩‍🎨
 
 ```css
 section {
@@ -136,9 +140,11 @@ section {
 ▼ CSSのネスト👩‍🎨
 
 ```css
-.apple .text,
-.orange .text {
-  color: red;
+.apple,
+.orange {
+  .text {
+    color: red;
+  }
 }
 ```
 
@@ -220,11 +226,7 @@ section {
 次のようなHTMLがあるとします。
 
 ```html
-<div class="container">
-  <div class="child">
-    Child
-  </div>
-</div>
+<div class="box"></div>
 ```
 
 `.box`要素について、通常の文字色は青色、ウインドウサイズ800px以上のときのみ文字色を赤色にしたい場合、従来は次のようにしていました。
@@ -252,15 +254,12 @@ section {
   color: blue;
 
   @media (min-width: 800px) {
-    & {
-      color: red;
-    }
+    color: red;
   }
 }
 ```
 
-この場合の `&`は`.box`自信のことを指します。Sassの経験がある方は、それと同じ挙動であると思えばよいです。
-
+「`.box`要素についてのメディアクエリを設定したい」と関心事が分離されるので、コードの見通しがよくなって便利ですね。 Sassの経験がある方は、それと同じ挙動であると思えばよいです。
 
 # セレクター名の一部を使った `&__bar` の記法はできるのか？
 
@@ -270,7 +269,7 @@ section {
 BEMなどを使っている際、次のような `foo__bar` というクラス名をHTMLで定義し・・・
 
 ```html
-<div clss="foo__bar"></div>
+<div class="foo__bar"></div>
 ```
 
 次のようにSassでスタイルをあてるケースがよくあります。
@@ -308,13 +307,21 @@ Canaryのフラグを有効にするには、`chrome://flags/` にアクセス�
 @[codepen](https://codepen.io/tonkotsuboy/pen/ExRbPgV)
 [https://codepen.io/tonkotsuboy/pen/ExRbPgV](https://codepen.io/tonkotsuboy/pen/ExRbPgV)
 
-# 最後に
+▼ Chrome Canaryでの実行結果
 
-CSSネストができるようになると、CSSのコーディングがかなりラクになります。使い方もSassとかなり似ているので、学習コストも低いでしょう。
+![](/images/css-nesting-module/canary-result.png)
 
-全ブラウザの対応はまだ先ですが、現状でも使いたければPostCSSのプラグインが使えます。
+# 今すぐCSSネストを使うには？
+
+全ブラウザの対応はまだ先ですが、現状でも使いたければPostCSSのプラグインを使いましょう。
 
 - [postcss\-plugins/plugins/postcss\-nesting](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting)
+
+![](/images/css-nesting-module/postcss.png)
+
+# 最後に
+
+CSSネストができるようになると、CSSのコーディングがラクになります。使い方もSassと似ているので、学習コストも低いでしょう。
 
 CSSネストを使いこなし、見通しがよく便利なコーディングをしましょう。
 
@@ -323,4 +330,8 @@ CSSネストを使いこなし、見通しがよく便利なコーディング�
 - [CSS Nesting Module](https://www.w3.org/TR/css-nesting-1/)
 
 
+# 11/25のCSS Niteでも紹介します
 
+CSS NestなどのモダンCSSについては、 [Coder's High 2022 (Part 3)](https://cssnite.doorkeeper.jp/events/141697)でも紹介します。興味のある方はぜひご参加ください🧑🏻‍🎨
+
+[![](/images/css-nesting-module/cssnite-20221125-CodersHigh.png)](https://cssnite.doorkeeper.jp/events/141697)
