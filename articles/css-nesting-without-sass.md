@@ -328,10 +328,3 @@ CSSネストを使いこなし、見通しがよく便利なコーディング�
 ## 関連資料
 
 - [CSS Nesting Module](https://www.w3.org/TR/css-nesting-1/)
-
-
-# 11/25のCSS Niteでも紹介します
-
-CSS NestなどのモダンCSSについては、 [Coder's High 2022 (Part 3)](https://cssnite.doorkeeper.jp/events/141697)でも紹介します。興味のある方はぜひご参加ください🧑🏻‍🎨
-
-[![](/images/css-nesting-module/cssnite-20221125-CodersHigh.png)](https://cssnite.doorkeeper.jp/events/141697)
