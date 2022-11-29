@@ -1,6 +1,6 @@
 {
   "name": "zen-articles",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "index.js",
   "repository": "https://github.com/tonkotsuboy/zen-articles.git",
   "author": "takeshi.kano <10419447+tonkotsuboy@users.noreply.github.com>",
@@ -9,6 +9,6 @@
     "preview": "zenn preview"
   },
   "dependencies": {
-    "zenn-cli": "^0.1.131"
+    "zenn-cli": "^0.1.132"
   }
 }
