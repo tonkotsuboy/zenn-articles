@@ -7,13 +7,13 @@ published: true
 publication_name: moneyforward
 ---
 
-iOS Safari の画面の高さいっぱいにヒーローイメージを表示するという表現は、よく見かけます。
+iOS Safariの画面の高さいっぱいにヒーローイメージを表示するという表現は、よく見かけます。
 
-![goal.png](/images/svh-dvh-lvh-for-all-browser/goal.png)
+![](/images/svh-dvh-lvh-for-all-browser/goal.png)
 
 高さをいっぱいに広げるのに`100vh`を使うと、不要なスクロールが発生し、意図通りに表示されません。 この問題を解決するために、特殊なCSSを使ったりJSを使ったりと、開発の現場では多くの苦労がありました。
 
-**本日リリースされたGoogle Chrome 108では対応した`svh`を使えば**、手軽に画面いっぱいのヒーローイメージを作れます。
+**本日リリースされたGoogle Chrome 108で対応した`svh`を使えば**、手軽に画面いっぱいのヒーローイメージを作れます。
 
 ```css
 .hero-image {
@@ -21,9 +21,9 @@ iOS Safari の画面の高さいっぱいにヒーローイメージを表示す
 }
 ```
 
-Safariではすでに対応済み、Chromeと中身が同じなEdgeは12/1リリースの108で対応するので、全ブラウザで使える時代が来ます。
+Safari・Firefoxでは対応済み、Chromeと中身が同じEdgeは12/1週リリースの108で対応するので、全ブラウザで使える時代が来ます。
 
-本記事では、`svh`の使い方、同様に使えるようになった`dvh`や`svmax`などの違い、従来の手法のデメリットを、デモを交えて紹介します。
+本記事では、`svh`の使い方、同様に使えるようになった`dvh`や`svmax`などの違い、従来の手法のデメリットをデモを交えて紹介します。
 
 # `svh` を使ったデモ
 
@@ -48,7 +48,7 @@ HTML コードは次のとおりです。
 </main>
 ```
 
-ヒーローイメージは`.hero-image`要素ですが、CSS で行うことは`height: 100svh;`を指定するだけです。
+ヒーローイメージは`.hero-image`要素ですが、CSSで行うことは`height: 100svh;`を指定するだけです。
 
 ```css
 .hero-image {
@@ -56,13 +56,13 @@ HTML コードは次のとおりです。
 }
 ```
 
-iOS Safari、デスクトップの Chrome を始め、各環境で動作します。
+iOS Safari、デスクトップのChromeを始め、各環境で動作します。
 
-▼ iOS Safari での動作結果
+▼ iOS Safariでの動作結果
 
 ![](/images/svh-dvh-lvh-for-all-browser/goal.webp =400x)
 
-▼ デスクトップの Chrome での動作結果
+▼ デスクトップのChromeでの動作結果
 
 ![](/images/svh-dvh-lvh-for-all-browser/goal-chrome.webp)
 
@@ -76,7 +76,7 @@ https://codepen.io/pen/debug/NWzBBNB
 
 従来使われてきた`vh`や`vw`とは、ビューポートに対する高さや幅を指します。
 
-デスクトップブラウザのようなビューポートのサイズが固定のものでは十分だったのですが、iOS Safari などではビューポートのサイズが可変になります。
+デスクトップブラウザのようなビューポートのサイズが固定のものでは十分だったのですが、iOS Safariなどではビューポートのサイズが可変になります。
 
 このうち、ビューポートの高さが最小になった場合の高さを示すのが`svh`というわけです。
 
@@ -88,11 +88,11 @@ https://codepen.io/pen/debug/NWzBBNB
 
 その他の単位については後述します。
 
-# なぜ `100vh`・`100%`・`-webkit-fill-available`では駄目なのか？
+# なぜ`100vh`・`100%`・`-webkit-fill-available`では駄目なのか？
 
 今回作った表現は、`100vh`や`100%`では駄目なのかと思う人もいるでしょう。従来の表現を`100svh`と比べてみましょう。
 
-## `100vh`の場合
+## `100vh`だと はみ出る
 
 次のように`100vh`を指定したとします。
 
@@ -102,17 +102,15 @@ https://codepen.io/pen/debug/NWzBBNB
 }
 ```
 
-この場合、ヒーローイメージ部分（`.hero-image`）はファーストビューからはみ出します。iOS Safari の場合、`100vh`は`100lvh`と同じ高さになり、大きいビューポートの高さを取ってしまうのです。
+この場合、ヒーローイメージ部分（`.hero-image`）はファーストビューからはみ出します。iOS Safariの場合、`100vh`は`100lvh`と同じ高さになり、大きいビューポートの高さを取ってしまうのです。
 
-![](/images/svh-dvh-lvh-for-all-browser/100vh.png)
+![](/images/svh-dvh-lvh-for-all-browser/100vh-scroll.png)
 
 ヒーローイメージがはみ出しているので、スクロールしてもヒーローイメージ部分が続いてしまいます。
 
 ![](/images/svh-dvh-lvh-for-all-browser/100vh-wrong.webp =400x)
 
-![](/images/svh-dvh-lvh-for-all-browser/100vh-scroll.png)
-
-## `100%`の場合
+## `100%`は煩雑
 
 次のように`100%`を指定したとします。
 
@@ -122,7 +120,7 @@ https://codepen.io/pen/debug/NWzBBNB
 }
 ```
 
-HTML は次のようになっていることに注意してください。
+HTMLは次のようになっていることに注意してください。
 
 ```html
 <main>
@@ -158,9 +156,9 @@ main {
 }
 ```
 
-## `webkit-fill-available`の場合
+## `-webkit-fill-available`は癖が強い
 
-次のように`webkit-fill-available`を指定する方法もありました。
+次のように`-webkit-fill-available`を指定する方法もありました。
 
 ```css
 .hero-image {
@@ -170,13 +168,13 @@ main {
 
 この方法では確かにヒーローイメージ部分（`.hero-image`）はファーストビューの高さになりますし、祖先要素への高さ指定も不要です。
 
-「デバイスの向きを変えたときに高さを再計算してくれない」という記事も稀に見かけますが、今現在の iOS Safari では解消されています。
+「デバイスの向きを変えたときに高さを再計算してくれない」という記事も稀に見かけますが、今現在のiOS Safariでは解消されています。
 
-本手法の欠点の 1 つ目は、Chrome や Firefox に対応していないことです。次のように、処理を分岐する必要がありました。
+本手法の欠点の1つ目は、ChromeやFirefoxに対応していないことです。次のように処理を分岐する必要がありました。
 
 ```css
 .hero-image {
-  height: -webkit-fill-available;
+  height: 100vh;
 }
 
 @supports (-webkit-touch-callout: none) {
@@ -186,7 +184,7 @@ main {
 }
 ```
 
-欠点の 2 つ目は、「高さ 50%」のような指定ができないことです。ビューポートの 50%にヒーローイメージを広げたいみたいな表現のときに不便です。
+欠点の2つ目は、「高さ50%」のような指定ができないことです。ビューポートの50%にヒーローイメージを広げたいみたいな表現のときに不便です。
 
 ▼ 動作しません
 
@@ -196,9 +194,11 @@ main {
 }
 ```
 
-JavaScript を使う手法もありますが、いずれも`svh`の便利さには適いません。
+JavaScriptを使う手法もありますが、いずれも`svh`の便利さには適いません。
 
-# その他使えるようになった単位
+# 他にもいろいろな単位が使えるようになった
+
+`svh`・`lvh`・`dvh`以外にも、さまざまな単位が使えるようになりました。
 
 ## `vmax`・`vimn`について
 
@@ -236,7 +236,7 @@ JavaScript を使う手法もありますが、いずれも`svh`の便利さに�
   - インライン方向: `i`をつける
   - ブロック方向: `b`をつける
 
-各単位をまとめると、次のとおりです。
+各単位をまとめると次のとおりです。
 
 - 小さなビューポート
   - `svw`, `svh`, `svi`, `svb`, `svmin`, `svmax`, `svi`, `svb`
@@ -254,7 +254,9 @@ JavaScript を使う手法もありますが、いずれも`svh`の便利さに�
 - Firefox 101で対応
 - Edge 108で対応
 
-![](/images/svh-dvh-lvh-for-all-browser/caniuse.png)
+[![](/images/svh-dvh-lvh-for-all-browser/caniuse.png)](https://caniuse.com/viewport-unit-variants)
+
+- [Large, Small, and Dynamic viewport units \| Can I use](https://caniuse.com/viewport-unit-variants)
 
 Edge 108については、2022/12/1週にリリースが予定されています。
 
@@ -263,12 +265,13 @@ Edge 108については、2022/12/1週にリリースが予定されています
 
 # 最後に
 
-iOS Safari の画面の高さいっぱいにヒーローイメージを広げる問題は、長年開発者を悩ませてきたものです。`svh`・`dvh`はその課題を解決できる単位で、長らく全ブラウザ対応が待たれてきました。今回の Chrome の対応により、手軽に使える環境が整ったと言えるでしょう。
+iOS Safariの画面の高さいっぱいにヒーローイメージを広げる問題は、長年開発者を悩ませてきたものです。`svh`・`dvh`はその課題を解決できる単位で、長らく全ブラウザ対応が待たれてきました。今回のChromeの対応により、手軽に使える環境が整ったと言えるでしょう。
 
 今回のウェブサイトの素材は、デザイナーの[松下 絵梨さん](https://twitter.com/matsu_eri)に作成いただきました。
 
-https://twitter.com/matsu_eri
+[![goal.png](/images/svh-dvh-lvh-for-all-browser/matsueri-san.png)](https://twitter.com/matsu_eri)
 
 関連資料
 
 - [<length> \| MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/length)
+- [New in Chrome 108 \- Chrome Developers](https://developer.chrome.com/blog/new-in-chrome-108/)
