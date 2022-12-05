@@ -61,6 +61,22 @@ CSSで要素を上下左右中央揃え（以下、中央揃え）する機会�
 }
 ```
 
+※ 幅200px、高さ200pxの要素の中央揃えの場合
+
+`calc()`でまとめれば4行になりますが、中央揃えしたい要素の幅・高さに依存していることには変わりません。
+
+```css
+.container {
+  position: relative;
+}
+
+.container .box {
+  position: absolute;
+  top: calc(50% - 100px);
+  left: calc(50% - 100px);
+}
+```
+
 次のようなコードを使えば配置したい要素の幅・高さは考慮しなくてよくなりますが、7行ものコードが必要です。
 
 ```css
@@ -71,9 +87,9 @@ CSSで要素を上下左右中央揃え（以下、中央揃え）する機会�
 .box {
   position: absolute;
   top: 0;
-  left: 0;
   right: 0;
   bottom: 0;
+  left: 0;
   margin: auto;
 }
 ```
@@ -196,15 +212,6 @@ CSSは次の2行の指定をします。
     <p>にゃあと鳴く声。そこに彼はいた</p>
   </div>
 </div>
-```
-
-たしかにこの場合は、2行だけで中央揃えができます。
-
-```css
-.container {
-  display: grid;
-  place-content: center;
-}
 ```
 
 しかし、レイアウトのためだけにHTMLを増やすのは好ましくありません。スタイルの制御はできるだけCSSだけで完結するべきです。
