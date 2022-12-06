@@ -1,5 +1,5 @@
 ---
-title: "svh・dvhがついに全ブラウザ対応へ。iOSの画面の高さいっぱいに要素を広げたいときの最適解"
+title: "svh・dvhが全ブラウザ対応。iOS・Androidの画面の高さいっぱいに要素を広げるときの最適解"
 emoji: "📱"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["css"]
@@ -21,7 +21,7 @@ iOS Safariの画面の高さいっぱいにヒーローイメージを表示す�
 }
 ```
 
-Safari・Firefoxでは対応済み、Chromeと中身が同じEdgeは12/1週リリースの108で対応するので、全ブラウザで使える時代が来ます。
+Safari・Firefoxでは対応済み、Chromeと中身が同じEdgeは12/1週リリースの108で対応するので、全ブラウザで使える時代が来ます。もちろん、iOS・Androidも対応です。
 
 本記事では、`svh`の使い方、同様に使えるようになった`dvh`や`svmax`などの違い、従来の手法のデメリットをデモを交えて紹介します。
 
@@ -56,11 +56,15 @@ HTML コードは次のとおりです。
 }
 ```
 
-iOS Safari、デスクトップのChromeを始め、各環境で動作します。
+iOS Safari、Android・デスクトップのChromeを始め、各環境で動作します。
 
 ▼ iOS Safariでの動作結果
 
 ![](/images/svh-dvh-lvh-for-all-browser/goal.webp =400x)
+
+▼ Android Chromeでの動作結果
+
+![](/images/svh-dvh-lvh-for-all-browser/android-ok.webp =200x)
 
 ▼ デスクトップのChromeでの動作結果
 
@@ -109,6 +113,12 @@ https://codepen.io/pen/debug/NWzBBNB
 ヒーローイメージがはみ出しているので、スクロールしてもヒーローイメージ部分が続いてしまいます。
 
 ![](/images/svh-dvh-lvh-for-all-browser/100vh-wrong.webp =400x)
+
+たまに勘違いされますが、**ビューポートの大きさが変わるのはiOSだけではありません**。AndroidのChromeでも、同様にビューポートの大きさが変わるため、`100vh`でははみ出ます。
+
+▼ Android Chromeで`100vh`を指定した結果
+
+![](/images/svh-dvh-lvh-for-all-browser/android-ng.webp =200x)
 
 ## `100%`は煩雑
 
@@ -258,9 +268,12 @@ JavaScriptを使う手法もありますが、いずれも`svh`の便利さに�
 
 - [Large, Small, and Dynamic viewport units \| Can I use](https://caniuse.com/viewport-unit-variants)
 
-Edge 108については、2022/12/1週にリリースが予定されています。
+Edge 108については、2022/12/1週に~~リリースが予定されています~~ リリースされました（2022/12/6）。
 
-- [Microsoft Edge リリース スケジュール \| Microsoft Learn](https://learn.microsoft.com/ja-jp/deployedge/microsoft-edge-release-schedule#microsoft-edge-releases)
+▼ Edge 108での動作結果
+
+![](/images/svh-dvh-lvh-for-all-browser/edge.jpg)
+
 
 
 # 最後に
