@@ -1,5 +1,5 @@
 ---
-title: "svh・dvhが全ブラウザ対応。iOS・Androidの画面の高さいっぱいに要素を広げるときの最適解"
+title: "CSSのsvh・dvhが全ブラウザ対応。iOS・Androidの画面いっぱいに要素を広げる最適解"
 emoji: "📱"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["css"]
@@ -7,13 +7,13 @@ published: true
 publication_name: moneyforward
 ---
 
-iOS Safariの画面の高さいっぱいにヒーローイメージを表示するという表現は、よく見かけます。
+iOS SafariやAndroid Chromeの画面の高さいっぱいにヒーローイメージを表示するという表現は、よく見かけます。
 
 ![](/images/svh-dvh-lvh-for-all-browser/goal.png)
 
 高さをいっぱいに広げるのに`100vh`を使うと、不要なスクロールが発生し、意図通りに表示されません。 この問題を解決するために、特殊なCSSを使ったりJSを使ったりと、開発の現場では多くの苦労がありました。
 
-**本日リリースされたGoogle Chrome 108で対応した`svh`を使えば**、手軽に画面いっぱいのヒーローイメージを作れます。
+**本日（2022/11/30）リリースされたGoogle Chrome 108で対応した`svh`を使えば**、手軽に画面いっぱいのヒーローイメージを作れます。
 
 ```css
 .hero-image {
@@ -259,8 +259,8 @@ JavaScriptを使う手法もありますが、いずれも`svh`の便利さに�
 
 各単位の対応ブラウザは次のとおりです。
 
-- Chrome 108で対応
-- Safari 15.4で対応
+- Chrome 108で対応（Android・デスクトップ共に）
+- Safari 15.4で対応（iOS・デスクトップ共に）
 - Firefox 101で対応
 - Edge 108で対応
 
