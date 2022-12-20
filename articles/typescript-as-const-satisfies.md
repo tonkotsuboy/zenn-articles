@@ -13,12 +13,7 @@ TypeScript 4.9 から、`satisfies` operator が使えるようになりまし�
 
 # 結論
 
-`as const satisfies` を使うことで、次の2つのメリットが得られます。
-
-1. `satisfies` 演算子: 型がマッチするかどうかをチェックできる
-2. `as const`: 値が widening しない
-
-とくに、TypeScriptで 定数を export する場合は、`as const satisfies` を設定しておくと便利です。
+TypeScriptで 定数を export する場合は、`as const satisfies` を設定しておくと便利です。
 
 ```ts
 export const myName = "田中" as const satisfies string;
@@ -34,18 +29,23 @@ export const foodList = {
 
 # `as const satisfies` の挙動
 
+`as const satisfies` を使うことで、次の2つのメリットが得られます。
+
+1. `satisfies` 演算子: 型がマッチするかどうかをチェックできる
+2. `as const`: 値が widening （拡大）しない 
+
 個別の機能の説明の前に、まずは `as const satisfies` のコードの挙動を確認してみましょう。
 
 ▼ `my-option.ts`
 
 ```ts
 type MyOption = {
-  foo: string,
-  bar: number,
+  foo: string;
+  bar: number;
   baz: {
-    qux: number,
-  },
-}
+    qux: number;
+  };
+};
 
 export const myOption = {
   foo: "foo",
@@ -83,7 +83,7 @@ export const myOption = {
 ```ts
 type ColorList = {
   [key in "red" | "blue" | "green"]: unknown;
-}
+};
 
 const colorList = {
   red: "#ff0000",
@@ -112,9 +112,9 @@ const colorList = {
 
 ![](/images/as-const-satisfies/satisfies-error.png)
 
-## `statistics` を使うと、型推論結果が保持される
+## `satisfies` を使うと、型推論結果が保持される
 
-`statistics` の特徴は、**型チェックが行われつつも、型推論結果が保持されることです**。
+`satisfies` の特徴は、**型チェックが行われつつも、型推論結果が保持されることです**。 「satisfies」（サティスファイズ）は「（条件などを）満たす、確信させる」といった意味があります。
 
 次の `colorList` オブジェクトにおいて、`green` は `ColorList` の型の一部であることがチェックされ、かつ `number[]` 型と推論されます。配列なので、配列用メソッド `map()` が使えます。
 
@@ -155,7 +155,7 @@ const colorList: ColorList = {
 };
 ```
 
-**`statistics` と異なるのは推論結果です**。型注釈を設定する場合、当然ですが型の推論結果は失われ、`colorList` オブジェクトの型情報は `ColorList` 型になります。
+**`satisfies` と異なるのは推論結果です**。型注釈を設定する場合、当然ですが型の推論結果は失われ、`colorList` オブジェクトの型情報は `ColorList` 型になります。
 
 そのため `green` プロパティは `unknown` となり配列用の関数が使えません。開発者が `green` が配列であることを明らかにわかっていても、です。
 
@@ -171,20 +171,20 @@ const colorList: ColorList = {
 colorList.green.map(value => value * 2);
 ```
 
-以上のように「型のチェックをしたいが、推論結果は保持したい」というケースに `statistics` が有効です。
+以上のように「型のチェックをしたいが、推論結果は保持したい」というケースに `satisfies` が有効です。
 
-# `as const`
+# `as const` とは
 
-`statistics` と一緒に使うと強力なのが `as const` です。
+`satisfies` と一緒に使うと強力なのが `as const` です。
 
-`as const` とは、次の効果があります[^1]。
+`as const` とは、次の効果があります。
 
 - 文字列・数値・真偽値などのリテラル型を widening しない
 - オブジェクト内のすべてのプロパティが readonly になる
 - 配列リテラルの推論結果がタプル型になる
 - テンプレート文字列リテラル型の推論結果が widening しない
 
-[^1]: 参考: [プロを目指す人のためのTypeScript入門 安全なコードの書き方から高度な型の使い方まで｜技術評論社](https://gihyo.jp/book/2022/978-4-297-12747-3)
+*※ 参考: [プロを目指す人のためのTypeScript入門 安全なコードの書き方から高度な型の使い方まで｜技術評論社](https://gihyo.jp/book/2022/978-4-297-12747-3)*
 
 ## widening とは
 
@@ -222,8 +222,6 @@ const myObject = {
 //}
 ```
 
-
-
 もちろん、配列も widening します。次の例では、 `myArray` は `number[]` 型になります。`[string, string, string]` や `["a", "b", "c"]` とは推論されません。
 
 ```ts
@@ -245,13 +243,37 @@ export const myObject = {
 ```
 
 ```ts
-import { myObject, } from "./my-object"
+import { myObject } from "./my-object";
 
 // "鈴木"型ではなく、string型
-const myName = myObject.name
+const myName = myObject.name;
 ```
 
-`myObject.name`は `"鈴木"` ではなく、 `string` 型になってしまいましたが、使用者側は気づきづらいでしょう。 `as const` を付与し、オブジェクトのプロパティの widening を防いでおいたほうが安全です。
+`myObject.name`は `"鈴木"` ではなく、 `string` 型になってしまいましたが、使用者側は気づきづらいでしょう。
+
+プリミティブ型も **import する場合は元が定数で宣言されていたとしても widening します**。
+
+▼ export 側
+
+```ts
+export const foo = "田中";
+```
+
+▼ import 側
+
+```ts
+import { foo, bar } from "./sub";
+
+// string型
+const foo2 = foo;
+```
+
+
+## widening を `as const` で防ぐ
+
+widening は、`as const` で防げます。 
+
+オブジェクトにおける widening の抑制例は次のとおりです。
 
 ▼ export 側
 
@@ -265,21 +287,22 @@ export const myObject = {
 ▼ import 側
 
 ```ts
-import { myObject, } from "./my-object"
+import { myObject } from "./my-object";
 
 // "鈴木"型
-const myName = myObject.name
+const myName = myObject.name;
 ```
 
-プリミティブ型も **import する場合は元が定数で宣言されていたとしても widening します**。
+文字列や数値といったプリミティブ型も、 `as const` で widening を防げます。
+
 
 ▼ export 側
 
 ```ts
 // as const あり
-export const foo = "田中"
+export const foo = "田中";
 // as const なし
-export const bar = "吉田" as const
+export const bar = "吉田" as const;
 ```
 
 ▼ import 側
@@ -295,9 +318,11 @@ const bar2 = bar;
 
 基本的に readonly な値を export する場合は、`as const` をつけておくほうが安全です。筆者のプロジェクトでは、すべてそのようにしています。
 
-# `statistics` と `as const` を組み合わせる
+# `satisfies` と `as const` を組み合わせる
 
-`statistics` と `as const` を組み合わせると、次の2つのメリットを組み合わせられます。
+本記事のキモです。
+
+`satisfies` と `as const` を組み合わせると、2つのメリットを組み合わせられます。
 
 1. `satisfies 型`: 型がマッチするかどうかをチェックできる
 2. `as const`: 値が widening しない
@@ -306,12 +331,12 @@ const bar2 = bar;
 
 ```ts
 type MyOption = {
-  foo: string,
-  bar: number,
+  foo: string;
+  bar: number;
   baz: {
-    qux: number,
-  },
-}
+    qux: number;
+  };
+};
 ```
 
 `MyOption` 型を満たす `myOption` オブジェクトを作って、 export したいとします。
@@ -445,7 +470,7 @@ export const myOption = {
 
 
 各コードのデモは次の URL で確認できます。
-https://tsplay.dev/wQYJvw
+https://tsplay.dev/mbK3BW
 
 
 # 配列と `as const satisfies` 
