@@ -18,7 +18,7 @@ TypeScript 4.9 から、`satisfies` operator が使えるようになりまし�
 1. `satisfies` 演算子: 型がマッチするかどうかをチェックできる
 2. `as const`: 値が widening しない
 
-とくに、TypeScriptで定数を export する場合は、`as const satisfies` を設定しておくと便利です。
+とくに、TypeScriptで 定数を export する場合は、`as const satisfies` を設定しておくと便利です。
 
 ```ts
 export const myName = "田中" as const satisfies string;
@@ -114,7 +114,9 @@ const colorList = {
 
 ## `statistics` を使うと、型推論結果が保持される
 
-`statistics` の特徴は、型チェックが行われつつも、型推論結果が保持されることです。次の `colorList` オブジェクトにおいて、`green` は `ColorList` の型の一部であることがチェックされ、かつ `number[]` 型と推論されます。配列なので、配列用メソッド `map()` が使えます。
+`statistics` の特徴は、**型チェックが行われつつも、型推論結果が保持されることです**。
+
+次の `colorList` オブジェクトにおいて、`green` は `ColorList` の型の一部であることがチェックされ、かつ `number[]` 型と推論されます。配列なので、配列用メソッド `map()` が使えます。
 
 ▼ `green` は配列なので、配列用のメソッドが使える
 
@@ -155,7 +157,7 @@ const colorList: ColorList = {
 
 **`statistics` と異なるのは推論結果です**。型注釈を設定する場合、当然ですが型の推論結果は失われ、`colorList` オブジェクトの型情報は `ColorList` 型になります。
 
-そのため、`green` プロパティは `unknown` となり、配列用の関数が使えません。開発者が `green` が配列であることを明らかにわかっていても、です。
+そのため `green` プロパティは `unknown` となり配列用の関数が使えません。開発者が `green` が配列であることを明らかにわかっていても、です。
 
 ```ts
 const colorList: ColorList = {
@@ -171,10 +173,9 @@ colorList.green.map(value => value * 2);
 
 以上のように「型のチェックをしたいが、推論結果は保持したい」というケースに `statistics` が有効です。
 
-
 # `as const`
 
-`statistics` と一緒に使うと強力なのが、 `as const` です。
+`statistics` と一緒に使うと強力なのが `as const` です。
 
 `as const` とは、次の効果があります[^1]。
 
@@ -183,7 +184,7 @@ colorList.green.map(value => value * 2);
 - 配列リテラルの推論結果がタプル型になる
 - テンプレート文字列リテラル型の推論結果が widening しない
 
-- [^1]: 参考: [プロを目指す人のためのTypeScript入門 安全なコードの書き方から高度な型の使い方まで｜技術評論社](https://gihyo.jp/book/2022/978-4-297-12747-3)
+[^1]: 参考: [プロを目指す人のためのTypeScript入門 安全なコードの書き方から高度な型の使い方まで｜技術評論社](https://gihyo.jp/book/2022/978-4-297-12747-3)
 
 ## widening とは
 
@@ -206,7 +207,7 @@ let myString2 = "鈴木";
 ![](/images/as-const-satisfies/string-widening.png)
 
 
-オブジェクトの場合、各プロパティが widening します。 `{ age: 18,  name: "鈴木" }` とは推論されません。オブジェクトの各プロパティが widening するのは、各プロパティが書き換え可能なことが原因です。
+オブジェクトの場合、各プロパティが widening し、`{ age: number,  name: string }` と推論されます。 `{ age: 18,  name: "鈴木" }` とは推論されません。オブジェクトの各プロパティが widening するのは、各プロパティが書き換え可能なことが原因です。
 
 ```ts
 const myObject = {
@@ -250,8 +251,7 @@ import { myObject, } from "./my-object"
 const myName = myObject.name
 ```
 
-`myObject.name`は `"鈴木"` ではなく、 `string` 型になってしまいましたが、使用者側は気づきづらいでしょう。
-
+`myObject.name`は `"鈴木"` ではなく、 `string` 型になってしまいましたが、使用者側は気づきづらいでしょう。 `as const` を付与し、オブジェクトのプロパティの widening を防いでおいたほうが安全です。
 
 ▼ export 側
 
@@ -271,7 +271,7 @@ import { myObject, } from "./my-object"
 const myName = myObject.name
 ```
 
-プリミティブ型も、 **import する場合は元が定数で宣言されていても widening します**。
+プリミティブ型も **import する場合は元が定数で宣言されていたとしても widening します**。
 
 ▼ export 側
 
@@ -481,7 +481,7 @@ export const myString = 'バナナ' as const satisfies string;
 // myNumber は number に制限されつつつ、 18型 に推論される
 export const myVersion = 18 as const satisfies number;
 
-// myNumber は boolean に制限されつつつ、 true型 に推論される
+// isDevelopMode は boolean に制限されつつつ、 true型 に推論される
 export const isDevelopMode = true as const satisfies boolean;
 ```
 
