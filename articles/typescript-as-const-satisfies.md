@@ -222,7 +222,7 @@ const myObject = {
 //}
 ```
 
-もちろん、配列も widening します。次の例では、 `myArray` は `number[]` 型になります。`[string, string, string]` や `["a", "b", "c"]` とは推論されません。
+もちろん、配列も widening します。次の例では、 `myArray` は `string[]` 型になります。`[string, string, string]` や `["a", "b", "c"]` とは推論されません。
 
 ```ts
 const myArray = ["a", "b", "c"];
