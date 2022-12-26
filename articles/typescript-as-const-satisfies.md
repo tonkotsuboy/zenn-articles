@@ -171,7 +171,11 @@ const colorList: ColorList = {
 colorList.green.map(value => value * 2);
 ```
 
-以上のように「型のチェックをしたいが、推論結果は保持したい」というケースに `satisfies` が有効です。
+:::details 補足
+`type ColorList = { red: string,  green: [number, number, number],  blue: string };` と表現すれば `green` で正しく `map` が使えます。しかし、`purple` や `pink` など、新しくキーを追加するたびにそれに対応する値の型を追加する必要があります。 「オブジェクトの値はなんでもいいので、キーの種類だけを制限したい」という当初の目的からは外れてしまいますし、大して詳細な情報を持たない型注釈と、詳細な情報を持つ値を二重で管理するのも手間です。
+:::
+
+「型のチェックをしたいが、推論結果は保持したい」というケースには、型注釈よりも `satisfies` が有効です。
 
 # `as const` とは
 
