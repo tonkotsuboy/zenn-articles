@@ -255,24 +255,6 @@ const myName = myObject.name;
 
 `myObject.name`は `"鈴木"` ではなく、 `string` 型になってしまいましたが、使用者側は気づきづらいでしょう。
 
-プリミティブ型も **import する場合は元が定数で宣言されていたとしても widening します**。
-
-▼ export 側
-
-```ts
-export const foo = "田中";
-```
-
-▼ import 側
-
-```ts
-import { foo, bar } from "./sub";
-
-// string型
-const foo2 = foo;
-```
-
-
 ## widening を `as const` で防ぐ
 
 widening は、`as const` で防げます。 
