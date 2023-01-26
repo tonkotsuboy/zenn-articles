@@ -8,14 +8,14 @@ publication_name: moneyforward
 ---
 
 （2023/01/26）
-Safari Technology Preview 162でもネストに対応しましたので記事を更新しました。
+Safari Technology Preview 162でもネストに対応したので記事を更新しました。
 
 ---
 
 
 先日リリースされたGoogle Chrome Canaryで、CSSでネスト（入れ子）ができるようになりました💐
 
-2023/01/26には、Safari Technology Preview 162でもネストに対応しました💐
+2023/01/26には、[Safari Technology Preview 162](https://webkit.org/blog/13703/release-notes-for-safari-technology-preview-162/)でもネストに対応しました💐
 
 次のようなコードが、「SassではなくCSSで」できるようになります。Sassを使わないCSSコーディングを大きく変えることでしょう。
 
@@ -35,7 +35,6 @@ Safari Technology Preview 162でもネストに対応しましたので記事を
 ▼ ブラウザの実行結果（Safari Technology Preview 162）
 
 ![](/images/css-nesting-module/example-safari.png)
-
 
 
 機能はほぼSassのネストと同じですが、一部に違いがあります。
