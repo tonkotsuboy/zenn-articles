@@ -426,3 +426,4 @@ Microsoft Edge・Firefox・Safariでも似たような機能が使えます。
 
 - [CSS Container Queries \- CSS: Cascading Style Sheets \| MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Container_Queries)
 - [CSS Containment Module Level 3](https://www.w3.org/TR/css-contain-3/)
+- [Firefox 110\.0, See All New Features, Updates and Fixes](https://www.mozilla.org/en-US/firefox/110.0/releasenotes/)
