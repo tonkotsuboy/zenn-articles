@@ -8,7 +8,7 @@ publication_name: moneyforward
 ---
 
 
-Safari 16.4が本日リリースし、media queryのrange（範囲）記法に対応しました。
+Safari 16.4 が本日（2023/03/28）リリースされ、 media query のrange（範囲）記法に対応しました。
 
 ▼ 従来
 
@@ -24,27 +24,27 @@ Safari 16.4が本日リリースし、media queryのrange（範囲）記法に�
 }
 ```
 
-本記事では、従来の記法の課題、range記法の使い方、`@container`クエリとの組み合わせ方、今すぐ全ブラウザ向けに使う方法まで、デモを交えながら解説します。
+本記事では、従来の記法の課題、range 記法の使い方、`@container` クエリとの組み合わせ方、今すぐ全ブラウザ向けに使う方法まで、デモを交えながら解説します。
 
 
 # 従来の記法の課題
 
-CSS Media Queryは、CSSを特定の条件下で適用するための機能です。例えば、画面の横幅が特定の大きさを超えた場合に、異なるスタイルを適用することができます。
+CSS Media Query は、CSS を特定の条件下で適用するための機能です。たとえば、画面の横幅が特定の大きさを超えた場合に、異なるスタイルを適用できます。
 
 従来のMedia Queryで、画面の横幅に応じたスタイルを適用する場合、`min-**`・`max-**`・`and`といった記述を使う必要がありました。
 
 ```css
-/* 画面サイズ600px未満 */
+/* 画面サイズ 600px 未満 */
 @media (max-width: 599px) {
   /* スタイルルール */
 }
 
-/* 画面サイズ600px以上1200px未満 */
+/* 画面サイズ 600px 以上 1200px 未満 */
 @media (min-width: 601px) and (max-width: 1200px) {
   /* スタイルルール */
 }
 
-/* 画面サイズ1200px以上 */
+/* 画面サイズ 1200px 以上 */
 @media (min-width: 1201px) {
   /* スタイルルール */
 }
@@ -55,15 +55,15 @@ CSS Media Queryは、CSSを特定の条件下で適用するための機能で�
 1つ目は、冗長で長いことです。プログラミング言語に慣れている方であれば、 `width <= 600px` のような表記をしたいと思うでしょう。
 
 2つ目は、**「未満」や「より大きい」の表現ができないことです**。
-`min-*`や`max-*`は、「○○px以上・○○px以下」にしか対応していません。したがって、たとえばブレークポイント600pxでスタイルを分けようとすると、次のような書き方をする必要があります。
+`min-*`や`max-*`は、「○○px以上・○○px以下」にしか対応していません。したがって、たとえばブレークポイント `600px` でスタイルを分けようとすると、次のような書き方をする必要があります。
 
 ```css
 @media (max-width: 599px) {
-  /* 599px以下のスタイル */
+  /* 599px 以下のスタイル */
 }
 
 @media (min-width: 600px) {
-  /* 600px以上のスタイル */
+  /* 600px 以上のスタイル */
 }
 ```
 
@@ -71,33 +71,33 @@ CSS Media Queryは、CSSを特定の条件下で適用するための機能で�
 
 ```css
 @media (max-width: 599.99px) {
-  /* 600px未満のスタイル */
+  /* 600px 未満のスタイル */
 }
 
 @media (min-width: 600px) {
-  /* 600px以上のスタイル */
+  /* 600px 以上のスタイル */
 }
 ```
 
 参考： [Media Queries Level 4 - Using “min-” and “max-” Prefixes On Range Features](https://www.w3.org/TR/mediaqueries-4/#mq-min-max)
 
 
-# 新しいMedia QueryのRange記法
+# 新しい Media Query の Range 記法
 
-新しく使えるようになったMedia Queryのrange（範囲）指定の方法では、次のように記述できます。
+新しく使えるようになった Media Query の range （範囲）指定の方法では、次のように記述できます。
 
 ```css
-/* 画面サイズ600px未満 */
+/* 画面サイズ 600px 未満 */
 @media (width < 600px) {
   /* スタイルルール */
 }
 
-/* 画面サイズ600px以上1200px未満 */
+/* 画面サイズ 600px 以上 1200px 未満 */
 @media (600px <= width < 1200px) {
   /* スタイルルール */
 }
 
-/* 画面サイズ1200px以上 */
+/* 画面サイズ 1200px 以上 */
 @media (1200px <= width) {
   /* スタイルルール */
 }
@@ -105,8 +105,7 @@ CSS Media Queryは、CSSを特定の条件下で適用するための機能で�
 
 従来の記法よりも、短く、直感的です。また、「以上なのか」「未満なのか」といったこともわかりやすくなります。
 
-
-こちらのURLからデモを確認できます。
+こちらの URL からデモを確認できます。
 
 @[codepen](https://codepen.io/tonkotsuboy/pen/vYdgKqM)
 
@@ -136,7 +135,7 @@ https://twitter.com/tonkotsuboy_com/status/1640516966170644480
 
 https://zenn.dev/moneyforward/articles/css-container-query
 
-次のHTMLにて、 `.container` 要素が `300px` 以上のときに文字を赤色にしてみます。 
+次の HTML にて、 `.container` 要素が `300px` 以上のときに文字を赤色にしてみます。 
 
 ```html
 <div class="container">
@@ -158,7 +157,7 @@ https://zenn.dev/moneyforward/articles/css-container-query
 }
 ```
 
-`@container` と range記法を組み合わせると、次のように記述できます。
+`@container` と range 記法を組み合わせると、次のように記述できます。
 
 ```css
 .container {
@@ -172,7 +171,7 @@ https://zenn.dev/moneyforward/articles/css-container-query
 }
 ```
 
-こちらのURLからデモを確認できます。
+こちらの URL からデモを確認できます。
 
 @[codepen](https://codepen.io/tonkotsuboy/pen/GRXexYY)
 
@@ -180,11 +179,11 @@ https://zenn.dev/moneyforward/articles/css-container-query
 
 # Safari 16.4の浸透を待たず、今すぐ全ブラウザ向けに使う方法
 
-Safari 16.4の登場で全ブラウザにrange記法が対応したとは言え、ユーザーがSafari 16.4にバージョンアップするまでには時間がかかるでしょう。
+Safari 16.4 の登場で全ブラウザに range 記法が対応したとは言え、ユーザーがSafari 16.4 にバージョンアップするまでには時間がかかるでしょう。
 
-今すぐrange記法を使いたいのであれば、PostCSSとプラグインを使うとよいです。
+今すぐ range 記法を使いたいのであれば、PostCSS とプラグインを使うとよいです。
 
-range記法を従来の記法に変換してくれます。
+range 記法を従来の記法に変換してくれます。
 
 ▼ 変換前
 
@@ -212,14 +211,14 @@ range記法を従来の記法に変換してくれます。
 
 # 対応ブラウザ
 
-range記法の対応ブラウザは次のとおりです。本日（2023/03/28）にSafari 16.4が対応したことにより、全ブラウザ対応となりました。
+range 記法の対応ブラウザは次のとおりです。本日（2023/03/28）に Safari 16.4 が対応したことにより、全ブラウザ対応となりました。
 
 各ブラウザ対応開始バージョンは次のとおり。使用する際は、プロジェクトの対象ブラウザに気をつけましょう。
 
-- Safari 16.4で対応（NEW！）
-- Chrome 104で対応
-- Edge 104で対応
-- Firefox 63で対応
+- Safari 16.4 で対応（NEW！）
+- Chrome 104 で対応
+- Edge 104 で対応
+- Firefox 63 で対応
 
 ![](/images/range/caniuse.png)
 
