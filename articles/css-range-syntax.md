@@ -1,5 +1,5 @@
 ---
-title: "Media Queryでminやmaxはもう使いたくない。全ブラウザ対応した範囲記法が直感的で便利"
+title: "ついにSafariも。 media queryの範囲指定をより直感的に書ける記法が全ブラウザ対応へ"
 emoji: "🎁"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: [ "css" ]
