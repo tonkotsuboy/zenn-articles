@@ -7,10 +7,11 @@ published: true
 publication_name: moneyforward
 ---
 
+筆者が CSS を学び始めたとき、media query で画面サイズに応じてスタイルを変える方法が大変ニガテでした😭 `min`？ `max`？ 未満のときはどうするの？ `and` で繋げなきゃいけないの？ 長くない？ と疑問に思いながら、今日まで長い年月を過ごしてきました。
 
-Safari 16.4 が本日（2023/03/28）リリースされ、 media query のrange（範囲）記法に対応しました。
+本日（2023/03/28）、Safari 16.4 がリリースされ、 media query のrange（範囲）記法に対応しました。
 
-▼ 従来
+▼ 従来の media query の範囲指定
 
 ```css
 @media (min-width: 600px) and (max-width: 799px) {
@@ -223,6 +224,8 @@ range 記法の対応ブラウザは次のとおりです。本日（2023/03/28�
 ![](/images/range/caniuse.png)
 
 - [Media Queries: Range Syntax \| Can I use](https://caniuse.com/css-media-range-syntax)
+
+
 
 # 関連資料
 
