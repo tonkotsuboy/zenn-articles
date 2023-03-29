@@ -1,6 +1,6 @@
 ---
 title: "ついにSafariも。 media queryの範囲指定をより直感的に書ける記法が全ブラウザ対応へ"
-emoji: "🎁"
+emoji: "🫨"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: [ "css" ]
 published: true
