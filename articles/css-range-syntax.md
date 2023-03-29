@@ -226,8 +226,22 @@ range 記法の対応ブラウザは次のとおりです。本日（2023/03/28�
 - [Media Queries: Range Syntax \| Can I use](https://caniuse.com/css-media-range-syntax)
 
 
-
 # 関連資料
 
 - [Media Queries Level 4](https://www.w3.org/TR/mediaqueries-4/) 
 - [WebKit Features in Safari 16\.4 \| WebKit](https://webkit.org/blog/13966/webkit-features-in-safari-16-4/)
+
+# 4/13（木）にCSSの勉強会を実施します
+
+4/13（木）に、 Findy さんのオンラインイベントで話します。
+
+「2023年モダンCSSの最新トレンド」と題し、今回紹介したような新しいCSSや、今後使えるCSSまでを、開発現場の視点から解説。
+
+ぜひご参加ください💪
+
+https://findy.connpass.com/event/278449/
+
+
+
+
+
