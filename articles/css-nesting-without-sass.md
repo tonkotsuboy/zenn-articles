@@ -27,7 +27,7 @@ Chrome 112でもネストに対応したので記事を更新しました。
 }
 ```
 
-▼ ブラウザの実行結果（Google Chrome Canary）
+▼ ブラウザの実行結果（Google Chrome 112）
 
 ![](/images/css-nesting-module/example.png)
 
@@ -305,7 +305,7 @@ BEMなどを使っている際、次のような `foo__bar` というクラス�
 
 # CSSネストをブラウザで確認するには？
 
-CSSネストの対応ブラウザは、現状Google Chrome、Safari Tech Canaryです。
+CSSネストの対応ブラウザは、現状Google Chrome、Safari Technology Previewです。
 
 ![](/images/css-nesting-module/caniuse.png)
 
