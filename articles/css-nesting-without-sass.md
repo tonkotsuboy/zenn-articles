@@ -305,22 +305,18 @@ BEMなどを使っている際、次のような `foo__bar` というクラス�
 
 # CSSネストをブラウザで確認するには？
 
-CSSネストの対応ブラウザは、現状Google Chrome Canaryのフラグつきのみです。
+CSSネストの対応ブラウザは、現状Google Chrome、Safari Tech Canaryです。
 
 ![](/images/css-nesting-module/caniuse.png)
 
-Canaryのフラグを有効にするには、`chrome://flags/` にアクセスし、「Experimental Web Platform features」を「Enabled」に設定します。
-
-![](/images/css-nesting-module/flags.png)
-
 # デモのURL
 
-各動作が確認できるURLは次のとおりです。Chrome Canary、もしくはSafari Technology Preview 162でご確認ください。
+各動作が確認できるURLは次のとおりです。Chrome 112、もしくはSafari Technology Preview 162でご確認ください。
 
 @[codepen](https://codepen.io/tonkotsuboy/pen/ExRbPgV)
 [https://codepen.io/tonkotsuboy/pen/ExRbPgV](https://codepen.io/tonkotsuboy/pen/ExRbPgV)
 
-▼ Chrome Canaryでの実行結果
+▼ Chromeでの実行結果
 
 ![](/images/css-nesting-module/canary-result.png)
 
