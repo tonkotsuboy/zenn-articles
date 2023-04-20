@@ -558,6 +558,16 @@ https://tsplay.dev/mqeyQm
 
 プロジェクトで `as const` なオブジェクトを export する場合は、積極的に使いましょう。
 
+# 動画・スライド
+
+各種媒体でも、 `as const satisfies` について解説しています。
+
+https://speakerdeck.com/tonkotsuboy_com/typescript-4-dot-9noas-const-satisfiesgabian-li-160d825b-7765-4c2b-945d-bb72cc389557
+
+https://techfeed.io/entries/63e1f562e509ce20fb828aaf
+
+https://www.youtube.com/watch?v=d7xW2QWb7WU
+
 ## 参考文献
 
 - [Announcing TypeScript 4\.9 \- TypeScript](https://devblogs.microsoft.com/typescript/announcing-typescript-4-9/)
