@@ -279,28 +279,6 @@ import { myObject } from "./my-object";
 const myName = myObject.name;
 ```
 
-文字列や数値といったプリミティブ型も、 `as const` で widening を防げます。
-
-
-▼ export 側
-
-```ts
-// as const あり
-export const foo = "田中";
-// as const なし
-export const bar = "吉田" as const;
-```
-
-▼ import 側
-
-```ts
-import { foo, bar } from "./sub";
-
-// string型
-const foo2 = foo;
-// "吉田"型
-const bar2 = bar;
-```
 
 基本的に readonly な値を export する場合は、`as const` をつけておくほうが安全です。筆者のプロジェクトでは、すべてそのようにしています。
 
