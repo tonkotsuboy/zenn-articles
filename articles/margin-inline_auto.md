@@ -72,7 +72,7 @@ publication_name: moneyforward
 
 参考: [CSS 論理的プロパティと値](https://developer.mozilla.org/ja/docs/Web/CSS/CSS_logical_properties_and_values)
 
-`margin-inline`とは、`margin-iniline-start`（インライン先頭）と`margin-iniline-end`（インライン末尾）のショートハンドです。`margin-inline: auto;` を指定することで、インラインのマージンの先頭と末尾を `auto` として、中央揃えを実現しているというわけです。
+`margin-inline`とは、`margin-inline-start`（インライン先頭）と`margin-inline-end`（インライン末尾）のショートハンドです。`margin-inline: auto;` を指定することで、インラインのマージンの先頭と末尾を `auto` として、中央揃えを実現しているというわけです。
 
 # 実用的なデモ
 
