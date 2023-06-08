@@ -111,10 +111,10 @@ HTMLは次のようになっています。
 </main>
 ```
 
-この場合、CSSで `main` 要素に `margin-inline: auto;` を指定すれば、目的のレイアウトを達成できます。
+この場合、CSSで `section` 要素に `margin-inline: auto;` を指定すれば、目的のレイアウトを達成できます。
 
 ```css
-main {
+main section {
   margin-inline: auto;
   /* 最大幅800px */
   max-width: 800px;
@@ -153,18 +153,18 @@ main {
 「実用的なデモ」の中央揃えは、CSS Gridを使っても実現できます。
 
 ```css
-body {
+main {
   display: grid;
+  justify-content: center;
 }
 
-/* メインセクションのスタイル */
-main {
+main section {
   max-width: 800px;
   justify-self: center;
 }
 ```
 
-ただし、この場合は `body` 全体のレイアウトにも影響を与えてしまうので注意が必要です。状況に応じて、CSS Gridか `margin` を使い分けるとよいでしょう。
+状況に応じて、CSS Gridや `margin` を使い分けるとよいでしょう。
 
 CSS Gridによる中央揃えについては、次の記事で詳しく解説しています。
 
