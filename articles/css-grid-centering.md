@@ -385,6 +385,12 @@ CSSは次のとおりです。
 - [CSS property: place\-content \| Can I use\.\.\.](https://caniuse.com/mdn-css_properties_place-content)
 
 
+# `margin-inline: auto;` による左右中央揃えもあわせて覚えよう
+
+`margin-inline: auto;` による左右中央揃えもあわせて覚えておくと、表現力が上がります。次の記事で詳しく解説しました。
+
+https://zenn.dev/moneyforward/articles/margin-inline_auto
+
 # 最後に
 
 筆者はFlexboxの3行の中央揃えをずっと使ってきましたが、2020年に全ブラウザで`place-*`に対応して浸透した後は、ずっと本記事の手法を使っています。上下左右中央揃えをしないコンテンツはほぼないので、頻繁に使うCSS表現の一つです。
@@ -392,8 +398,6 @@ CSSは次のとおりです。
 ぜひ今回の記事をとおして各種中央揃えの手法を身に着け、開発の現場に役立てていただければ幸いです。
 
 この記事は、Money ForwardのEngineering Advent Calendar 2022の5日目の記事です。
-
-[![](/images/centering/advent.png)](https://adventar.org/calendars/7397)
 
 - [Money Forward Engineering 1 Advent Calendar 2022](https://adventar.org/calendars/7397) 
 

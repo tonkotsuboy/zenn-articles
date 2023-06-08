@@ -19,7 +19,7 @@ publication_name: moneyforward
 このスタイルを適用すると、指定した要素の左右のマージンが同等になり、結果として要素はその親要素内で中央に配置されます。
 
 
-しかし、最近のCSSを使うと、より簡単に要素を中央揃えにできます。それが `margin-inline: auto;` です。
+しかし、最近のCSSを使うと、より簡単に要素を中央揃えにできます。それが `margin-inline: auto;` です。全ブラウザで使えます。
 
 ```css
 .box {
@@ -172,8 +172,9 @@ https://zenn.dev/moneyforward/articles/css-grid-centering
 
 # 対応ブラウザ
 
-`margin-inline`は全ブラウザで対応済みです。
+`margin-inline`は全ブラウザで対応済みです。Safariも14.1と古いバージョンから対応しているので、安心して使えると言っていいでしょう。
 
 ![](/images/margin-inline/caniuse.png)
 
 - [CSS property: margin-inline | Can I use](https://caniuse.com/mdn-css_properties_margin-inline)
+
