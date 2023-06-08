@@ -121,7 +121,10 @@ main {
 }
 ```
 
-こちらのURLからデモを確認できます。デスクトップの大きな画面のほうが確認しやすいです。
+こちらのURLからデモを確認できます。
+
+
+[![](/images/margin-inline/centering_goal.png)](https://codepen.io/tonkotsuboy/pen/OJBKBKx)
 
 - [別ウインドウで開く](https://codepen.io/tonkotsuboy/pen/OJBKBKx)
 
