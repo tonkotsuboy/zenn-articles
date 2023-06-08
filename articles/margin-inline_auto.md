@@ -160,7 +160,6 @@ main {
 
 main section {
   max-width: 800px;
-  justify-self: center;
 }
 ```
 
