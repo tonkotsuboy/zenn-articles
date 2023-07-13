@@ -190,7 +190,7 @@ vanilla-extract で定義されたスタイルは、ただのTypeScriptです。
 ・JSXでクラス名をリファクタリング → css.tsに反映される
 ・css.tsでセレクタ名をリファクタリング → JSXに反映される
 
-@[tweet](https://twitter.com/tonkotsuboy_com/status/1679412230893477888)
+@[tweet](https://twitter.com/tonkotsuboy_com/status/1679415132273938432)
 
 
 これは通常の CSS や CSS Modules では、難しい挙動でした（ IntelliJ IDEA を始めとする JetBrains IDE なら可能 [^3]） 
