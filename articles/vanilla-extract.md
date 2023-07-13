@@ -7,7 +7,7 @@ published: true
 publication_name: moneyforward
 ---
 
-私は、以前、 React ・ Next.js でのスタイリングには、CSS Modules + Sass を使っていましたが、最近は [vanilla-extract](https://vanilla-extract.style/) を使うようになりました。TypeScript との相性が良く、長い間求めていたCSS開発体験が実現できるためです。
+私はこれまで、 React ・ Next.js でのスタイリングには、CSS Modules + Sass を使っていましたが、最近は [vanilla-extract](https://vanilla-extract.style/) を使うようになりました。TypeScript との相性が良く、長い間求めていたCSS開発体験が実現できるためです。
 
 vanilla-extract とは、CSS を TypeScript で型安全に書ける CSS in JS です。 State of CSS 2022 でも満足度が高く、先日は Next.js の appDir でも正式サポートされました。
 
