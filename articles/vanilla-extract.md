@@ -28,7 +28,7 @@ CSS Modules を使っていた理由はいくつかありますが、主に次�
 
 CSS Modules をそのまま使うと、存在しない CSS セレクタを指定しても、型エラーになりません。
 
-次のような CSS Modules のスタイル定義があったとします。
+次のような CSS Modules のスタイル定義があるとします。
 
 ```scss
 .foo {
@@ -178,7 +178,27 @@ export const foo = style({
 
 CSS Modules や 他の CSS in JS と同様に、スコープがあります。定義したスタイルは、他のコンポーネントに影響を与えません。
 
-## メリット ③ CSS 変数との相性が抜群
+## メリット ③ コードジャンプ・リファクタリングなど、IDEフレンドリー
+
+vanilla-extract で定義されたスタイルは、ただのTypeScriptです。ただの TypeScript なので、 IntelliJ IDEA や VSCode といった現代の IDE・エディターと相性が非常によいです。
+
+■ コードジャンプ
+- JSXのクラス名 → css.tsxのスタイル定義元へジャンプ
+- css.tsxのスタイル定義元 → JSXのクラス名へジャンプ
+
+■ リファクタリングがラク
+・JSXでクラス名をリファクタリング → css.tsに反映される
+・css.tsでセレクタ名をリファクタリング → JSXに反映される
+
+@[tweet](https://twitter.com/tonkotsuboy_com/status/1679412230893477888)
+
+
+これは通常の CSS や CSS Modules では、難しい挙動でした（ IntelliJ IDEA を始めとする JetBrains IDE なら可能 [^3]） 
+
+[^3]: https://twitter.com/tonkotsuboy_com/status/1353952971608846336
+
+
+## メリット ④ CSS 変数との相性が抜群
 
 vanilla-extract は CSS 変数との相性が抜群で、私はこれがあるから vanilla-extract を選んだと言っても過言ではありません。
 
@@ -220,7 +240,7 @@ export const foo = style({
 ![](/images/vanilla-extract/variables-result.png)
 *CSS変数の出力を、Chrome DevToolで確認している様子*
 
-## メリット ④ ネストを深くできない
+## メリット ⑤ ネストを深くできない
 
 CSS Modules と Sass を使っているときの悩みの一つに、ネストを深く書けてしまうことがありました。
 
