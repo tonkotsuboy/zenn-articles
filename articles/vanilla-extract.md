@@ -67,8 +67,6 @@ export const MyComponent: FC = () => {
 
 ## `noPropertyAccessFromIndexSignature` を指定すると、ドットシンタックスでプロパティが書けない
 
-TypeScript 4.2 で導入された `noPropertyAccessFromIndexSignature` を `true` にすると、存在しない可能性があるプロパティへのドットシンタックスでのアクセスを禁止できます。
-
 CSS Modules におけるスタイルのオブジェクトは、次のように推論されます。
 
 ```ts
@@ -77,7 +75,11 @@ const styles: {
 }
 ```
 
-このスタイルに対して、 `styles.foo` や `styles.bar` とドットシンタックスでアクセスしようとしても、`foo`や `bar` は存在しない可能性があるため、エラーとなるのです。
+
+TypeScript 4.2 で導入された `noPropertyAccessFromIndexSignature` [^2]を `true` にすると、存在しない可能性があるプロパティへのドットシンタックスでのアクセスを禁止できます。 推論されたスタイルに対して、 `styles.foo` や `styles.bar` とドットシンタックスでアクセスしようとしても、`foo`や `bar` は存在しない可能性があるため、エラーとなるのです。
+
+[^2]: https://www.typescriptlang.org/tsconfig#noPropertyAccessFromIndexSignature
+
 
 これを防ぐためには、 `styles["foo"]` や `styles["bar"]` というように、ブラケットシンタックスでアクセスする必要があります。
 
