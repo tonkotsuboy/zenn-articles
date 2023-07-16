@@ -302,11 +302,21 @@ const bar = style({
 
 https://vanilla-extract.style/documentation/styling/#simple-pseudo-selectors
 
-## メリット ⑥ 複雑なセレクタも型安全に書ける
+## メリット ⑥ いろいろな書き方ができないという縛りがある
 
-「親要素で `:hover` しているとき、自分の要素のスタイルを変えたい」というケースはよくあります。このようなケースでも、 vanilla-extract では型安全に書けます。
+vanilla-extract では、次のような縛りがあります。
 
-たとえば、 `.link` 要素に `:hover` したとき、 `.link` 要素の子要素である `title` や `date` の色を変えたいという場合、 「`selectors`」 キーを使って次のように表現できます。
+- `*.css.ts` という別ファイルに記述する
+- スタイルは `style` 関数で定義する
+- セレクタはネストできない
+
+「クラス名でも `style` タグでもスタイルを定義できます」などはできません。縛りがあるからこそ、書き方が統一され、簡潔なコードが作られます（制約と誓約）。私はこれが大きなメリットだと感じています。
+
+## メリット ⑦ 複雑なセレクタも型安全に書ける
+
+複雑なセレクタは、 `selector` キーを使って表現できます。
+
+たとえば、 `.link` 要素に `:hover` したとき、 `.link` 要素の子要素である `title` や `date` の色を変えたいという場合、次のようにします。
 
 ```ts
 export const link = style({
@@ -329,10 +339,9 @@ export const date = style({
 });
 ```
 
-コードの ``[`${link}:hover &`]`` から見るとわかるように、別のスコープクラス名である `link` 要素を、`selectors` 内で参照できるのです。
+コードの ``[`${link}:hover &`]`` から見るとわかるように、別のスコープクラス名である `link` 要素を、`selectors` 内で参照できたり、 `&` で自身の要素を参照できたりします。当然、 `selectors` の中も型推論が行き届くので、型安全に記述可能です。
 
-
-私が現場で使う際、まとめて `:hover` 時のスタイルを設定したかったので、次のように書きました。
+ちなみに、上記の `:hover` 時のスタイルを使いまわしたい場合、スプレッド演算子を使って取り回すと便利です。 
 
 ```ts
 export const link = style({
@@ -363,9 +372,9 @@ export const tag = style({
 });
 ```
 
-参考: https://github.com/tonkotsuboy/kano-portfolio/pull/101/commits/c5573c561a2c60ced1a3d545ae2e190ad6480210
+私の実装例: https://github.com/tonkotsuboy/kano-portfolio/pull/101/commits/c5573c561a2c60ced1a3d545ae2e190ad6480210
 
-## メリット ⑦ 乗り換えやすさ・捨てやすさ
+## メリット ⑧ 乗り換えやすさ・捨てやすさ
 
 ライブラリを選定するときに重視しているのは捨てやすさ、乗り換えやすさです。 vanilla-extract は、通常の CSS や CSS Modules と同様、スタイルを別ファイルに定義します（`*.css.ts`）。今後、やはり CSS や CSS Module に戻したいというときや、別の CSS ライブラリに乗り換えたいときも、変更しやすいです。
 
