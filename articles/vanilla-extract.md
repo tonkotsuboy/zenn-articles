@@ -20,13 +20,14 @@ vanilla-extract とは、CSS を TypeScript で型安全に書ける CSS in JS �
 CSS Modules を使っていた理由はいくつかありますが、主に次のようなものです。
 
 - 従来の CSS の書き方と同じ
+- 従来の CSS と同じく、スタイルを JSX と別ファイルに書ける
 - スコープが使える
 
 一方で、いくつかの限界を感じていました。
 
-## 型のチェックができないので、存在しないセレクタを指定してもエラーにならない
+## 存在しないセレクタを指定しても気づけない
 
-CSS Modules をそのまま使うと、存在しない CSS セレクタを指定しても、型エラーになりません。
+CSS Modules をそのまま使うと、存在しない CSS セレクタを指定しても、気づけません。
 
 次のような CSS Modules のスタイル定義があるとします。
 
@@ -43,9 +44,12 @@ import type { FC } from "react";
 import styles from "./MyComponent.module.scss";
 
 export const MyComponent: FC = () => {
-  const fooStyle = styles.foo; // string | undefined
 
-  const barStyle = styles.bar; // string | undefined
+  // string | undefined。
+  const fooStyle = styles.foo;
+
+  // string | undefinedだが、存在しないセレクタ
+  const barStyle = styles.bar;
 
   return (
     <div>
@@ -56,32 +60,32 @@ export const MyComponent: FC = () => {
 };
 ```
 
-`styles.foo` は存在するので、エラーにならないのは期待どおりです。
-問題は `styles.bar` で、定義していないセレクタにも関わらず、型エラーになりません。`string | undefined` に推論されるためです[^1]。
+`styles` は `{[key: string]: string | undefined}` に推論されます[^1]。したがって、 `styles.foo` も `styles.bar` も `string | bar` に推論されます。 
+
+しかし、開発者が期待するのは次の推論結果のはずです。
+
+- `foo` は存在するセレクタなので、 `styles.foo` は `string` に推論してほしい
+- `bar` は存在しないセレクタなので、 `styles.bar` は エラーになるか、 `undefined` に推論されてほしい
+
+私は `bar` はエラーになってほしかったので、この挙動は不満でした。
 
 [^1]: `noUncheckedIndexedAccess` が `true` の場合は `string | undefined` に、`false` の場合は `string` に推論されます
 
 ## `noPropertyAccessFromIndexSignature` を指定すると、ドットシンタックスでプロパティが書けない
 
-CSS Modules におけるスタイルのオブジェクトは、次のように推論されます。
+TypeScript 4.2 で導入された `noPropertyAccessFromIndexSignature` [^2]を `true` にすると、存在しない可能性があるプロパティへのドットシンタックスでのアクセスを禁止できます。私はこルールが好きなので、プロジェクトでは必ず有効にしています。
 
-```ts
-const styles: {
-  reaonly [key: string]: string;
-}
-```
-
-TypeScript 4.2 で導入された `noPropertyAccessFromIndexSignature` [^2]を `true` にすると、存在しない可能性があるプロパティへのドットシンタックスでのアクセスを禁止できます。 推論されたスタイルに対して、 `styles.foo` や `styles.bar` とドットシンタックスでアクセスしようとしても、`foo`や `bar` は存在しない可能性があるため、エラーとなるのです。
+さて、前述のように、CSS Modules におけるスタイルのオブジェクトは、`{[key: string]: string | undefined}` に推論されます。 `noPropertyAccessFromIndexSignature` を `true` にしている場合、推論されたスタイルに対して、 `styles.foo` や `styles.bar` とドットシンタックスでアクセスしようとしても、`foo`や `bar` は存在しない可能性があるため、エラーとなります。
 
 [^2]: https://www.typescriptlang.org/tsconfig#noPropertyAccessFromIndexSignature
 
 これを防ぐためには、 `styles["foo"]` や `styles["bar"]` というように、ブラケットシンタックスでアクセスする必要があります。
 
-`.foo` のセレクタの存在は明らかなのに、ブラケットシンタックスでアクセスを矯正されるのはもどかしいところです。
+`.foo` のセレクタの存在は明らかなのに、ブラケットシンタックスでアクセスを強制されるのはもどかしいところです。
 
 ## typed-scss-modules を使えば型チェックが可能だが、型定義ファイルが煩わしい
 
-私は、開発の現場で CSS modules を使うときは、 [typed-scss-modules](https://www.npmjs.com/package/typed-scss-modules) を使っています。typed-scss-modules を使えば、`styles` 用の型定義ファイルが生成されます。
+私は、開発の現場で CSS modules を使うときは、 [typed-scss-modules](https://www.npmjs.com/package/typed-scss-modules) を一緒に使っています。 typed-scss-modules を使えば、`styles` 用の型定義ファイルが生成されます。
 
 ```ts
 export type Styles = {
@@ -95,7 +99,7 @@ declare const styles: Styles;
 export default styles;
 ```
 
-これにより、 型チェックが可能となり、前述の`foo`セレクタに対しても、`styles.foo`でのドットシンタックスアクセスが可能になります。存在しない`bar`に対しては、ドットシンタックスでエラーを検知できます。 `--watch` オプションを使えば、型定義ファイルも自動で生成できます。
+これにより、 型チェックが可能となり、前述の `noPropertyAccessFromIndexSignature` が `true` の状態でも、 `styles.foo` でのドットシンタックスアクセスが可能になります。また、 存在しない `bar` に対しては、ドットシンタックスでエラーを検知できます。 `--watch` オプションを使えば、型定義ファイルも自動で生成できます。
 
 概ね満足している動きではありますが、CSS ファイルと型定義ファイルをそれぞれ別に管理しないといけないのが煩わしく感じていました。
 
@@ -240,7 +244,7 @@ export const foo = style({
 ![](/images/vanilla-extract/variables-result.png)
 *CSS変数の出力を、Chrome DevToolで確認している様子*
 
-## メリット ⑤ ネストを深くできない
+## メリット ⑤ ネストを深くできないという縛りがある
 
 CSS Modules と Sass を使っているときの悩みの一つに、ネストを深く書けてしまうことがありました。
 
@@ -269,7 +273,7 @@ CSS Modules と Sass を使っているときの悩みの一つに、ネスト�
 }
 ```
 
-vanilla-extract では、セレクタのネストを深くできません。エラーになります。
+vanilla-extract では、セレクタのネストを深くできず、エラーになります。こういうった縛りがあることで、開発者が不要に地獄のネストを防ぐことを、仕組みで防げます。
 
 ```ts
 export const foo = style({
@@ -280,7 +284,7 @@ export const foo = style({
 });
 ```
 
-一方で、`:hover` などの擬似クラスについては、ネストを使えます。便利です。
+一方で、`:hover` などの擬似クラスについては、ネストを使えます。
 
 ```ts
 const bar = style({
@@ -297,6 +301,75 @@ const bar = style({
 ```
 
 https://vanilla-extract.style/documentation/styling/#simple-pseudo-selectors
+
+## メリット ⑥ 複雑なセレクタも型安全に書ける
+
+「親要素で `:hover` しているとき、自分の要素のスタイルを変えたい」というケースはよくあります。このようなケースでも、 vanilla-extract では型安全に書けます。
+
+たとえば、 `.link` 要素に `:hover` したとき、 `.link` 要素の子要素である `title` や `date` の色を変えたいという場合、 「`selectors`」 キーを使って次のように表現できます。
+
+```ts
+export const link = style({
+});
+
+export const title = style({
+  selectors: {
+    [`${link}:hover &`]: {
+      color: "red",
+    },
+  }
+});
+
+export const date = style({
+  selectors: {
+    [`${link}:hover &`]: {
+      color: "red",
+    },
+  }
+});
+```
+
+コードの `[``${link}:hover &``]` から見るとわかるように、別のスコープクラス名である `link` 要素を、`selectors` 内で参照できるのです。
+
+私が現場で使う際、まとめて `:hover` 時のスタイルを設定したかったので、次のように書きました。
+
+```ts
+export const link = style({
+});
+
+const hoverTextStyle = {
+  [`${link}:hover &`]: {
+    color: vars.color.primary,
+  },
+};
+
+export const title = style({
+  selectors: {
+    ...hoverTextStyle,
+  },
+});
+
+export const date = style({
+  selectors: {
+    ...hoverTextStyle,
+  },
+});
+
+export const tag = style({
+  selectors: {
+    ...hoverTextStyle,
+  },
+});
+```
+
+参考: https://github.com/tonkotsuboy/kano-portfolio/pull/101/commits/c5573c561a2c60ced1a3d545ae2e190ad6480210
+
+## メリット ⑦ 乗り換えやすさ・捨てやすさ
+
+ライブラリを選定するときに重視しているのは捨てやすさ、乗り換えやすさです。 vanilla-extract は、通常の CSS や CSS Modules と同様、スタイルを別ファイルに定義します（`*.css.ts`）。今後、やはり CSS や CSS Module に戻したいというときや、別の CSS ライブラリに乗り換えたいときも、変更しやすいです。
+
+ちなみに、 CSS Modules から vanilla-extract に乗り換えた際、キーをケバブケースからキャメルケースに変える、値を `"""` で囲むなどの作業が必要でしたが、正規表現を使えばラクに変換できました。
+
 
 ## その他の機能
 
