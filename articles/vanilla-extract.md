@@ -85,7 +85,7 @@ TypeScript 4.2 で導入された `noPropertyAccessFromIndexSignature` [^2]を `
 
 ## typed-scss-modules を使えば型チェックが可能だが、型定義ファイルが煩わしい
 
-私は、開発の現場で CSS modules を使うときは、 [typed-scss-modules](https://www.npmjs.com/package/typed-scss-modules) を一緒に使っています。 typed-scss-modules を使えば、`styles` 用の型定義ファイルが生成されます。
+私が開発の現場で CSS modules を使うときは、 [typed-scss-modules](https://www.npmjs.com/package/typed-scss-modules) を一緒に使っています。 typed-scss-modules を使えば、`styles` 用の型定義ファイルが生成されます。
 
 ```ts
 export type Styles = {
@@ -329,7 +329,8 @@ export const date = style({
 });
 ```
 
-コードの `[``${link}:hover &``]` から見るとわかるように、別のスコープクラス名である `link` 要素を、`selectors` 内で参照できるのです。
+コードの ``[`${link}:hover &`]`` から見るとわかるように、別のスコープクラス名である `link` 要素を、`selectors` 内で参照できるのです。
+
 
 私が現場で使う際、まとめて `:hover` 時のスタイルを設定したかったので、次のように書きました。
 
