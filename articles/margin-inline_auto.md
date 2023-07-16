@@ -176,15 +176,3 @@ https://zenn.dev/moneyforward/articles/css-grid-centering
 ![](/images/margin-inline/caniuse.png)
 
 - [CSS property: margin-inline | Can I use](https://caniuse.com/mdn-css_properties_margin-inline)
-
-
-
-# 6/10（土）に大阪でCSSの勉強会を実施します
-
-6/10（土）に、大阪でCSSの勉強会をします。
-
-「Modern Coding 2023」と題し、開発現場で使える新しいCSSを紹介。ライブコーディング、セミハンズオン、質疑応答を交えながら進めます。アーカイブのみの参加も可能です。
-
-ぜひご参加ください💪
-
-https://cssniteosaka.doorkeeper.jp/events/157336
