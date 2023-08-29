@@ -7,15 +7,12 @@ published: true
 publication_name: moneyforward
 ---
 
-（2023/04/05）
-Chrome 112でもネストに対応したので記事を更新しました。
+（2023/08/29）
+全ブラウザでネストに対応したので記事を更新しました。
 
 ---
 
-先日リリースされたGoogle Chromeで、CSSでネスト（入れ子）ができるようになりました💐
-
-- 2023/04/05: [Chrome 112](https://developer.chrome.com/blog/new-in-chrome-112/)で対応💐
-- 2023/01/26: [Safari Technology Preview 162](https://webkit.org/blog/13703/release-notes-for-safari-technology-preview-162/)で対応💐
+本日2023/08/29、全ブラウザでCSSでネスト（入れ子）ができるようになりました💐
 
 次のようなコードが、「SassではなくCSSで」できるようになります。Sassを使わないCSSコーディングを大きく変えることでしょう。
 
@@ -303,15 +300,19 @@ BEMなどを使っている際、次のような `foo__bar` というクラス�
 
 @[tweet](https://twitter.com/tonkotsuboy_com/status/1269848769488515073)
 
-# CSSネストをブラウザで確認するには？
 
-CSSネストの対応ブラウザは、現状Google Chrome、Safari Technology Previewです。
+# ブラウザ対応状況
+
+2023/08/29にFirefox 117がリリースされたことにより、全ブラウザでネストが使えるようになりました。
+
 
 ![](/images/css-nesting-module/caniuse.png)
 
+https://caniuse.com/css-nesting
+
 # デモのURL
 
-各動作が確認できるURLは次のとおりです。Chrome 112、もしくはSafari Technology Preview 162でご確認ください。
+各動作が確認できるURLは次のとおりです。
 
 @[codepen](https://codepen.io/tonkotsuboy/pen/ExRbPgV)
 [https://codepen.io/tonkotsuboy/pen/ExRbPgV](https://codepen.io/tonkotsuboy/pen/ExRbPgV)
@@ -320,9 +321,12 @@ CSSネストの対応ブラウザは、現状Google Chrome、Safari Technology P
 
 ![](/images/css-nesting-module/canary-result.png)
 
+
+
 # 今すぐCSSネストを使うには？
 
-全ブラウザの対応はまだ先ですが、現状でも使いたければPostCSSのプラグインを使いましょう。
+全ブラウザ対応したといっても、古いブラウザの対応も必要なケースがあるでしょう。
+その場合は、PostCSSのプラグインを使いましょう。
 
 - [postcss\-plugins/plugins/postcss\-nesting](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nesting)
 
