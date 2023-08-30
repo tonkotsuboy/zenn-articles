@@ -29,11 +29,6 @@ publication_name: moneyforward
 ![](/images/css-nesting-module/example.png)
 
 
-▼ ブラウザの実行結果（Safari Technology Preview 162）
-
-![](/images/css-nesting-module/example-safari.png)
-
-
 機能はほぼSassのネストと同じですが、一部に違いがあります。
 
 本記事では、CSSネストの基本から各シーンでのコード例までを、デモを交えて紹介します。
@@ -305,10 +300,16 @@ BEMなどを使っている際、次のような `foo__bar` というクラス�
 
 2023/08/29にFirefox 117がリリースされたことにより、全ブラウザでネストが使えるようになりました。
 
-
 ![](/images/css-nesting-module/caniuse.png)
 
-https://caniuse.com/css-nesting
+- https://caniuse.com/css-nesting
+
+
+▼ 各ブラウザの実行結果
+
+![](/images/css-nesting-module/browsers.png)
+
+
 
 # デモのURL
 
