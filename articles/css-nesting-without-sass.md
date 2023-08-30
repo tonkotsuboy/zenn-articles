@@ -1,5 +1,5 @@
 ---
-title: "Sassなしで入れ子が可能に。CSSネストがブラウザにやってきた"
+title: "Sassなしで入れ子が可能に。CSSネストが全ブラウザ対応"
 emoji: "🧑🏻‍🎨"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["css"]
