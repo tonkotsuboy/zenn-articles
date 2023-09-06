@@ -7,12 +7,11 @@ published: true
 publication_name: moneyforward
 ---
 
-本日、Chrome 117のリリースでCSSのSubgridに対応しました。
+本日（米国時間2023/09/06）、Chrome 117のリリースでCSSのSubgridに対応しました。
 
 Subgridとは、CSS Gridの機能の一つで、親グリッドの行や列に子要素を整列させることが可能です。
 
-この記事では、Subgridの基本から応用までを、具体的なデモを交えて詳しく解説します。また、CSS Gridが初めての人でもわかりやすいよう、CSS
-Grid自体の解説も盛り込んでいます。
+この記事では、Subgridの基本から応用までを、具体的なデモを交えて詳しく解説します。また、CSS Gridが初めての人でもわかりやすいよう、CSS Grid自体の解説も盛り込んでいます。
 
 # 前提知識: CSS Gridとは
 
@@ -36,7 +35,7 @@ CSS Gridを使うと、次のようなことができます。
 
 ![](/images/subgrid/dense.png)
 
-# 従来のCSS Gridの限界と、subgridの登場
+# 複雑な行列の入れ子と、subgridの登場
 
 CSS Gridは柔軟な表現ができますが、表現の限界があります。 CSS Gridを使って、次のようなコンテンツを作るケースを考えてみましょう。
 
@@ -51,33 +50,35 @@ CSS Gridは柔軟な表現ができますが、表現の限界があります。
 ![](/images/subgrid/card.png =400x)
 *カード要素*
 
-コンテンツにおいては、カード内の各高さが、他のカードと一致しています。タイトル・説明文に注目してください。それぞれ、横並びになったカード内で、最大のタイトル・説明分の高さになっています。
+コンテンツにおいては、カード内のタイトル・画像・説明文・カテゴリの高さが、他のカードと一致しています。
+
+タイトル・説明文に注目してください。テキスト1行分・テキスト2行分のタイトルがあったり、テキスト2行分・テキスト3行分の説明文があります。 それぞれ、横並びになったカード内で、最大のタイトル・説明分の高さになっています。
 
 ![](/images/subgrid/demo_1.png)
 *ウインドウサイズ：大*
 
-コンテンツはレスポンシブ対応するので、横並びになったカード内のタイトル・説明文の高さは変わります。
+コンテンツはレスポンシブ対応するので、横並びになったカード内のタイトル・説明文の高さは変わります。ウインドウサイズが小さくなると、タイトルはテキスト1行分のみとなります。
 
 ![](/images/subgrid/demo_2.png)
 *ウインドウサイズ：小*
 
 ## 従来はJavaScriptを使っていた
 
-「ウインドウサイズが変わるごとンシブ対応するごとに、各行の最大の高さにあわせる」ということは、従来のCSSだけでは実現不可能です。
+「ウインドウサイズが変わるごとンシブ対応するごとに、各行の最大の高さにあわせる」ということは、従来のCSSだけでは実現不可能です。したがって、従来の開発現場では、JavaScriptを使って実現していました。
 
-開発の現場では、JavaScriptを使って実現していました。
+手順は次のとおりです。
 
 - JavaScriptを使って、行ごとの最大の高さを計算する
 - 各行の高さを指定する
 - ウインドウサイズが変わるごとに（あるいはブレイクポイントを跨ぐごとに）高さを計算し直す
 
-JavaScriptを使うため、処理の負荷が高く、パフォーマンスの悪化を引き起こしてしまいます。無理やり
+JavaScriptを使うため、処理の負荷が高く、パフォーマンスの悪化を引き起こしてしまいます。
 
-## Gridの入れ子で実現できる
+## Gridの入れ子で解決する
 
-目的のレイアウトは、Gridを入れ子にすれば解決できます。
+目的のレイアウトは、Gridを入れ子にすれば解決できます。具体的なコードの前に、まずは考え方を紹介します。
 
-まずは親Gridを作ります。次の図のケースでは、8行3列のGridになっています。
+親Gridを作ります。次の図のケースでは、8行3列のGridになっています。
 
 ![](/images/subgrid/parent_grid.png)
 *8行3列の親Grid*
@@ -97,17 +98,19 @@ JavaScriptを使うため、処理の負荷が高く、パフォーマンスの�
 ![](/images/subgrid/grid_ex_small.png)
 *ウインドウサイズ：小*
 
-従来のCSS Gridの仕様であるCSS Grid Layout Level 1では、そういった行列の入れ子をすることができませんでしたが、 新しい仕様であるCSS Grid Layout Level 2では、入れ子が可能になります。それが「subgrid」です。
+## Subgridの登場
+
+従来のCSS Gridの仕様であるCSS Grid Layout Level 1では、行列の入れ子をすることができませんでした。親Gridの中に子Gridを入れたとしても、子Gridを親Gridの行に揃えることはできません。
+
+![](/images/subgrid/css-grid-module-1.png)
+
+
+新しい仕様であるCSS Grid Layout Level 2では、行列の入れ子が可能になります。それが「subgrid」です。親Gridの中に子Gridを入れたとき、子Gridを親Gridの行に揃えることが可能になります。
+
+![](/images/subgrid/css-grid-module-2.png)
+
 
 subgridは、Firefox・Safariで対応済みでしたが、**本日（2023/09/06）リリースされたChrome 117でも対応しました**。Microsoft Edgeでは、9月14日週にリリースされる117で対応します。 これにより、**全ブラウザでsubgridが使えるようになります**。
-
-# デモURL
-
-こちらの URL からデモを確認できます。
-
-@[codepen](https://codepen.io/tonkotsuboy/pen/GRXexYY)
-
-- [別ウインドウで開く](https://codepen.io/tonkotsuboy/pen/GRXexYY)
 
 # 実践: subgrid を使ってカードレイアウトを作る
 
@@ -118,45 +121,28 @@ subgridは、Firefox・Safariで対応済みでしたが、**本日（2023/09/06
 HTMLは次のとおりです。
 
 ```html
-
 <div class="card-container">
-  <div class="item">
-    <h1 class="item-title">Feeling Good</h1>
+  <div class="card">
+    <h1 class="card-title">Feeling Good</h1>
     <img
       class="image"
       src="https://assets.codepen.io/221808/gallery_1.jpg"
-      width="360"
-      height="240"
-      alt=""
     />
     <p class="description">I AM A CAT. As yet I have no name.</p>
-    <div class="label">
-      <span class="material-symbols-outlined">pets</span>Goods
-    </div>
+    <div class="label">Goods</div>
   </div>
-  <div class="item">
-    <h1 class="item-title">What's going on here?</h1>
+  <div class="card">
+    <h1 class="card-title">What's going on here?</h1>
     <img
       class="image"
       src="https://assets.codepen.io/221808/gallery_2.jpg"
-      width="360"
-      height="240"
-      alt=""
     />
-    <!--  中略  -->
+    <!-- 中略 -->
   </div>
-  <div class="item">
-    <!--  中略  -->
-  </div>
-  <div class="item">
-    <!--  中略  -->
-  </div>
-  <div class="item">
-    <!--  中略  -->
-  </div>
-  <div class="item">
-    <!--  中略  -->
-  </div>
+  <div class="card"><!-- 中略 --></div>
+  <div class="card"><!-- 中略 --></div>
+  <div class="card"><!-- 中略 --></div>
+  <div class="card"><!-- 中略 --></div>
 </div>
 ```
 
@@ -201,7 +187,7 @@ HTMLは次のとおりです。
 
 ## 3. 子要素をCSS Gridで配置する
 
-ここからがsubgridの出番です。 子Gridである`.card`要素に、CSS Gridを指定しています。そして、子Gridの行の高さを、親Gridの行の高さに合わせるよう、指定してます。
+ここからがsubgridの出番です。次のように指定します。
 
 ```css
 .card {
@@ -211,6 +197,8 @@ HTMLは次のとおりです。
 }
 ```
 
+- `display: grid;`
+  - `.card`要素を、CSS Gridで配置する
 - `grid-template-rows` プロパティ
   - **行**方向のサイズを指定する
 - `subgrid`
@@ -220,7 +208,7 @@ HTMLは次のとおりです。
 
 組み合わせると、次の結果になります。
 
-- 子Gridである `.card` 要素内の各行が、親Girdの`.card-container`要素の行に行トラックにしたがう
+- 子Gridである `.card` 要素内の各行が、親Girdの`.card-container`要素の行トラックにしたがう
 - `.card` 要素の高さは、`.card-container`要素の4行分
 
 ここまでの実行結果は次のとおりです。各カードの要素の高さが揃っていますね。
@@ -263,8 +251,7 @@ Firefox・Safari・Edgeの全ブラウザにて同様の機能があります。
 
 ## 5. 子Gridで要素間の隙間（`gap`）を指定する
 
-Subgridの便利な点は、**子Gridにおいて要素の隙間を上書きできることです**。親Gridの隙間が`40px`
-で大きすぎるので、子Gridは `12px` に指定しましょう。
+Subgridの便利な点は、**子Gridにおいて要素の隙間を上書きできることです**。親Gridの隙間が`40px`で大きすぎるので、子Gridは`12px`に指定しましょう。
 
 ```css
 /* 親のgap */
@@ -294,25 +281,32 @@ Subgridの便利な点は、**子Gridにおいて要素の隙間を上書きで�
 
 ![](/images/subgrid/devtool_subgrid.png)
 
+# デモのURL
+
+今回のデモは、こちらのURLから確認できます。Subgridに対応しているブラウザでご確認ください。
+
+@[codepen](https://codepen.io/tonkotsuboy/pen/GRXexYY)
+
+- [別ウインドウで開く](https://codepen.io/tonkotsuboy/pen/GRXexYY)
+
 # 対応ブラウザ
 
-subgridの対応ブラウザは次のとおりです。
+Subgridの対応ブラウザは次のとおりです。
 
-本日（2023/09/06）にChrome 117が対応しました。Chromeと同じChromiumエンジンを使っているMicrosoft
-Edgeも、[9月14日週にリリースされる](https://learn.microsoft.com/en-us/deployedge/microsoft-edge-release-schedule)
-117でsubgridに対応します。これで、全ブラウザでsubgridが使えることになります。
+本日（米国時間2023/09/06）にChrome 117が対応しました。Chromeと同じChromiumエンジンを使っているMicrosoft Edgeも、117でsubgridに対応します。Edge 117は[9月14日週にリリースされる予定です](https://learn.microsoft.com/en-us/deployedge/microsoft-edge-release-schedule)。全ブラウザでsubgridが使えることになります。
 
 各ブラウザ対応開始バージョンは次のとおり。使用する際は、プロジェクトの対象ブラウザに気をつけましょう。
 
-- Chrome 117 で対応（NEW！）
-- Safari 16.0 で対応
-- Firefox 71 で対応
-- Edge 117 で対応予定（NEW！）
+- Chrome 117で対応 🆕
+- Safari 16.0で対応
+- Firefox 71で対応
+- Edge 117で対応予定 🆕
 
 # subgridを待ちわびていた
 
-CSS Gridが全ブラウザ対応したのは2017年頃でしたが、その頃から行列の入れ子をしたいとずっと思っていました。私はよく勉強会でCSS
-Gridを取り上げますが、subgridを取り上げる度に「まだ対応しないのかな？」と首を長くして待っていました。
+CSS Gridが全ブラウザ対応したのは2017年頃でしたが、その頃から行列の入れ子をしたいとずっと思っていました。とりわけ、開発現場では複雑な入れ子のレイアウトをしたいケースが間々あり、subgridの登場によりGridの表現が大きく変わると確信しています。
+
+ちなみに、私が勉強会で初めてsubgridを取り上げたのは2018年で、当時はどのブラウザも対応していませんでした。
 
 # CSS Gridを学ぶ関連資料
 
@@ -324,7 +318,7 @@ https://cssnite-osaka.com/vol52/followup/session01.html
 
 https://speakerdeck.com/tonkotsuboy_com/css-gridflexboxno-zui-jin-nojin-hua-tomirai
 
-# 関連資料
+# 参考資料
 
 - [サブグリッド - MDN](https://developer.mozilla.org/ja/docs/Web/CSS/CSS_grid_layout/Subgrid)
 - [CSS Grid Layout Module Level 2 - subgrid](https://drafts.csswg.org/css-grid/#subgrids)
