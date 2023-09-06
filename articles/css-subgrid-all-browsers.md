@@ -64,7 +64,7 @@ CSS Gridは柔軟な表現ができますが、表現の限界があります。
 
 ## 従来はJavaScriptを使っていた
 
-「ウインドウサイズが変わるごとンシブ対応するごとに、各行の最大の高さにあわせる」ということは、従来のCSSだけでは実現不可能です。したがって、従来の開発現場では、JavaScriptを使って実現していました。
+「ウインドウサイズが変わるごとに、各行の最大の高さにあわせる」ということは、従来のCSSだけでは実現不可能です。したがって、従来の開発現場では、JavaScriptを使って実現していました。
 
 手順は次のとおりです。
 
@@ -206,6 +206,8 @@ HTMLは次のとおりです。
 - `grid-row: span 4;`
   - 自身の行について、4行分のサイズを使うようにする。subgridが指定されていることにより、親要素の4行分の高さになる
 
+`grid-template-rows: subgrid;` の部分が、今回新たに使えるようになったsubgridの機能（CSS Grid Layout Level 2）です。本記事内の他の技術は、全て従来のCSS Gridの機能（CSS Grid Layout Level 1）です。
+
 組み合わせると、次の結果になります。
 
 - 子Gridである `.card` 要素内の各行が、親Girdの`.card-container`要素の行トラックにしたがう
@@ -285,43 +287,50 @@ Subgridの便利な点は、**子Gridにおいて要素の隙間を上書きで�
 
 今回のデモは、こちらのURLから確認できます。Subgridに対応しているブラウザでご確認ください。
 
-@[codepen](https://codepen.io/tonkotsuboy/pen/GRXexYY)
+@[codepen](https://codepen.io/tonkotsuboy/pen/VwqmzeJ)
 
-- [別ウインドウで開く](https://codepen.io/tonkotsuboy/pen/GRXexYY)
+- [別ウインドウで開く](https://codepen.io/tonkotsuboy/pen/VwqmzeJ)
 
 # 対応ブラウザ
 
 Subgridの対応ブラウザは次のとおりです。
 
+|                    | 対応開始バージョン |
+|--------------------|----------|
+| Chrome             | 117 🆕   |
+| Safari             | 16.0     |
+| Firefox            | 71       |
+| Edge               | 117 🆕    |
+| Chrome for Android | 117 🆕    |
+| Safari on iOS      | 16.0     |
+
 本日（米国時間2023/09/06）にChrome 117が対応しました。Chromeと同じChromiumエンジンを使っているMicrosoft Edgeも、117でsubgridに対応します。Edge 117は[9月14日週にリリースされる予定です](https://learn.microsoft.com/en-us/deployedge/microsoft-edge-release-schedule)。全ブラウザでsubgridが使えることになります。
 
-各ブラウザ対応開始バージョンは次のとおり。使用する際は、プロジェクトの対象ブラウザに気をつけましょう。
 
-- Chrome 117で対応 🆕
-- Safari 16.0で対応
-- Firefox 71で対応
-- Edge 117で対応予定 🆕
+# SubgridはGridの表現を大きく変える待望の機能
 
-# subgridを待ちわびていた
+CSS Gridが全ブラウザ対応したのは2017年頃でしたが、その頃から行列の入れ子をしたいとずっと思っていました。私は定期的に勉強会で登壇するのですが、[初めてsubgridを取り上げたのは2018年](https://cssnite.jp/archives/post_3023.html)で、当時はどのブラウザも対応していませんでした。2019年にFirefoxが71でいち早く対応し、2022年のSafari 16.0が続いた形です。
 
-CSS Gridが全ブラウザ対応したのは2017年頃でしたが、その頃から行列の入れ子をしたいとずっと思っていました。とりわけ、開発現場では複雑な入れ子のレイアウトをしたいケースが間々あり、subgridの登場によりGridの表現が大きく変わると確信しています。
-
-ちなみに、私が勉強会で初めてsubgridを取り上げたのは2018年で、当時はどのブラウザも対応していませんでした。
+私は、開発現場では複雑な入れ子のレイアウトをしたいケースが間々ありますが、今回のようなレイアウトではJavaScriptを使うしかありませんでした。subgridの登場により、CSSだけで入れ子が実現できるので、Gridの表現が大きく変わると確信しています。
 
 # CSS Gridを学ぶ関連資料
 
 基本的な内容から応用的な内容まで、CSS Gridの情報を発信しています。本記事とあわせてご参照ください。
 
-https://cssnite.jp/archives/post_3023.html
+https://zenn.dev/moneyforward/articles/css-grid-centering
+
+https://speakerdeck.com/tonkotsuboy_com/css-gridflexboxno-zui-jin-nojin-hua-tomirai
 
 https://cssnite-osaka.com/vol52/followup/session01.html
 
-https://speakerdeck.com/tonkotsuboy_com/css-gridflexboxno-zui-jin-nojin-hua-tomirai
+https://cssnite.jp/archives/post_3023.html
+
 
 # 参考資料
 
 - [サブグリッド - MDN](https://developer.mozilla.org/ja/docs/Web/CSS/CSS_grid_layout/Subgrid)
 - [CSS Grid Layout Module Level 2 - subgrid](https://drafts.csswg.org/css-grid/#subgrids)
+- [Hello Subgrid! CSSConf.eu](https://noti.st/rachelandrew/i6gUcF/hello-subgrid)
 
 # スペシャルサンクス
 
