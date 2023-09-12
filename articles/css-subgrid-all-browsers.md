@@ -7,7 +7,7 @@ published: true
 publication_name: moneyforward
 ---
 
-本日（米国時間2023/09/06）、Chrome 117のリリースでCSSのSubgridに対応しました。
+本日（米国時間2023/09/12）、Chrome 117のリリースでCSSのSubgridに対応しました。
 
 Subgridとは、CSS Gridの機能の一つで、親グリッドの行や列に子要素を整列させることが可能です。
 
@@ -110,7 +110,7 @@ JavaScriptを使うため、処理の負荷が高く、パフォーマンスの�
 ![](/images/subgrid/css-grid-module-2.png)
 
 
-subgridは、Firefox・Safariで対応済みでしたが、**本日（2023/09/06）リリースされたChrome 117でも対応しました**。Microsoft Edgeでは、9月14日週にリリースされる117で対応します。 これにより、**全ブラウザでsubgridが使えるようになります**。
+subgridは、Firefox・Safariで対応済みでしたが、**本日リリースされたChrome 117でも対応しました**。Microsoft Edgeでは、9月14日週にリリースされる117で対応します。 これにより、**全ブラウザでsubgridが使えるようになります**。
 
 # 実践: subgrid を使ってカードレイアウトを作る
 
@@ -304,7 +304,7 @@ Subgridの対応ブラウザは次のとおりです。
 | Chrome for Android | 117 🆕    |
 | Safari on iOS      | 16.0     |
 
-本日（米国時間2023/09/06）にChrome 117が対応しました。Chromeと同じChromiumエンジンを使っているMicrosoft Edgeも、117でsubgridに対応します。Edge 117は[9月14日週にリリースされる予定です](https://learn.microsoft.com/en-us/deployedge/microsoft-edge-release-schedule)。全ブラウザでsubgridが使えることになります。
+本日にChrome 117が対応しました。Chromeと同じChromiumエンジンを使っているMicrosoft Edgeも、117でsubgridに対応します。Edge 117は[9月14日週にリリースされる予定です](https://learn.microsoft.com/en-us/deployedge/microsoft-edge-release-schedule)。全ブラウザでsubgridが使えることになります。
 
 
 # SubgridはGridの表現を大きく変える待望の機能
