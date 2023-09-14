@@ -306,7 +306,9 @@ Subgridの対応ブラウザは次のとおりです。
 | Chrome for Android | 117 🆕    |
 | Safari on iOS      | 16.0     |
 
-本日、Chrome 117が対応しました。Chromeと同じChromiumエンジンを使っているMicrosoft Edgeも、117でsubgridに対応します。Edge 117は[9月14日週にリリースされる予定です](https://learn.microsoft.com/en-us/deployedge/microsoft-edge-release-schedule)。全ブラウザでsubgridが使えることになります。
+- 参考: [Can I use](https://caniuse.com/css-subgrid)
+
+本日（2023/09/12）にChrome 117が対応しました。Chromeと同じChromiumエンジンを使っているMicrosoft Edgeも、117でsubgridに対応します。Edge 117は[9月14日週にリリースされる予定です](https://learn.microsoft.com/en-us/deployedge/microsoft-edge-release-schedule)。全ブラウザでsubgridが使えることになります。
 
 
 # SubgridはGridの表現を大きく変える待望の機能
@@ -344,4 +346,8 @@ https://cssnite.jp/archives/post_3023.html
 
 - [@swwwitch](https://twitter.com/swwwitch)
 
+# 9/27にTechFeed Experts Nightで話します
 
+9/27(水) 開催のTechFeed Experts Night#26にて、subgridについて発表します。ぜひご参加ください！
+
+https://techfeed.io/events/techfeed-experts-night-26
