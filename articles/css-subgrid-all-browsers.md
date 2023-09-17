@@ -7,7 +7,7 @@ published: true
 publication_name: moneyforward
 ---
 
-本日（米国時間2023/09/12）、Chrome 117のリリースでCSSのSubgridに対応しました。
+Chrome 117・Edge 117のリリースにより、CSSのSubgridが全ブラウザに対応しました。
 
 Subgridとは、CSS Gridで新しく使えるようになった機能の一つ。行列（グリッド）を入れ子にして、親行列の行や列に子行列を整列させることが可能です。
 
@@ -110,7 +110,7 @@ JavaScriptを使うため、処理の負荷が高く、パフォーマンスの�
 ![](/images/subgrid/css-grid-module-2.png)
 
 
-subgridは、Firefox・Safariで対応済みでしたが、**本日リリースされたChrome 117でも対応しました**。Microsoft Edgeでは、9月14日週にリリースされる117で対応します。 これにより、**全ブラウザでsubgridが使えるようになります**。
+subgridは、Firefox・Safariで対応済みでしたが、9/12にリリースされたChrome 117、9/15にリリースされたEdge 117でも対応しました**。これにより、**全ブラウザでsubgridが使えるようになりました**。
 
 # 実践: subgrid を使ってカードレイアウトを作る
 
@@ -308,8 +308,7 @@ Subgridの対応ブラウザは次のとおりです。
 
 - 参考: [Can I use](https://caniuse.com/css-subgrid)
 
-本日（2023/09/12）にChrome 117が対応しました。Chromeと同じChromiumエンジンを使っているMicrosoft Edgeも、117でsubgridに対応します。Edge 117は[9月14日週にリリースされる予定です](https://learn.microsoft.com/en-us/deployedge/microsoft-edge-release-schedule)。全ブラウザでsubgridが使えることになります。
-
+本日（2023/09/12）にChrome 117が対応しました。Chromeと同じChromiumエンジンを使っているMicrosoft Edgeも、9/15リリースの117でsubgridに対応しました。これで全ブラウザでsubgridが使えることになりました。
 
 # SubgridはGridの表現を大きく変える待望の機能
 
@@ -346,8 +345,4 @@ https://cssnite.jp/archives/post_3023.html
 
 - [@swwwitch](https://twitter.com/swwwitch)
 
-# 9/27にTechFeed Experts Nightで話します
 
-9/27(水) 開催のTechFeed Experts Night#26にて、subgridについて発表します。ぜひご参加ください！
-
-https://techfeed.io/events/techfeed-experts-night-26
