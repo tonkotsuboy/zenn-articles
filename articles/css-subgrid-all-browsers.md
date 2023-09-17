@@ -7,11 +7,11 @@ published: true
 publication_name: moneyforward
 ---
 
-2023/9/12にChrome 117、・9/15にEdge 117がリリースされ、CSSのSubgridが全ブラウザに対応しました。
+2023/9/12にChrome 117、9/15にEdge 117がリリースされ、CSSのSubgridが全ブラウザに対応しました。
 
 Subgridとは、CSS Gridで新しく使えるようになった機能の一つ。行列（グリッド）を入れ子にして、親行列の行や列に子行列を整列させることが可能です。
 
-この記事では、Subgridの基本から応用までを、具体的なデモを交えて詳しく解説します。また、CSS Gridが初めての人でもわかりやすいよう、CSS Grid自体の解説も盛り込んでいます。
+この記事では、Subgridの基本から応用までを具体的なデモを交えて詳しく解説します。CSS Gridが初めての人でもわかりやすいよう、CSS Grid自体の解説も盛り込んでいます。
 
 # 前提知識: CSS Gridとは
 
@@ -341,7 +341,7 @@ https://cssnite.jp/archives/post_3023.html
 
 - [@matsu_eri](https://twitter.com/matsu_eri)
 
-また、[行列画像](https://zenn.dev/moneyforward/articles/css-subgrid-all-browsers#%E5%89%8D%E6%8F%90%E7%9F%A5%E8%AD%98%3A-css-grid%E3%81%A8%E3%81%AF)の作成には、鷹野さんにご協力いただきました。
+[行列画像](https://zenn.dev/moneyforward/articles/css-subgrid-all-browsers#%E5%89%8D%E6%8F%90%E7%9F%A5%E8%AD%98%3A-css-grid%E3%81%A8%E3%81%AF)の作成には、鷹野さんにご協力いただきました。
 
 - [@swwwitch](https://twitter.com/swwwitch)
 
