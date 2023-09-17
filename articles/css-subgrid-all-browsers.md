@@ -1,5 +1,5 @@
 ---
-title: "CSSのSubgridが全ブラウザ対応へ。Gridの入れ子の基本から応用までを完全理解する"
+title: "CSSのSubgridが全ブラウザ対応。Gridの入れ子の基本から応用までを完全理解する"
 emoji: "🎃️"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: [ "css" ]
