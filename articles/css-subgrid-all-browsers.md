@@ -7,7 +7,7 @@ published: true
 publication_name: moneyforward
 ---
 
-Chrome 117・Edge 117のリリースにより、CSSのSubgridが全ブラウザに対応しました。
+2023/9/12にChrome 117、・9/15にEdge 117がリリースされ、CSSのSubgridが全ブラウザに対応しました。
 
 Subgridとは、CSS Gridで新しく使えるようになった機能の一つ。行列（グリッド）を入れ子にして、親行列の行や列に子行列を整列させることが可能です。
 
