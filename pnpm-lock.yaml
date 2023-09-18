@@ -9,8 +9,8 @@ dependencies:
     specifier: ^3.0.3
     version: 3.0.3
   zenn-cli:
-    specifier: ^0.1.144
-    version: 0.1.144
+    specifier: ^0.1.146
+    version: 0.1.146
 
 packages:
 
@@ -20,8 +20,8 @@ packages:
     hasBin: true
     dev: false
 
-  /zenn-cli@0.1.144:
-    resolution: {integrity: sha512-vReeYJg2ySjIUKSm5shKdi8rLmMO31Mtk7/xcTJVMSY0sLWJemTgtV8Mcpe1lIvTLKwg5SjfAa3iWjX0HIy3EA==}
+  /zenn-cli@0.1.146:
+    resolution: {integrity: sha512-IjxTGvaatNpaTl/3spegOqSIOZOZG+QAllbQjlsgS3yxKRWZZ4dl2XRpTpaI5Qg9E4NCuX5EZ9+SM+9cxdzSgQ==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     dev: false
