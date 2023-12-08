@@ -166,7 +166,7 @@ main section {
 
 CSS Gridによる中央揃えについては、次の記事で詳しく解説しています。
 
-https://zenn.dev/moneyforward/articles/css-grid-centering
+https://zenn.dev/tonkotsuboy_com/articles/css-grid-centering
 
 # 対応ブラウザ
 

@@ -388,7 +388,7 @@ CSSは次のとおりです。
 
 `margin-inline: auto;` による左右中央揃えもあわせて覚えておくと、表現力が上がります。次の記事で詳しく解説しました。
 
-https://zenn.dev/moneyforward/articles/margin-inline_auto
+https://zenn.dev/tonkotsuboy_com/articles/margin-inline_auto
 
 # 最後に
 

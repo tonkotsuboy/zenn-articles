@@ -382,7 +382,7 @@ export const tag = style({
 
 ## その他の機能
 
-vanilla-extract では、 `@media` や `@container` も使えますし、型の恩恵も受けられます。たとえば、[コンテナクエリ](https://zenn.dev/moneyforward/articles/css-container-query)の記法は次のとおりです。
+vanilla-extract では、 `@media` や `@container` も使えますし、型の恩恵も受けられます。たとえば、[コンテナクエリ](https://zenn.dev/tonkotsuboy_com/articles/css-container-query)の記法は次のとおりです。
 
 ```ts
 export const foo = style({

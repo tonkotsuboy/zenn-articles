@@ -133,7 +133,7 @@ https://twitter.com/tonkotsuboy_com/status/1640516966170644480
 
 先日、全ブラウザでコンテナクエリ `@container` が使えるようになりました。詳しくは次の記事で解説しましたが、 ウインドウサイズではなく要素のサイズを基準にレスポンシブ対応できるものです。
 
-https://zenn.dev/moneyforward/articles/css-container-query
+https://zenn.dev/tonkotsuboy_com/articles/css-container-query
 
 次の HTML にて、 `.container` 要素が `300px` 以上のときに文字を赤色にしてみます。 
 
