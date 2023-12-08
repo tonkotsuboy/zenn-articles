@@ -4,7 +4,6 @@ emoji: "🌼"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["javascript"]
 published: true
-publication_name: moneyforward
 ---
 JavaScriptの仕様はECMAScriptで、ECMAScript 2015（ES2015）、ECMAScript 2016（ES2016）...というように毎年進化を続けています。
 

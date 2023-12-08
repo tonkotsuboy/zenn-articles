@@ -4,7 +4,6 @@ emoji: "🎁"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: [ "css" ]
 published: true
-publication_name: moneyforward
 ---
 
 本日（2023/2/14）、ついに Firefox でコンテナクエリ（container query）に対応しました。Chrome・Edge・Safari はすでに現行ブラウザで対応済みのため、全ブラウザにてコンテナクエリが使えることになります💐

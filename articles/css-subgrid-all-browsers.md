@@ -4,7 +4,6 @@ emoji: "🎃️"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: [ "css" ]
 published: true
-publication_name: moneyforward
 ---
 
 2023/9/12にChrome 117、9/15にEdge 117がリリースされ、CSSのSubgridが全ブラウザに対応しました。
@@ -320,7 +319,7 @@ CSS Gridが全ブラウザ対応したのは2017年頃でしたが、その頃�
 
 基本的な内容から応用的な内容まで、CSS Gridの情報を発信しています。本記事とあわせてご参照ください。
 
-https://zenn.dev/moneyforward/articles/css-grid-centering
+https://zenn.dev/tonkotsuboy_com/articles/css-grid-centering
 
 https://speakerdeck.com/tonkotsuboy_com/css-gridflexboxno-zui-jin-nojin-hua-tomirai
 
@@ -341,7 +340,7 @@ https://cssnite.jp/archives/post_3023.html
 
 - [@matsu_eri](https://twitter.com/matsu_eri)
 
-[行列画像](https://zenn.dev/moneyforward/articles/css-subgrid-all-browsers#%E5%89%8D%E6%8F%90%E7%9F%A5%E8%AD%98%3A-css-grid%E3%81%A8%E3%81%AF)の作成には、鷹野さんにご協力いただきました。
+[行列画像](https://zenn.dev/tonkotsuboy_com/articles/css-subgrid-all-browsers#%E5%89%8D%E6%8F%90%E7%9F%A5%E8%AD%98%3A-css-grid%E3%81%A8%E3%81%AF)の作成には、鷹野さんにご協力いただきました。
 
 - [@swwwitch](https://twitter.com/swwwitch)
 

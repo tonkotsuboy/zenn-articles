@@ -4,7 +4,6 @@ emoji: "🍨"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: [ "css", "typescript", "react", "nextjs"]
 published: true
-publication_name: moneyforward
 ---
 
 私はこれまで、 React ・ Next.js でのスタイリングには、CSS Modules + Sass を使っていましたが、最近は [vanilla-extract](https://vanilla-extract.style/) を使うようになりました。TypeScript との相性が良く、長い間求めていた CSS 開発体験が実現できるためです。
@@ -383,7 +382,7 @@ export const tag = style({
 
 ## その他の機能
 
-vanilla-extract では、 `@media` や `@container` も使えますし、型の恩恵も受けられます。たとえば、[コンテナクエリ](https://zenn.dev/moneyforward/articles/css-container-query)の記法は次のとおりです。
+vanilla-extract では、 `@media` や `@container` も使えますし、型の恩恵も受けられます。たとえば、[コンテナクエリ](https://zenn.dev/tonkotsuboy_com/articles/css-container-query)の記法は次のとおりです。
 
 ```ts
 export const foo = style({
