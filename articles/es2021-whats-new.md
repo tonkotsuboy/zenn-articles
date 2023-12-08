@@ -4,7 +4,6 @@ emoji: "💐"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["javascript"]
 published: true
-publication_name: moneyforward
 ---
 
 2022/06/22追記

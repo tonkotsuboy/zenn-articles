@@ -4,7 +4,6 @@ emoji: "🫨"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: [ "css" ]
 published: true
-publication_name: moneyforward
 ---
 
 筆者が CSS を学び始めたとき、media query で画面サイズに応じてスタイルを変える方法が大変ニガテでした😭 `min`？ `max`？ 未満のときはどうするの？ `and` で繋げなきゃいけないの？ 長くない？ と疑問に思いながら、今日まで長い年月を過ごしてきました。

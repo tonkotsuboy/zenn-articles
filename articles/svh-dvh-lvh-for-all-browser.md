@@ -4,7 +4,6 @@ emoji: "📱"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["css"]
 published: true
-publication_name: moneyforward
 ---
 
 iOS SafariやAndroid Chromeの画面の高さいっぱいにヒーローイメージを表示するという表現は、よく見かけます。

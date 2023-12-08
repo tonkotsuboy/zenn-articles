@@ -4,7 +4,6 @@ emoji: "🫎"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: [ "css" ]
 published: true
-publication_name: moneyforward
 ---
 
 要素を左右中央揃えにしたいとき、よく使われるのが `margin-left: auto` と `margin-right: auto` です。

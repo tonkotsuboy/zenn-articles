@@ -4,7 +4,6 @@ emoji: "⚽︎"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["css"]
 published: true
-publication_name: moneyforward
 ---
 
 CSSで要素を上下左右中央揃え（以下、中央揃え）する機会は多いです。要素は1つだけの場合もありますし、複数の要素の場合もあります。

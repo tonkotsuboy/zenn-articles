@@ -4,7 +4,6 @@ emoji: "🎃️"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: [ "css" ]
 published: true
-publication_name: moneyforward
 ---
 
 2023/9/12にChrome 117、9/15にEdge 117がリリースされ、CSSのSubgridが全ブラウザに対応しました。
