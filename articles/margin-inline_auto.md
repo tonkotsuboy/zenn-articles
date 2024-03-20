@@ -4,7 +4,6 @@ emoji: "🫎"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: [ "css" ]
 published: true
-publication_name: moneyforward
 ---
 
 要素を左右中央揃えにしたいとき、よく使われるのが `margin-left: auto` と `margin-right: auto` です。
@@ -167,7 +166,7 @@ main section {
 
 CSS Gridによる中央揃えについては、次の記事で詳しく解説しています。
 
-https://zenn.dev/moneyforward/articles/css-grid-centering
+https://zenn.dev/tonkotsuboy_com/articles/css-grid-centering
 
 # 対応ブラウザ
 

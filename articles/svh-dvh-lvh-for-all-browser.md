@@ -4,7 +4,6 @@ emoji: "📱"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["css"]
 published: true
-publication_name: moneyforward
 ---
 
 iOS SafariやAndroid Chromeの画面の高さいっぱいにヒーローイメージを表示するという表現は、よく見かけます。
@@ -210,9 +209,9 @@ JavaScriptを使う手法もありますが、いずれも`svh`の便利さに�
 
 `svh`・`lvh`・`dvh`以外にも、さまざまな単位が使えるようになりました。
 
-## `vmax`・`vimn`について
+## `vmax`・`vmin`について
 
-以前から`vmax`・`vimn`という単位が使えました。おさらいしておくと、次のとおりです。
+以前から`vmax`・`vmin`という単位が使えました。おさらいしておくと、次のとおりです。
 
 - `vmax`: ビューポートのうち、幅か高さの大きい方
 - `vmin`: ビューポートのうち、幅か高さの小さい方

@@ -4,7 +4,6 @@ emoji: "🐯"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["typescript", "javascript"]
 published: true
-publication_name: moneyforward
 ---
 
 TypeScript 4.9 から、`satisfies` operator が使えるようになりました。従来の`as const`と組み合わせ、型チェックと widening 防止を同時に行えます。筆者的には、"顧客が本当に必要だったもの"です。
