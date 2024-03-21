@@ -7,31 +7,30 @@ published: true
 publication_name: ubie_dev
 ---
 
-結論を先に言うと、6月リリース予定のTypeScript 5.5で次のようなコードが型安全になります。
-
-従来: TypeScript 5.4以前 
+現状のTypeScript （執筆時点で5.4）では、ユーザー定義型ガードを使う際には型述語の記述が必要です。
 
 ```ts
 function isNumber(value: number | string): value is number {
   return typeof value === 'number';
 }
-
-const result = [12, null, 24, undefined, 48]
-  .filter((value): value is number => value != null);
 ```
 
-今後: TypeScript 5.5以降
+6月リリース予定のTypeScript 5.5では、関数の実体から型推論が可能になります。すなわち、次のようなコードが可能になります。
 
 ```ts
 function isNumber(value: number | string) {
   return typeof value === 'number';
 }
+```
 
+配列の`filter`メソッドで型を絞り込む際にも、型述語を記述する必要がなくなります。たとえば、次のようなコードが可能になります。
+
+```ts
 const result = [12, null, 24, undefined, 48]
   .filter((value) => value != null);
 ```
 
-TypeScript 5.5の実際のコードを交えながら、本記事で詳しく解説します。コードを動かせるプレイグラウンドのリンクも用意してあるので、ぜひ手を動かしてみて動作をご確認ください。
+本記事では、 従来の型述語の危険性とTypeScript 5.5における型述語の型推論について、具体的なコードを交えながら詳しく解説します。コードを動かせるプレイグラウンドのリンクも用意してあるので、ぜひ手を動かしてみて動作をご確認ください。
 
 # これまでの型述語の危険性
 
