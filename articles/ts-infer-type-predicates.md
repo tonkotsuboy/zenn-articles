@@ -218,6 +218,27 @@ const result = [new Foo(), new Bar()].filter(x => x instanceof Foo);
 //    Foo[] に推論される
 ```
 
+# プロパティによる絞り込みは現状だとできない
+
+TypeScript 5.5-dev.20240320の段階では、プロパティによる絞り込みを行うユーザー定義型ガードの結果は推論してくれないようです。具体的には、次のようなコードで `isA`関数の返り値が `x is A` と推論されることはないようです。
+
+```ts
+type A = { type: "A"; a: number };
+type B = { type: "B"; b: number };
+
+function isA(x: A | B) {
+  return x.type === "A";
+}
+
+let foo: any;
+
+// doesn't work
+if (isA(foo)) {
+  foo;
+// ^?
+}
+```
+
 # `filter`の型の絞り込みが型安全になって最高
 
 配列の`filter`メソッドと型述語を使う度に、そのコードの危険性に震えていました。TypeScript 5.5での型述語の推論（infer type predicates）のおかげでその危険性がなくなるので一安心です。
