@@ -242,9 +242,13 @@ if (isA(foo)) {
 
 # `filter`の型の絞り込みが型安全になって最高
 
-配列の`filter`メソッドと型述語を使う度に、そのコードの危険性に震えていました。TypeScript 5.5での型述語の推論（infer type predicates）のおかげでその危険性がなくなるので一安心です。積極的に使っていきます🍜
+配列の`filter`メソッドと型述語を使う度に、そのコードの危険性に震えていました。TypeScript 5.5での型述語の推論（infer type predicates）のおかげでその危険性がなくなるので一安心です。
 
 https://twitter.com/tonkotsuboy_com/status/1769994147291889669
+
+TypeScript 5.5は、現状だと2024年6月18日のリリース予定です。楽しみに待ちましょう。
+
+https://github.com/microsoft/TypeScript/issues/57475
 
 
 # 参考記事
@@ -255,6 +259,3 @@ https://github.com/microsoft/TypeScript/pull/57465
 https://www.typescriptlang.org/docs/handbook/2/narrowing.html#using-type-predicates
 
 https://www.totaltypescript.com/type-predicate-inference
-
-
-
