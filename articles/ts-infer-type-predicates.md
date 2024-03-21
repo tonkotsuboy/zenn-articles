@@ -7,7 +7,7 @@ published: true
 publication_name: ubie_dev
 ---
 
-現状のTypeScript （執筆時点で5.4）では、ユーザー定義型ガードを使う際には型述語の記述が必要です。
+現状のTypeScript （執筆時点で5.4）では、ユーザー定義型ガードを使う際には型述語（用語は後ほど解説します）の記述が必要です。
 
 ```ts
 function isNumber(value: number | string): value is number {
@@ -15,7 +15,7 @@ function isNumber(value: number | string): value is number {
 }
 ```
 
-6月リリース予定のTypeScript 5.5では、関数の実体から型推論が可能になります。すなわち、次のようなコードが可能になります。
+6月リリース予定のTypeScript 5.5では、関数の実体から型述語の型推論（infer type predicates）が可能になります。すなわち、次のようなコードが可能になります。
 
 ```ts
 function isNumber(value: number | string) {
@@ -23,18 +23,21 @@ function isNumber(value: number | string) {
 }
 ```
 
-配列の`filter`メソッドで型を絞り込む際にも、型述語を記述する必要がなくなります。たとえば、次のようなコードが可能になります。
+配列の`filter`メソッドで型を絞り込む際にも、型述語の型推論が可能となります。たとえば、次のようなコードのように`x is S`の記述をせずとも`filter`メソッドで型が正しく推論されます。
 
 ```ts
 const result = [12, null, 24, undefined, 48]
   .filter((value) => value != null);
+//    resultはnumber[]に推論される
 ```
 
-本記事では、 従来の型述語の危険性とTypeScript 5.5における型述語の型推論について、具体的なコードを交えながら詳しく解説します。コードを動かせるプレイグラウンドのリンクも用意してあるので、ぜひ手を動かしてみて動作をご確認ください。
+長年、TypeScriptのユーザーが求めていた挙動であり、今後の開発がラクになります。
+
+本記事では、 従来の型述語の危険性とTypeScript 5.5における型述語の型推論について具体的なコードを交えながら詳しく解説します。コードを動かせるプレイグラウンドのリンクも用意してあるので、ぜひ手を動かしてみて動作をご確認ください。
 
 # これまでの型述語の危険性
 
-従来、TypeScriptには、ユーザー定義型カード（User-defined type guard）を使って型を絞り込むことができました。たとえば、次のような関数を定義することで、`value`が`number`であることをTypeScriptに伝えることができます。 返り値の`value is number`の箇所は、型述語（type predicate）と呼ばれます。
+従来、TypeScriptには、ユーザー定義型カード（User-defined type guard）を使って型を絞り込むことができました。たとえば、次のような関数を定義することで`value`が`number`であることをTypeScriptに伝えられます。 返り値の`value is number`の箇所は型述語（type predicate）と呼ばれます。
 
 ```ts
 function isNumber(value: number | string): value is number {
@@ -42,7 +45,7 @@ function isNumber(value: number | string): value is number {
 }
 ```
 
-`isNumber`関数を使うと、次のように値の絞り込みができます。
+`isNumber`関数を使うと次のように値の絞り込みができます。
 
 ```ts
 function isNumber(value: number | string): value is number {
@@ -66,7 +69,7 @@ function isNumber(value: number | string): value is number {
 }
 ```
 
-型安全ではなく、`isNumber`関数を使ったコードは、ランタイムエラーを引き起こす可能性があります。
+`isNumber`関数を使ったコードは型安全ではなく、ランタイムエラーを引き起こす可能性があります。
 
 ```ts
 function isNumber(value: number | string): value is number {
@@ -90,7 +93,7 @@ https://www.typescriptlang.org/play?ts=5.4.2#code/GYVwdgxgLglg9mABDAzgORAWwEYFMB
 
 # TypeScript 5.5から関数本体の実装から型を推論してくれるようになった
 
-2024年6月リリース予定のTypeScript 5.5から型述語（`x is S`）の記述をすることなく、関数の本体から型述語が推論されるようになります。型述語の記述をしていない `isNumber`関数でも、正しくタイプガードが行われています。
+2024年6月リリース予定のTypeScript 5.5から型述語（`x is S`）の記述をすることなく、関数の本体から型述語が推論されるようになります。型述語の記述をしていない `isNumber`関数でも正しくタイプガードが行われています。
 
 ```ts
 function isNumber(value: number | string) {
@@ -136,22 +139,24 @@ TypeScript 5.4以前では、型述語を記述しない場合の返り値は`bo
 
 # 配列の`filter`で型を絞り込むのがより型安全になる
 
-本記法が便利なのは、配列の `filter` メソッドで型を絞り込むときです。
+本記法が便利なのは配列の `filter` メソッドで型を絞り込むときです。
 
-`filter` メソッドで`null`や`undefined`を取り除く処理というのは頻出します。 たとえば、数値と `null` と `undefined` が混在する配列から`null` と `undefined` を取り除いた配列を作りたいとします。次のようなコードが考えられるでしょう。
+`filter` メソッドで`null`や`undefined`を取り除く処理というのは頻出します。 たとえば、数値と `null` と `undefined` が混在する配列から`null` と `undefined` を取り除いた配列を作るとします。次のようなコードが考えられるでしょう。
 
 ```ts
 const result = [12, null, 24, undefined, 48]
                 .filter((value) => value != null);
 ```
 
+開発社は、`result`の型は`number[]`に推論されることを期待するでしょう。
+
 ## 従来の課題
 
-TypeScript 5.4以前では、上記コードで `result` は `number[]`ではなく `(number | null | undefined)[]`にしか推論されませんでした。`filter`関数で明らかに `null` と `undefined` を除外しているにも関わらず、です。
+TypeScript 5.4以前では、`result` は `number[]`ではなく `(number | null | undefined)[]`にしか推論されませんでした。`filter`関数で明らかに `null` と `undefined` を除外しているにも関わらず、です。
 
 https://www.typescriptlang.org/play?ts=5.4.2#code/MYewdgzgLgBATgUwgVwDawLwwNoEYBMANDGGqsfgCzHJgAmCAZgJZgJ3GUAcAugFAxBQ4SJgA6FugRwAFDIBuAQ1TIEAShgYAfDCUqEMAIRZSqVGoDcfIA
 
-`filter`関数で絞り込まれる型を明示的に表現するため、型述語を使って次のように記述する方法がよく取られています。筆者もよく書くコードです。
+`filter`関数で絞り込まれる型を明示的に表現するため、型述語を使って次のように記述する方法が取られています。筆者もよく書くコードです。
 
 ```ts
 const result = [12, null, 24, undefined, 48]
@@ -161,7 +166,9 @@ const result = [12, null, 24, undefined, 48]
 https://www.typescriptlang.org/play?ts=5.4.2#code/MYewdgzgLgBATgUwgVwDawLwwNoEYBMANDGGqsfgCzHJgAmCAZgJZgJ3GUAcAugFAxBQ4SJgA6FugRwAFDIBuAQ1TIEASgBcMJSoQxmEEsgC2AI2kwMAPm3LVMAIRZSqVGoDcQA
 
 
-しかし、型述語はあくまでユーザー定義のものであり、誤った判定をしたとしてもコンパイルエラーになりません。たとえば次の判定では`value`が`null`のときに`true`を返してしまっていますが、`value is number` により `result` は `number[]` に推論されてしまいます。よって、`number`用のメソッド `toFixed()`を使い`result[0].toFixed(2)` と記述してしまうと、ランタイムエラーになるまで気づけません。
+しかし、型述語はあくまでユーザー定義のものであり、誤った判定をしたとしてもコンパイルエラーになりません。
+
+たとえば次の判定では`value`が`null`のときに`true`を返してしまっていますが、`value is number` により `result` は `number[]` に推論されてしまいます。`number`用のメソッド `toFixed()`を使い`result[0].toFixed(2)` と記述してしまうと、ランタイムエラーになるまで気づけません。
 
 ```ts
 const result = [12, null, 24, undefined, 48]
@@ -173,9 +180,11 @@ result[0].toFixed(2);
 
 https://www.typescriptlang.org/play?ts=5.4.2#code/MYewdgzgLgBATgUwgVwDawLwwNoEYBMANDGGqsfgCzHJgAmCAZgJZgJ3GUAcAugFAxBQ4SJgA6FugRwAFDIBuAQ1TIEASgBcMJSoQxmEEsgC2AI2kwMAPm3LVljFloMWbOmoDcfPgHofMQF4NwDkdwGaGQGeGQEWGQBKGQGuGQAqGQEuGQB+GQGsGQCsGQEiGQC0GQEAGBLDAfoYowAOGRNS0wGiGQD8GQHMGQHQbQFMGQEUGNMARBj5EFHRsAAYeMSgQADFmAA92GXxPIA
 
+
+
 ## TypeScript 5.5からの改善
 
-TypeScript 5.5から、関数本体の実装から型述語を推論してくれるようになったので、`x is S` の記法が不要になります。
+TypeScript 5.5から、関数本体の実装から型述語を推論してくれるようになったので`x is S` の記法が不要になります。
 
 ```ts
 const result = [12, null, 24, undefined, 48]
@@ -184,7 +193,7 @@ const result = [12, null, 24, undefined, 48]
 
 https://www.typescriptlang.org/play?ts=5.5.0-dev.20240320#code/MYewdgzgLgBATgUwgVwDawLwwNoEYBMANDGGqsfgCzHJgAmCAZgJZgJ3GUAcAugFAxBQ4SJgA6FugRwAFDIBuAQ1TIEAShgYAfDCUqEMAIRZSqVGoDcfPohTorAegcwAegH4gA
 
-誤って`value`が`null`のときに`true`を返すようなコードを書いた場合、`result` は `(number | null)[]` に推論されます。`number`用のメソッド `toFixed()`を使い、`result[0].toFixed(2)` と記述したとき、ランタイムエラーであなくコンパイルエラーとして気づけます。
+誤って`value`が`null`のときに`true`を返すようなコードを書いた場合、`result` は `(number | null)[]` に推論されます。`number`用のメソッド `toFixed()`を使い、`result[0].toFixed(2)` と記述したとき、ランタイムエラーではなくコンパイルエラーとして気づけます。
 
 ```ts
 const result = [12, null, 24, undefined, 48]
@@ -233,11 +242,11 @@ if (isA(foo)) {
 
 # `filter`の型の絞り込みが型安全になって最高
 
-配列の`filter`メソッドと型述語を使う度に、そのコードの危険性に震えていました。TypeScript 5.5での型述語の推論（infer type predicates）のおかげでその危険性がなくなるので一安心です。
+配列の`filter`メソッドと型述語を使う度に、そのコードの危険性に震えていました。TypeScript 5.5での型述語の推論のおかげでその危険性がなくなるので一安心です。
 
 https://twitter.com/tonkotsuboy_com/status/1769994147291889669
 
-TypeScript 5.5は、現状だと2024年6月18日のリリース予定です。楽しみに待ちましょう。
+TypeScript 5.5は2024年6月18日のリリース予定です。楽しみに待ちましょう。
 
 https://github.com/microsoft/TypeScript/issues/57475
 
