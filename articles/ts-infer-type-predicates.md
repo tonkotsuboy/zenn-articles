@@ -7,7 +7,7 @@ published: true
 publication_name: ubie_dev
 ---
 
-結論を先に言うと、TypeScript 5.5で次のようなコードが型安全になります。
+結論を先に言うと、6月リリース予定のTypeScript 5.5で次のようなコードが型安全になります。
 
 従来: TypeScript 5.4以前 
 
