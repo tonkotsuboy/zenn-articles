@@ -1,5 +1,5 @@
 ---
-title: "TypeScript5.5で型述語を推論できて最高。配列のfilterも型安全に"
+title: "TypeScript 5.5で型述語を推論できて最高。配列のfilterも型安全に"
 emoji: "🙂‍↕️"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["typescript", "javascript"]
