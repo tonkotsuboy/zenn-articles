@@ -7,6 +7,11 @@ published: true
 publication_name: ubie_dev
 ---
 
+2024/04/09
+プロパティによる絞り込みが可能になったので追記しました。
+
+---
+
 TypeScriptの次バージョン5.5で、開発者が長い間求めていた挙動が手に入ります。
 
 現状のTypeScript （執筆時点で5.4）では、ユーザー定義型ガードを使う際には型述語（用語は後ほど解説します）の記述が必要です。
@@ -219,9 +224,15 @@ const result = [new Foo(), new Bar()].filter(x => x instanceof Foo);
 //    Foo[] に推論される
 ```
 
-# プロパティによる絞り込みは現状だとできない
+https://www.typescriptlang.org/play?ts=5.5.0-dev.20240320#code/MYGwhgzhAEBiD29oG8C+AodpIwEJgCcUMt4A7CAF2gIFMIBXEagXmgG0zaB3ORACgCUAGmhde+AkIC6AOgBmAS2a0pAD2gsAfNA2KKlMGWC148vvEEBudAHpb0R9AB6AfjsOnCeO2nRA1gyAFcaAa1GAqgyAMQyA0QxAA
 
-TypeScript 5.5-dev.20240320の段階では、プロパティによる絞り込みを行うユーザー定義型ガードの結果は推論してくれないようです。具体的には、次のようなコードで `isA`関数の返り値が `x is A` と推論されることはないようです。
+
+
+# プロパティによる絞り込みも可能 
+
+※ 2024/04/09 追記
+
+プロパティによる絞り込みを行うユーザー定義型ガードの結果も推論できます。具体的には、次のようなコードで `isA`関数の返り値が `x is A` と推論されることはないようです。本記事執筆当初（3/21）時点では推論不可能でしたが、現在ではできるようになっています。これがやりたかった・・・！
 
 ```ts
 type A = { type: "A"; a: number };
@@ -231,14 +242,15 @@ function isA(x: A | B) {
   return x.type === "A";
 }
 
-let foo: any;
-
-// doesn't work
-if (isA(foo)) {
-  foo;
-// ^?
+function check(foo: A | B) {
+  if (isA(foo)) {
+    // OK！
+    console.log(foo.a);
+  }
 }
 ```
+
+https://www.typescriptlang.org/play?ts=5.5.0-dev.20240408#code/C4TwDgpgBAglC8UDeVSQFxQEQywbigENMA7AVwFsAjCAJygF88AoNaAIQWVXAky3b4oVUpRr0mzZgDMyJAMbAAlgHsSUJQGcYACgAemOAB8o7AJTJmUKLQjAytdXoB0bBPEQ58zBlNkLlNSh5AAsIeQBrHWkVFUMoE3NLayVpKB0tXRiVMwskK2soAHoiqAB5AGlAQH+C63k1TRUAGwhnJpUAc2jY50IzFmtfXyA
 
 # `filter`の型の絞り込みが型安全になって最高
 
