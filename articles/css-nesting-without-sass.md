@@ -89,9 +89,9 @@ CSSのネストに対応したブラウザでは、次のように記述でき�
 </section>
 ```
 
-`h1` 要素の文字色を赤色にしたい場合、**次のようにしてもスタイルが当たりません**。
+`h1` 要素の文字色を赤色にしたい場合、次のようにします。
 
-▼ ネストがうまくいかない例
+▼ CSSのネスト記法👩‍🎨
 
 ```css
 section {
@@ -101,17 +101,10 @@ section {
 }
 ```
 
-`h1`や`p`といった要素名のセレクターの場合は、`&`を使う必要があります。
+ちなみに、CSS ネストが登場した当初は `&` を使う必要がありましたが、Chrome 120, Edge 120,  Safari 17.2, Firefox 117では  `&` の記法が不要になりました。
 
-▼ CSSのネスト記法👩‍🎨
+https://bugs.chromium.org/p/chromium/issues/detail?id=1427259
 
-```css
-section {
-  & h1 {
-    color: red;
-  }
-}
-```
 
 # 複数の親セレクターに対してネストはできるか？
 
@@ -297,16 +290,12 @@ BEMなどを使っている際、次のような `foo__bar` というクラス�
 
 # ブラウザ対応状況
 
-2023/08/29にFirefox 117がリリースされたことにより、全ブラウザでネストが使えるようになりました。
+2023/08/29にFirefox 117がリリースされたことにより、全ブラウザでネストが使えるようになりました。また、2023/12に、各ブラウザで `h1`などのネスト時の `&` 記法が不要になりました。
 
-![](/images/css-nesting-module/caniuse.png)
+![](/images/css-nesting-module/caniuse-2024-04-21.png)
 
 - https://caniuse.com/css-nesting
 
-
-▼ 各ブラウザの実行結果
-
-![](/images/css-nesting-module/browsers.png)
 
 
 
@@ -317,10 +306,10 @@ BEMなどを使っている際、次のような `foo__bar` というクラス�
 @[codepen](https://codepen.io/tonkotsuboy/pen/ExRbPgV)
 [https://codepen.io/tonkotsuboy/pen/ExRbPgV](https://codepen.io/tonkotsuboy/pen/ExRbPgV)
 
-▼ Chromeでの実行結果
 
-![](/images/css-nesting-module/canary-result.png)
+▼ 各ブラウザの実行結果
 
+![](/images/css-nesting-module/browsers.png)
 
 
 # 今すぐCSSネストを使うには？
