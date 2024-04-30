@@ -65,12 +65,14 @@ function main(value: number | string) {
 }
 ```
 
-しかし、型述語には危険性があります。`value is number`の箇所はユーザーが自身で定義しているものであり、関数本体の実装と一致しなくてもコンパイルエラーにならないのです。たとえば、次の例では関数本体では`typeof value === 'string'`と`value`を文字列判定していて、型述語としては`value is number`となっているのですが、コンパイルエラーになりません。
+しかし、型述語には危険性があります。`value is number`の箇所はユーザーが自身で定義しているものであり、関数本体の実装と一致しなくてもコンパイルエラーにならないのです。
+
+次の例を見てみましょう。関数本体では`typeof value === 'string'`と`value`を文字列判定していて、型述語としては`value is number`となっているのですが、コンパイルエラーになりません。
 
 ```ts
 function isNumber(value: number | string): value is number {
-  // valueをnullだと判定しているが、エラーにならない
-  return typeof value === null;
+  // valueを文字列だと判定しているが、エラーにならない
+  return typeof value === "string";
 }
 ```
 
