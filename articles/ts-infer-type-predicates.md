@@ -155,7 +155,7 @@ const result = [12, null, 24, undefined, 48]
                 .filter((value) => value != null);
 ```
 
-開発社は、`result`の型は`number[]`に推論されることを期待するでしょう。
+開発者は、`result`の型は`number[]`に推論されることを期待するでしょう。
 
 ## 従来の課題
 
