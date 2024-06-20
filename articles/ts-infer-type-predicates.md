@@ -16,6 +16,8 @@ TypeScriptの次バージョン5.5で、開発者が長い間求めていた機�
 
 従来のTypeScript 5.4以前では、ユーザー定義型ガードを使う際には型述語（用語は後ほど解説します）の記述が必要です。
 
+▼ TypeScript 5.4
+
 ```ts
 function isNumber(value: number | string): value is number {
   return typeof value === 'number';
@@ -24,6 +26,8 @@ function isNumber(value: number | string): value is number {
 
 2024年6月20日にリリースされたTypeScript 5.5では、関数の実体から型述語の型推論（infer type predicates）が可能になります。すなわち、次のようなコードが可能です。
 
+▼ TypeScript 5.5
+
 ```ts
 function isNumber(value: number | string) {
   return typeof value === 'number';
@@ -31,6 +35,8 @@ function isNumber(value: number | string) {
 ```
 
 配列の`filter`メソッドで型を絞り込む際にも、型述語の型推論が可能となります。たとえば、次のようなコードのように`x is S`の記述をせずとも`filter`メソッドで型が正しく推論されます。
+
+▼ TypeScript 5.5
 
 ```ts
 const result = [12, null, 24, undefined, 48]
@@ -93,6 +99,7 @@ function main(value: number | string) {
 main("豚骨きゅうり");
 ```
 
+▼ 確認用Playground
 https://www.typescriptlang.org/play?ts=5.4.2#code/GYVwdgxgLglg9mABDAzgORAWwEYFMBOAFAG4CGANiLgFyJhZ76IA+iKU+MYA5gJS1lKuZCjoMCiAN4AoRIny4oIfEigBPAA644wRIKqIAvMcQAidpx6mA3NIC+06aEiwEiTKS4kKVWvRwSrBZcfFKyyLqEqBgBRPq4vLxhcnLxAHRQcABiMAAeuAAmhABMvLZyDg7SAPTViIC8G4ByO4iAlwyAzwyA-QyAJQyABwyAFQwtgD8MgNYMgFYMgNEMgH4MgOYMgOg2gKYMgIoMo4AiDNIeXqaAWjGAFVmAsgyAoQyAYgyAUQymZdJAA
 
 ![TS Playgroundのエラー](/images/ts-infer-type-predicates/run-result.png)
@@ -101,6 +108,8 @@ https://www.typescriptlang.org/play?ts=5.4.2#code/GYVwdgxgLglg9mABDAzgORAWwEYFMB
 # TypeScript 5.5から関数本体の実装から型を推論してくれるようになった
 
 TypeScript 5.5からは型述語（`x is S`）の記述をすることなく、関数の本体から型述語が推論されるようになります。型述語の記述をしていない `isNumber`関数でも正しくタイプガードが行われています。
+
+▼ TypeScript 5.5
 
 ```ts
 function isNumber(value: number | string) {
@@ -115,9 +124,12 @@ function main(value: number | string) {
 }
 ```
 
+▼ 確認用Playground
 https://www.typescriptlang.org/play/?#code/GYVwdgxgLglg9mABDAzgORAWwEYFMBOAFAG4CGANiLgFyLgDWYcA7mAJSIDeAUIovrigh8SKAE8ADrjjBEZSrkQBeFYgDkYLHnxqA3NwC+iXsdCRYCRJlIwwJClVoMmrDjz4xZhVBhwF7CmxuJnwA9KFyDriA9gyADqaAJAqA0eqA1gyAer6AUQyAPfGAfgyAMQyA0QwhkQoAdFBwAGIwAB64ACaEAExs+nxhEQB6APwmBoZAA
 
 意図しない型の絞り込みを行っていた場合、コンパイルエラーとして気づけます。
+
+▼ TypeScript 5.5
 
 ```ts
 function isNumber(value: number | string) {
@@ -134,6 +146,7 @@ function main(value: number | string) {
 main("豚骨きゅうり");
 ```
 
+▼ 確認用Playground
 https://www.typescriptlang.org/play/?#code/GYVwdgxgLglg9mABDAzgORAWwEYFMBOAFAG4CGANiLgFyJhZ76IA+iKU+MYA5gJSIBvAFCJE+XFBD4kUAJ4AHXHGCIylXIgC82xACJ2nHroDcQgL5ChoSLASJMpLiQpVa9HARZsOXPoJGIAPSBiIC8G4CyO2pUgDIMBr6A1gyAer6AUQyAPfGAfgyAMQyAZgyAIgyA0QyAygyAFgyASQyAzQyAzwyAiwyAJQyA1wyAFQyAlwyAPwzFgOoM2YDoNoCmDICKDPkBMCqEqBgeRFG4vPzCoqLTAHRQcABiMAAeuAAmhABMvKaiFhZCDk66gFoxgBVZgLIMgKEMgGIMybpHQA
 
 ## 型述語の推論結果の確認
@@ -161,21 +174,37 @@ const result = [12, null, 24, undefined, 48]
 
 TypeScript 5.4以前では、`result` は `number[]`ではなく `(number | null | undefined)[]`にしか推論されませんでした。`filter`関数で明らかに `null` と `undefined` を除外しているにも関わらず、です。
 
-https://www.typescriptlang.org/play?ts=5.4.2#code/MYewdgzgLgBATgUwgVwDawLwwNoEYBMANDGGqsfgCzHJgAmCAZgJZgJ3GUAcAugFAxBQ4SJgA6FugRwAFDIBuAQ1TIEAShgYAfDCUqEMAIRZSqVGoDcfIA
-
-`filter`関数で絞り込まれる型を明示的に表現するため、型述語を使って次のように記述する方法が取られています。筆者もよく書くコードです。
+▼ TypeScript 5.4
 
 ```ts
 const result = [12, null, 24, undefined, 48]
                 .filter((value): value is number => value != null);
+// resultは (number | null | undefined)[]
 ```
 
-https://www.typescriptlang.org/play?ts=5.4.2#code/MYewdgzgLgBATgUwgVwDawLwwNoEYBMANDGGqsfgCzHJgAmCAZgJZgJ3GUAcAugFAxBQ4SJgA6FugRwAFDIBuAQ1TIEASgBcMJSoQxmEEsgC2AI2kwMAPm3LVMAIRZSqVGoDcQA
+▼ 確認用Playground
+
+https://www.typescriptlang.org/play/?ts=5.4.2#code/MYewdgzgLgBATgUwgVwDawLwwNoEYBMANDGGqsfgCzHJgAmCAZgJZgJ3GUAcAugHQt0COAAoRANwCGqZAgCUMDAD4YUmQhgBCLKVSo5AbgBQAehMwLMAHoB+I0A
+
+`filter`関数で絞り込まれる型を明示的に表現するため、型述語を使って次のように記述する方法が取られています。筆者もよく書くコードです。
+
+▼ TypeScript 5.4
+
+```ts
+const result = [12, null, 24, undefined, 48]
+                .filter((value): value is number => value != null);
+// resultは number[]
+```
+
+▼ 確認用Playground
+https://www.typescriptlang.org/play/?ts=5.4.2#code/MYewdgzgLgBATgUwgVwDawLwwNoEYBMANDGGqsfgCzHJgAmCAZgJZgJ3GUAcAugHQt0COAAoRANwCGqZAgCUALhhSZCGMwglkAWwBGwmBgB8y6bJgBCLKVSo5AbgBQAemcx3MAHoB+IA
 
 
 しかし、型述語はあくまでユーザー定義のものであり、誤った判定をしたとしてもコンパイルエラーになりません。
 
 たとえば次の判定では`value`が`null`のときに`true`を返してしまっていますが、`value is number` により `result` は `number[]` に推論されてしまいます。`number`用のメソッド `toFixed()`を使い`result[0].toFixed(2)` と記述してしまうと、ランタイムエラーになるまで気づけません。
+
+▼ TypeScript 5.4
 
 ```ts
 const result = [12, null, 24, undefined, 48]
@@ -185,22 +214,29 @@ const result = [12, null, 24, undefined, 48]
 result[0].toFixed(2);
 ```
 
+▼ 確認用Playground
 https://www.typescriptlang.org/play?ts=5.4.2#code/MYewdgzgLgBATgUwgVwDawLwwNoEYBMANDGGqsfgCzHJgAmCAZgJZgJ3GUAcAugFAxBQ4SJgA6FugRwAFDIBuAQ1TIEASgBcMJSoQxmEEsgC2AI2kwMAPm3LVljFloMWbOmoDcfPgHofMQF4NwDkdwGaGQGeGQEWGQBKGQGuGQAqGQEuGQB+GQGsGQCsGQEiGQC0GQEAGBLDAfoYowAOGRNS0wGiGQD8GQHMGQHQbQFMGQEUGNMARBj5EFHRsAAYeMSgQADFmAA92GXxPIA
 
 
 
 ## TypeScript 5.5からの改善
 
-TypeScript 5.5から、関数本体の実装から型述語を推論してくれるようになったので`x is S` の記法が不要になります。
+TypeScript 5.5から、関数本体の実装から型述語を推論してくれるようになったので`x is S` の記法が不要になります。次のコードで`result` は `number[]`となります。
+
+▼ TypeScript 5.5
 
 ```ts
 const result = [12, null, 24, undefined, 48]
                 .filter((value) => value != null);
+// resultはnumber[]
 ```
 
-https://www.typescriptlang.org/play/?#code/MYewdgzgLgBATgUwgVwDawLwwNoEYBMANDGGqsfgCzHJgAmCAZgJZgJ3GUAcAugFAxBQ4SJgA6FugRwAFDIBuAQ1TIEAShgYAfDCUqEMAIRZSqVGoDcfPohTorAegcwAegH4gA
+▼ 確認用Playground
+https://www.typescriptlang.org/play/?#code/MYewdgzgLgBATgUwgVwDawLwwNoEYBMANDGGqsfgCzHJgAmCAZgJZgJ3GUAcAugHQt0COAAoRANwCGqZAgCUMDAD4YUmQhgBCLKVSo5AbgBQAehMwLMAHoB+IA
 
 誤って`value`が`null`のときに`true`を返すようなコードを書いた場合、`result` は `(number | null)[]` に推論されます。`number`用のメソッド `toFixed()`を使い、`result[0].toFixed(2)` と記述したとき、ランタイムエラーではなくコンパイルエラーとして気づけます。
+
+▼ TypeScript 5.5
 
 ```ts
 const result = [12, null, 24, undefined, 48]
@@ -210,11 +246,14 @@ const result = [12, null, 24, undefined, 48]
 result[0].toFixed(2);
 ```
 
+▼ 確認用Playground
 https://www.typescriptlang.org/play/?#code/MYewdgzgLgBATgUwgVwDawLwwNoEYBMANDGGqsfgCzHJgAmCAZgJZgJ3GUAcAugFAxBQ4SJgA6FugRwAFDIBuAQ1TIEAShgYAfDCUqEmjFloMWbOmoDcfPgHpbMQM0MgZ4ZAiwyAShkDXDIAqGQJcMgH4ZAawZAKwZAaIZAXg3AWR2+RBR0bAAGHjEoEAAxZgAPdhl8KyA
 
 # `instanceof`も使える
 
 `instanceof`を使ったユーザー定義型ガードも、関数本体の実装から型述語が推論されます。
+
+▼ TypeScript 5.5
 
 ```ts
 class Foo {}
@@ -226,15 +265,16 @@ const result = [new Foo(), new Bar()].filter(x => x instanceof Foo);
 //    Foo[] に推論される
 ```
 
+▼ 確認用Playground
 https://www.typescriptlang.org/play/?#code/MYGwhgzhAEBiD29oG8C+AodpIwEJgCcUMt4A7CAF2gIFMIBXEagXmgG0zaB3ORACgCUAGmhde+AkIC6AOgBmAS2a0pAD2gsAfNA2KKlMGWC148vvEEBudAHpb0R9AB6AfjsOnCeO2nRA1gyAFcaAa1GAqgyAMQyA0QxAA
 
 
 
 #  タグ付きユニオンによる絞り込み（プロパティによる絞り込み）も可能 
 
-※ 2024/04/09 追記
+タグ付きユニオンを使ったユーザー定義型ガードの結果も推論できます。具体的には、次のようなコードで `isA`関数の返り値が `x is A` と推論されます。これをずっとやりたかった・・・！
 
-タグ付きユニオンを使ったユーザー定義型ガードの結果も推論できます。具体的には、次のようなコードで `isA`関数の返り値が `x is A` と推論されることはないようです。本記事執筆当初（3/21）時点では推論不可能でしたが、現在ではできるようになっています。これがやりたかった・・・！
+▼ TypeScript 5.5
 
 ```ts
 type A = { type: "A"; a: number };
@@ -252,6 +292,7 @@ function check(foo: A | B) {
 }
 ```
 
+▼ 確認用Playground
 https://www.typescriptlang.org/play/?#code/C4TwDgpgBAglC8UDeVSQFxQEQywbigENMA7AVwFsAjCAJygF88AoNaAIQWVXAky3b4oVUpRr0mzZgDMyJAMbAAlgHsSUJQGcYACgAemOAB8o7AJTJmUKLQjAytdXoB0bBPEQ58zBlNkLlNSh5AAsIeQBrHWkVFUMoE3NLayVpKB0tXRiVMwskK2soAHoiqAB5AGlAQH+C63k1TRUAGwhnJpUAc2jY50IzFmtfXyA
 
 # `filter`の型の絞り込みが型安全になって最高
@@ -260,7 +301,7 @@ https://www.typescriptlang.org/play/?#code/C4TwDgpgBAglC8UDeVSQFxQEQywbigENMA7AV
 
 https://twitter.com/tonkotsuboy_com/status/1769994147291889669
 
-TypeScript 5.5は2024年6月20日にリリース予定されました。
+TypeScript 5.5は2024年6月20日にリリースされました。
 
 https://devblogs.microsoft.com/typescript/announcing-typescript-5-5/
 
