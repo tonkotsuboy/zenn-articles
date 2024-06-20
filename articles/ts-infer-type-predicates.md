@@ -7,14 +7,14 @@ published: true
 publication_name: ubie_dev
 ---
 
-2024/04/09
-プロパティによる絞り込みが可能になったので追記しました。
+2024/6/20
+TypeScript 5.5が正式リリースしたので追記しました。
 
 ---
 
-TypeScriptの次バージョン5.5で、開発者が長い間求めていた挙動が手に入ります。
+TypeScriptの次バージョン5.5で、開発者が長い間求めていた挙動が手に入りました。
 
-現状のTypeScript （執筆時点で5.4）では、ユーザー定義型ガードを使う際には型述語（用語は後ほど解説します）の記述が必要です。
+従来のTypeScript 5.4以前では、ユーザー定義型ガードを使う際には型述語（用語は後ほど解説します）の記述が必要です。
 
 ```ts
 function isNumber(value: number | string): value is number {
@@ -22,7 +22,7 @@ function isNumber(value: number | string): value is number {
 }
 ```
 
-6月リリース予定のTypeScript 5.5では、関数の実体から型述語の型推論（infer type predicates）が可能になります。すなわち、次のようなコードが可能になります。
+2024年6月20日にリリースされたTypeScript 5.5では、関数の実体から型述語の型推論（infer type predicates）が可能になります。すなわち、次のようなコードが可能になります。
 
 ```ts
 function isNumber(value: number | string) {
@@ -100,7 +100,7 @@ https://www.typescriptlang.org/play?ts=5.4.2#code/GYVwdgxgLglg9mABDAzgORAWwEYFMB
 
 # TypeScript 5.5から関数本体の実装から型を推論してくれるようになった
 
-2024年6月リリース予定のTypeScript 5.5から型述語（`x is S`）の記述をすることなく、関数の本体から型述語が推論されるようになります。型述語の記述をしていない `isNumber`関数でも正しくタイプガードが行われています。
+TypeScript 5.5からは型述語（`x is S`）の記述をすることなく、関数の本体から型述語が推論されるようになります。型述語の記述をしていない `isNumber`関数でも正しくタイプガードが行われています。
 
 ```ts
 function isNumber(value: number | string) {
@@ -115,7 +115,7 @@ function main(value: number | string) {
 }
 ```
 
-https://www.typescriptlang.org/play?ts=5.5.0-dev.20240320#code/GYVwdgxgLglg9mABDAzgORAWwEYFMBOAFAG4CGANiLgFyLgDWYcA7mAJSIDeAUIovrigh8SKAE8ADrjjBEZSrkQBeFYgDkYLHnxqA3NwC+iXsdCRYCRJlIwwJClVoMmrDjz4xZhVBhwF7CmxuJnwA9KFyDriA9gyADqaAJAqA0eqA1gyAer6AUQyAPfGAfgyAMQyA0QwhkQoAdFBwAGIwAB64ACaEAExs+nxhEQB6APwmBoZAA
+https://www.typescriptlang.org/play/?#code/GYVwdgxgLglg9mABDAzgORAWwEYFMBOAFAG4CGANiLgFyLgDWYcA7mAJSIDeAUIovrigh8SKAE8ADrjjBEZSrkQBeFYgDkYLHnxqA3NwC+iXsdCRYCRJlIwwJClVoMmrDjz4xZhVBhwF7CmxuJnwA9KFyDriA9gyADqaAJAqA0eqA1gyAer6AUQyAPfGAfgyAMQyA0QwhkQoAdFBwAGIwAB64ACaEAExs+nxhEQB6APwmBoZAA
 
 意図しない型の絞り込みを行っていた場合、コンパイルエラーとして気づけます。
 
@@ -134,7 +134,7 @@ function main(value: number | string) {
 main("豚骨きゅうり");
 ```
 
-https://www.typescriptlang.org/play?ts=5.5.0-dev.20240320#code/GYVwdgxgLglg9mABDAzgORAWwEYFMBOAFAG4CGANiLgFyJhZ76IA+iKU+MYA5gJSIBvAFCJE+XFBD4kUAJ4AHXHGCIylXIgC82xACJ2nHroDcQgL5ChoSLASJMpLiQpVa9HARZsOXPoJGIAPSBiIC8G4CyO2pUgDIMBr6A1gyAer6AUQyAPfGAfgyAMQyAZgyAIgyA0QyAygyAFgyASQyAzQyAzwyAiwyAJQyA1wyAFQyAlwyAPwzFgOoM2YDoNoCmDICKDPkBMCqEqBgeRFG4vPzCoqLTAHRQcABiMAAeuAAmhABMvKaiFhZCDk66gFoxgBVZgLIMgKEMgGIMybpHQA
+https://www.typescriptlang.org/play/?#code/GYVwdgxgLglg9mABDAzgORAWwEYFMBOAFAG4CGANiLgFyJhZ76IA+iKU+MYA5gJSIBvAFCJE+XFBD4kUAJ4AHXHGCIylXIgC82xACJ2nHroDcQgL5ChoSLASJMpLiQpVa9HARZsOXPoJGIAPSBiIC8G4CyO2pUgDIMBr6A1gyAer6AUQyAPfGAfgyAMQyAZgyAIgyA0QyAygyAFgyASQyAzQyAzwyAiwyAJQyA1wyAFQyAlwyAPwzFgOoM2YDoNoCmDICKDPkBMCqEqBgeRFG4vPzCoqLTAHRQcABiMAAeuAAmhABMvKaiFhZCDk66gFoxgBVZgLIMgKEMgGIMybpHQA
 
 ## 型述語の推論結果の確認
 
@@ -198,7 +198,7 @@ const result = [12, null, 24, undefined, 48]
                 .filter((value) => value != null);
 ```
 
-https://www.typescriptlang.org/play?ts=5.5.0-dev.20240320#code/MYewdgzgLgBATgUwgVwDawLwwNoEYBMANDGGqsfgCzHJgAmCAZgJZgJ3GUAcAugFAxBQ4SJgA6FugRwAFDIBuAQ1TIEAShgYAfDCUqEMAIRZSqVGoDcfPohTorAegcwAegH4gA
+https://www.typescriptlang.org/play/?#code/MYewdgzgLgBATgUwgVwDawLwwNoEYBMANDGGqsfgCzHJgAmCAZgJZgJ3GUAcAugFAxBQ4SJgA6FugRwAFDIBuAQ1TIEAShgYAfDCUqEMAIRZSqVGoDcfPohTorAegcwAegH4gA
 
 誤って`value`が`null`のときに`true`を返すようなコードを書いた場合、`result` は `(number | null)[]` に推論されます。`number`用のメソッド `toFixed()`を使い、`result[0].toFixed(2)` と記述したとき、ランタイムエラーではなくコンパイルエラーとして気づけます。
 
@@ -210,7 +210,7 @@ const result = [12, null, 24, undefined, 48]
 result[0].toFixed(2);
 ```
 
-https://www.typescriptlang.org/play?ts=5.5.0-dev.20240320#code/MYewdgzgLgBATgUwgVwDawLwwNoEYBMANDGGqsfgCzHJgAmCAZgJZgJ3GUAcAugFAxBQ4SJgA6FugRwAFDIBuAQ1TIEAShgYAfDCUqEmjFloMWbOmoDcfPgHpbMQM0MgZ4ZAiwyAShkDXDIAqGQJcMgH4ZAawZAKwZAaIZAXg3AWR2+RBR0bAAGHjEoEAAxZgAPdhl8KyA
+https://www.typescriptlang.org/play/?#code/MYewdgzgLgBATgUwgVwDawLwwNoEYBMANDGGqsfgCzHJgAmCAZgJZgJ3GUAcAugFAxBQ4SJgA6FugRwAFDIBuAQ1TIEAShgYAfDCUqEmjFloMWbOmoDcfPgHpbMQM0MgZ4ZAiwyAShkDXDIAqGQJcMgH4ZAawZAKwZAaIZAXg3AWR2+RBR0bAAGHjEoEAAxZgAPdhl8KyA
 
 # `instanceof`も使える
 
@@ -226,7 +226,7 @@ const result = [new Foo(), new Bar()].filter(x => x instanceof Foo);
 //    Foo[] に推論される
 ```
 
-https://www.typescriptlang.org/play?ts=5.5.0-dev.20240320#code/MYGwhgzhAEBiD29oG8C+AodpIwEJgCcUMt4A7CAF2gIFMIBXEagXmgG0zaB3ORACgCUAGmhde+AkIC6AOgBmAS2a0pAD2gsAfNA2KKlMGWC148vvEEBudAHpb0R9AB6AfjsOnCeO2nRA1gyAFcaAa1GAqgyAMQyA0QxAA
+https://www.typescriptlang.org/play/?#code/MYGwhgzhAEBiD29oG8C+AodpIwEJgCcUMt4A7CAF2gIFMIBXEagXmgG0zaB3ORACgCUAGmhde+AkIC6AOgBmAS2a0pAD2gsAfNA2KKlMGWC148vvEEBudAHpb0R9AB6AfjsOnCeO2nRA1gyAFcaAa1GAqgyAMQyA0QxAA
 
 
 
@@ -252,7 +252,7 @@ function check(foo: A | B) {
 }
 ```
 
-https://www.typescriptlang.org/play?ts=5.5.0-dev.20240408#code/C4TwDgpgBAglC8UDeVSQFxQEQywbigENMA7AVwFsAjCAJygF88AoNaAIQWVXAky3b4oVUpRr0mzZgDMyJAMbAAlgHsSUJQGcYACgAemOAB8o7AJTJmUKLQjAytdXoB0bBPEQ58zBlNkLlNSh5AAsIeQBrHWkVFUMoE3NLayVpKB0tXRiVMwskK2soAHoiqAB5AGlAQH+C63k1TRUAGwhnJpUAc2jY50IzFmtfXyA
+https://www.typescriptlang.org/play/?#code/C4TwDgpgBAglC8UDeVSQFxQEQywbigENMA7AVwFsAjCAJygF88AoNaAIQWVXAky3b4oVUpRr0mzZgDMyJAMbAAlgHsSUJQGcYACgAemOAB8o7AJTJmUKLQjAytdXoB0bBPEQ58zBlNkLlNSh5AAsIeQBrHWkVFUMoE3NLayVpKB0tXRiVMwskK2soAHoiqAB5AGlAQH+C63k1TRUAGwhnJpUAc2jY50IzFmtfXyA
 
 # `filter`の型の絞り込みが型安全になって最高
 
@@ -260,9 +260,9 @@ https://www.typescriptlang.org/play?ts=5.5.0-dev.20240408#code/C4TwDgpgBAglC8UDe
 
 https://twitter.com/tonkotsuboy_com/status/1769994147291889669
 
-TypeScript 5.5は2024年6月18日のリリース予定です。楽しみに待ちましょう。
+TypeScript 5.5は2024年6月20日にリリース予定されました。
 
-https://github.com/microsoft/TypeScript/issues/57475
+https://devblogs.microsoft.com/typescript/announcing-typescript-5-5/
 
 # 参考記事
 
