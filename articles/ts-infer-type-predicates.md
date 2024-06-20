@@ -12,7 +12,7 @@ TypeScript 5.5が正式リリースしたので追記しました。
 
 ---
 
-TypeScriptの次バージョン5.5で、開発者が長い間求めていた挙動が手に入りました。
+TypeScriptの次バージョン5.5で、開発者が長い間求めていた機能がついに実現されました。
 
 従来のTypeScript 5.4以前では、ユーザー定義型ガードを使う際には型述語（用語は後ほど解説します）の記述が必要です。
 
@@ -22,7 +22,7 @@ function isNumber(value: number | string): value is number {
 }
 ```
 
-2024年6月20日にリリースされたTypeScript 5.5では、関数の実体から型述語の型推論（infer type predicates）が可能になります。すなわち、次のようなコードが可能になります。
+2024年6月20日にリリースされたTypeScript 5.5では、関数の実体から型述語の型推論（infer type predicates）が可能になります。すなわち、次のようなコードが可能です。
 
 ```ts
 function isNumber(value: number | string) {
