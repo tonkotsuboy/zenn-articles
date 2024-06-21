@@ -167,7 +167,7 @@ https://www.typescriptlang.org/play?ts=5.4.2#code/MYewdgzgLgBATgUwgVwDawLwwNoEYB
 
 ```ts
 const result = [12, null, 24, undefined, 48]
-                .filter((value): value is number => value != null);
+                .filter((value) => value != null);
 ```
 
 https://www.typescriptlang.org/play?ts=5.4.2#code/MYewdgzgLgBATgUwgVwDawLwwNoEYBMANDGGqsfgCzHJgAmCAZgJZgJ3GUAcAugFAxBQ4SJgA6FugRwAFDIBuAQ1TIEASgBcMJSoQxmEEsgC2AI2kwMAPm3LVMAIRZSqVGoDcQA
