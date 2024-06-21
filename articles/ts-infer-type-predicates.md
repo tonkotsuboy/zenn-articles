@@ -178,7 +178,7 @@ TypeScript 5.4以前では、`result` は `number[]`ではなく `(number | null
 
 ```ts
 const result = [12, null, 24, undefined, 48]
-                .filter((value): value is number => value != null);
+                  .filter((value) => value != null);
 // resultは (number | null | undefined)[]
 ```
 
