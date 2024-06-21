@@ -192,7 +192,7 @@ https://www.typescriptlang.org/play/?ts=5.4.2#code/MYewdgzgLgBATgUwgVwDawLwwNoEY
 
 ```ts
 const result = [12, null, 24, undefined, 48]
-                .filter((value) => value != null);
+                  .filter((value): value is number => value != null);
 // resultは number[]
 ```
 
