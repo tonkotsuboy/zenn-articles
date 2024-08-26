@@ -12,8 +12,8 @@ importers:
         specifier: ^3.3.3
         version: 3.3.3
       zenn-cli:
-        specifier: ^0.1.154
-        version: 0.1.154
+        specifier: ^0.1.155
+        version: 0.1.155
 
 packages:
 
@@ -22,8 +22,8 @@ packages:
     engines: {node: '>=14'}
     hasBin: true
 
-  zenn-cli@0.1.154:
-    resolution: {integrity: sha512-s9SZst7TWiA2VS+40CWUS7pu5cl2OAIhNPyiAtqIwjDFzqB47vVsN78G8VK7VZ7ov6B4gqQrQHcgMHVqvoLN8g==}
+  zenn-cli@0.1.155:
+    resolution: {integrity: sha512-PqxeLWVrqSrGGPaMiNM5myJcbmXHh/Ur6EhzLkezrDZa5uJe1jfD6COVEnCtRf86Y5P0qy5bejXifSTNdDmqOA==}
     engines: {node: '>=14.0.0'}
     hasBin: true
 
@@ -31,4 +31,4 @@ snapshots:
 
   prettier@3.3.3: {}
 
-  zenn-cli@0.1.154: {}
+  zenn-cli@0.1.155: {}
