@@ -127,19 +127,18 @@ main section {
 
 - [別ウインドウで開く](https://codepen.io/tonkotsuboy/pen/OJBKBKx)
 
-
-# `margin: auto;` ではだめなのか？
+# `margin: 0 auto;` ではだめなのか？
 
 筆者的には避けたいです。
 
 `margin: auto;` は、次の指定のショートハンドです。
 
-- `margin-top: auto;`
+- `margin-top: 0;`
 - `margin-right: auto;`
-- `margin-bottom: auto;`
+- `margin-bottom: 0;`
 - `margin-left: auto;`
 
-インライン方向の中央揃えを指定したいだけなのに、`margin-top`と`margin-bottom`も指定してしまうと、予期せぬスタイルの上書きを考慮しないとなりません。
+インライン方向の中央揃えを指定したいだけなのに、`margin-top: 0;`と`margin-bottom: 0`も指定してしまうと、予期せぬスタイルの上書きを考慮しないとなりません。
 
 
 # `margin-inline`は書字方向によって変わることに注意
