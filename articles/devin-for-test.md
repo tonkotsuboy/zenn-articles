@@ -46,7 +46,7 @@ Slackで「これこれのテストを書いてほしい」と依頼すると、
 
 プロジェクト内のお作法がわかるようなテスト事例をいくつか渡してあげるとスムーズです。事例が無い場合、ゼロから作ってもらうことも可能ですが、Devinとのやりとりに時間がかかってしまうので、最初の1, 2個目のテストは自前で作ってしまう方が早いです。
 
-オススメはGitHub Copilot in VS Code、Cursor、JetBrains AI Assistantといった◯◯を使い、プロジェクト全体を解読してもらいながらテストを書いてもらう方法です。
+オススメはVS Codeの[GitHub Copilot拡張機能](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)、[Cursor](https://www.cursor.com/)、[JetBrains AI Assistant](https://plugins.jetbrains.com/plugin/22282-jetbrains-ai-assistant)などを使い、プロジェクト全体を解読してもらいながらテストを書いてもらう方法です。
 
 ## 2. 作業が開始するので更新を待つ
 
