@@ -2,7 +2,7 @@
 title: "Devin AIにテストを丸ごと書かかせてCIがパスするまで作業してもらう方法"
 emoji: "🧪"
 type: "tech" # tech: 技術記事 / idea: アイデア
-topics: ["LLM", "AI"]
+topics: ["LLM", "AI", "contest2024"]
 published: true
 publication_name: ubie_dev
 ---
