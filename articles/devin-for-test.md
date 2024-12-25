@@ -1,13 +1,16 @@
 ---
-title: "Devin AIにテストを書いてCIがパスするまで作業してもらう方法"
+title: "Devin AIにテストを丸ごと書かかせてCIがパスするまで作業してもらう方法"
 emoji: "💐"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["LLM", "AI"]
 published: true
 ---
 
+DevinというAIチームメイトにテストを書いてもらったら、開発効率が大きく向上した話です。
 
-Devin https://devin.ai/ にテストを書かせたらとても捗った話。
+https://devin.ai/
+
+Devinは、ソフトウェア開発におけるタスクを自動化・効率化してくれるAIプラットフォームです。2024年12月に正式リリースされました。 私が所属しているUbieにも先日導入されました。様々な作業ができますが、あるリポジトリで不足しているテストを書いてもらったところ、その便利さに感動して椅子から転げ落ちました。
 
 ## テストの作成をSlackで依頼する
 
@@ -31,6 +34,8 @@ Slackで「これこれのテストを書いてほしい」と依頼すると、
 - import React from 'react'; は含めないで
 - PRはdraftで作って
 ```
+
+実際にSlackに依頼した例
 
 ![](/images/ai-for-test/request-in-slack.png)
 
