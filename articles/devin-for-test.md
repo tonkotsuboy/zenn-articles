@@ -1,6 +1,6 @@
 ---
 title: "Devin AIにテストを丸ごと書かかせてCIがパスするまで作業してもらう方法"
-emoji: "💐"
+emoji: "🧪"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["LLM", "AI"]
 published: true
