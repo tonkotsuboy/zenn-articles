@@ -4,6 +4,7 @@ emoji: "🧪"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["LLM", "AI"]
 published: true
+publication_name: ubie_dev
 ---
 
 DevinというAIチームメイトにテストを書いてもらったら、開発効率が大きく向上した話です。
