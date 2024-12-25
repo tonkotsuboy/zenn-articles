@@ -1,4 +1,11 @@
-# Devin AIにテストを書いてCIがパスするまで作業してもらう方法
+---
+title: "Devin AIにテストを書いてCIがパスするまで作業してもらう方法"
+emoji: "💐"
+type: "tech" # tech: 技術記事 / idea: アイデア
+topics: ["LLM", "AI"]
+published: true
+---
+
 
 Devin https://devin.ai/ にテストを書かせたらとても捗った話。
 
