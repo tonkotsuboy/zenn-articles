@@ -1,5 +1,5 @@
 ---
-title: "Devin AIにテストを丸ごと書かかせてCIがパスするまで作業してもらう方法"
+title: "Devin AIにテストを丸ごと書かせてCIがパスするまで作業してもらう方法"
 emoji: "🧪"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["LLM", "AI", "contest2024"]
