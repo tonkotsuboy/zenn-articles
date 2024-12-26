@@ -93,12 +93,16 @@ DevinのUI上から作業を依頼する方法です。Devinが作業を開始�
 
 # フィードバックの知見が溜まる
 
-大変便利なのが、各種作業依頼のフィードバックをDevinが学習して覚えてくれていることです。例えば、「モックの際は`jest.spyOn()`を優先的に使ってください」と指定していたとします。すると、その命令をDevinがリポジトリごとに「Knowledge」として保存され、次回の作業時に使ってくれるのです。
+大変便利なのが、各種作業依頼のフィードバックをDevinが学習して覚えてくれていることです。例えば、「モックの際は`jest.spyOn()`を優先的に使ってください」と指定していたとします。すると、その命令をDevinが「Knowledge」として保存し、次回もその内容を使うかどうかを選択できます。そのまま採用・不採用もできますし、よりよい指示に編集して保存することもできます。
 
-![img.png](/images/ai-for-test/knowledge.png)
+![](/images/ai-for-test/suggestion-knowledge.png)
+*指摘した指示をKnowledgeとして保存するかを提案している様子*
+
+保存したKnowledgeはリポジトリごとに保存され、次回の作業時に使ってくれます。
+
+![](/images/ai-for-test/knowledge.png)
 
 Knowledgeは自由に追加・修正・削除が可能なので、毎回長ったらしいプロンプトを書く手間が省けますし、リポジトリごとのコードの方針も統一ができます。
-
 
 https://docs.devin.ai/onboard-devin/knowledge
 
