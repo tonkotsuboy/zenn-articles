@@ -141,6 +141,8 @@ GitHub上のコードを解析して、勝手にテストコードを書いて�
 
 なお、私の所属しているUbieは、Devinのような新しい生成AIを実務に取り入れています。社内LLM「dev爺」では各種最新LLMモデルが使い放題になっているため、金銭的な負担もなく好きなだけAIを試せます。
 
+https://x.com/tonkotsuboy_com/status/1872192017314594864
+
 興味のある人は、ぜひUbieで一緒に楽しい開発をしていきましょう。
 
 https://recruit.ubie.life/
