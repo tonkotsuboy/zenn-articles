@@ -54,7 +54,7 @@ CSS Media Query は、CSS を特定の条件下で適用するための機能で
 
 1つ目は、冗長で長いことです。プログラミング言語に慣れている方であれば、 `width <= 600px` のような表記をしたいと思うでしょう。
 
-2つ目は、**「未満」や「より大きい」の表現ができないことです**。
+2つ目は、**「未満」や「より大きい」の表現が直感的ではないことです**。
 `min-*`や`max-*`は、「○○px以上・○○px以下」にしか対応していません。したがって、たとえばブレークポイント `600px` でスタイルを分けようとすると、次のような書き方をする必要があります。
 
 ```css
@@ -80,6 +80,17 @@ CSS Media Query は、CSS を特定の条件下で適用するための機能で
 ```
 
 参考： [Media Queries Level 4 - Using “min-” and “max-” Prefixes On Range Features](https://www.w3.org/TR/mediaqueries-4/#mq-min-max)
+
+
+もしくは、次のように `not` を使った記法もありますが、これも直感的ではありません（ ※ https://zenn.dev/tonkotsuboy_com/articles/css-range-syntax#comment-f0dc9c75b4301e のコメントにより追記  2024/12/31）
+
+```css
+@media not (min-width: 600px) {
+  /* 600pxを含まずそれより小さいという表現ができる */
+}
+```
+
+
 
 
 # 新しい Media Query の Range 記法
