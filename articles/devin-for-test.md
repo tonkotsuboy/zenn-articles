@@ -140,7 +140,11 @@ https://devin.ai/pricing
 
 GitHub上のコードを解析して、勝手にテストコードを書いて、CIがパスするまで作業して、追加の作業依頼もしてくれるAIというのは、ずっと求めていた夢でした 。
 
-なお、私の所属しているUbieは、Devinのような新しい生成AIを実務に取り入れています。社内LLM「dev爺」では各種最新LLMモデルが使い放題になっているため、金銭的な負担もなく好きなだけAIを試せます。
+なお、ローカルでDevinのようなAIエージェントを試す場合は、ClineやCursor Yoloがオススメです。弊社 @syucream が書いた記事がわかりやすいです。
+
+https://zenn.dev/ubie_dev/articles/624c9034cc9b43
+
+私の所属しているUbieは、Devinのような新しい生成AIを実務に取り入れています。社内LLM「dev爺」では各種最新LLMモデルが使い放題になっているため、金銭的な負担もなく好きなだけAIを試せます。
 
 https://x.com/tonkotsuboy_com/status/1872192017314594864
 
