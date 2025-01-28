@@ -148,9 +148,10 @@ class MyClass {
 
 それぞれ、`erasableSyntaxOnly` フラグをONにしてもエラーになりません。
 
-![TypeScriot 5.8でエラーが出ていない様子](/images/ts-erasable-syntax-only/ts-no-error.png)
+![TypeScript 5.8でエラーが出ていない様子](/images/ts-erasable-syntax-only/ts-no-error.png)
 
-https://www.typescriptlang.org/play/?ts=5.8.0-dev.20250127#code/KYDwDg9gTgLgBAYwgOwM7wGYQnAvHAIgAtgAbUiAgbgCgaFSBDVVOAWQE8BhJluAbxpw4YKAEsAboxjA4AWw4AxMWQAmALjjpxyAOa0hiFNoCuCGNAAUASgGHhMImNQA6BcrV5C7laVXVDAF8aYPpeVk4eZlQAJjthAGIfNU1tMT0DYSQ0GCgzCygbeOE4R2cXJKVfVS8CZL8A4WDgoA
+https://www.typescriptlang.org/play/?erasableSyntaxOnly=true&ts=5.8.0-dev.20250127#code/KYDwDg9gTgLgBAYwgOwM7wGYQnAvHAIgAtgAbUiAgbgCgaFSBDVVOAWQE8BhJluAbxpw4YKAEsAboxjA4AWw4AxMWQAmALjjpxyAOa0hiFNoCuCGNAAUASgGHhMImNQA6BcrV5C7laVXVDAF8aYPpeVk4eZlQAJjthAGIfNU1tMT0DYSQ0GCgzCygbeOE4R2cXJKVfVS8CZL8A4WDgoA
+
 
 ※ TypeScript Playgroundにて、TS Configタブから`erasableSyntaxOnly`フラグをONにして動作確認
 
