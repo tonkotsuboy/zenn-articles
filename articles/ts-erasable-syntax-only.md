@@ -157,9 +157,11 @@ class MyClass2 {
 
 ![TypeScriot 5.8でエラーが出ていない様子](/images/ts-erasable-syntax-only/ts-no-error.png)
 
+https://www.typescriptlang.org/play/?ts=5.8.0-dev.20250127#code/KYDwDg9gTgLgBAYwgOwM7wGYQnAvHAIgAtgAbUiAgbgCgaFSBDVVOAWQE8BhJluAbxpw4YKAEsAboxjA4AWw4AxMWQAmALjjpxyAOa0hiFNoCuCGNAAUASgGHhMImNQA6BcrV5C7laVXVDAF8aYPpeVk4eZlQAJjthAGIfNU1tMT0DYSQ0GCgzCygbeOE4R2cXJKVfVS8CZL8A4WDgoA
+
 ※ TypeScript Playgroundにて、TS Configタブから`erasableSyntaxOnly`フラグをONにして動作確認
 
-唯一ちょっと悩んでいるのがクラスのパラメータプロパティで、筆者はNestJSのコードを書く際に使っています。
+唯一ちょっと悩んでいるのがクラスのパラメータプロパティで、筆者はNestJS（サーバーサイドのフレームワーク）のコードを書く際に使っています。NestJSでは、クラスのパラメータプロパティを使った依存性の注入が一般的ですが、erasableSyntaxOnlyフラグを有効にするとエラーになってしまうため、別の方法を検討する必要があるかもしれません。
 
 # 参考資料
 
