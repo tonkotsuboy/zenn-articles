@@ -3,7 +3,7 @@ title: "TypeScript 5.8の新機能erasableSyntaxOnlyフラグ 〜enumやnamespac
 emoji: "✂️"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["typescript", "javascript"]
-published: true
+published: false
 publication_name: ubie_dev
 
 ---
