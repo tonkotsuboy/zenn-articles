@@ -151,7 +151,7 @@ class MyClass {
 
 ※ TypeScript Playgroundにて、TS Configタブから`erasableSyntaxOnly`フラグをONにして動作確認
 
-https://www.typescriptlang.org/play/?erasableSyntaxOnly=true&ts=5.8.0-dev.20250127#code/KYDwDg9gTgLgBAYwgOwM7wGYQnAvHAIgAtgAbUiAgbgCgaFSBDVVOAWQE8BhJluAbxpw4YKAEsAboxjA4AWw4AxMWQAmALjjpxyAOa0hiFNoCuCGNAAUASgGHhMImNQA6BcrV5C7laVXVDAF8aYKA
+https://www.typescriptlang.org/play/?erasableSyntaxOnly=true&ts=5.8.0-dev.20250127#code/PTAEFEDsFcFtDsGQx3KH+zAUAYwPaQM4BdQBZATyjlAF5QBvVUUAQQC5QAGAGjtACEWBGTvQDCLAEycAvqACGOUFlx4A3KlR5iABwCmRUjFiVQ67ZgBmusrBWoQoQPUMgS4ZAnQzxAiwwPAhwyAfhkD9DIHWGQFuGV0AxhkBihgwAG1k5EiEonDlaelhiADEASy0IgBMWfAAndMgAc2t6BQLodDxMfIAKAEoaLno8AAt0nAA6FIys7MMAIl7MnMGVeglUKaA
 
 # `erasableSyntaxOnly`は歓迎すべき挙動
 
