@@ -1,17 +1,20 @@
 ---
-title: "TypeScript 5.8でenumやnamespaceを撲滅できるようになった"
+title: "TypeScript 5.8の新機能。enumやnamespaceを撲滅できるerasableSyntaxOnlyフラグ"
 emoji: "✂️"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["typescript", "javascript"]
-published: true
+published: false
 publication_name: ubie_dev
+
 ---
 
-TypeScript 5.8で導入される`erasableSyntaxOnly`フラグ、`enum`や`namespace`、クラスのパラメータプロパティ、`module`キーワードなどの構文をエラーできるようになります。これらの構文はNode.jsでTypeScriptを実行する際に非互換な構文であり、本フラグの導入によりNode.jsとTypeScriptの互換性が高まります。
+TypeScript 5.8で導入される`erasableSyntaxOnly`フラグを使うと、`enum`や`namespace`、クラスのパラメータプロパティ、`module`キーワードなどの構文をエラーとして検出できます。これらの構文はNode.jsでTypeScriptを実行する際に非互換な構文であり、本フラグの導入によりNode.jsとTypeScriptの互換性が高まります。
 
 本記事では、`erasableSyntaxOnly`フラグの挙動と、なぜこのフラグが導入されたのかを解説します。
 
 # `erasableSyntaxOnly`フラグの挙動
+
+`erasableSyntaxOnly` とは、「削除可能な構文のみ」という意味です。削除可能な構文とは、Node.jsでTypeScriptを実行される際に削除される構文のことです。後ほど詳しく解説します。
 
 `erasableSyntaxOnly`フラグは、tsconfig.jsonの`compilerOptions`に`"erasableSyntaxOnly": true`を設定することで有効になります。
 
@@ -53,7 +56,11 @@ https://www.typescriptlang.org/play/?erasableSyntaxOnly=true&ts=5.8.0-dev.202501
 
 ## 前提: Node.jsでTypeScriptの型注釈を削除し、そのまま実行できるようになった
 
-Node.js 22.7で導入された `experimental-transform-types` オプションを使うと、TypeScriptのコードをnode.jsで実行する際に、TypeScriptの型注釈などの構文を削除し、JavaScriptのコードとして実行できるようになります。
+最近のNode.jsでは、TypeScriptのコードをそのまま実行できます。従来のようにts-nodeを使う必要はありません。Node.jsがTypeScriptの型注釈を削除し、JavaScriptのコードとして実行しているのです。
+
+Node.js v22.7では `--experimental-transform-types` フラグを使う必要がありました。
+
+最新のNode.js v23.6では、フラグすらなしにTypeScriptコードを実行できます。
 
 たとえば次のようなTypeScriptのコードを記述し、`index.ts`というファイル名で保存します。
 
@@ -62,19 +69,15 @@ const myName: string = "とんこつ";
 console.log(myName);
 ```
 
-Node.js 22.7で導入された `experimental-transform-types` オプションを使うと、型注釈（`const myName: string`の`: string`部分）が削除され、JavaScriptのコードとして実行できるようになります。
+`index.ts`をNode.jsで実行するには、次のように`node`コマンドを使うだけです。
 
 ```bash
-node --experimental-transform-types index.ts
+node index.ts
 ```
 
 実行結果は次のとおりです。
 
 ![Node.jsでTypeScriptを実行する](/images/ts-erasable-syntax-only/node-for-ts.png)
-
-mizchiさんの記事がわかりやすいです。
-
-https://zenn.dev/mizchi/articles/experimental-node-typescript
 
 ## 型注釈の削除だけでは実行できないTypeScriptの構文をエラーにする
 
@@ -91,9 +94,11 @@ https://github.com/microsoft/TypeScript/issues/59601
 - クラスのパラメータプロパティ
 - レガシーな`module`
 
-レガシーな`module`とは、TypeScript独自の`module`キーワードを使ったコードのことです。昔使われていました。
+レガシーな`module`とは、TypeScript独自の`module`キーワードを使ったコードのことです。以前のバージョンのTypeScriptで使用されていた構文です。
 
-なお、DecoratorsもNode.jsでは削除不可能構文とみなされますが、TypeScriptの`erasableSyntaxOnly`フラグをONにしてもエラーになりません。
+なお、DecoratorsもNode.jsでは削除不可能構文とみなされます[^1]が、TypeScriptの`erasableSyntaxOnly`フラグをONにしてもエラーになりません。
+
+[^1]: https://nodejs.org/api/typescript.html#typescript-features
 
 # `enum`や`namespace`などの構文がエラーになって困るか？
 
@@ -158,6 +163,10 @@ class MyClass2 {
 
 # 参考資料
 
-https://www.totaltypescript.com/erasable-syntax-only
+https://github.com/microsoft/TypeScript/issues/59601
 
 https://nodejs.org/api/typescript.html#typescript-features
+
+https://www.totaltypescript.com/erasable-syntax-only
+
+https://www.totaltypescript.com/typescript-is-coming-to-node-23
