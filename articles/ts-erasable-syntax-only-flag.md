@@ -1,9 +1,9 @@
 ---
-title: "TypeScript 5.8の新機能erasableSyntaxOnlyフラグ 〜enumやnamespaceが消える日が来た〜"
+title: "TypeScript 5.8のerasableSyntaxOnlyフラグが便利。enumやnamespaceが消える日が来た"
 emoji: "✂️"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["typescript", "javascript"]
-published: false
+published: true
 publication_name: ubie_dev
 
 ---
