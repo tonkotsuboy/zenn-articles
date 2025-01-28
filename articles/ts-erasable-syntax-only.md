@@ -40,7 +40,7 @@ namespace myNameSpace {
 }
 
 class MyClass {
-  constructor(private myField: string) {}
+  constructor(myField: string) {}
 }
 ```
 
@@ -51,6 +51,8 @@ class MyClass {
 次のリンクから動作を確認できます。
 
 https://www.typescriptlang.org/play/?erasableSyntaxOnly=true&ts=5.8.0-dev.20250126#code/KYOwrgtgBAsgngUXNA3gKClAggGg1AIT0wGE8BfNNEAQwmAGcAHGgY2CgjgDk7gBlFuyjpMwAB5MA9gCcALlFZSQDBQDMpUqAF4oARgDcaSmghSAJmAA2HeDAvWOoqBOnzFy1VA1bdh41SsVjQMDLBwJMGhIvhKKnIyYKxysgAUTDIAlgBuNHIcXABimcBW5gBcUKpZIADmAJQxmJSUQA
+
+※ TypeScript Playgroundにて、TS Configタブから`erasableSyntaxOnly`フラグをONにして動作確認
 
 # なぜ`erasableSyntaxOnly`フラグが導入されたのか
 
@@ -98,6 +100,7 @@ https://github.com/microsoft/TypeScript/issues/59601
 
 なお、DecoratorsもNode.jsでは削除不可能構文とみなされます[^1]が、TypeScriptの`erasableSyntaxOnly`フラグをONにしてもエラーになりません。
 
+
 [^1]: https://nodejs.org/api/typescript.html#typescript-features
 
 # `enum`や`namespace`などの構文がエラーになって困るか？
@@ -137,17 +140,7 @@ console.log(myNameSpace.bar); // "hello"
 
 ```ts
 class MyClass {
-  private myField: string;
-
-  constructor() {}
-}
-```
-
-JavaScriptのプライベートフィールドを使うのも手でしょう。
-
-```ts
-class MyClass2 {
-  #myField: string;
+  myField: string;
 
   constructor() {}
 }
