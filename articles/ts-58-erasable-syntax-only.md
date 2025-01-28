@@ -60,7 +60,7 @@ https://www.typescriptlang.org/play/?erasableSyntaxOnly=true&ts=5.8.0-dev.202501
 
 最近のNode.jsでは、TypeScriptのコードをそのまま実行できます。従来のようにts-nodeを使う必要はありません。Node.jsがTypeScriptの型注釈を削除し、JavaScriptのコードとして実行しているのです。
 
-Node.js v22.7では `--experimental-transform-types` フラグを使う必要がありました。
+Node.js v22.7では `‎--experimental-strip-types` フラグを使う必要がありました。
 
 最新のNode.js v23.6では、フラグすらなしにTypeScriptコードを実行できます。
 
@@ -84,6 +84,8 @@ node index.ts
 ## 型注釈の削除だけでは実行できないTypeScriptの構文をエラーにする
 
 しかし、`enum`や`namespace`、クラスのパラメータプロパティなどの構文は、単純な型注釈の削除ではない変換処理が必要になり、「削除不可能な構文」とみなされます。
+
+‎その場合Node.jsでは `--experimental-transform-types` フラグを使う必要があります。
 
 `erasableSyntaxOnly` フラグが提案されたのは、こういったNode.jsの削除不可能な構文をエラーにし、Node.jsのTypeScript実行との互換性を高める目的がありました。
 
