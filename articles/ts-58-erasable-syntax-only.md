@@ -40,7 +40,7 @@ namespace myNameSpace {
 }
 
 class MyClass {
-  constructor(myField: string) {}
+  constructor(private myField: string) {}
 }
 ```
 
@@ -139,9 +139,11 @@ console.log(myNameSpace.myName); // "とんこつ"
 
 ```ts
 class MyClass {
-  myField: string;
+  private myField: string;
 
-  constructor() {}
+  constructor(initialValue: string) {
+    this.myField = initialValue;
+  }
 }
 ```
 
