@@ -125,16 +125,14 @@ type MyEnum = typeof MyEnum;
 foo.ts
 
 ```ts
-export const foo = "hello";
+export const myName = "とんこつ";
 ```
 
 main.ts
 
 ```ts
-// main.ts
 import * as myNameSpace from "./foo";
-
-console.log(myNameSpace.bar); // "hello"
+console.log(myNameSpace.myName); // "とんこつ"
 ```
 
 クラスのパラメータプロパティは、次のように実現できます。
