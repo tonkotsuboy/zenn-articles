@@ -2,7 +2,7 @@
 title: "TypeScript 5.8のerasableSyntaxOnlyフラグ。enumやnamespaceが消える日が来た"
 emoji: "✂️"
 type: "tech" # tech: 技術記事 / idea: アイデア
-topics: ["typescript", "javascript"]
+topics: ["typescript", "nodejs", "javascript"]
 published: true
 publication_name: ubie_dev
 
