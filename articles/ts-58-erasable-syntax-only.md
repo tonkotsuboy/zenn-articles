@@ -48,11 +48,12 @@ TypeScript Playgroundで動作を確認すると、各構文がエラーにな�
 
 ![erasableSyntaxOnlyによるエラー](/images/ts-erasable-syntax-only/ts-error.png)
 
+※ TypeScript Playgroundにて、TS Configタブから`erasableSyntaxOnly`フラグをONにして動作確認
+
 次のリンクから動作を確認できます。
 
 https://www.typescriptlang.org/play/?erasableSyntaxOnly=true&ts=5.8.0-dev.20250126#code/KYOwrgtgBAsgngUXNA3gKClAggGg1AIT0wGE8BfNNEAQwmAGcAHGgY2CgjgDk7gBlFuyjpMwAB5MA9gCcALlFZSQDBQDMpUqAF4oARgDcaSmghSAJmAA2HeDAvWOoqBOnzFy1VA1bdh41SsVjQMDLBwJMGhIvhKKnIyYKxysgAUTDIAlgBuNHIcXABimcBW5gBcUKpZIADmAJQxmJSUQA
 
-※ TypeScript Playgroundにて、TS Configタブから`erasableSyntaxOnly`フラグをONにして動作確認
 
 # なぜ`erasableSyntaxOnly`フラグが導入されたのか
 
@@ -150,10 +151,9 @@ class MyClass {
 
 ![TypeScript 5.8でエラーが出ていない様子](/images/ts-erasable-syntax-only/ts-no-error.png)
 
-https://www.typescriptlang.org/play/?erasableSyntaxOnly=true&ts=5.8.0-dev.20250127#code/KYDwDg9gTgLgBAYwgOwM7wGYQnAvHAIgAtgAbUiAgbgCgaFSBDVVOAWQE8BhJluAbxpw4YKAEsAboxjA4AWw4AxMWQAmALjjpxyAOa0hiFNoCuCGNAAUASgGHhMImNQA6BcrV5C7laVXVDAF8aYPpeVk4eZlQAJjthAGIfNU1tMT0DYSQ0GCgzCygbeOE4R2cXJKVfVS8CZL8A4WDgoA
-
-
 ※ TypeScript Playgroundにて、TS Configタブから`erasableSyntaxOnly`フラグをONにして動作確認
+
+https://www.typescriptlang.org/play/?erasableSyntaxOnly=true&ts=5.8.0-dev.20250127#code/KYDwDg9gTgLgBAYwgOwM7wGYQnAvHAIgAtgAbUiAgbgCgaFSBDVVOAWQE8BhJluAbxpw4YKAEsAboxjA4AWw4AxMWQAmALjjpxyAOa0hiFNoCuCGNAAUASgGHhMImNQA6BcrV5C7laVXVDAF8aYKA
 
 # `erasableSyntaxOnly`は歓迎すべき挙動
 
