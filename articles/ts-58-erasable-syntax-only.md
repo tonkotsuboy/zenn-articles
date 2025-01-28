@@ -40,7 +40,9 @@ namespace myNameSpace {
 }
 
 class MyClass {
-  constructor(private myField: string) {}
+  constructor(private myField: string) {
+    this.myField = "foo"
+  }
 }
 ```
 
@@ -52,7 +54,7 @@ TypeScript Playgroundで動作を確認すると、各構文がエラーにな�
 
 次のリンクから動作を確認できます。
 
-https://www.typescriptlang.org/play/?erasableSyntaxOnly=true&ts=5.8.0-dev.20250126#code/KYOwrgtgBAsgngUXNA3gKClAggGg1AIT0wGE8BfNNEAQwmAGcAHGgY2CgjgDk7gBlFuyjpMwAB5MA9gCcALlFZSQDBQDMpUqAF4oARgDcaSmghSAJmAA2HeDAvWOoqBOnzFy1VA1bdh41SsVjQMDLBwJMGhIvhKKnIyYKxysgAUTDIAlgBuNHIcXABimcBW5gBcUKpZIADmAJQxmJSUQA
+https://www.typescriptlang.org/play/?erasableSyntaxOnly=true&ts=5.8.0-dev.20250126#code/KYOwrgtgBAsgngUXNA3gKClAggGg1AIT0wGE8BfNNEAQwmAGcAHGgY2CgjgDk7gBlFuyjpMwAB5MA9gCcALlFZSQDBQDMpUqAF4oARgDcaSmlYAbGgwaw4JC1ZH4lKuTLCs5sgBRMZASwA3GjkOLgAxP2AzABMALihVfxAAcwBKR0xMOQALPwYAOnDImJ0oACINKTL8SnIgA
 
 
 # なぜ`erasableSyntaxOnly`フラグが導入されたのか
@@ -141,7 +143,7 @@ console.log(myNameSpace.myName); // "とんこつ"
 class MyClass {
   private myField: string;
 
-  constructor(initialValue: string) {
+  constructor() {
     this.myField = "foo";
   }
 }
@@ -153,7 +155,7 @@ class MyClass {
 
 ※ TypeScript Playgroundにて、TS Configタブから`erasableSyntaxOnly`フラグをONにして動作確認
 
-https://www.typescriptlang.org/play/?erasableSyntaxOnly=true&ts=5.8.0-dev.20250127#code/PTAEFEDsFcFtDsGQx3KH+zAUAYwPaQM4BdQBZATyjlAF5QBvVUUAQQC5QAGAGjtACEWBGTvQDCLAEycAvqACGOUFlx4A3KlR5iABwCmRUjFiVQ67ZgBmusrBWoQoQPUMgS4ZAnQzxAiwwPAhwyAfhkD9DIHWGQFuGV0AxhkBihgwAG1k5EiEonDlaelhiADEASy0IgBMWfAAndMgAc2t6BQLodDxMfIAKAEoaLno8AAt0nAA6FIys7MMAIl7MnMGVeglUKaA
+https://www.typescriptlang.org/play/?erasableSyntaxOnly=true&ts=5.8.0-dev.20250127#code/PTAEFEDsFcFtDsGQx3KH+zAUAYwPaQM4BdQBZATyjlAF5QBvVUUAQQC5QAGAGjtACEWBGTvQDCLAEycAvqACGOUFlx4A3KlR5iABwCmRUjFiVQ67ZgBmusrBWoQoQPUMgS4ZAnQzxAiwwPAhwyAfhkD9DIHWGQFuGV0AxhkBihgwAG1k5EiEonDlaeg0AJwBLADdpPB1YYgAxNK0IgBMWfHTIAHNregUK6HQ8TBSACgBKGi56PAALNJwAOjzC4pLDACJTTEwJlXoJVEXUIA
 
 唯一悩んでいるのがクラスのパラメータプロパティで、筆者はNestJSのコードを書く際に使っています。NestJSでは、クラスのパラメータプロパティを使った依存性の注入が一般的なので、対応方法を検討中です。
 
