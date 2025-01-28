@@ -142,7 +142,7 @@ class MyClass {
   private myField: string;
 
   constructor(initialValue: string) {
-    this.myField = initialValue;
+    this.myField = "foo";
   }
 }
 ```
