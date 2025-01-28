@@ -161,7 +161,15 @@ https://www.typescriptlang.org/play/?ts=5.8.0-dev.20250127#code/KYDwDg9gTgLgBAYw
 
 ※ TypeScript Playgroundにて、TS Configタブから`erasableSyntaxOnly`フラグをONにして動作確認
 
-唯一ちょっと悩んでいるのがクラスのパラメータプロパティで、筆者はNestJS（サーバーサイドのフレームワーク）のコードを書く際に使っています。NestJSでは、クラスのパラメータプロパティを使った依存性の注入が一般的ですが、erasableSyntaxOnlyフラグを有効にするとエラーになってしまうため、別の方法を検討する必要があるかもしれません。
+唯一ちょっと悩んでいるのがクラスのパラメータプロパティで、筆者はNestJSのコードを書く際に使っています。NestJSでは、クラスのパラメータプロパティを使った依存性の注入が一般的なので、対応方法を検討中です。
+
+
+# `erasableSyntaxOnly`は歓迎すべき挙動
+
+筆者的には`erasableSyntaxOnly`は嬉しい挙動です。とりわけ`enum`については、生成されるJavaScriptコードが好みでなかったり、オブジェクトで表現したほうが各値のループの表現がしやすかったりで、ESlintで禁止して使わないようにしていました。また、Node.jsで動作するTypeScriptとの互換性が高まったこともメリットです。 
+
+TypeScript 5.8にアップデートしたら早速フラグをONにします。
+
 
 # 参考資料
 
