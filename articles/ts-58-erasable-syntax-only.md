@@ -8,7 +8,7 @@ publication_name: ubie_dev
 
 ---
 
-TypeScript 5.8で導入される`erasableSyntaxOnly`フラグを使うと、`enum`や`namespace`、importエイリアス（`@/foo/bar`）、クラスのパラメータプロパティ、`module`キーワードなどの構文をエラーとして検出できます。これらの構文はNode.jsでTypeScriptを実行する際に非互換な構文であり、本フラグの導入によりNode.jsとTypeScriptの互換性が高まります。
+TypeScript 5.8で導入される`erasableSyntaxOnly`フラグを使うと、`enum`や`namespace`、クラスのパラメータプロパティ、`module`キーワードなどの構文をエラーとして検出できます。これらの構文はNode.jsでTypeScriptを実行する際に非互換な構文であり、本フラグの導入によりNode.jsとTypeScriptの互換性が高まります。
 
 本記事では、`erasableSyntaxOnly`フラグの挙動と、なぜこのフラグが導入されたのかを解説します。
 
