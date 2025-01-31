@@ -63,7 +63,7 @@ export const foo = "foo",
 main.ts
 
 ```ts
-import { bar } from '@/foo/bar';
+import { foo } from '@/models/foo';
 ```
 
 次のリンクから動作を確認できます。
@@ -170,10 +170,10 @@ class MyClass {
 
 https://www.typescriptlang.org/play/?erasableSyntaxOnly=true&ts=5.8.0-dev.20250127#code/PTAEFEDsFcFtDsGQx3KH+zAUAYwPaQM4BdQBZATyjlAF5QBvVUUAQQC5QAGAGjtACEWBGTvQDCLAEycAvqACGOUFlx4A3KlR5iABwCmRUjFiVQ67ZgBmusrBWoQoQPUMgS4ZAnQzxAiwwPAhwyAfhkD9DIHWGQFuGV0AxhkBihgwAG1k5EiEonDlaeg0AJwBLADdpPB1YYgAxNK0IgBMWfHTIAHNregUK6HQ8TBSACgBKGi56PAALNJwAOjzC4pLDACJTTEwJlXoJVEXUIA
 
-importエイリアス（`@/foo/bar`）がエラーになるのも、個人的には賛成です。確かにモジュール文を短くしてスッキリしますが、import対象のファイルとの関係が分かりづらく感じています。次のように相対パスで記述して解決できます。
+importエイリアス（`@/module/foo`）がエラーになるのも、個人的には賛成です。確かにモジュール文を短くしてスッキリしますが、import対象のファイルとの関係が分かりづらく感じています。次のように相対パスで記述して解決できます。
 
 ```ts
-import { bar } from './foo/bar';
+import { foo } from './models/foo';
 ```
 
 唯一悩んでいるのがクラスのパラメータプロパティで、筆者はNestJSのコードを書く際に使っています。NestJSでは、クラスのパラメータプロパティを使った依存性の注入が一般的なので、対応方法を検討中です。
