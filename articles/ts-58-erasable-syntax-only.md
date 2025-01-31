@@ -1,5 +1,5 @@
 ---
-title: "TypeScript 5.8のerasableSyntaxOnlyフラグ。enum・importエイリアス・namespaceが消える日"
+title: "TypeScript 5.8のerasableSyntaxOnlyフラグ。enumやnamespaceが消える日が来た"
 emoji: "✂️"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["typescript", "nodejs", "javascript"]
@@ -52,23 +52,10 @@ TypeScript Playgroundで動作を確認すると、各構文がエラーにな�
 
 ※ TypeScript Playgroundにて、TS Configタブから`erasableSyntaxOnly`フラグをONにして動作確認
 
-また、importエイリアスもエラーになります。importエイリアスとは、`@`等を使ってモジュールに`@`等を使ってモジュールにエイリアス（別名）をつける方法です。開発現場でもよく使われているのと見かけます。
-
-foo.ts
-
-```ts
-export const foo = "foo",
-```
-
-main.ts
-
-```ts
-import { foo } from '@/models/foo';
-```
-
 次のリンクから動作を確認できます。
 
 https://www.typescriptlang.org/play/?erasableSyntaxOnly=true&ts=5.8.0-dev.20250126#code/KYOwrgtgBAsgngUXNA3gKClAggGg1AIT0wGE8BfNNEAQwmAGcAHGgY2CgjgDk7gBlFuyjpMwAB5MA9gCcALlFZSQDBQDMpUqAF4oARgDcaSmlYAbGgwaw4JC1ZH4lKuTLCs5sgBRMZASwA3GjkOLgAxP2AzABMALihVfxAAcwBKR0xMOQALPwYAOnDImJ0oACINKTL8SnIgA
+
 
 # なぜ`erasableSyntaxOnly`フラグが導入されたのか
 
@@ -170,17 +157,12 @@ class MyClass {
 
 https://www.typescriptlang.org/play/?erasableSyntaxOnly=true&ts=5.8.0-dev.20250127#code/PTAEFEDsFcFtDsGQx3KH+zAUAYwPaQM4BdQBZATyjlAF5QBvVUUAQQC5QAGAGjtACEWBGTvQDCLAEycAvqACGOUFlx4A3KlR5iABwCmRUjFiVQ67ZgBmusrBWoQoQPUMgS4ZAnQzxAiwwPAhwyAfhkD9DIHWGQFuGV0AxhkBihgwAG1k5EiEonDlaeg0AJwBLADdpPB1YYgAxNK0IgBMWfHTIAHNregUK6HQ8TBSACgBKGi56PAALNJwAOjzC4pLDACJTTEwJlXoJVEXUIA
 
-importエイリアス（`@/module/foo`）がエラーになるのも、個人的には賛成です。確かにモジュール文を短くしてスッキリしますが、import対象のファイルとの関係が分かりづらく感じています。次のように相対パスで記述して解決できます。
-
-```ts
-import { foo } from './models/foo';
-```
-
 唯一悩んでいるのがクラスのパラメータプロパティで、筆者はNestJSのコードを書く際に使っています。NestJSでは、クラスのパラメータプロパティを使った依存性の注入が一般的なので、対応方法を検討中です。
 
 # `erasableSyntaxOnly`は歓迎すべき挙動
 
 筆者的には`erasableSyntaxOnly`は嬉しい挙動です。とりわけ`enum`については、生成されるJavaScriptコードが好みでなかったり、オブジェクトで表現したほうが各値のループの表現がしやすかったりで、ESlintで禁止して使わないようにしていました。また、Node.jsで動作するTypeScriptとの互換性が高まったこともメリットです。TypeScript 5.8にアップデートしたら早速フラグをONにするつもりです。
+
 
 TypeScript 5.8は2025年2月25日にリリース予定ですので、今の内から挙動を試しておきましょう。
 
@@ -195,5 +177,3 @@ https://nodejs.org/api/typescript.html#typescript-features
 https://www.totaltypescript.com/erasable-syntax-only
 
 https://www.totaltypescript.com/typescript-is-coming-to-node-23
-
-https://devblogs.microsoft.com/typescript/announcing-typescript-5-8-beta/
