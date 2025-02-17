@@ -136,6 +136,12 @@ https://docs.devin.ai/onboard-devin/knowledge
 
 https://devin.ai/pricing
 
+## リファラルでチケットをもらえます
+
+次のリンクからDevinを使うと、100ACUのチケットをもらえるのでぜひご活用ください！
+
+https://app.devin.ai/invite/KPRRa4OgmXVHYgp1
+
 # 面倒なテストはAIに任せよう
 
 GitHub上のコードを解析して、勝手にテストコードを書いて、CIがパスするまで作業して、追加の作業依頼もしてくれるAIというのは、ずっと求めていた夢でした 。
