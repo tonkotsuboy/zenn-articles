@@ -5,10 +5,14 @@ type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["typescript", "nodejs", "javascript"]
 published: true
 publication_name: ubie_dev
+---
+
+（2025/03/01追記）
+2025/03/01にTypeScript 5.8がリリースされたので記事を更新しました。
 
 ---
 
-TypeScript 5.8で導入される`erasableSyntaxOnly`フラグを使うと、`enum`や`namespace`、クラスのパラメータプロパティ、`module`キーワードなどの構文をエラーとして検出できます。これらの構文はNode.jsでTypeScriptを実行する際に非互換な構文であり、本フラグの導入によりNode.jsとTypeScriptの互換性が高まります。
+TypeScript 5.8で導入された`erasableSyntaxOnly`フラグを使うと、`enum`や`namespace`、クラスのパラメータプロパティ、`module`キーワードなどの構文をエラーとして検出できます。これらの構文はNode.jsでTypeScriptを実行する際に非互換な構文であり、本フラグの導入によりNode.jsとTypeScriptの互換性が高まります。
 
 本記事では、`erasableSyntaxOnly`フラグの挙動と、なぜこのフラグが導入されたのかを解説します。
 
@@ -41,7 +45,7 @@ namespace myNameSpace {
 
 class MyClass {
   constructor(private myField: string) {
-    this.myField = "foo"
+    this.myField = "foo";
   }
 }
 ```
@@ -55,7 +59,6 @@ TypeScript Playgroundで動作を確認すると、各構文がエラーにな�
 次のリンクから動作を確認できます。
 
 https://www.typescriptlang.org/play/?erasableSyntaxOnly=true&ts=5.8.0-dev.20250126#code/KYOwrgtgBAsgngUXNA3gKClAggGg1AIT0wGE8BfNNEAQwmAGcAHGgY2CgjgDk7gBlFuyjpMwAB5MA9gCcALlFZSQDBQDMpUqAF4oARgDcaSmlYAbGgwaw4JC1ZH4lKuTLCs5sgBRMZASwA3GjkOLgAxP2AzABMALihVfxAAcwBKR0xMOQALPwYAOnDImJ0oACINKTL8SnIgA
-
 
 # なぜ`erasableSyntaxOnly`フラグが導入されたのか
 
@@ -99,8 +102,9 @@ https://github.com/microsoft/TypeScript/issues/59601
 - `namespace`
 - クラスのパラメータプロパティ
 - レガシーな`module`
-
-レガシーな`module`とは、TypeScript独自の`module`キーワードを使ったコードのことです。以前のバージョンのTypeScriptで使用されていた構文です。
+  - レガシーな`module`とは、TypeScript独自の`module`キーワードを使ったコードのこと。以前のバージョンのTypeScriptで使用されていた構文
+- `import =` エイリアス
+  - `import Bar = foo.Bar;` のようなコード
 
 なお、DecoratorsもNode.jsでは削除不可能構文とみなされます[^1]が、TypeScriptの`erasableSyntaxOnly`フラグをONにしてもエラーになりません。
 
@@ -161,14 +165,11 @@ https://www.typescriptlang.org/play/?erasableSyntaxOnly=true&ts=5.8.0-dev.202501
 
 # `erasableSyntaxOnly`は歓迎すべき挙動
 
-筆者的には`erasableSyntaxOnly`は嬉しい挙動です。とりわけ`enum`については、生成されるJavaScriptコードが好みでなかったり、オブジェクトで表現したほうが各値のループの表現がしやすかったりで、ESlintで禁止して使わないようにしていました。また、Node.jsで動作するTypeScriptとの互換性が高まったこともメリットです。TypeScript 5.8にアップデートしたら早速フラグをONにするつもりです。
-
-
-TypeScript 5.8は2025年2月25日にリリース予定ですので、今の内から挙動を試しておきましょう。
-
-https://github.com/microsoft/TypeScript/issues/61023
+筆者的には`erasableSyntaxOnly`は嬉しい挙動です。とりわけ`enum`については、生成されるJavaScriptコードが好みでなかったり、オブジェクトで表現したほうが各値のループの表現がしやすかったりで、ESlintで禁止して使わないようにしていました。また、Node.jsで動作するTypeScriptとの互換性が高まったこともメリットです。正式にリリースされたので、積極的にONにしていきます。
 
 # 参考資料
+
+https://devblogs.microsoft.com/typescript/announcing-typescript-5-8/
 
 https://github.com/microsoft/TypeScript/issues/59601
 
