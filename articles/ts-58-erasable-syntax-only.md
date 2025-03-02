@@ -46,6 +46,7 @@ namespace myNameSpace {
 class MyClass {
   constructor(private myField: string) {
     this.myField = "foo";
+    console.log(this.myField);
   }
 }
 ```
@@ -58,7 +59,7 @@ TypeScript Playgroundで動作を確認すると、各構文がエラーにな�
 
 次のリンクから動作を確認できます。
 
-https://www.typescriptlang.org/play/?erasableSyntaxOnly=true&ts=5.8.0-dev.20250126#code/KYOwrgtgBAsgngUXNA3gKClAggGg1AIT0wGE8BfNNEAQwmAGcAHGgY2CgjgDk7gBlFuyjpMwAB5MA9gCcALlFZSQDBQDMpUqAF4oARgDcaSmlYAbGgwaw4JC1ZH4lKuTLCs5sgBRMZASwA3GjkOLgAxP2AzABMALihVfxAAcwBKR0xMOQALPwYAOnDImJ0oACINKTL8SnIgA
+https://www.typescriptlang.org/play/?erasableSyntaxOnly=true&ts=5.8.2#code/KYOwrgtgBAsgngUXNA3gKClAggGg1AIT0wGE8BfNNEAQwmAGcAHGgY2CgjgDk7gBlFuyjpMwAB5MA9gCcALlFZSQDBQDMpUqAF4oARgDcaSmlYAbGgwaw4JC1ZH4lKuTLCs5sgBRMZASwA3GjkOLgAxP2AzABMALihVfxAAcwBKR0xMOQALPwYAOnDImJ0oACINKTL8SnIgA
 
 # なぜ`erasableSyntaxOnly`フラグが導入されたのか
 
@@ -149,6 +150,7 @@ class MyClass {
 
   constructor() {
     this.myField = "foo";
+    console.log(this.myField);
   }
 }
 ```
@@ -159,13 +161,13 @@ class MyClass {
 
 ※ TypeScript Playgroundにて、TS Configタブから`erasableSyntaxOnly`フラグをONにして動作確認
 
-https://www.typescriptlang.org/play/?erasableSyntaxOnly=true&ts=5.8.0-dev.20250127#code/PTAEFEDsFcFtDsGQx3KH+zAUAYwPaQM4BdQBZATyjlAF5QBvVUUAQQC5QAGAGjtACEWBGTvQDCLAEycAvqACGOUFlx4A3KlR5iABwCmRUjFiVQ67ZgBmusrBWoQoQPUMgS4ZAnQzxAiwwPAhwyAfhkD9DIHWGQFuGV0AxhkBihgwAG1k5EiEonDlaeg0AJwBLADdpPB1YYgAxNK0IgBMWfHTIAHNregUK6HQ8TBSACgBKGi56PAALNJwAOjzC4pLDACJTTEwJlXoJVEXUIA
+https://www.typescriptlang.org/play/?erasableSyntaxOnly=true&ts=5.8.2#code/PTAEFEDsFcFtDsGQx3KH+zAUAYwPaQM4BdQBZATyjlAF5QBvVUUAQQC5QAGAGjtACEWBGTvQDCLAEycAvqACGOUFlx4A3KlR5iABwCmRUjFiVQ67ZgBmusrBWoQoQPUMgS4ZAnQzxAiwwPAhwyAfhkD9DIHWGQFuGV0AxhkBihgwAG1k5EiEonDlaeg0AJwBLADdpPB1YYgAxNK0IgBMWfHTIAHNregUK6HQ8TBSACgBKGi56PAALNJwAOjzC4pLDACJTTEwJlXo67BxMCK1BiMwq1r6B4YKi0vb50AlUU9QgA
 
 唯一悩んでいるのがクラスのパラメータプロパティで、筆者はNestJSのコードを書く際に使っています。NestJSでは、クラスのパラメータプロパティを使った依存性の注入が一般的なので、対応方法を検討中です。
 
 # `erasableSyntaxOnly`は歓迎すべき挙動
 
-筆者的には`erasableSyntaxOnly`は嬉しい挙動です。とりわけ`enum`については、生成されるJavaScriptコードが好みでなかったり、オブジェクトで表現したほうが各値のループの表現がしやすかったりで、ESlintで禁止して使わないようにしていました。また、Node.jsで動作するTypeScriptとの互換性が高まったこともメリットです。正式にリリースされたので、積極的にONにしていきます。
+筆者的には`erasableSyntaxOnly`は嬉しい挙動です。とりわけ`enum`については、生成されるJavaScriptコードが好みでなかったり、オブジェクトで表現したほうが各値のループの表現がしやすかったりで、ESlintで禁止して使わないようにしていました。また、Node.jsで動作するTypeScriptとの互換性が高まったこともメリットです。正式にリリースされたので、積極的にONにしています。
 
 # 参考資料
 
