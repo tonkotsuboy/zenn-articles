@@ -11,13 +11,13 @@ publication_name: ubie_dev
 
 本記事では、`tsgo`を実際にインストールする手順と、本当に10倍高速化されるのかを検証します。
 
-# TypeScript 7でコンパイラがGo言語に
+# TypeScript 7でコンパイラがGo言語へ
 
-現在のTypeScriptのコンパイラは、TypeScriptで記述されています。現在TypeScriptは開発現場で一般的に使われていますが、プロジェクトの大規模化に伴い、ビルドや型チェックの時間の長さが課題になっています。この課題に対処するため、TypeScriptチームはコンパイラをTypeScriptからネイティブコードGOへ移植する作業を進めています。
+現在のTypeScriptのコンパイラは、TypeScriptで記述されています。TypeScriptは開発現場で広く利用されていますが、プロジェクトの大規模化に伴い、ビルド時間や型チェック時間の長さが課題となっています。この課題に対処するため、TypeScriptチームはコンパイラをネイティブコードであるGo言語へ移植する作業を進めています。**新しいコンパイラは、TypeScript 7としてリリースされる予定です**。
 
-単にGoというネイティブコンパイル言語を利用するだけでなく、共有メモリ並列処理や並行処理を最大限に活用し、**多くのプロジェクトで10倍の速度向上**を達成することが目標になっています。コンパイル待ちや型チェック待ちと時間が短縮され、開発者の生産性向上が期待できます。
+単にGoというネイティブコンパイル言語を利用するだけでなく、共有メモリ並列処理や並行処理を最大限に活用することで、**多くのプロジェクトでビルド時間を10倍高速化する**ことを目標としています。これにより、コンパイルや型チェックの待ち時間が大幅に短縮され、開発者の生産性向上が期待できます。
 
-MicrosoftのDev Blogs記事「[A 10x Faster TypeScript](https://devblogs.microsoft.com/typescript/typescript-native-port/)」によると、各種コードベースにて目覚ましい速度向上が報告されています。
+MicrosoftのDev Blogs記事「[A 10x Faster TypeScript](https://devblogs.microsoft.com/typescript/typescript-native-port/)」によると、確かにさまざまなコードベースで10倍ほどの速度向上が報告されています。
 
 | コードベース                                                     | 行数 | tsc | tsgo | 速度向上 |
 | :----------------------------------------------------------- | ---------: | ------: | -----: | ------: |
@@ -29,6 +29,8 @@ MicrosoftのDev Blogs記事「[A 10x Faster TypeScript](https://devblogs.microso
 | [rxjs (observable)](https://github.com/ReactiveX/rxjs)       |      2,100 |    1.1s |   0.1s |   11.0倍 |
 
 (出典: [A 10x Faster TypeScript - TypeScript Blog](https://devblogs.microsoft.com/typescript/typescript-native-port/))
+
+筆者は本当に10倍高速化されたのか？と疑っていたのですが、実際に手元でtsgoが試せるようになったので早速検証してみます。
 
 # tsgoのインストール手順
 
