@@ -9,7 +9,7 @@
     "preview": "zenn preview"
   },
   "dependencies": {
-    "zenn-cli": "^0.1.158",
-    "prettier": "^3.5.1"
+    "prettier": "^3.5.3",
+    "zenn-cli": "^0.1.159"
   }
 }
