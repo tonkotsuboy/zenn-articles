@@ -1,5 +1,5 @@
 ---
-title: "tsgoが公開！TypeScript 7向け新コンパイラのインストール手順と10倍高速化検証"
+title: "tsgoが公開。TypeScript 7向け新コンパイラのインストール手順と10倍高速化検証"
 emoji: "🏃"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["typescript", "nodejs", "javascript"]
