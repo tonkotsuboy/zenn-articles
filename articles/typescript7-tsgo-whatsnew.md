@@ -32,9 +32,9 @@ MicrosoftのDev Blogs記事「[A 10x Faster TypeScript](https://devblogs.microso
 
 (出典: [A 10x Faster TypeScript - TypeScript Blog](https://devblogs.microsoft.com/typescript/typescript-native-port/))
 
-# tsgoを試す
+# tsgoのインストール手順
 
-`tsgo`を試すための手順は以下の通りです。まず、新しくリリースされた`@typescript/native-preview`パッケージをインストールします。
+`tsgo`のインストール手順は次の通りです。新しくリリースされた [@typescript/native-preview](https://www.npmjs.com/package/@typescript/native-preview)パッケージをインストールします。
 
 ```bash
 npm install -D @typescript/native-preview
@@ -44,7 +44,7 @@ npm install -D @typescript/native-preview
 
 ```bash
 npx tsgo -v
-// 出力例: Version 7.0.0-dev.20250523.1 (バージョンはインストール時期により異なります)
+# 出力例: Version 7.0.0-dev.20250523.1 (バージョンはインストール時期により異なります)
 ```
 
 `tsgo`によるコンパイルを試すために、TypeScriptパッケージもインストールしておきます。
