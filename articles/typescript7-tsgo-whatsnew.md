@@ -877,6 +877,10 @@ Emit time:      0.001s
 Total time:     0.026s
 ```
 
+なお、サンプルコードは次のリポジトリで公開しています。
+
+https://github.com/tonkotsuboy/tsgo-playground
+
 # 結果: 本当に10倍高速化された
 
 | 計測項目                      | tsc (従来)     | tsgo (Native Preview) | tsgoによる改善     |
