@@ -892,4 +892,10 @@ Total time:     0.026s
 
 今回は、tsgoのインストール手順と、コンパイル速度の比較を行いました。小規模な例ではありましたが、「10倍高速化」という触れ込みは本当であることが確認できました。TypeScript 7のリリースが待たれるばかりです。
 
-余談ですが、本日は[TSKaigi 2025](https://2025.tskaigi.org/)が開催されておりましたが、会場では各所でtsgoの話題で盛り上がっていました。
+余談ですが、本日は[TSKaigi 2025](https://2025.tskaigi.org/)が開催されており、会場では各所でtsgoの話題で盛り上がっていました。TypeScript好きの開発者が大注目のアップデートです。
+
+# 関連記事
+
+https://devblogs.microsoft.com/typescript/announcing-typescript-native-previews/
+
+https://devblogs.microsoft.com/typescript/typescript-native-port/
