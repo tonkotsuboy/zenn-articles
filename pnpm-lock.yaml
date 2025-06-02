@@ -9,26 +9,26 @@ importers:
   .:
     dependencies:
       prettier:
-        specifier: ^3.5.1
-        version: 3.5.1
+        specifier: ^3.5.3
+        version: 3.5.3
       zenn-cli:
-        specifier: ^0.1.158
-        version: 0.1.158
+        specifier: ^0.1.161
+        version: 0.1.161
 
 packages:
 
-  prettier@3.5.1:
-    resolution: {integrity: sha512-hPpFQvHwL3Qv5AdRvBFMhnKo4tYxp0ReXiPn2bxkiohEX6mBeBwEpBSQTkD458RaaDKQMYSp4hX4UtfUTA5wDw==}
+  prettier@3.5.3:
+    resolution: {integrity: sha512-QQtaxnoDJeAkDvDKWCLiwIXkTgRhwYDEQCghU9Z6q03iyek/rxRh/2lC3HB7P8sWT2xC/y5JDctPLBIGzHKbhw==}
     engines: {node: '>=14'}
     hasBin: true
 
-  zenn-cli@0.1.158:
-    resolution: {integrity: sha512-bvQ96fK+9qw+SKxEmncg/rYU+1u0V6Bh+HuV8By+u4L+VZt/jn9hFyL+KWj/2ncSBDtcEBo6XLsCdNLxlUo+RA==}
+  zenn-cli@0.1.161:
+    resolution: {integrity: sha512-PVdw0zj2GwtAaYbrvN/a5C2IHIzRhAu24AYkw16r344O8FYt/29v0pnGNQFKVfZdSZlgcl5HnH7jQWmlOVdXPw==}
     engines: {node: '>=14.0.0'}
     hasBin: true
 
 snapshots:
 
-  prettier@3.5.1: {}
+  prettier@3.5.3: {}
 
-  zenn-cli@0.1.158: {}
+  zenn-cli@0.1.161: {}
