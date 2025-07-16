@@ -14,6 +14,8 @@ publication_name: ubie_dev
 
 Kiroで作った仕様書をClaude Codeに読み込ませたら、Claude Codeがタスクを理解して最後まで実装してくれました。
 
+https://x.com/tonkotsuboy_com/status/1945410412016816322
+
 ![](/images/kiro-claude-code/mainvisual.png)
 
 # Kiroとは
@@ -496,4 +498,8 @@ Kiroのおかげで、AIに命令する際の要件を明確にできるよう�
 
 また、Kiroが遅いのはあくまで現時点でです。今後のアップデートによって、速度は改善されていくことでしょう。
 
-https://x.com/tonkotsuboy_com/status/1945410412016816322
+# 参考記事
+
+https://kiro.dev/blog/introducing-kiro/
+
+https://zenn.dev/sesere/articles/31d4b460c949e5
