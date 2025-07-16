@@ -1,5 +1,5 @@
 ---
-title: "KiroとClaude Codeを組み合わせたら開発の質と速度を両取りできた"
+title: "KiroとClaude Codeの組み合わせで開発の質と速度を両取りできた"
 emoji: "🐣"
 type: "tech"
 topics: ["kiro", "AI", "Claude Code", "Claude"]
