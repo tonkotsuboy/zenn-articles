@@ -18,7 +18,7 @@ Kiroの実装計画をClaude Codeに読み込ませたら、タスクを理解�
 
 # Kiroとは
 
-Kiroとは7月15日にAmazonがリリースした統合開発環境で、仕様書の作成からコードの開発までを行ってくれます。対話形式で詳細なrequirements（機能要件）・design（設計）・tasks（タスクリスト）を作成できます。作られたタスクを実行することで、開発が完了します。
+Kiroとは2025年7月15日にAmazonがリリースした統合開発環境で、仕様書の作成からコードの開発までを行ってくれます。対話形式で詳細なrequirements（機能要件）・design（設計）・tasks（タスクリスト）を作成できます。作られたタスクを実行することで、開発が完了します。
 
 詳しくは次の記事がわかりやすいです。
 
@@ -36,7 +36,7 @@ Kiroは高機能な仕様書作成機能は持っていますが、現時点で�
 
 # 実際にプロジェクトで試してみた
 
-実際に、簡単な太陽系シミュレータを作りながら、KiroとClaude Codeの組み合わせの動作を行いました。
+実際に、簡単な太陽系シミュレータを作りながら、KiroとClaude Codeの組み合わせの検証を行いました。
 
 ## 1. 要件書（requirements.md）の作成
 
@@ -145,10 +145,7 @@ requestAnimationFrame を使用してスムーズなアニメーションを実�
 
 ## 2. 設計書（design.md）の作成
 
-
-
-Kiroに次のように呼びかけます。
-「太陽系の惑星の公転をシミュレーションできるツールを作りたい。3D表現で。各惑星をクリックすると、その惑星の情報が表示される形にして。」
+次に、設計書が作成されます。
 
 
 ![](/images/kiro-claude-code/design.png)
@@ -475,11 +472,11 @@ React ContextとuseReducerを使用：
 
 「（tasks.mdへのパス）にしたがって実装して。必要であればdesign.mdやrequirement.mdも参照して。」（tasks.mdへのパス）のところは、「/Users/takeshi.kano/git/github.com/tonkotsuboy/solar-system-simulator/.kiro/specs/solar-system-simulator/tasks.md」といったパスになります。
 
-そのパスの指定方法について、Claude Codeには `@` を使ってファイルパスを参照する機能があるのですが、どうやらkiroの仕様書が格納されている`.`から始まるパスは対応してないようです。そこで、私はtask.mdをターミナルにドラッグ&ドロップして、パスをコピーして渡すようにしています。
+そのパスの指定方法について、Claude Codeには `@` を使ってファイルパスを参照する機能があるのですが、どうやらKiroの仕様書が格納されている`.`から始まるパスは対応していないようです。そこで、私はtasks.mdをターミナルにドラッグ&ドロップして、パスをコピーして渡すようにしています。
 
 ![](/images/kiro-claude-code/d_d.webp)
 
-Kiroで作った実装計画（task.md）をClaude Codeにわたすと、Claude Codeはその実装計画にしたがって実装を開始します。
+Kiroで作った実装計画（tasks.md）をClaude Codeに渡すと、Claude Codeはその実装計画にしたがって実装を開始します。
 
 ![](/images/kiro-claude-code/task-list.png)
 
