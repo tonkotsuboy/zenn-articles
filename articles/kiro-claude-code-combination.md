@@ -1,9 +1,10 @@
 ---
-title: "KiroとClaude Codeを組み合わせて開発の質と速度を両取りした"
+title: "KiroとClaude Codeを組み合わせたら開発の質と速度を両取りできた"
 emoji: "🐣"
 type: "tech"
 topics: ["kiro", "AI", "Claude Code", "Claude"]
 published: true
+publication_name: ubie_dev
 ---
 
 結論です。
@@ -495,3 +496,5 @@ Kiroのおかげで、AIに命令する際の要件を明確にできるよう�
 余談ですが、筆者はKiroのIDEを使うのは要件定義・設計のところまでで、その後の工程はターミナル（Warp）を使ったり、Cursorを使ったりしています。
 
 また、Kiroが遅いのはあくまで現時点でです。今後のアップデートによって、速度は改善されていくことでしょう。
+
+https://x.com/tonkotsuboy_com/status/1945410412016816322
