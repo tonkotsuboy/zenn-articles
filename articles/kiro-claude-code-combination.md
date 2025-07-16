@@ -1,8 +1,8 @@
 ---
-title: "Kiro × Claude Codeで開発の質と速度を両取りする方法"
-emoji: "🚀"
+title: "KiroとClaude Codeを組み合わせて開発の質と速度を両取りした"
+emoji: "🐣"
 type: "tech"
-topics: ["AI", "開発効率", "Kiro", "Claude", "開発ツール"]
+topics: ["kiro", "AI", "Claude Code", "Claude"]
 published: true
 ---
 
@@ -20,7 +20,7 @@ Kiroの実装計画をClaude Codeに読み込ませたら、タスクを理解�
 
 Kiroとは7月15日にAmazonがリリースした統合開発環境で、仕様書の作成からコードの開発までを行ってくれます。対話形式で詳細なrequirements（機能要件）・design（設計）・tasks（タスクリスト）を作成できます。作られたタスクを実行することで、開発が完了します。
 
-詳しくは次の記事がわかりやすいです
+詳しくは次の記事がわかりやすいです。
 
 https://zenn.dev/sesere/articles/31d4b460c949e5
 
@@ -496,3 +496,5 @@ KiroとClaude Codeの役割を改めて整理すると次のとおりです。
 Kiroのおかげで、AIに命令する際の要件を明確にできるようになり、かつClaude Codeのおかげでその要件に沿った高速開発が可能になりました。しばらくはこの組み合わせを使っていくことになりそうです。
 
 余談ですが、筆者はKiroのIDEを使うのは仕様書作成のところまでで、その後の工程はターミナル（Warp）を使ったり、Cursorを使ったりしています。
+
+また、Kiroが遅いのはあくまで現時点でです。今後のアップデートによって、速度は改善されていくことでしょう。
