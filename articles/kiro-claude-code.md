@@ -7,13 +7,12 @@ published: true
 publication_name: ubie_dev
 ---
 
-結論です。
-
 - Kiroは対話形式で詳細な要件書・設計書を作れるが、実装速度が遅い
 - Claude Codeは爆速開発ができるが、正確な指示出しが難しい
 
-2つの組み合わせで、質と速度の両取りができて最高でした。
-Kiroの実装計画をClaude Codeに読み込ませたら、タスクを理解して最後まで実装してくれました。
+2つの長所を組み合わせることで、質と速度の両取りができました。
+
+Kiroで作った仕様書をClaude Codeに読み込ませたら、Claude Codeがタスクを理解して最後まで実装してくれました。
 
 ![](/images/kiro-claude-code/mainvisual.png)
 
