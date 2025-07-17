@@ -16,8 +16,6 @@ Kiroで作った仕様書をClaude Codeに読み込ませたら、Claude Codeが
 
 https://x.com/tonkotsuboy_com/status/1945410412016816322
 
-![](/images/kiro-claude-code/mainvisual.png)
-
 # Kiroとは
 
 Kiroとは2025年7月15日にAmazonがリリースした統合開発環境で、要件定義・設計からコードの開発までを行ってくれます。対話形式で詳細なrequirements（機能要件）・design（設計）・tasks（タスクリスト）を作成できます。作られたタスクを実行することで、開発が完了します。
@@ -42,10 +40,10 @@ Kiroは高機能な要件定義・設計機能は持っていますが、現時�
 
 ## 1. 要件書（requirements.md）の作成
 
-まず、Kiroに次のように呼びかけます。
+Kiroに次のように呼びかけます。
 「太陽系の惑星の公転をシミュレーションできるツールを作りたい。3D表現で。各惑星をクリックすると、その惑星の情報が表示される形にして。」
 
-すると、Kiroが要件書をrequirements.mdとして作成します。
+Kiroが要件書をrequirements.mdとして作成します。
 
 ![](/images/kiro-claude-code/requirement.png)
 
@@ -147,7 +145,7 @@ requestAnimationFrame を使用してスムーズなアニメーションを実�
 
 ## 2. 設計書（design.md）の作成
 
-次に、設計書が作成されます。
+次に、設計書が作成されます。設計書も対話形式で調整可能です。
 
 
 ![](/images/kiro-claude-code/design.png)
@@ -355,7 +353,7 @@ React ContextとuseReducerを使用：
 
 ## 3. 実装計画（task.md）の作成
 
-最後に実装計画が作られます。
+最後に実装計画が作られます。こちらも対話形式で調整可能です。
 
 ![](/images/kiro-claude-code/task.png)
 
@@ -470,11 +468,13 @@ React ContextとuseReducerを使用：
 
 # 作成した設計書をClaude Codeに渡して実装を命令する
 
-今回のポイントです。Kiroで作成した設計書をClaude Codeに渡します。具体的には、次のように渡しました。
+今回のポイントです。Kiroで作成した設計書をClaude Codeに渡します。具体的には次のように渡しました。
 
 「（tasks.mdへのパス）にしたがって実装して。必要であればdesign.mdやrequirement.mdも参照して。」（tasks.mdへのパス）のところは、「/Users/takeshi.kano/git/github.com/tonkotsuboy/solar-system-simulator/.kiro/specs/solar-system-simulator/tasks.md」といったパスになります。
 
-そのパスの指定方法について、Claude Codeには `@` を使ってファイルパスを参照する機能があるのですが、どうやらKiroの設計書が格納されている`.kiro`フォルダのような `.`始まりのパスは対応していないようです。そこで、私はtasks.mdをターミナルにドラッグ&ドロップして、パスをコピーして渡すようにしています。
+![](/images/kiro-claude-code/mainvisual.png)
+
+パスの指定方法について、Claude Codeには `@` を使ってファイルパスを参照する機能があるのですが、Kiroの設計書が格納されている`.kiro`フォルダのような `.`始まりのパスは対応していないようです。そこで、私はtasks.mdをターミナルにドラッグ&ドロップして、パスをコピーして渡すようにしています。
 
 ![](/images/kiro-claude-code/d_d.webp)
 
@@ -492,11 +492,7 @@ KiroとClaude Codeの役割を改めて整理すると次のとおりです。
 | 設計 | ◎ 高品質な設計書作成 | ○ 設計書があれば実装方針決定可 |
 | 実装 | △ 時間がかかる | ◎ 爆速 |
 
-Kiroのおかげで、AIに命令する際の要件を明確にできるようになり、かつClaude Codeのおかげでその要件に沿った高速開発が可能になりました。しばらくはこの組み合わせを使っていくことになりそうです。
-
-余談ですが、筆者はKiroのIDEを使うのは要件定義・設計のところまでで、その後の工程はターミナル（Warp）を使ったり、Cursorを使ったりしています。
-
-また、Kiroが遅いのはあくまで現時点でです。今後のアップデートによって、速度は改善されていくことでしょう。
+Kiroのおかげで、AIに命令する際の要件を明確にできるようになり、かつClaude Codeのおかげでその要件に沿った高速開発が可能になりました。しばらくはこの組み合わせを使っていくことになりそうです。余談ですが、筆者はKiroのIDEを使うのは要件定義・設計のところまでで、その後の工程はターミナル（Warp）を使ったり、Cursorを使ったりしています。また、Kiroが遅いのはあくまで現時点の話です。今後のアップデートによって、速度は改善されていくことでしょう。
 
 # 参考記事
 
