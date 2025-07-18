@@ -2,7 +2,7 @@
 title: "KiroとClaude Codeの組み合わせで開発の質と速度を両取りできた"
 emoji: "🐣"
 type: "tech"
-topics: ["kiro", "AI", "Claude Code", "Claude"]
+topics: ["kiro", "AI", "ClaudeCode", "Claude"]
 published: true
 publication_name: ubie_dev
 ---
@@ -493,6 +493,10 @@ KiroとClaude Codeの役割を改めて整理すると次のとおりです。
 | 実装 | △ 時間がかかる | ◎ 爆速 |
 
 Kiroのおかげで、AIに命令する際の要件を明確にできるようになり、かつClaude Codeのおかげでその要件に沿った高速開発が可能になりました。しばらくはこの組み合わせを使っていくことになりそうです。余談ですが、筆者はKiroのIDEを使うのは要件定義・設計のところまでで、その後の工程はターミナル（Warp）を使ったり、Cursorを使ったりしています。また、Kiroが遅いのはあくまで現時点の話です。今後のアップデートによって、速度は改善されていくことでしょう。
+
+なお、Kiroのデモを含むClaude Codeの実用事例集を、2025/07/18の「ClaudeCode Meetup」で発表しました。こちらもあわせて参照ください。
+
+https://tonkotsuboy.github.io/20250717-findy-claudecode/
 
 # 参考記事
 
