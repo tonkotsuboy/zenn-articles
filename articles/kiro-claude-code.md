@@ -507,9 +507,3 @@ https://zenn.dev/sosukesuzuki/articles/593903287631e9
 弊社Ubieでは、Claude Codeを始めとするAIツールをすべて活用し、生成AI時代のネクストスタンダードを作ろうとしています。人材を募集していますので興味のある人はぜひご連絡ください。
 
 https://recruit.ubie.life/
-
-# 参考記事
-
-https://kiro.dev/blog/introducing-kiro/
-
-https://zenn.dev/sesere/articles/31d4b460c949e5
