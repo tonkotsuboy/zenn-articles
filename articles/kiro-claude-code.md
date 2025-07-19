@@ -498,6 +498,10 @@ Kiroのおかげで、AIに命令する際の要件を明確にできるよう�
 
 https://tonkotsuboy.github.io/20250717-findy-claudecode/
 
+また、弊社Ubie同僚の [@__sosukesuzuki](https://x.com/__sosukesuzuki) は、Claude CodeだけでKiroのワークフローの再現を試みています。
+
+https://zenn.dev/sosukesuzuki/articles/593903287631e9
+
 # 参考記事
 
 https://kiro.dev/blog/introducing-kiro/
