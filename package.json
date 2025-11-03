@@ -10,6 +10,6 @@
   },
   "dependencies": {
     "prettier": "^3.6.2",
-    "zenn-cli": "^0.2.1"
+    "zenn-cli": "^0.2.9"
   }
 }
