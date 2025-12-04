@@ -17,11 +17,9 @@ TypeScript 7の基礎知識やインストール手順については次の記�
 
 https://zenn.dev/ubie_dev/articles/typescript7-tsgo-whatsnew
 
-# TypeScript 6で非推奨・7で削除される設定👋
+# TypeScript 7で削除される設定👋
 
-これまでは`tsconfig.json`に何気なく書いていた設定が、TypeScript 6で警告対象となり、7ではエラーになります。
-
-主な変更点を見てみましょう。
+TypeScript 7で削除される設定や、挙動が変わる主な設定について見てみましょう。
 
 ## 1\. `--strict` がデフォルトで有効に
 
