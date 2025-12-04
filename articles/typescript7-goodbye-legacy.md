@@ -9,17 +9,19 @@ publication_name: ubie_dev
 
 現在開発中のTypeScript 7では、`target: es5` や `baseUrl` といった長年のレガシーな設定が削除され、`strict: true` が標準になるなど、デフォルトの挙動が変更されます。
 
-TypeScript 6.0の時点で「非推奨（Deprecated）」となり、TypeScript 7で実際に機能が削除（またはデフォルト変更）されるという段階的な移行が予定されています。
+TypeScript 6の時点で「非推奨（Deprecated）」となり、TypeScript 7で実際に機能が削除（またはデフォルト変更）されるという段階的な移行が予定されています。
 
-# TypeScript 7とは：Go製コンパイラによる爆速化
+# TypeScript 7とは
 
 現在のTypeScriptのコンパイラはTypeScriptで記述されていますが、TypeScript 7ではGO言語によるネイティブコンパイラー「tsgo」となります。コンパイル速度が10倍向上するという公式発表があり、実際に私も検証したところ確かに10倍高速化されました。
 
+TypeScript 7の基礎知識やインストール手順については次の記事を参照してください。
+
 https://zenn.dev/ubie_dev/articles/typescript7-tsgo-whatsnew
 
-# TypeScript 6.0で非推奨・7.0で削除される設定たち 👋
+# TypeScript 6で非推奨・7で削除される設定👋
 
-これまでは`tsconfig.json`に何気なく書いていた設定が、TypeScript 6.0で警告対象となり、7.0ではエラー（無効）になります。
+これまでは`tsconfig.json`に何気なく書いていた設定が、TypeScript 6で警告対象となり、7ではエラー（無効）になります。
 
 主な変更点は以下の通りです。
 
@@ -93,7 +95,7 @@ https://github.com/microsoft/TypeScript/issues/62200
 - 従来（自動計算）:
   - ソース: `src/index.ts`
   - 出力: `dist/index.js`（`src`がルートだと推論された）
-- TS 7.0以降（デフォルト .）:
+- TS 7以降（デフォルト .）:
   - ソース: `src/index.ts`
   - 出力: `dist/src/index.js`（`src`ディレクトリがそのまま出力に含まれてしまう）
 
@@ -103,7 +105,7 @@ https://github.com/microsoft/TypeScript/issues/62194
 
 # 移行を助けるツール「ts5to6」
 
-変更内容を手動で修正するのは大変ですよね。TypeScriptチームは、TypeScript 6.0への移行（および7.0への準備）を自動化する`ts5to6`というツールを開発しました。
+変更内容を手動で修正するのは大変ですよね。TypeScriptチームは、TypeScript 6への移行（および7への準備）を自動化する`ts5to6`というツールを開発しました。
 
 https://www.npmjs.com/package/@andrewbranch/ts5to6
 
@@ -141,7 +143,7 @@ After
 
 # さいごに
 
-TypeScript 7は、ネイティブコンパイラーによるパフォーマンス向上だけでなく、長年の「今もう誰も使ってないだろ…」という設定とサヨナラするメジャーアップデートになります。まずは`ts5to6`を使いつつ、TypeScript 6.0に上げた段階で警告をすべて潰すことを目標にするとよいでしょう。
+TypeScript 7は、ネイティブコンパイラーによるパフォーマンス向上だけでなく、長年の「今もう誰も使ってないだろ…」という設定とサヨナラするメジャーアップデートになります。まずは`ts5to6`を使いつつ、TypeScript 6に上げた段階で警告をすべて潰すことを目標にするとよいでしょう。
 
 次のリリースはTypeScript 6.0で、TypeScript製コンパイラーの最後のバージョンとなります。その次のリリースはネイティブコンパイラー製のTypeScript 7.0がリリースされます。登場まであと少し。首を長くして待ちましょう。
 
