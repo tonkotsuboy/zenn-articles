@@ -1,9 +1,9 @@
 ---
-title: "TypeScript 7で消えるtsconfigのレガシー設定。target: es5やbaseUrlよさらば"
+title: "TypeScript 7で消えるtsconfigのレガシー設定。target: es5やbaseUrlにサヨウナラ"
 emoji: "👴"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics:  ["typescript", "nodejs", "javascript"]
-published: false
+published: true
 publication_name: ubie_dev
 ---
 
