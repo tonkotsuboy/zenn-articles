@@ -43,13 +43,30 @@ Based on analysis of existing articles, maintain these characteristics:
 ### Content Preview
 ```bash
 npm run preview
-# Starts Zenn preview server for local article review
+# Starts Zenn preview server at http://localhost:8000 for local article review
 ```
 
-### Dependencies
+### Creating New Content
+```bash
+npx zenn new:article
+# Creates a new article with auto-generated slug in articles/
+
+npx zenn new:book
+# Creates a new book in books/
+
+npx zenn list:articles
+# Lists all articles with their publication status
+
+npx zenn list:books
+# Lists all books
+```
+
+### Dependencies and Environment
 The project uses:
-- `zenn-cli` - Zenn's official CLI for content management
-- `prettier` - Code formatting (though manual formatting may be preferred for articles)
+- **Node.js**: Version managed by Volta (currently 25.2.1)
+  - Volta automatically switches to the correct Node version for this project
+- **zenn-cli**: Zenn's official CLI for content management
+- **prettier**: Code formatting (though manual formatting may be preferred for articles)
 
 ## Content Creation Workflow
 
