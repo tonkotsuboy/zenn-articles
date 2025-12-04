@@ -9,7 +9,10 @@
     "preview": "zenn preview"
   },
   "dependencies": {
-    "prettier": "^3.6.2",
-    "zenn-cli": "^0.2.1"
+    "prettier": "^3.7.4",
+    "zenn-cli": "^0.2.10"
+  },
+  "volta": {
+    "node": "25.2.1"
   }
 }
