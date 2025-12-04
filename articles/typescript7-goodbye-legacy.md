@@ -11,7 +11,7 @@ publication_name: ubie_dev
 
 TypeScript 6.0の時点で「非推奨（Deprecated）」となり、TypeScript 7で実際に機能が削除（またはデフォルト変更）されるという段階的な移行が予定されています。
 
-## TypeScript 7とは：Go製コンパイラによる爆速化
+# TypeScript 7とは：Go製コンパイラによる爆速化
 
 現在のTypeScriptのコンパイラはTypeScriptで記述されていますが、TypeScript 7ではGO言語によるネイティブコンパイラー「tsgo」となります。コンパイル速度が10倍向上するという公式発表があり、実際に私も検証したところ確かに10倍高速化されました。
 
@@ -101,7 +101,7 @@ https://github.com/microsoft/TypeScript/issues/62200
 
 https://github.com/microsoft/TypeScript/issues/62194
 
-## 移行を助けるツール「ts5to6」
+# 移行を助けるツール「ts5to6」
 
 変更内容を手動で修正するのは大変ですよね。TypeScriptチームは、TypeScript 6.0への移行（および7.0への準備）を自動化する`ts5to6`というツールを開発しました。
 
@@ -139,7 +139,7 @@ After
     },
 ```
 
-## さいごに
+# さいごに
 
 TypeScript 7は、ネイティブコンパイラーによるパフォーマンス向上だけでなく、長年の「今もう誰も使ってないだろ…」という設定とサヨナラするメジャーアップデートになります。まずは`ts5to6`を使いつつ、TypeScript 6.0に上げた段階で警告をすべて潰すことを目標にするとよいでしょう。
 
