@@ -150,3 +150,8 @@ TypeScript 7は、ネイティブコンパイラーによるパフォーマン�
 https://devblogs.microsoft.com/typescript/progress-on-typescript-7-december-2025/
 
 https://zenn.dev/ubie_dev/articles/typescript7-tsgo-whatsnew
+
+
+この記事は Ubie Tech Advent Calendar 2025 の 4日目の記事です。
+
+https://adventar.org/calendars/12070
