@@ -1,5 +1,5 @@
 ---
-title: "さよならes5。TypeScript 7で廃止されるレガシー設定まとめ"
+title: "TypeScript 7で削除されるtsconfigのレガシー設定。target: es5やbaseUrlが消える日"
 emoji: "👴"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics:  ["typescript", "nodejs", "javascript"]
