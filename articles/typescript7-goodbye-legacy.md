@@ -7,13 +7,11 @@ published: true
 publication_name: ubie_dev
 ---
 
-現在開発中のTypeScript 7では、`target: es5` や `baseUrl` といった長年のレガシーな設定が削除され、`strict: true` が標準になるなど、デフォルトの挙動が変更されます。
-
-TypeScript 6の時点で「非推奨（Deprecated）」となり、TypeScript 7で実際に機能が削除（またはデフォルト変更）されるという段階的な移行が予定されています。
+TypeScript 7では、`target: es5` や `baseUrl` といった長年のレガシーな設定が削除され、`strict: true` が標準になるなど、デフォルトの挙動が変更されます。本記事では、消えるレガシーな設定と、デフォルトの挙動が変わる設定について、そもそもの設定の基本知識から代替案までを解説します。ご自身のtsconfig.jsonを更新する際の参考になれば幸いです。
 
 # TypeScript 7とは
 
-現在のTypeScriptのコンパイラはTypeScriptで記述されていますが、TypeScript 7ではGO言語によるネイティブコンパイラー「tsgo」となります。コンパイル速度が10倍向上するという公式発表があり、実際に私も検証したところ確かに10倍高速化されました。
+そもそもTypeScript 7では、コンパイラーが大きく変わります。現在のTypeScriptのコンパイラーはTypeScriptで記述されていますが、TypeScript 7ではGO言語によるネイティブコンパイラー「tsgo」となります。コンパイル速度が10倍向上するという公式発表があり、実際に私も検証したところ確かに10倍高速化されました。
 
 TypeScript 7の基礎知識やインストール手順については次の記事を参照してください。
 
@@ -21,9 +19,9 @@ https://zenn.dev/ubie_dev/articles/typescript7-tsgo-whatsnew
 
 # TypeScript 6で非推奨・7で削除される設定👋
 
-これまでは`tsconfig.json`に何気なく書いていた設定が、TypeScript 6で警告対象となり、7ではエラー（無効）になります。
+これまでは`tsconfig.json`に何気なく書いていた設定が、TypeScript 6で警告対象となり、7ではエラーになります。
 
-主な変更点は以下の通りです。
+主な変更点を見てみましょう。
 
 ## 1\. `--strict` がデフォルトで有効に
 
@@ -31,7 +29,7 @@ https://zenn.dev/ubie_dev/articles/typescript7-tsgo-whatsnew
 
 逆に、`"strict": false` を設定した場合は、厳格なチェックが無効になります。現代において、`"strict": false`を設定することはまずありえないと思うので、この挙動は嬉しいですね。
 
-「もともと`tsc --init`したときは`"strict": true`のはずでは？」と思うかもしれませんが、TypeScript 7からはコンパイラの挙動そのものが変わり、"strict": true` と書かなくても厳格なチェックが有効になる点がポイントです。
+「もともと`tsc --init`したときは`"strict": true`のはずでは？」と思うかもしれませんが、TypeScript 7からはコンパイラの挙動そのものが変わり、`"strict": true` と書かなくても厳格なチェックが有効になる点がポイントです。
 
 https://github.com/microsoft/TypeScript/issues/62333
 
@@ -152,7 +150,6 @@ TypeScript 7は、ネイティブコンパイラーによるパフォーマン�
 https://devblogs.microsoft.com/typescript/progress-on-typescript-7-december-2025/
 
 https://zenn.dev/ubie_dev/articles/typescript7-tsgo-whatsnew
-
 
 この記事は Ubie Tech Advent Calendar 2025 の 4日目の記事です。
 
