@@ -37,11 +37,9 @@ https://github.com/microsoft/TypeScript/issues/62333
 
 `target` とは、TypeScriptをコンパイルした後に「どのバージョンのJavaScriptを出力するか」を決める設定です。TypeScript 7からは最新の安定版ECMAScript（例: ES2025）がデフォルトになります。
 
-tsconfig.jsonから`"target"`の行を消すと、TypeScriptは**「トランスパイルを一切しない」**という挙動になります。モダンブラウザやNode.jsの最新版が対象のサービスの場合、余計な変換コードが混ざらなくなり、ファイルサイズが小さく、可読性も上がります。
+tsconfig.json から`"target"`の行を消すと、TypeScript 7ではデフォルトで最新の安定版ECMAScript（例: ES2025）向けに必要最小限の変換を行います。モダンブラウザやNode.js最新版が対象なら、環境向けの余計なダウンレベル変換が入らず、出力が軽くなり可読性も上がります
 
 https://github.com/microsoft/TypeScript/issues/62198
-
-なお、TypeScript 5.9からは`tsc --init` で生成される`target`は`target: esnext`になっています。
 
 ## 3\. `--target: es5` の削除
 
@@ -72,7 +70,7 @@ https://github.com/microsoft/TypeScript/issues/62207
 `moduleResolution` とは、TypeScriptが `import` されたファイルをどうやって探すかを決めるロジックです。
 `node10`（またはエイリアスである`node`）は、CommonJS時代の古いNode.jsの挙動を模倣するものでした。
 
-TypeScript 7からは、`node10`とエイリアスである`node`が削除されます。
+TypeScript 7からは、`node10`（`node`）が削除されます。
 
 大きな理由は、現代のライブラリ開発で標準となっているpackage.jsonの`exports`フィールドに対応していないためです。`exports`は「ライブラリの中で、外部に使わせて良いファイル」を厳密に定義する機能ですが、`node10` 設定はこの制限を無視して、ライブラリ内部のプライベートなファイルを勝手に`import`できてしまいます。これは、実行時エラーや、ライブラリのアップデートによる予期せぬ破損の原因となっていました。
 
