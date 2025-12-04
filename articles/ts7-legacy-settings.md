@@ -3,7 +3,7 @@ title: "さよなら es5。TypeScript 7で廃止されるレガシー設定ま�
 emoji: "👴"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics:  ["typescript", "nodejs", "javascript"]
-published: false
+published: true
 publication_name: ubie_dev
 ---
 
@@ -19,7 +19,7 @@ https://zenn.dev/ubie_dev/articles/typescript7-tsgo-whatsnew
 
 # TypeScript 6.0で非推奨・7.0で削除される設定たち 👋
 
-これまでは `.eslintrc` や `tsconfig.json` に何気なく書いていた設定が、TypeScript 6.0で警告対象となり、7.0ではエラー（無効）になります。
+これまでは`tsconfig.json`に何気なく書いていた設定が、TypeScript 6.0で警告対象となり、7.0ではエラー（無効）になります。
 
 主な変更点は以下の通りです。
 
