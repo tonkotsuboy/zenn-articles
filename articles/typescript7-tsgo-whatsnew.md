@@ -7,7 +7,15 @@ published: true
 publication_name: ubie_dev
 ---
 
-本日2025年5月23日、MicrosoftのTypeScriptチームは、TypeScriptのGo言語実装によるコンパイラのプレビュー版「**TypeScript Native Previews**」を公開しました。「tsgo」という名称の新しいコンパイラは、将来的にTypeScript 7で現在の`tsc`コマンドを置き換えることを目指しています。公式発表によると、`tsgo`を使用することで型チェックやコンパイル速度が最大で10倍向上するとのことです。
+（2025/12/04 追記）
+TypeScript 7で消えるtsconfigの設定についての解説記事を書きました。
+
+https://zenn.dev/ubie_dev/articles/typescript7-goodbye-legacy
+
+---
+
+
+2025年5月23日、MicrosoftのTypeScriptチームは、TypeScriptのGo言語実装によるコンパイラのプレビュー版「**TypeScript Native Previews**」を公開しました。「tsgo」という名称の新しいコンパイラは、将来的にTypeScript 7で現在の`tsc`コマンドを置き換えることを目指しています。公式発表によると、`tsgo`を使用することで型チェックやコンパイル速度が最大で10倍向上するとのことです。
 
 本記事では、`tsgo`を実際にインストールする手順と、本当に10倍高速化されるのかを検証します。
 
@@ -1031,3 +1039,4 @@ https://github.com/tonkotsuboy/tsgo-playground
 https://devblogs.microsoft.com/typescript/announcing-typescript-native-previews/
 
 https://devblogs.microsoft.com/typescript/typescript-native-port/
+
