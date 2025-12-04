@@ -1,9 +1,9 @@
 ---
-title: "TypeScript 7で削除されるレガシーな設定たち。target: es5やbaseUrlが消える"
+title: "TypeScript 7で削除されるレガシーな設定たち。target: es5やbaseUrlが消える日"
 emoji: "👴"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics:  ["typescript", "nodejs", "javascript"]
-published: true
+published: false
 publication_name: ubie_dev
 ---
 
@@ -43,7 +43,7 @@ https://github.com/microsoft/TypeScript/issues/62198
 
 ## 3\. `--target: es5` の削除
 
-さらば`es5`・・・ IE11（大昔、私のようなおじさんが使っていた）のような古いブラウザ向けの出力サポートが削除されます。
+さらば`es5`… IE11（大昔、私のようなおじさんが使っていた）のような古いブラウザ向けの出力サポートが削除されます。
 
 これまでは、最新の`async/await`などの構文を、ES5で動かすために、TypeScriptは内部で複雑な変換（ステートマシンの生成など）を行っていました。このサポートを終了することで、TypeScript本体のコードがスリム化され、コンパイル速度の向上やメンテナンス性の改善が期待されています。
 
@@ -59,7 +59,7 @@ TypeScript 7からは、この `baseUrl` が削除されます。
 
 「では`@/` などのエイリアスはどうなるの？」と心配になるかもしれませんが、`paths` オプション自体は残ります。`paths`とは、特定のインポートパスを実際のファイルパスにマッピング（紐付け）する設定です。「`@/` と書いたら `./src/` を参照する」といったルールを定義することで、深い階層のファイルも簡潔に記述できるようになります。
 
-今後のエイリアスは、`baseUrl` に頼らず、Node.js標準のSubpath imports（`#`から始まるエイリアス機能  https://nodejs.org/api/packages.html#subpath-imports ）機能を使うか、`paths` オプションで明示的にパスのマッピング（例：`"*": ["./src/*"]`）を書くのが推奨されます。
+今後のエイリアスは、`baseUrl` に頼らず、Node.js標準のSubpath imports（`#`から始まるエイリアス機能  https://nodejs.org/api/packages.html#subpath-imports）機能を使うか、`paths` オプションで明示的にパスのマッピング（例：`"*": ["./src/*"]`）を書くのが推奨されます。
 
 https://github.com/microsoft/TypeScript/issues/62207
 
@@ -141,9 +141,9 @@ After
 
 ## さいごに
 
-TypeScript 7は、Go言語化によるパフォーマンス向上だけでなく、長年の「歴史的経緯」を断ち切るメジャーアップデートになります。 `target: es5` の削除や `moduleResolution` の変更は、古いプロジェクトを抱えている現場では早めの対策が必要です。まずはTypeScript 6.0に上げた段階で警告をすべて潰すことを目標に動くのが、安全な移行パスと言えるでしょう。
+TypeScript 7は、ネイティブコンパイラーによるパフォーマンス向上だけでなく、長年の「今もう誰も使ってないだろ…」という設定とサヨナラするメジャーアップデートになります。まずは`ts5to6`を使いつつ、TypeScript 6.0に上げた段階で警告をすべて潰すことを目標にするとよいでしょう。
 
-今のうちに `strict: true` や `moduleResolution: bundler` に慣れておき、スムーズに新時代を迎えましょう！
+次のリリースはTypeScript 6.0で、TypeScript製コンパイラーの最後のバージョンとなります。その次のリリースはネイティブコンパイラー製のTypeScript 7.0がリリースされます。登場まであと少し。首を長くして待ちましょう。
 
 参考記事
 
