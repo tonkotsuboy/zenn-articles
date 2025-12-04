@@ -3,7 +3,7 @@ title: "さよならes5。TypeScript 7で廃止されるレガシー設定まと
 emoji: "👴"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics:  ["typescript", "nodejs", "javascript"]
-published: true
+published: false
 publication_name: ubie_dev
 ---
 
