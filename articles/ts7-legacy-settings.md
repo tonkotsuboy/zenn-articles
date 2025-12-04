@@ -1,5 +1,5 @@
 ---
-title: "TypeScript 7.0で削除される「レガシー設定」たち"
+title: "TypeScript 7で削除されるレガシーな設定たち。target: es5やbaseUrlが消える"
 emoji: "👴"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics:  ["typescript", "nodejs", "javascript"]
@@ -7,97 +7,109 @@ published: true
 publication_name: ubie_dev
 ---
 
+現在開発中のTypeScript 7では、`target: es5` や `baseUrl` といった長年のレガシーな設定が削除され、`strict: true` が標準になるなど、デフォルトの挙動が変更されます。
 
-現在開発中のTypeScript 7では、target: es5、baseUrl等の長年のレガシーな設定が削除されたり、strict: trueが標準になるなどのデフォルトの挙動が変更されます。
+TypeScript 6.0の時点で「非推奨（Deprecated）」となり、TypeScript 7で実際に機能が削除（またはデフォルト変更）されるという段階的な移行が予定されています。
 
+## TypeScript 7とは：Go製コンパイラによる爆速化
 
-
-# TypeScript 7とは
-
-現在のTypeScriptのコンパイラはTypeScriptで記述されていますが、TypeScript 7ではGO言語によるネイティブコンパイラーとなります。コンパイル速度が10倍向上するという公式発表があり、実際に私も検証したところ確かに10倍高速化されました。
-
-https://zenn.dev/ubie_dev/articles/typescript7-tsgo-whatsnew
-
-https://devblogs.microsoft.com/typescript/progress-on-typescript-7-december-2025/
-
-TypeScript 7.0といえば、Go言語による移植版（tsgo）による爆速化が大きな話題です。実際にどれくらい速いのか、どうやって試すのかについては以前の記事で紹介しました。
+現在のTypeScriptのコンパイラはTypeScriptで記述されていますが、TypeScript 7ではGO言語によるネイティブコンパイラー「tsgo」となります。コンパイル速度が10倍向上するという公式発表があり、実際に私も検証したところ確かに10倍高速化されました。
 
 https://zenn.dev/ubie_dev/articles/typescript7-tsgo-whatsnew
 
-# TypeScript 7.0でサヨナラになる設定たち 👋
+# TypeScript 6.0で非推奨・7.0で削除される設定たち 👋
 
-TypeScript 7.0では、バージョン6.0で非推奨（Deprecated）となる予定の挙動やフラグが、実際に削除されます。これまで `.eslintrc` や `tsconfig.json` に何気なく書いていた設定がエラーになる可能性があるため、今のうちに予習しておきましょう。
+これまでは `.eslintrc` や `tsconfig.json` に何気なく書いていた設定が、TypeScript 6.0で警告対象となり、7.0ではエラー（無効）になります。
 
 主な変更点は以下の通りです。
 
 ## 1\. `--strict` がデフォルトで有効に
 
-従来は、TypeScriptの厳格なチェック（`noImplicitAny` や `strictNullChecks` など）を有効にするには、明示的に `"strict": true` と書く必要がありました。TypeScript 7.0からは、これがデフォルトでONになります。現代において、`"strict": true`を設定してないことはまずありえないと思うので、この挙動は嬉しいですね。
+従来は、TypeScriptの厳格なチェック（`noImplicitAny` や `strictNullChecks` など）を有効にするには、明示的に `"strict": true` と書く必要がありました。**TypeScript 7からは、`"strict": true` と書かなくても厳格なチェックが有効になります**。
 
-### TypeScript 5.9から `"strict": true`のはずでは？
+逆に、`"strict": false` を設定した場合は、厳格なチェックが無効になります。現代において、`"strict": false`を設定することはまずありえないと思うので、この挙動は嬉しいですね。
 
-TypeScript 5.9からは、`tsc --init` で生成された `tsconfig.json` では、最初から `"strict": true` が記述されていました。
-
-しかし、TypeScript 6.0からはコンパイラの挙動そのものが変わります。
-
-- これまで
-  - tsconfig.json に `strict` の記述がない場合、コンパイラは OFF (false) として扱う
-- これから
-  - tsconfig.json に`strict`の記述がない場合、コンパイラは**ON (true)**として扱う
+「もともと`tsc --init`したときは`"strict": true`のはずでは？」と思うかもしれませんが、TypeScript 7からはコンパイラの挙動そのものが変わり、"strict": true` と書かなくても厳格なチェックが有効になる点がポイントです。
 
 https://github.com/microsoft/TypeScript/issues/62333
 
-### 2\. `--target` が最新のECMAScriptに
+## 2\. `--target` が最新のECMAScriptになる
 
-`target` は、TypeScriptをコンパイルした後に「どのバージョンのJavaScriptを出力するか」を決める設定です。TypeScript 7.0からは最新の安定版ECMAScriptがデフォルトになります。
+`target` とは、TypeScriptをコンパイルした後に「どのバージョンのJavaScriptを出力するか」を決める設定です。TypeScript 7からは最新の安定版ECMAScript（例: ES2025）がデフォルトになります。
 
-モダンブラウザやNode.jsの最新版を使っている場合、余計なダウンパイル（`async/await` を `generator` に変換するなど）が発生しなくなり、生成コードがスッキリします。
+tsconfig.json から`"target"`の行を消すと、TypeScriptは**「ダウンパイル（古い書き方への変換）を一切しない」**という挙動になります。モダンブラウザやNode.jsの最新版が対象のサービスの場合、余計な変換コードが混ざらなくなり、ファイルサイズが小さく、可読性も上がります。
 
 https://github.com/microsoft/TypeScript/issues/62198
 
-### 3\. `target: es5` の削除
+なお、TypeScript 5.9からは`tsc --init` で生成される`target`は`target: esnext`になっています。
 
-これが一番影響が大きいかもしれません。**IE11時代の遺物である `es5` への出力サポートが削除されます。**
+## 3\. `--target: es5` の削除
 
-- **これまで:** IE11など古いブラウザのために `target: "es5"` を指定していた。
-- **これから:** サポートされる最も古いターゲットは `es2015` (ES6) になる。
+さらば`es5`・・・ IE11（大昔、私のようなおじさんが使っていた）のような古いブラウザ向けの出力サポートが削除されます。
 
-もしどうしてもES5のコードが必要な場合（レガシー環境など）、TypeScriptの出力結果をさらにBabelなどで変換する必要があります。
+これまでは、最新の`async/await`などの構文を、ES5で動かすために、TypeScriptは内部で複雑な変換（ステートマシンの生成など）を行っていました。このサポートを終了することで、TypeScript本体のコードがスリム化され、コンパイル速度の向上やメンテナンス性の改善が期待されています。
 
-### 4\. `--baseUrl` の削除
+もしどうしてもレガシー環境向けにES5のコードが必要な場合、TypeScriptの出力を、さらにBabelやSWCなどの外部ツールで変換（ダウンパイル）する必要があります。
 
-`baseUrl` は、`import` 文を書く際の「基準となるディレクトリ」を指定する設定でした。これを使うと `../../components/Button` ではなく `components/Button` のように絶対パス風に書くことができました。
+https://github.com/microsoft/TypeScript/issues/62196
 
-しかし現在では、Node.js標準の機能や `package.json` の `exports` / `imports`、あるいはバンドラーの機能を使うのが主流です。TS 7.0ではこの古い解決方法は削除されます。
+## 4\. `--baseUrl` の削除
 
-:::message
-今後は `paths` オプションの設定方法なども見直す必要があるかもしれません。
-:::
+`baseUrl` は、`import` 文を書く際の「基準となるディレクトリ」を指定する設定でした。これを使うと、たとえば `src` フォルダーを基準にして `../../components/Button` ではなく `components/Button` のように絶対パス風に書くことができました。しかし、これは元々 AMD (RequireJS) 時代の遺産であり、現代の標準的なモジュール解決（Node.jsやブラウザのESモジュール）とは異なる挙動をするため、トラブルの原因にもなっていました。
 
-### 5\. `--moduleResolution: node10` の削除
+TypeScript 7からは、この `baseUrl` が削除されます。
 
-`moduleResolution` は、TypeScriptが `import` されたファイルをどうやって探すか（解決するか）を決めるロジックです。
+「では`@/` などのエイリアスはどうなるの？」と心配になるかもしれませんが、`paths` オプション自体は残ります。`paths`とは、特定のインポートパスを実際のファイルパスにマッピング（紐付け）する設定です。「`@/` と書いたら `./src/` を参照する」といったルールを定義することで、深い階層のファイルも簡潔に記述できるようになります。
+
+今後のエイリアスは、`baseUrl` に頼らず、Node.js標準のSubpath imports（`#`から始まるエイリアス機能  https://nodejs.org/api/packages.html#subpath-imports ）機能を使うか、`paths` オプションで明示的にパスのマッピング（例：`"*": ["./src/*"]`）を書くのが推奨されます。
+
+https://github.com/microsoft/TypeScript/issues/62207
+
+余談ですが、筆者はStorybookのモック機能でSubpath importsを使い始め、その便利さに感動してエイリアスをどんどんSubpath importsに置換しています。
+
+## 5\. `--moduleResolution: node10` の削除
+
+`moduleResolution` とは、TypeScriptが `import` されたファイルをどうやって探すかを決めるロジックです。
 `node10`（または単に `node`）は、CommonJS時代の古いNode.jsの挙動を模倣するものでした。
 
-- **これから:** `bundler`（ViteやWebpack用）や `nodenext`（最新のNode.js用）を使うのが正解になります。
+TypeScript 7からは、`node10`と`node`が削除されます。
 
-### 6\. `rootDir` の挙動変更
+大きな理由は、現代のライブラリ開発で標準となっている package.jsonの`exports`フィールドに対応していないためです。 `exports`は「ライブラリの中で、外部に使わせて良いファイル」を厳密に定義する機能ですが、`node10` 設定はこの制限を無視して、ライブラリ内部のプライベートなファイルを勝手に`import`できてしまいます。これは、実行時エラーや、ライブラリのアップデートによる予期せぬ破損の原因となっていました。
 
-`rootDir`（ソースファイルのルートディレクトリ）のデフォルト値が「カレントディレクトリ」になります。
-`outDir`（出力先）を使っている場合、トップレベルのソースファイルが `tsconfig.json` と同じ階層にあるか、明示的に `rootDir` を指定する必要があります。
+今後は、`bundler`（Vite、Next.js、Webpack用）や `nodenext`（Node.js用）を使うようにしましょう。
 
------
+https://github.com/microsoft/TypeScript/issues/62200
+
+体感的に、`moduleResolution: node`の設定は現場のプロジェクトで多く残っている印象です。
+
+## 6\. `rootDir` の挙動変更
+
+`rootDir`とは、「出力ディレクトリ（outDir）の中に、元のディレクトリ構造をどう反映させるか」を設定するものです。従来、`rootDir`を指定しない場合、TypeScriptがソースファイルの配置を見て「一番共通する親ディレクトリ」を推論していました。 TypeScript 7からは推論が廃止され、デフォルト値は常に「tsconfig.jsonのあるディレクトリ（`.`）」に固定されます。
+
+変更の理由はコンパイル速度の向上です。これまでの「全ファイルを走査してルートを自動計算する処理」を廃止することで、TypeScriptの動作を高速化・単純化する狙いがあります。
+
+### 何が起こるのか？
+
+`src`フォルダーにソースを入れているプロジェクトで、`rootDir`を明示していない場合、出力構造が変わってしまう可能性があります。
+
+- 従来（自動計算）:
+  - ソース: `src/index.ts`
+  - 出力: `dist/index.js`（`src`がルートだと推論された）
+- TS 7.0以降（デフォルト .）:
+  - ソース: `src/index.ts`
+  - 出力: `dist/src/index.js`（`src`ディレクトリがそのまま出力に含まれてしまう）
+
+従来の挙動を維持したい場合は、tsconfig.json で明示的に "rootDir": "./src" を指定してください。
+
+https://github.com/microsoft/TypeScript/issues/62194
 
 ## 移行を助けるツール「ts5to6」
 
-「えっ、`tsconfig.json` 全部書き直すの…？」と思った方、安心してください。
-TypeScriptチームは、設定ファイルの更新を自動化する実験的なツール **`ts5to6`** を開発しています。
+変更内容を手動で修正するのは大変ですよね。TypeScriptチームは、TypeScript 6.0への移行（および7.0への準備）を自動化する`ts5to6`というツールを開発しました。
 
-[https://www.npmjs.com/package/@andrewbranch/ts5to6](https://www.google.com/search?q=https://www.npmjs.com/package/%40andrewbranch/ts5to6)
+https://www.npmjs.com/package/@andrewbranch/ts5to6
 
-現在は主に `baseUrl` と `rootDir` の修正に対応しており、ヒューリスティック（推論）を使ってプロジェクト構成を解析し、自動で書き換えてくれます。
-
-### 使い方
+現在は主に `baseUrl` と `rootDir` の修正に対応しており、推論を使ってプロジェクト構成を解析し、自動で書き換えてくれます。
 
 ```bash
 # baseUrlの設定を自動修正する
@@ -107,11 +119,36 @@ npx @andrewbranch/ts5to6 --fixBaseUrl tsconfig.json
 npx @andrewbranch/ts5to6 --fixRootDir tsconfig.json
 ```
 
-このツールはまだ実験段階ですが、TS 7.0への移行時には強力な味方になりそうです。
+たとえば、筆者のプロジェクトで`baseUrl`の設定を自動修正すると、次のようになりました。自動でやってくれるのはありがたいですね。
+
+Before
+
+```json
+    "allowJs": false,
+    "baseUrl": "./src",
+    "paths": {
+      "~/*": ["*"]
+    },
+```
+
+After
+
+```json
+    "allowJs": false,
+    "paths": {
+      "~/*": ["./src/*"],
+      "*": ["./src/*"]
+    },
+```
 
 ## さいごに
 
-TypeScript 7.0は、パフォーマンス向上だけでなく、長年の「歴史的経緯」を断ち切るメジャーアップデートになりそうです。
-特に `target: es5` の削除や `moduleResolution` の変更は、古いプロジェクトを抱えている現場では早めの対策が必要になるでしょう。
+TypeScript 7は、Go言語化によるパフォーマンス向上だけでなく、長年の「歴史的経緯」を断ち切るメジャーアップデートになります。 `target: es5` の削除や `moduleResolution` の変更は、古いプロジェクトを抱えている現場では早めの対策が必要です。まずはTypeScript 6.0に上げた段階で警告をすべて潰すことを目標に動くのが、安全な移行パスと言えるでしょう。
 
-今のうちに `strict: true` や `moduleResolution: bundler` に慣れておき、スムーズにTS 7.0時代を迎えましょう！
+今のうちに `strict: true` や `moduleResolution: bundler` に慣れておき、スムーズに新時代を迎えましょう！
+
+参考記事
+
+https://devblogs.microsoft.com/typescript/progress-on-typescript-7-december-2025/
+
+https://zenn.dev/ubie_dev/articles/typescript7-tsgo-whatsnew
