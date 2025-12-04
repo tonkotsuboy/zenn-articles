@@ -37,7 +37,7 @@ https://github.com/microsoft/TypeScript/issues/62333
 
 `target` とは、TypeScriptをコンパイルした後に「どのバージョンのJavaScriptを出力するか」を決める設定です。TypeScript 7からは最新の安定版ECMAScript（例: ES2025）がデフォルトになります。
 
-tsconfig.json から`"target"`の行を消すと、TypeScriptは**「ダウンパイル（古い書き方への変換）を一切しない」**という挙動になります。モダンブラウザやNode.jsの最新版が対象のサービスの場合、余計な変換コードが混ざらなくなり、ファイルサイズが小さく、可読性も上がります。
+tsconfig.jsonから`"target"`の行を消すと、TypeScriptは**「トランスパイルを一切しない」**という挙動になります。モダンブラウザやNode.jsの最新版が対象のサービスの場合、余計な変換コードが混ざらなくなり、ファイルサイズが小さく、可読性も上がります。
 
 https://github.com/microsoft/TypeScript/issues/62198
 
@@ -49,7 +49,7 @@ https://github.com/microsoft/TypeScript/issues/62198
 
 これまでは、最新の`async/await`などの構文を、ES5で動かすために、TypeScriptは内部で複雑な変換（ステートマシンの生成など）を行っていました。このサポートを終了することで、TypeScript本体のコードがスリム化され、コンパイル速度の向上やメンテナンス性の改善が期待されています。
 
-もしどうしてもレガシー環境向けにES5のコードが必要な場合、TypeScriptの出力を、さらにBabelやSWCなどの外部ツールで変換（ダウンパイル）する必要があります。
+もしどうしてもレガシー環境向けにES5のコードが必要な場合、TypeScriptの出力を、さらにBabelやSWCなどの外部ツールでトランスパイルする必要があります。
 
 https://github.com/microsoft/TypeScript/issues/62196
 
@@ -70,13 +70,13 @@ https://github.com/microsoft/TypeScript/issues/62207
 ## 5\. `--moduleResolution: node10` の削除
 
 `moduleResolution` とは、TypeScriptが `import` されたファイルをどうやって探すかを決めるロジックです。
-`node10`（または単に `node`）は、CommonJS時代の古いNode.jsの挙動を模倣するものでした。
+`node10`（またはエイリアスである`node`）は、CommonJS時代の古いNode.jsの挙動を模倣するものでした。
 
-TypeScript 7からは、`node10`と`node`が削除されます。
+TypeScript 7からは、`node10`とエイリアスである`node`が削除されます。
 
-大きな理由は、現代のライブラリ開発で標準となっている package.jsonの`exports`フィールドに対応していないためです。 `exports`は「ライブラリの中で、外部に使わせて良いファイル」を厳密に定義する機能ですが、`node10` 設定はこの制限を無視して、ライブラリ内部のプライベートなファイルを勝手に`import`できてしまいます。これは、実行時エラーや、ライブラリのアップデートによる予期せぬ破損の原因となっていました。
+大きな理由は、現代のライブラリ開発で標準となっているpackage.jsonの`exports`フィールドに対応していないためです。`exports`は「ライブラリの中で、外部に使わせて良いファイル」を厳密に定義する機能ですが、`node10` 設定はこの制限を無視して、ライブラリ内部のプライベートなファイルを勝手に`import`できてしまいます。これは、実行時エラーや、ライブラリのアップデートによる予期せぬ破損の原因となっていました。
 
-今後は、`bundler`（Vite、Next.js、Webpack用）や `nodenext`（Node.js用）を使うようにしましょう。
+今後は、`bundler`（Vite、Next.js、webpack用）や`nodenext`（Node.js用）を使うようにしましょう。
 
 https://github.com/microsoft/TypeScript/issues/62200
 
