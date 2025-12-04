@@ -1,5 +1,5 @@
 ---
-title: "さよなら es5。TypeScript 7で廃止されるレガシー設定まとめ"
+title: "さよならes5。TypeScript 7で廃止されるレガシー設定まとめ"
 emoji: "👴"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics:  ["typescript", "nodejs", "javascript"]
