@@ -57,7 +57,7 @@ TypeScript 7からは、この`baseUrl`が削除されます。
 
 「では`@/`などのエイリアスはどうなるの？」と心配になるかもしれませんが、`paths`オプション自体は残ります。`paths`とは、特定のインポートパスを実際のファイルパスにマッピング（紐付け）する設定です。「`@/`と書いたら`./src/`を参照する」といったルールを定義することで、深い階層のファイルも簡潔に記述できるようになります。
 
-今後のエイリアスは、`baseUrl`に頼らずNode.js標準のSubpath imports（`#`から始まるエイリアス機能  https://nodejs.org/api/packages.html#subpath-imports）機能を使うか、`paths`オプションによる明示的なパスマッピング（例：`"*": ["./src/*"]`）を使用しましょう。
+今後のエイリアスは、`baseUrl`に頼らずNode.js標準の[Subpath imports（`#`から始まるエイリアス）機能](https://nodejs.org/api/packages.html#subpath-imports)を使うか、`paths`オプションによる明示的なパスマッピング（例：`"*": ["./src/*"]`）を使用しましょう。
 
 https://github.com/microsoft/TypeScript/issues/62207
 
