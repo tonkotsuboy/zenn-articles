@@ -263,7 +263,7 @@ https://bugs.chromium.org/p/chromium/issues/detail?id=1427259
 できません🙅‍
 
 
-BEMなどを使っている際、次のような `foo__bar` というクラス名をHTMLで定義し・・・
+BEMなどを使っている際、次のような `foo__bar` というクラス名をHTMLで定義し…
 
 ```html
 <div class="foo__bar"></div>

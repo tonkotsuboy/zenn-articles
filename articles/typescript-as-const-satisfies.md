@@ -318,7 +318,7 @@ export const myOption = {
 
 ## `satisfies` なし、 `as const` なしの場合
 
-`myOption` は何一つ型安全ではありません。大規模なプロジェクトになればなるほど、死者が増えるでしょう。
+`myOption` は何1つ型安全ではありません。大規模なプロジェクトになればなるほど、死者が増えるでしょう。
 
 ```ts
 export const myOption = {

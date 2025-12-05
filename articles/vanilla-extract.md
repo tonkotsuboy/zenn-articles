@@ -106,7 +106,7 @@ export default styles;
 
 私が CSS Module に感じていた課題を解決しつつ、大きな恩恵をもたらしてくれたのが、 [vanilla-extract](https://vanilla-extract.style/) でした。
 
-vanilla-extract とは、CSS-in-JS の一つで、 CSS を TypeScript で型安全に書ける強力なライブラリです。一般的な CSS-in-JS とは異なり、実行時ではなくビルド時に CSS が生成されるので、ランタイムパフォーマンスの向上・出力される CSS の最適化ができます。公式サイトでは、「Zero-runtime Stylesheets in TypeScript.」を謳っています。
+vanilla-extract とは、CSS-in-JS の1つで、 CSS を TypeScript で型安全に書ける強力なライブラリです。一般的な CSS-in-JS とは異なり、実行時ではなくビルド時に CSS が生成されるので、ランタイムパフォーマンスの向上・出力される CSS の最適化ができます。公式サイトでは、「Zero-runtime Stylesheets in TypeScript.」を謳っています。
 
 vanilla-extract の作者 Mark Dalgleish 氏は、 CSS Modules の co-creator でもあります。
 
@@ -245,9 +245,9 @@ export const foo = style({
 
 ## メリット ⑤ ネストを深くできないという縛りがある
 
-CSS Modules と Sass を使っているときの悩みの一つに、ネストを深く書けてしまうことがありました。
+CSS Modules と Sass を使っているときの悩みの1つに、ネストを深く書けてしまうことがありました。
 
-開発の現場で、地獄のように深いネストを見たことがある人は、きっと多いのではないでしょうか。 **私はあります**。どこにどのスタイルがあたっているのかがわかりづらく、消したらどんな影響があるかがわかりづらく、いいところは一つもありません。ネストは可能な限り減らすべきです。
+開発の現場で、地獄のように深いネストを見たことがある人は、きっと多いのではないでしょうか。 **私はあります**。どこにどのスタイルがあたっているのかがわかりづらく、消したらどんな影響があるかがわかりづらく、いいところは1つもありません。ネストは可能な限り減らすべきです。
 
 ```scss
 .a {
