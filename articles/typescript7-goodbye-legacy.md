@@ -61,7 +61,7 @@ TypeScript 7からは、この`baseUrl`が削除されます。
 
 https://github.com/microsoft/TypeScript/issues/62207
 
-余談ですが、筆者はStorybookのモック機能でSubpath importsを使い始め、その便利さに感動してエイリアスをどんどんSubpath importsに置換しています。
+余談ですが、私はStorybookのモック機能でSubpath importsを使い始め、その便利さに感動してエイリアスをどんどんSubpath importsに置換しています。
 
 ## 5\. `--moduleResolution: node10`の削除
 
@@ -122,7 +122,7 @@ npx @andrewbranch/ts5to6 --fixBaseUrl tsconfig.json
 npx @andrewbranch/ts5to6 --fixRootDir tsconfig.json
 ```
 
-たとえば、筆者のプロジェクトで`baseUrl`の設定を自動修正すると、次のようになりました。自動でやってくれるのはありがたいですね。
+たとえば、私のプロジェクトで`baseUrl`の設定を自動修正すると、次のようになりました。自動でやってくれるのはありがたいですね。
 
 Before
 
