@@ -1,0 +1,28 @@
+{
+  "rules": {
+    "preset-japanese": true,
+    "preset-ja-technical-writing": {
+      "no-exclamation-question-mark": false,
+      "max-ten": {
+        "max": 3
+      },
+      "no-doubled-joshi": {
+        "min_interval": 1,
+        "strict": false,
+        "allow": ["も", "や", "か"]
+      }
+    },
+    "spellcheck-tech-word": {
+      "allow": [
+        "インターフェース",
+        "インターフェース名",
+        "プロトタイプチェーン",
+        "継承チェーン",
+        "チェーン"
+      ]
+    }
+  },
+  "filters": {
+    "comments": true
+  }
+}
