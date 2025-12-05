@@ -7,7 +7,7 @@ published: true
 publication_name: ubie_dev
 ---
 
-TypeScript 7では`target: es5`や`baseUrl`といった長年のレガシーな設定が削除され、`strict: true` が標準になるなどデフォルトの挙動が変更されます。本記事では、消えるレガシーな設定や挙動が変わる主要な設定について、設定の基本知識から代替案までを解説します。ご自身のtsconfig.jsonを更新する際の参考になれば幸いです。
+TypeScript 7では`target: es5`や`baseUrl`といった長年のレガシーな設定が削除され、`strict: true`が標準になるなどデフォルトの挙動が変更されます。本記事では、消えるレガシーな設定や挙動が変わる主要な設定について、設定の基本知識から代替案までを解説します。ご自身のtsconfig.jsonを更新する際の参考になれば幸いです。
 
 # TypeScript 7とは
 
@@ -21,17 +21,17 @@ https://zenn.dev/ubie_dev/articles/typescript7-tsgo-whatsnew
 
 TypeScript 7で削除される設定や挙動が変わる主な設定について見てみましょう。
 
-## 1\. `--strict` がデフォルトで有効に
+## 1\. `--strict`がデフォルトで有効に
 
-従来は、TypeScriptの厳格なチェック（`noImplicitAny` や `strictNullChecks` など）を有効にするには明示的に `"strict": true` と書く必要がありました。**TypeScript 7からは`"strict": true` と書かなくても厳格なチェックが有効になります**。
+従来は、TypeScriptの厳格なチェック（`noImplicitAny`や`strictNullChecks`など）を有効にするには明示的に`"strict": true`と書く必要がありました。**TypeScript 7からは`"strict": true`と書かなくても厳格なチェックが有効になります**。
 
-逆に`"strict": false` を設定した場合は厳格なチェックが無効になります。現代において`"strict": false`を設定することはまずありえないと思うので、この挙動は嬉しいですね。
+逆に`"strict": false`を設定した場合は厳格なチェックが無効になります。現代において`"strict": false`を設定することはまずありえないと思うので、この挙動は嬉しいですね。
 
-「もともと`tsc --init`したときは`"strict": true`のはずでは？」と思うかもしれませんが、TypeScript 7からはコンパイラの挙動そのものが変わり、`"strict": true` と書かなくても厳格なチェックが有効になる点がポイントです。
+「もともと`tsc --init`したときは`"strict": true`のはずでは？」と思うかもしれませんが、TypeScript 7からはコンパイラの挙動そのものが変わり、`"strict": true`と書かなくても厳格なチェックが有効になる点がポイントです。
 
 https://github.com/microsoft/TypeScript/issues/62333
 
-## 2\. `--target` が最新のECMAScriptになる
+## 2\. `--target`が最新のECMAScriptになる
 
 `target`とはTypeScriptをコンパイルした後に「どのバージョンのJavaScriptを出力するか」を決める設定です。TypeScript 7からは最新の安定版ECMAScript（例: ES2025）がデフォルトになります。
 
@@ -39,7 +39,7 @@ tsconfig.jsonから`"target"`の行を消すと、TypeScript 7ではデフォル
 
 https://github.com/microsoft/TypeScript/issues/62198
 
-## 3\. `--target: es5` の削除
+## 3\. `--target: es5`の削除
 
 さらば`es5`… IE11（大昔、私のようなおじさんが使っていた）のような古いブラウザ向けの出力サポートが削除されます。
 
@@ -49,27 +49,27 @@ https://github.com/microsoft/TypeScript/issues/62198
 
 https://github.com/microsoft/TypeScript/issues/62196
 
-## 4\. `--baseUrl` の削除
+## 4\. `--baseUrl`の削除
 
-`baseUrl`とは`import` 文を書く際の「基準となるディレクトリ」を指定する設定でした。これを使うと、たとえば `src` フォルダーを基準にして `../../components/Button` ではなく `components/Button` のように絶対パス風に書くことができました。しかし、これは元々 AMD (RequireJS) 時代の遺産であり、現代の標準的なモジュール解決（Node.jsやブラウザのESモジュール）とは異なる挙動をしていました。
+`baseUrl`とは`import`文を書く際の「基準となるディレクトリ」を指定する設定でした。これを使うと、たとえば`src`フォルダーを基準にして`../../components/Button`ではなく`components/Button`のように絶対パス風に書くことができました。しかし、これは元々 AMD (RequireJS) 時代の遺産であり、現代の標準的なモジュール解決（Node.jsやブラウザのESモジュール）とは異なる挙動をしていました。
 
 TypeScript 7からは、この`baseUrl`が削除されます。
 
-「では`@/` などのエイリアスはどうなるの？」と心配になるかもしれませんが、`paths` オプション自体は残ります。`paths`とは、特定のインポートパスを実際のファイルパスにマッピング（紐付け）する設定です。「`@/` と書いたら `./src/` を参照する」といったルールを定義することで、深い階層のファイルも簡潔に記述できるようになります。
+「では`@/`などのエイリアスはどうなるの？」と心配になるかもしれませんが、`paths`オプション自体は残ります。`paths`とは、特定のインポートパスを実際のファイルパスにマッピング（紐付け）する設定です。「`@/`と書いたら`./src/`を参照する」といったルールを定義することで、深い階層のファイルも簡潔に記述できるようになります。
 
-今後のエイリアスは、`baseUrl` に頼らずNode.js標準のSubpath imports（`#`から始まるエイリアス機能  https://nodejs.org/api/packages.html#subpath-imports ）機能を使うか、`paths` オプションによる明示的なパスマッピング（例：`"*": ["./src/*"]`）を使用しましょう。
+今後のエイリアスは、`baseUrl`に頼らずNode.js標準の[Subpath imports（`#`から始まるエイリアス）機能](https://nodejs.org/api/packages.html#subpath-imports)を使うか、`paths`オプションによる明示的なパスマッピング（例：`"*": ["./src/*"]`）を使用しましょう。
 
 https://github.com/microsoft/TypeScript/issues/62207
 
 余談ですが、筆者はStorybookのモック機能でSubpath importsを使い始め、その便利さに感動してエイリアスをどんどんSubpath importsに置換しています。
 
-## 5\. `--moduleResolution: node10` の削除
+## 5\. `--moduleResolution: node10`の削除
 
 `moduleResolution`とは、TypeScriptがインポートされたファイルをどうやって探すかを決めるロジックです。`node10`（またはエイリアスである`node`）は、CommonJS時代の古いNode.jsの挙動を模倣するものでした。
 
 TypeScript 7からは、`node10`（`node`）が削除されます。
 
-大きな理由は、現代のライブラリ開発で標準となっているpackage.jsonの`exports`フィールドに対応していないためです。`exports`は「ライブラリの中で、外部に使わせて良いファイル」を厳密に定義する機能ですが、`node10` 設定はこの制限を無視して、ライブラリ内部のプライベートなファイルを勝手に`import`できてしまいます。これは、実行時エラーや、ライブラリのアップデートによる予期せぬ破損の原因となっていました。
+大きな理由は、現代のライブラリ開発で標準となっているpackage.jsonの`exports`フィールドに対応していないためです。`exports`は「ライブラリの中で、外部に使わせて良いファイル」を厳密に定義する機能ですが、`node10`設定はこの制限を無視して、ライブラリ内部のプライベートなファイルを勝手に`import`できてしまいます。これは、実行時エラーや、ライブラリのアップデートによる予期せぬ破損の原因となっていました。
 
 今後は`bundler`（Vite、Next.js、webpack用）や`nodenext`（Node.js用）を使うようにしましょう。
 
@@ -77,7 +77,7 @@ https://github.com/microsoft/TypeScript/issues/62200
 
 体感的に`moduleResolution: node`の設定は現場のプロジェクトで多く残っている印象です。
 
-## 6\. `rootDir` の挙動変更
+## 6\. `rootDir`の挙動変更
 
 `rootDir`とは、「出力ディレクトリ（outDir）の中に、元のディレクトリ構造をどう反映させるか」を設定するものです。従来、`rootDir`を指定しない場合、TypeScriptがソースファイルの配置を見て「一番共通する親ディレクトリ」を推論していました。 TypeScript 7からは推論が廃止され、デフォルト値は常に「tsconfig.jsonのあるディレクトリ（`.`）」に固定されます。
 
@@ -102,7 +102,7 @@ https://github.com/microsoft/TypeScript/issues/62194
 
 紹介したものは使用頻度が高いものですが、それ以外の変更点は次で確認できます。
 
-たとえば `"use strict"`のデフォルト化、`types`がデフォルトで`[]`になる、古いimport構文（`asserts { type: "json" }`）のサポート終了などがあります。
+たとえば`"use strict"`のデフォルト化、`types`がデフォルトで`[]`になる、古いimport構文（`asserts { type: "json" }`）のサポート終了などがあります。
 
 https://github.com/microsoft/TypeScript/issues?q=milestone%3A%22TypeScript%206.0.0%22%20label%3A%22Breaking%20Change%22
 
@@ -112,7 +112,7 @@ https://github.com/microsoft/TypeScript/issues?q=milestone%3A%22TypeScript%206.0
 
 https://www.npmjs.com/package/@andrewbranch/ts5to6
 
-現在は主に `baseUrl`と `rootDir`の修正に対応しており、推論を使ってプロジェクト構成を解析し、自動で書き換えてくれます。
+現在は主に`baseUrl`と`rootDir`の修正に対応しており、推論を使ってプロジェクト構成を解析し、自動で書き換えてくれます。
 
 ```bash
 # baseUrlの設定を自動修正する

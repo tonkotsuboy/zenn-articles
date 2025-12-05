@@ -6,7 +6,9 @@
   "author": "takeshi.kano <10419447+tonkotsuboy@users.noreply.github.com>",
   "license": "MIT",
   "scripts": {
-    "preview": "zenn preview"
+    "preview": "zenn preview",
+    "lint": "textlint articles/**/*.md",
+    "lint:fix": "textlint --fix articles/**/*.md"
   },
   "dependencies": {
     "prettier": "^3.7.4",
@@ -14,5 +16,12 @@
   },
   "volta": {
     "node": "25.2.1"
+  },
+  "devDependencies": {
+    "textlint": "^15.4.1",
+    "textlint-filter-rule-comments": "^1.2.2",
+    "textlint-rule-preset-ja-technical-writing": "^12.0.2",
+    "textlint-rule-preset-japanese": "^10.0.4",
+    "textlint-rule-spellcheck-tech-word": "^5.0.0"
   }
 }

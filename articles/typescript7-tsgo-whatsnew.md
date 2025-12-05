@@ -38,7 +38,7 @@ MicrosoftのDev Blogs記事「[A 10x Faster TypeScript](https://devblogs.microso
 
 (出典: [A 10x Faster TypeScript - TypeScript Blog](https://devblogs.microsoft.com/typescript/typescript-native-port/))
 
-筆者は本当に10倍高速化されたのか？と疑っていたのですが、実際に手元でtsgoが試せるようになったので早速検証してみます。
+筆者は本当に10倍高速化されたのか？ と疑っていたのですが、実際に手元でtsgoが試せるようになったので早速検証してみます。
 
 # tsgoのインストール手順
 
@@ -85,7 +85,7 @@ npx tsc --init
 
 実際に、ある程度の規模のTypeScriptコードを`tsc`と`tsgo`でコンパイルし、その速度を比較してみましょう。
 
-非常に長く、TypeScriptの多様な機能（インターフェイス、クラス、型エイリアス、ジェネリクス、列挙型、型ガードーなど）を盛り込んだ架空のECサイトのバックエンド処理をシミュレートするTypeScriptコードです。約700行ありますので、興味のある方はトグルを開いて確認してみてください。
+非常に長く、TypeScriptの多様な機能（インタフェース、クラス、型エイリアス、ジェネリクス、列挙型、型ガードーなど）を盛り込んだ架空のECサイトのバックエンド処理をシミュレートするTypeScriptコードです。約700行ありますので、興味のある方はトグルを開いて確認してみてください。
 
 :::details 検証用のTypeScriptコード（約700行）
 
