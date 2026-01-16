@@ -7,19 +7,18 @@ published: true
 publication_name: ubie_dev
 ---
 
-HTMLのPopover APIを使えば、ESCキーで閉じる処理やフォーカス管理がJavaScriptなしで実装できます。しかし、ポップオーバーの位置指定には結局JavaScriptが必要でした。
 
-2026年1月13日に、Firefox 147がリリースされ、「CSS Anchor Positioning」が全ブラウザ対応しました。CSS Anchor Positioningとは、要素の位置を別の要素の位置に合わせられるCSSの機能です。Chrome・Safari・Edgeでは先に対応していましたが、長らくFirefoxだけ対応していなかったのです。
+2026年1月13日に、Firefox 147がリリースされ、「CSS Anchor Positioning」が全ブラウザ対応しました。HTML・CSSだけでポップオーバー表現をしつつ、好きな要素を基準に、ポップオーバーを表示できるようになりました。
 
-本記事では、Popover APIとCSS Anchor Positioningを組み合わせて、ポップオーバーをJavaScriptなしで実装する方法を解説します。
-
-実例として、タスク管理のサブメニューを右側に表示する表現や、ヘッダーのユーザーアイコン下にドロップダウンメニューを表示するデモを紹介します。
+たとえば、タスク管理のサブメニューを右側に表示する表現や、ヘッダーのユーザーアイコン下にドロップダウンメニューを表示できます。
 
 ![タスク管理のサブメニューが右側に表示されている様子](/images/anchor-positioning-popover/demo2-submenu-task.png)
 *タスク管理のサブメニュー*
 
 ![ユーザーメニューがアイコンの下に表示されている様子](/images/anchor-positioning-popover/demo3-user-menu.png)
 *ユーザーアイコンの下にドロップダウンメニューが表示される*
+
+本記事で詳しく解説します。
 
 # Popover APIとは
 
@@ -92,11 +91,11 @@ https://developer.mozilla.org/ja/docs/Web/API/Popover_API
 
 Popover APIは便利な機能ですが、ポップオーバーの位置を指定する機能はありません。ボタンの下や右側にポップオーバーを表示したい場合、従来はJavaScriptで位置を計算する必要がありました。
 
-次の例では、ボタンの位置を取得して、ポップオーバーの位置を計算し、CSSで位置を指定するJavaScriptコードの一部です。リサイズやスクロールのたびに再計算が必要なので、処理負荷も大きくなってしまいます。
+次のコードは、ボタンの位置を取得して、ポップオーバーの位置を計算し、CSSで位置を指定するJavaScriptの例です。リサイズやスクロールのたびに再計算が必要なので、処理負荷も大きくなってしまいます。
 
 ```javascript
 function updatePosition() {
-// ボタンの位置を取得して、ポップオーバーの位置を計算
+  // ボタンの位置を取得して、ポップオーバーの位置を計算
   const rect = button.getBoundingClientRect();
   popover.style.top = `${rect.bottom + 8}px`;
   popover.style.left = `${rect.left}px`;
@@ -223,7 +222,7 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/position-area_
 
 ## サブメニューナビゲーション
 
-私はanchor positioningが出たなら、絶対にこれをCSSだけで表現したいと思っていました。メニューのサブメニューの位置をAnchor Positioningで実装します。
+私はAnchor Positioningが出たなら、絶対にこれをCSSだけで表現したいと思っていました。メニューのサブメニューの位置をAnchor Positioningで実装します。
 
 ![タスク管理のサブメニューが右側に表示されている様子](/images/anchor-positioning-popover/demo2-submenu-task.png)
 *タスク管理のサブメニュー*
