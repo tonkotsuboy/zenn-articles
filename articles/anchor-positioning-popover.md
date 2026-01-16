@@ -1,5 +1,5 @@
 ---
-title: "Popover API + CSS Anchor Positioningが全ブラウザ対応。ポップオーバーをJSなしで実装できて最高"
+title: "Anchor Positioningが全対応。HTML・CSSのポップオーバーが完全体に"
 emoji: "🎯"
 type: "tech"
 topics: ["css", "html", "popover"]
@@ -13,10 +13,10 @@ HTMLのPopover APIを使えば、ESCキーで閉じる処理やフォーカス�
 
 本記事では、Popover APIとCSS Anchor Positioningを組み合わせて、ポップオーバーをJavaScriptなしで実装する方法を解説します。
 
-![タスク管理のサブメニューが右側に表示されている様子](/images/css-anchor-position-popover-all-browsers/demo2-submenu-task.png)
+![タスク管理のサブメニューが右側に表示されている様子](/images/anchor-positioning-popover/demo2-submenu-task.png)
 *タスク管理のサブメニュー*
 
-![ユーザーメニューがアイコンの下に表示されている様子](/images/css-anchor-position-popover-all-browsers/demo3-user-menu.png)
+![ユーザーメニューがアイコンの下に表示されている様子](/images/anchor-positioning-popover/demo3-user-menu.png)
 *ユーザーアイコンの下にドロップダウンメニューが表示される*
 
 # Popover APIとは
@@ -196,10 +196,10 @@ https://developer.mozilla.org/ja/docs/Web/CSS/Reference/Values/anchor
 | `block-start inline-end` | 右上 |
 | `block-end inline-start` | 左下 |
 
-![ポップオーバーが上側に表示されている様子](/images/css-anchor-position-popover-all-browsers/demo1-popover-top.png)
+![ポップオーバーが上側に表示されている様子](/images/anchor-positioning-popover/demo1-popover-top.png)
 **ポップオーバーが上側に表示されている様子**
 
-![ポップオーバーが右側に表示されている様子](/images/css-anchor-position-popover-all-browsers/demo1-popover-right.png)
+![ポップオーバーが右側に表示されている様子](/images/anchor-positioning-popover/demo1-popover-right.png)
 **ポップオーバーが右側に表示されている様子**
 
 @[codepen](https://codepen.io/tonkotsuboy/pen/yyJgQLY)
@@ -215,10 +215,10 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/position-area_
 
 私はanchor positioningが出たなら、絶対にこれをCSSだけで表現したいと思っていました。メニューのサブメニューの位置をAnchor Positioningで実装します。
 
-![タスク管理のサブメニューが右側に表示されている様子](/images/css-anchor-position-popover-all-browsers/demo2-submenu-task.png)
+![タスク管理のサブメニューが右側に表示されている様子](/images/anchor-positioning-popover/demo2-submenu-task.png)
 *タスク管理のサブメニュー*
 
-![設定のサブメニューが右側に表示されている様子](/images/css-anchor-position-popover-all-browsers/demo2-submenu-settings.png)
+![設定のサブメニューが右側に表示されている様子](/images/anchor-positioning-popover/demo2-submenu-settings.png)
 *設定のサブメニュー*
 
 ```html
@@ -239,7 +239,7 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/position-area_
 </nav>
 ```
 
-`popovertarget`属性は`<button>`要素で使用します。`<a>`要素では期待通りに動作しません。
+`popovertarget`属性は`<button>`要素で使用します。`<a>`要素では動作しません（HTML仕様上、`<button>`と`<input type="button">`のみ対応）。
 
 ```css
 /* メニューリンクをアンカーとして定義 */
@@ -263,7 +263,7 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/position-area_
 
 このパターンもよく使いますね。ヘッダーのユーザーアイコン下に、ドロップダウンメニューを配置する例です。
 
-![ユーザーメニューがアイコンの下に表示されている様子](/images/css-anchor-position-popover-all-browsers/demo3-user-menu.png)
+![ユーザーメニューがアイコンの下に表示されている様子](/images/anchor-positioning-popover/demo3-user-menu.png)
 *ユーザーアイコンの下にドロップダウンメニューが表示される*
 
 ```html
