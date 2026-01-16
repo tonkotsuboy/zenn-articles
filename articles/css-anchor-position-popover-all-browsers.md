@@ -4,10 +4,11 @@ emoji: "🎯"
 type: "tech"
 topics: ["css", "html", "popover"]
 published: false
+publication_name: ubie_dev
 ---
 
 
-HTMLにはポップオーバー APIという、その名の通りポップオーバーを表現できる便利なHTMLがあります。ESCの閉じる処理やフォーカス管理などが、JavaScriptなしで実装できます。2025年8月頃、全ブラウザで対応しました。
+HTMLにはポップオーバー APIという、その名の通りポップオーバーを表現できる便利なHTMLがあります。ESCの閉じる処理やフォーカス管理などが、JavaScriptなしで実装できます。2025年4月、全ブラウザで対応しました。
 しかし、ポップオーバーの位置を決める際、結局は複雑なJavaScriptを記述する必要があり、HTML・CSSだけで手軽にポップオーバーを使えるというわけではありませんでした。
 
 その問題、解決します。
@@ -196,7 +197,6 @@ popover.style.left = `${rect.left}px`;
 @[codepen](https://codepen.io/tonkotsuboy/pen/yyJgQLY)
 
 - [別ウインドウで開く](https://codepen.io/tonkotsuboy/pen/yyJgQLY)
--
 
 ▼ 参考: MDN - position-area
 https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/position-area_value
@@ -330,7 +330,7 @@ CSS Anchor Positioningは、2026年1月に全主要ブラウザで対応しま�
 |---------|---------------|
 | Chrome | 125以降 |
 | Edge | 125以降 |
-| Safari | 18.4以降 |
+| Safari | 26.0以降 |
 | Firefox | 147以降 🎉 |
 
 ▼ Can I use - CSS Anchor Positioning
