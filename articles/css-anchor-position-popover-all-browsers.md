@@ -16,6 +16,12 @@ HTMLにはポップオーバー APIという、その名の通りポップオー
 
 本記事では、Popover APIとCSS Anchor Positioningを組み合わせて、ポップオーバーをJavaScriptなしで実装する方法を解説します。
 
+![タスク管理のサブメニューが右側に表示されている様子](/images/css-anchor-position-popover-all-browsers/demo2-submenu-task.png)
+*タスク管理のサブメニュー*
+
+![ユーザーメニューがアイコンの下に表示されている様子](/images/css-anchor-position-popover-all-browsers/demo3-user-menu.png)
+*ユーザーアイコンの下にドロップダウンメニューが表示される*
+
 これをずっとやりたかった…！
 
 # Popover APIとは
@@ -78,8 +84,6 @@ Popover APIを使うと、ポップオーバーの表示・非表示がHTML属�
 - 背景クリックで閉じる
 - 適切なフォーカス管理
 
-## Popover APIの基本
-
 `popovertarget`属性で開閉ボタンを指定し、`popover`属性で要素をポップオーバーとして宣言します。
 
 | 属性 | 役割 |
@@ -92,7 +96,7 @@ https://developer.mozilla.org/ja/docs/Web/API/Popover_API
 
 # Popover APIがあっても、結局位置計算にはJavaScriptが必要
 
-Popover APIは素晴らしい機能ですが、**ポップオーバーの位置を指定する機能はありません**。ボタンの下や右側にポップオーバーを表示したい場合、従来はJavaScriptで位置を計算する必要がありました。
+Popover APIは便利な機能ですが、**ポップオーバーの位置を指定する機能はありません**。ボタンの下や右側にポップオーバーを表示したい場合、従来はJavaScriptで位置を計算する必要がありました。
 
 次の例では、ボタンの位置を取得して、ポップオーバーの位置を計算し、CSSで位置を指定しています。リサイズやスクロールのたびに再計算が必要なので、処理負荷も大きくなってしまいます。
 
@@ -105,41 +109,22 @@ popover.style.left = `${rect.left}px`;
 
 # 全ブラウザ対応したCSS Anchor Positioningで位置指定をする
 
-CSS Anchor Positioningを使うと、**CSSだけでポップオーバーの位置を指定できます**。
+今回全ブラウザで対応したCSS Anchor Positioningを使うと、**CSSだけでポップオーバーの位置を指定できます**。
 
-次の例では、ボタンをアンカーとして定義し、ポップオーバーをアンカーに関連付けています。
+次のHTMLを例に解説します。
 
 ```html
 <button class="button" popovertarget="my-popover">開く</button>
-
 <div id="my-popover" popover class="popover">
-  ポップオーバーの内容
+  <p>ポップオーバーの内容</p>
 </div>
 ```
 
-```css
-/* ボタンをアンカーとして定義 */
-.button {
-  anchor-name: --my-anchor;
-}
+次の3ステップで使用します。
 
-/* ポップオーバーをアンカーに関連付け */
-.popover {
-  position-anchor: --my-anchor;
-  top: anchor(bottom);  /* アンカーの下端に配置 */
-  left: anchor(left);   /* アンカーの左端に揃える */
-}
-```
+**ステップ1**: ポップオーバーの基準となる要素を指定する
 
-- 👍 JavaScriptによる位置計算が不要
-- 👍 リサイズやスクロールに自動追従
-- 👍 宣言的で可読性が高い
-
-## Anchor Positioningの基本
-
-Anchor Positioningは3つのステップで使用します。
-
-**ステップ1**: `anchor-name`でアンカーを定義します。
+ポップオーバーの基準となる要素を、CSSの`anchor-name`で定義します。アンカー（anchor）とは、日本語で船のいかりという意味を持ち、そこを基準にして位置を指定するという意味です。ちなみにHTMLの`<a>`要素も「アンカー」です。`anchor-name`には任意の名前を指定できます。
 
 ```css
 .button {
@@ -147,7 +132,9 @@ Anchor Positioningは3つのステップで使用します。
 }
 ```
 
-**ステップ2**: `position-anchor`でアンカーに関連付けます。
+**ステップ2**: ポップオーバーをアンカー要素と紐づける
+
+ポップオーバーをアンカー要素と紐づけるには、`position-anchor`プロパティを使用します。これで、CSSではアンカー要素を基準とする位置を指定できるようになります。
 
 ```css
 .popover {
@@ -155,7 +142,13 @@ Anchor Positioningは3つのステップで使用します。
 }
 ```
 
-**ステップ3**: `anchor()`関数で位置を指定します。
+**ステップ3**: ポップオーバーの位置を指定する
+
+位置の指定方法は2種類あります。
+
+### anchor()関数
+
+`anchor()`関数を使うと、アンカー要素の特定の位置を基準にした配置ができます。
 
 ```css
 .popover {
@@ -164,66 +157,30 @@ Anchor Positioningは3つのステップで使用します。
 }
 ```
 
-▼ 参考: MDN - CSS Anchor Positioning
-https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_anchor_positioning
+| 値 | 説明 |
+|---|---|
+| `top` | アンカーの上端 |
+| `bottom` | アンカーの下端 |
+| `left` | アンカーの左端 |
+| `right` | アンカーの右端 |
+| `center` | アンカーの中央 |
 
-# デモ1: さまざま位置のポップオーバー
+### position-areaプロパティ
 
-`position-area`プロパティを使うと、ポップオーバーをアンカーの上下左右、さらに斜め方向にも配置できます。
-
-```html
-<!-- 上に表示 -->
-<button id="anchor-top" popovertarget="popover-top">上に表示</button>
-<div id="popover-top" popover class="popover-top">
-  <p><code>position-area: block-start</code></p>
-</div>
-
-<!-- 右に表示 -->
-<button id="anchor-right" popovertarget="popover-right">右に表示</button>
-<div id="popover-right" popover class="popover-right">
-  <p><code>position-area: inline-end</code></p>
-</div>
-
-<!-- 左下に表示 -->
-<button id="anchor-bottom-left" popovertarget="popover-bottom-left">左下に表示</button>
-<div id="popover-bottom-left" popover class="popover-bottom-left">
-  <p><code>position-area: block-end inline-start</code></p>
-</div>
-```
+`position-area`プロパティを使うと、アンカー周囲のエリアを指定して配置できます。
 
 ```css
-/* 各ボタンをアンカーとして定義 */
-#anchor-top { anchor-name: --anchor-top; }
-#anchor-right { anchor-name: --anchor-right; }
-#anchor-bottom-left { anchor-name: --anchor-bottom-left; }
-
-/* 上に表示 */
-.popover-top {
-  position-anchor: --anchor-top;
-  position-area: block-start;
-}
-
-/* 右に表示 */
-.popover-right {
-  position-anchor: --anchor-right;
-  position-area: inline-end;
-}
-
-/* 左下に表示 */
-.popover-bottom-left {
-  position-anchor: --anchor-bottom-left;
-  position-area: block-end inline-start;
+.popover {
+  position-area: block-end;
 }
 ```
 
-## position-areaの値
-
 | 値 | 配置位置 |
-|---|---------|
+|---|---|
 | `block-start` | 上 |
 | `block-end` | 下 |
-| `inline-start` | 左（LTRの場合） |
-| `inline-end` | 右（LTRの場合） |
+| `inline-start` | 書字方向の開始位置（LTRなら左） |
+| `inline-end` | 書字方向の終了位置（LTRなら右） |
 
 2つの値を組み合わせることで、斜め方向にも配置できます。
 
@@ -232,9 +189,29 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_anchor_positioning
 | `block-start inline-end` | 右上 |
 | `block-end inline-start` | 左下 |
 
-# デモ2: サブメニューナビゲーション
+![ポップオーバーが上側に表示されている様子](/images/css-anchor-position-popover-all-browsers/demo1-popover-top.png)
 
-実践的な例として、サイドメニューのサブメニューをAnchor Positioningで実装します。
+![ポップオーバーが右側に表示されている様子](/images/css-anchor-position-popover-all-browsers/demo1-popover-right.png)
+
+@[codepen](https://codepen.io/tonkotsuboy/pen/yyJgQLY)
+
+- [別ウインドウで開く](https://codepen.io/tonkotsuboy/pen/yyJgQLY)
+-
+
+▼ 参考: MDN - position-area
+https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/position-area_value
+
+# 実例
+
+## サブメニューナビゲーション
+
+私はanchor positioningが出たなら、絶対にこれをCSSだけで表現したいと思っていました。メニューのサブメニューの位置をAnchor Positioningで実装します。
+
+![タスク管理のサブメニューが右側に表示されている様子](/images/css-anchor-position-popover-all-browsers/demo2-submenu-task.png)
+*タスク管理のサブメニュー*
+
+![設定のサブメニューが右側に表示されている様子](/images/css-anchor-position-popover-all-browsers/demo2-submenu-settings.png)
+*設定のサブメニュー*
 
 ```html
 <nav class="menu">
@@ -270,24 +247,16 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_anchor_positioning
 }
 ```
 
-## :has()セレクターでシェブロンアイコンを自動表示
+@[codepen](https://codepen.io/tonkotsuboy/pen/qENRQBP)
 
-サブメニューを持つ項目には、自動的に矢印アイコンを表示できます。
+- [別ウインドウで開く](https://codepen.io/tonkotsuboy/pen/qENRQBP)
 
-```css
-/* サブメニューがある項目に矢印アイコンを表示 */
-.menu-item:has(.submenu) > .menu-link::after {
-  content: "▶";
-  margin-left: auto;
-  color: #666;
-}
-```
+## ヘッダーのユーザーメニュー
 
-`:has()`セレクターを使うことで、**サブメニューの有無をCSSだけで検出**し、自動的にアイコンを表示できます。
+このパターンもよく使いますね。ヘッダーのユーザーアイコン下に、ドロップダウンメニューを配置する例です。
 
-# デモ3: ヘッダーのユーザーメニュー
-
-よくあるパターンとして、ヘッダーのユーザーアイコンからドロップダウンメニューを表示する例を紹介します。
+![ユーザーメニューがアイコンの下に表示されている様子](/images/css-anchor-position-popover-all-browsers/demo3-user-menu.png)
+*ユーザーアイコンの下にドロップダウンメニューが表示される*
 
 ```html
 <header class="header">
@@ -309,12 +278,19 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_anchor_positioning
 
 .dropdown-menu {
   position-anchor: --user-icon;
-  position-area: block-end inline-end;
+  top: anchor(bottom);
+  right: anchor(right);
   margin-top: 8px;
 }
 ```
 
-`position-area: block-end inline-end`を指定することで、ユーザーアイコンの**下かつ右端揃え**で配置されます。ヘッダー右端のアイコンからドロップダウンを表示するとき、メニューが画面外へはみ出さないための指定です。
+`right: anchor(right)`を指定することで、ドロップダウンの**右端**とアイコンの**右端**が揃います。ヘッダー右端のアイコンからドロップダウンを表示するとき、メニューが画面外へはみ出さないための指定です。
+
+なお、`position-area: block-end inline-end`だと「アンカーの右下エリアに配置」となり、ドロップダウンの左端がアンカー付近に来るため、右側にはみ出してしまいます。右端を揃えたい場合は`anchor()`関数を使いましょう。
+
+@[codepen](https://codepen.io/tonkotsuboy/pen/myERQdG)
+
+- [別ウインドウで開く](https://codepen.io/tonkotsuboy/pen/myERQdG)
 
 # position-area vs anchor()関数
 
@@ -322,15 +298,14 @@ Anchor Positioningには2つの位置指定方法があります。
 
 ## position-area: シンプルな配置向け
 
+直感的で書きやすく、論理プロパティに対応しているためRTLでも正しく動作します。
+
 ```css
 .popover {
   position-anchor: --my-anchor;
   position-area: block-end;  /* アンカーの下に配置 */
 }
 ```
-
-- 👍 直感的で書きやすい
-- 👍 論理プロパティ対応（RTLでも正しく動作）
 
 ## anchor()関数: 精密な制御向け
 
