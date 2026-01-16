@@ -1,5 +1,5 @@
 ---
-title: "Anchor Positioningが全対応。HTML・CSSのポップオーバーが完全体に"
+title: "Anchor Positioningが全対応。HTML・CSSだけのポップオーバーが完全体に"
 emoji: "🎯"
 type: "tech"
 topics: ["css", "html", "popover"]
