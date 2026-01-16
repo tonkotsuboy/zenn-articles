@@ -7,7 +7,7 @@ published: true
 publication_name: ubie_dev
 ---
 
-HTMLのPopover APIを使えば、ESCキーで閉じる処理やフォーカス管理がJavaScriptなしで実装できます。しかし、ポップオーバーの**位置指定**には結局JavaScriptが必要でした。
+HTMLのPopover APIを使えば、ESCキーで閉じる処理やフォーカス管理がJavaScriptなしで実装できます。しかし、ポップオーバーの位置指定には結局JavaScriptが必要でした。
 
 2026年1月13日に、Firefox 147がリリースされ、「CSS Anchor Positioning」が全ブラウザ対応しました。CSS Anchor Positioningとは、要素の位置を別の要素の位置に合わせられるCSSの機能です。Chrome・Safari・Edgeでは先に対応していましたが、長らくFirefoxだけ対応していなかったのです。
 
@@ -25,7 +25,7 @@ HTMLのPopover APIを使えば、ESCキーで閉じる処理やフォーカス�
 
 従来、ポップオーバーを実装するには、大量のイベントリスナー、複雑な位置計算のロジック、スクロールやリサイズへの対応が必要でした。
 
-ポップオーバーの実装例です。
+たとえば次のようなJavaScriptのコードが必要です。
 
 ```javascript
 // 従来のJavaScript実装
@@ -51,17 +51,13 @@ document.addEventListener('click', (e) => {
   }
 });
 
-// さらに位置計算も必要...
-function updatePosition() {
-  const rect = button.getBoundingClientRect();
-  popover.style.top = `${rect.bottom + 8}px`;
-  popover.style.left = `${rect.left}px`;
-}
 ```
+
+これを毎度実装するのは、かなり面倒でした。
 
 ## Popover APIで表示・非表示が簡単に
 
-Popover APIを使うと、ポップオーバーの表示・非表示がHTML属性だけで実現できます。
+Popover APIを使うと、JavaScriptを使わず、ポップオーバーの表示・非表示がHTML属性だけで実現できます。
 
 ボタンをクリックするとポップオーバーが開くシンプルな例です。
 
@@ -94,20 +90,22 @@ https://developer.mozilla.org/ja/docs/Web/API/Popover_API
 
 # Popover APIがあっても、結局位置計算にはJavaScriptが必要
 
-Popover APIは便利な機能ですが、**ポップオーバーの位置を指定する機能はありません**。ボタンの下や右側にポップオーバーを表示したい場合、従来はJavaScriptで位置を計算する必要がありました。
+Popover APIは便利な機能ですが、ポップオーバーの位置を指定する機能はありません。ボタンの下や右側にポップオーバーを表示したい場合、従来はJavaScriptで位置を計算する必要がありました。
 
-次の例では、ボタンの位置を取得して、ポップオーバーの位置を計算し、CSSで位置を指定しています。リサイズやスクロールのたびに再計算が必要なので、処理負荷も大きくなってしまいます。
+次の例では、ボタンの位置を取得して、ポップオーバーの位置を計算し、CSSで位置を指定するJavaScriptコードの一部です。リサイズやスクロールのたびに再計算が必要なので、処理負荷も大きくなってしまいます。
 
 ```javascript
+function updatePosition() {
 // ボタンの位置を取得して、ポップオーバーの位置を計算
-const rect = button.getBoundingClientRect();
-popover.style.top = `${rect.bottom + 8}px`;
-popover.style.left = `${rect.left}px`;
+  const rect = button.getBoundingClientRect();
+  popover.style.top = `${rect.bottom + 8}px`;
+  popover.style.left = `${rect.left}px`;
+}
 ```
 
 # 全ブラウザ対応したCSS Anchor Positioningで位置指定をする
 
-今回全ブラウザで対応したCSS Anchor Positioningを使うと、**CSSだけでポップオーバーの位置を指定できます**。
+今回全ブラウザで対応したCSS Anchor Positioningを使うと、CSSだけでポップオーバーの位置を指定できます。
 
 次のHTMLを例に解説します。
 
@@ -117,8 +115,6 @@ popover.style.left = `${rect.left}px`;
   <p>ポップオーバーの内容</p>
 </div>
 ```
-
-次の3ステップで使用します。
 
 **ステップ1**: ポップオーバーの基準となる要素を指定する
 
@@ -144,7 +140,7 @@ popover.style.left = `${rect.left}px`;
 
 位置の指定方法は2種類あります。
 
-### anchor()関数
+## anchor()関数
 
 `anchor()`関数を使うと、アンカー要素の特定の位置を基準にした配置ができます。
 
@@ -175,7 +171,7 @@ popover.style.left = `${rect.left}px`;
 
 https://developer.mozilla.org/ja/docs/Web/CSS/Reference/Values/anchor
 
-### position-areaプロパティ
+## position-areaプロパティ
 
 `position-area`プロパティを使うと、アンカー周囲のエリアを指定して配置できます。
 
@@ -199,17 +195,28 @@ https://developer.mozilla.org/ja/docs/Web/CSS/Reference/Values/anchor
 | `block-start inline-end` | 右上 |
 | `block-end inline-start` | 左下 |
 
-![ポップオーバーが上側に表示されている様子](/images/anchor-positioning-popover/demo1-popover-top.png)
-**ポップオーバーが上側に表示されている様子**
+https://developer.mozilla.org/ja/docs/Web/CSS/Reference/Values/position-area_value
 
-![ポップオーバーが右側に表示されている様子](/images/anchor-positioning-popover/demo1-popover-right.png)
-**ポップオーバーが右側に表示されている様子**
+なお、書字方向を使ったレイアウトについては、`margin-inline: auto;` による話も関連しています。
+
+https://zenn.dev/tonkotsuboy_com/articles/margin-inline_auto
+
+## シンプルなデモで挙動を確認する
+
+さまざまな配置を試すための、シンプルなデモをつくりました。
 
 @[codepen](https://codepen.io/tonkotsuboy/pen/yyJgQLY)
 
 - [別ウインドウで開く](https://codepen.io/tonkotsuboy/pen/yyJgQLY)
 
-▼ 参考: MDN - position-area
+動作している様子は次のとおりです。
+
+![ポップオーバーが上側に表示されている様子](/images/anchor-positioning-popover/demo1-popover-top.png)
+*ポップオーバーが上側に表示されている様子*
+
+![ポップオーバーが右側に表示されている様子](/images/anchor-positioning-popover/demo1-popover-right.png)
+*ポップオーバーが右側に表示されている様子*
+
 https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/position-area_value
 
 # 実例
@@ -229,7 +236,7 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/position-area_
   <ul class="menu-list">
     <li class="menu-item">
       <button class="menu-link" id="task-menu-anchor" popovertarget="task-submenu">
-        ✅ タスク管理
+        タスク管理
         <span class="chevron">›</span>
       </button>
       <ul class="submenu" popover id="task-submenu">
@@ -295,7 +302,7 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/position-area_
 }
 ```
 
-`right: anchor(right)`を指定することで、ドロップダウンの**右端**とアイコンの**右端**が揃います。ヘッダー右端のアイコンからドロップダウンを表示するとき、メニューが画面外へはみ出さないための指定です。
+`right: anchor(right)`を指定することで、ドロップダウンの右端とアイコンの右端が揃います。ヘッダー右端のアイコンからドロップダウンを表示するとき、メニューが画面外へはみ出さないための指定です。
 
 なお、`position-area: block-end inline-end`だと「アンカーの右下エリアに配置」となり、ドロップダウンの左端がアンカー付近に来るため、右側にはみ出してしまいます。右端を揃えたい場合は`anchor()`関数を使いましょう。
 
@@ -307,14 +314,13 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/position-area_
 
 CSS Anchor Positioningは、2026年1月13日に全主要ブラウザで対応しました。
 
-| ブラウザ | 対応バージョン |
-|---------|---------------|
-| Chrome | 125以降 |
-| Edge | 125以降 |
-| Safari | 26.0以降 |
-| Firefox | 147以降 🎉 |
+| ブラウザ | 対応バージョン | リリース日 |
+|---------|---------------|-----------|
+| Chrome | 125以降 | 2024年5月 |
+| Edge | 125以降 | 2024年5月 |
+| Safari | 26.0以降 | 2025年9月 |
+| Firefox | 147以降 🎉 | 2026年1月 |
 
-▼ Can I use - CSS Anchor Positioning
 https://caniuse.com/css-anchor-positioning
 
 # まとめ
@@ -325,7 +331,12 @@ Safari 26、そしてFirefox 147で全ブラウザ対応したことで、よう
 
 # 参考リンク
 
-- [MDN - Popover API](https://developer.mozilla.org/ja/docs/Web/API/Popover_API)
-- [MDN - CSS Anchor Positioning](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_anchor_positioning)
-- [MDN - Using CSS Anchor Positioning](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Anchor_positioning/Using)
-- [Can I use - CSS Anchor Positioning](https://caniuse.com/css-anchor-positioning)
+https://developer.mozilla.org/ja/docs/Web/API/Popover_API
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_anchor_positioning
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Anchor_positioning/Using
+
+https://caniuse.com/css-anchor-positioning
+
+https://www.firefox.com/en-US/firefox/147.0/releasenotes/
