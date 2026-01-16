@@ -9,7 +9,7 @@ publication_name: ubie_dev
 
 HTMLのPopover APIを使えば、ESCキーで閉じる処理やフォーカス管理がJavaScriptなしで実装できます。しかし、ポップオーバーの**位置指定**には結局JavaScriptが必要でした。
 
-2026年1月に、Firefox 147がリリースされ、「CSS Anchor Positioning」が全ブラウザ対応しました。CSS Anchor Positioningとは、要素の位置を別の要素の位置に合わせられるCSSの機能です。Firefox以外のブラウザでは昔から対応していましたが、長らくFirefoxだけ対応していなかったのです。
+2026年1月13日に、Firefox 147がリリースされ、「CSS Anchor Positioning」が全ブラウザ対応しました。CSS Anchor Positioningとは、要素の位置を別の要素の位置に合わせられるCSSの機能です。Chrome・Safari・Edgeでは先に対応していましたが、長らくFirefoxだけ対応していなかったのです。
 
 本記事では、Popover APIとCSS Anchor Positioningを組み合わせて、ポップオーバーをJavaScriptなしで実装する方法を解説します。
 
@@ -23,10 +23,9 @@ HTMLのPopover APIを使えば、ESCキーで閉じる処理やフォーカス�
 
 # Popover APIとは
 
-従来、ポップオーバーを実装するには、大量のJavaScriptが必要でした。
-大量のイベントリスナー、複雑な位置計算のロジック、スクロールやリサイズへの対応も必要でした。
+従来、ポップオーバーを実装するには、大量のイベントリスナー、複雑な位置計算のロジック、スクロールやリサイズへの対応が必要でした。
 
-次に示すのは、ポップオーバーの実装例です。
+ポップオーバーの実装例です。
 
 ```javascript
 // 従来のJavaScript実装
@@ -64,7 +63,7 @@ function updatePosition() {
 
 Popover APIを使うと、ポップオーバーの表示・非表示がHTML属性だけで実現できます。
 
-次の例では、ボタン要素をクリックするとポップオーバーが開くシンプルな例です。
+ボタンをクリックするとポップオーバーが開くシンプルな例です。
 
 ```html
 <button popovertarget="my-popover">開く</button>
@@ -74,7 +73,7 @@ Popover APIを使うと、ポップオーバーの表示・非表示がHTML属�
 </div>
 ```
 
-たったこれだけで、以下の機能が自動的に実装されます。JavaScriptは一切不要です。
+これだけで、以下の機能が自動的に実装されます。JavaScriptは不要です。
 
 - クリックで開閉
 - ESCキーで閉じる
@@ -88,6 +87,8 @@ Popover APIを使うと、ポップオーバーの表示・非表示がHTML属�
 | `popover` | 要素をポップオーバーとして宣言 |
 | `popovertarget` | クリック時に開閉するポップオーバーのIDを指定 |
 | `popovertargetaction` | 動作を指定（`toggle` / `show` / `hide`） |
+
+なお、`popovertarget`属性はHTML仕様上、`<button>`要素と`<input type="button">`でのみ使用できます。`<a>`要素では動作しません。
 
 https://developer.mozilla.org/ja/docs/Web/API/Popover_API
 
@@ -121,7 +122,7 @@ popover.style.left = `${rect.left}px`;
 
 **ステップ1**: ポップオーバーの基準となる要素を指定する
 
-ポップオーバーの基準となる要素を、CSSの`anchor-name`で定義します。アンカー（anchor）とは、日本語で船のいかりという意味を持ち、そこを基準にして位置を指定するという意味です。ちなみにHTMLの`<a>`要素も「アンカー」です。`anchor-name`には任意の名前を指定できます。
+ポップオーバーの基準となる要素を、CSSの`anchor-name`で定義します。アンカー（anchor）とは船のいかりのことで、そこを基準にして位置を指定します。ちなみにHTMLの`<a>`要素も「アンカー」です。`anchor-name`には任意の名前を指定できます。
 
 ```css
 .button {
@@ -241,7 +242,7 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/position-area_
 </nav>
 ```
 
-`popovertarget`属性は`<button>`要素で使用します。`<a>`要素では動作しません（HTML仕様上、`<button>`と`<input type="button">`のみ対応）。
+前述のとおり、`popovertarget`属性は`<button>`要素で使用します（`<a>`要素では動作しません）。
 
 ```css
 /* メニューリンクをアンカーとして定義 */
@@ -252,8 +253,8 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/position-area_
 /* サブメニューの位置指定 */
 .submenu {
   position-anchor: --task-menu;
-  top: anchor(--task-menu top);
-  left: anchor(--task-menu right);
+  top: anchor(top);
+  left: anchor(right);
 }
 ```
 
@@ -304,7 +305,7 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/position-area_
 
 # ブラウザ対応状況
 
-CSS Anchor Positioningは、2026年1月に全主要ブラウザで対応しました。
+CSS Anchor Positioningは、2026年1月13日に全主要ブラウザで対応しました。
 
 | ブラウザ | 対応バージョン |
 |---------|---------------|
@@ -318,11 +319,9 @@ https://caniuse.com/css-anchor-positioning
 
 # まとめ
 
-Popover APIが登場したとき、ポップオーバーがJSなしでラクにできて嬉しいと感動しました。しかし、その直後に、位置指定にはCSS Anchor Positioningがない限り使いものにならず、しかもブラウザ対応が遅いことに失望を感じていました。
+Popover APIが登場したとき、ポップオーバーがJSなしで実装できて感動しました。しかし位置指定にはCSS Anchor Positioningが必要で、Firefoxが対応するまで実務では使いづらい状況が続いていました。
 
-Safari 26で対応し、そしてついに今年Firefoxで全ブラウザ対応したことで、ようやくHTML・CSSだけでポップオーバーを実装できるようになり、嬉しい限りです。しかも、今回紹介したようなサブメニューやドロップダウンメニューのような表現は、さまざまな場面で頻出するので役に立つ場面が多いです。
-
-今後のプロジェクトで積極的に活用します。
+Safari 26、そしてFirefox 147で全ブラウザ対応したことで、ようやくHTML・CSSだけでポップオーバーを完結できるようになりました。サブメニューやドロップダウンメニューは頻出するUIなので、すぐに使える場面は多いはずです。
 
 # 参考リンク
 
