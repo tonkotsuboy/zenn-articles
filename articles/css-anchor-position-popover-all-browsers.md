@@ -3,17 +3,13 @@ title: "Popover API + CSS Anchor Positioningが全ブラウザ対応。ポップ
 emoji: "🎯"
 type: "tech"
 topics: ["css", "html", "popover"]
-published: false
+published: true
 publication_name: ubie_dev
 ---
 
+HTMLのPopover APIを使えば、ESCキーで閉じる処理やフォーカス管理がJavaScriptなしで実装できます。しかし、ポップオーバーの**位置指定**には結局JavaScriptが必要でした。
 
-HTMLにはポップオーバー APIという、その名の通りポップオーバーを表現できる便利なHTMLがあります。ESCの閉じる処理やフォーカス管理などが、JavaScriptなしで実装できます。2025年4月、全ブラウザで対応しました。
-しかし、ポップオーバーの位置を決める際、結局は複雑なJavaScriptを記述する必要があり、HTML・CSSだけで手軽にポップオーバーを使えるというわけではありませんでした。
-
-その問題、解決します。
-
-2026年1月に、Firefox 147がリリースされ、「CSS Anchor Positioning」が全ブラウザ対応しました。CSS Anchor Positioningとは、要素の位置を別の要素の位置に合わせることができるCSSの機能です。Firefox以外のブラウザでは昔から対応していましたが、長らくFirefoxだけ対応していなかったのです。
+2026年1月に、Firefox 147がリリースされ、「CSS Anchor Positioning」が全ブラウザ対応しました。CSS Anchor Positioningとは、要素の位置を別の要素の位置に合わせられるCSSの機能です。Firefox以外のブラウザでは昔から対応していましたが、長らくFirefoxだけ対応していなかったのです。
 
 本記事では、Popover APIとCSS Anchor Positioningを組み合わせて、ポップオーバーをJavaScriptなしで実装する方法を解説します。
 
@@ -22,8 +18,6 @@ HTMLにはポップオーバー APIという、その名の通りポップオー
 
 ![ユーザーメニューがアイコンの下に表示されている様子](/images/css-anchor-position-popover-all-browsers/demo3-user-menu.png)
 *ユーザーアイコンの下にドロップダウンメニューが表示される*
-
-これをずっとやりたかった…！
 
 # Popover APIとは
 
@@ -158,6 +152,16 @@ popover.style.left = `${rect.left}px`;
 }
 ```
 
+また、`calc()`と組み合わせて余白を調整することもできます。
+
+```css
+.popover {
+  position-anchor: --my-anchor;
+  top: calc(anchor(bottom) + 8px);
+  left: anchor(center);
+}
+```
+
 | 値 | 説明 |
 |---|---|
 | `top` | アンカーの上端 |
@@ -165,6 +169,8 @@ popover.style.left = `${rect.left}px`;
 | `left` | アンカーの左端 |
 | `right` | アンカーの右端 |
 | `center` | アンカーの中央 |
+
+https://developer.mozilla.org/ja/docs/Web/CSS/Reference/Values/anchor
 
 ### position-areaプロパティ
 
@@ -191,8 +197,10 @@ popover.style.left = `${rect.left}px`;
 | `block-end inline-start` | 左下 |
 
 ![ポップオーバーが上側に表示されている様子](/images/css-anchor-position-popover-all-browsers/demo1-popover-top.png)
+**ポップオーバーが上側に表示されている様子**
 
 ![ポップオーバーが右側に表示されている様子](/images/css-anchor-position-popover-all-browsers/demo1-popover-right.png)
+**ポップオーバーが右側に表示されている様子**
 
 @[codepen](https://codepen.io/tonkotsuboy/pen/yyJgQLY)
 
@@ -291,36 +299,6 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/position-area_
 @[codepen](https://codepen.io/tonkotsuboy/pen/myERQdG)
 
 - [別ウインドウで開く](https://codepen.io/tonkotsuboy/pen/myERQdG)
-
-# position-area vs anchor()関数
-
-Anchor Positioningには2つの位置指定方法があります。
-
-## position-area: シンプルな配置向け
-
-直感的で書きやすく、論理プロパティに対応しているためRTLでも正しく動作します。
-
-```css
-.popover {
-  position-anchor: --my-anchor;
-  position-area: block-end;  /* アンカーの下に配置 */
-}
-```
-
-## anchor()関数: 精密な制御向け
-
-```css
-.popover {
-  position-anchor: --my-anchor;
-  top: calc(anchor(bottom) + 8px);
-  left: anchor(center);
-}
-```
-
-- 👍 `calc()`と組み合わせて余白を調整可能
-- 👍 中央揃えなど細かい位置指定が可能
-
-用途に応じて使い分けましょう。
 
 # ブラウザ対応状況
 
