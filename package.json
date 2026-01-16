@@ -11,8 +11,8 @@
     "lint:fix": "textlint --fix articles/**/*.md"
   },
   "dependencies": {
-    "prettier": "^3.7.4",
-    "zenn-cli": "^0.2.11"
+    "prettier": "^3.8.0",
+    "zenn-cli": "^0.3.1"
   },
   "volta": {
     "node": "25.2.1"

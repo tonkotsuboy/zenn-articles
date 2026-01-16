@@ -1,9 +1,3 @@
-# CLAUDE.md
-
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
-
-**重要: 必ず日本語で回答してください。**
-
 ## Repository Overview
 
 This is a Zenn.dev article management repository for publishing technical content. The main content is published at https://zenn.dev/tonkotsuboy_com.
@@ -18,7 +12,9 @@ This is a Zenn.dev article management repository for publishing technical conten
 - `.kiro/` - AI-assisted content specification and design documents
 
 ### Article Format Standards
+
 All articles follow Zenn's frontmatter format:
+
 ```yaml
 ---
 title: "Article Title"
@@ -38,6 +34,10 @@ Based on analysis of existing articles, maintain these characteristics:
 - **技術的正確性**: Maintain technical accuracy while keeping explanations accessible
 - **実用性重視**: Provide actionable information readers can immediately use
 
+### Markdown Heading Rules
+- **大見出し**: Use `#`（h1）for main section headings in articles
+- **小見出し**: Use `##`（h2）for subsections
+
 ## Development Commands
 
 ### Content Preview
@@ -46,27 +46,6 @@ npm run preview
 # Starts Zenn preview server at http://localhost:8000 for local article review
 ```
 
-### Creating New Content
-```bash
-npx zenn new:article
-# Creates a new article with auto-generated slug in articles/
-
-npx zenn new:book
-# Creates a new book in books/
-
-npx zenn list:articles
-# Lists all articles with their publication status
-
-npx zenn list:books
-# Lists all books
-```
-
-### Dependencies and Environment
-The project uses:
-- **Node.js**: Version managed by Volta (currently 25.2.1)
-  - Volta automatically switches to the correct Node version for this project
-- **zenn-cli**: Zenn's official CLI for content management
-- **prettier**: Code formatting (though manual formatting may be preferred for articles)
 
 ## Content Creation Workflow
 
@@ -81,14 +60,6 @@ The project uses:
 - Store images in `images/[article-slug]/` directories
 - Use relative paths from article root: `/images/article-slug/image.png`
 - Common image formats: `.png`, `.jpg`, `.webp`
-
-### AI-Assisted Content Development
-The `.kiro/` directory contains specifications for AI-assisted content creation:
-- `design.md` - Content design and architecture specifications
-- `requirements.md` - Detailed requirements with acceptance criteria  
-- `tasks.md` - Implementation task breakdowns
-
-When working with AI-generated content, ensure alignment with these specifications while maintaining the repository's established writing standards.
 
 ## Important Notes
 
