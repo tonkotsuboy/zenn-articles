@@ -18,7 +18,7 @@ publication_name: ubie_dev
 ![ユーザーメニューがアイコンの下に表示されている様子](/images/anchor-positioning-popover/demo3-user-menu.png)
 *ユーザーアイコンの下にドロップダウンメニューが表示される*
 
-本記事で詳しく解説します。
+私はずっっっとこの表現をHTML・CSSで実現したいと思っており、Firefoxの対応を待ち望んでいました。本記事で詳しく解説します。
 
 # Popover APIとは
 
@@ -115,7 +115,7 @@ function updatePosition() {
 </div>
 ```
 
-**ステップ1**: ポップオーバーの基準となる要素を指定する
+## **ステップ1**: ポップオーバーの基準となる要素を指定する（`anchor-name`）
 
 ポップオーバーの基準となる要素を、CSSの`anchor-name`で定義します。アンカー（anchor）とは船のいかりのことで、そこを基準にして位置を指定します。ちなみにHTMLの`<a>`要素も「アンカー」です。`anchor-name`には任意の名前を指定できます。
 
@@ -125,7 +125,7 @@ function updatePosition() {
 }
 ```
 
-**ステップ2**: ポップオーバーをアンカー要素と紐づける
+## **ステップ2**: ポップオーバーをアンカー要素と紐づける（`position-anchor`）
 
 ポップオーバーをアンカー要素と紐づけるには、`position-anchor`プロパティを使用します。これで、CSSではアンカー要素を基準とする位置を指定できるようになります。
 
@@ -135,11 +135,11 @@ function updatePosition() {
 }
 ```
 
-**ステップ3**: ポップオーバーの位置を指定する
+## **ステップ3**: ポップオーバーの位置を指定する
 
 位置の指定方法は2種類あります。
 
-## anchor()関数
+### anchor()関数
 
 `anchor()`関数を使うと、アンカー要素の特定の位置を基準にした配置ができます。
 
@@ -170,7 +170,7 @@ function updatePosition() {
 
 https://developer.mozilla.org/ja/docs/Web/CSS/Reference/Values/anchor
 
-## position-areaプロパティ
+### position-areaプロパティ
 
 `position-area`プロパティを使うと、アンカー周囲のエリアを指定して配置できます。
 
