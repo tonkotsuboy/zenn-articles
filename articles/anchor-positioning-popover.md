@@ -218,6 +218,30 @@ https://zenn.dev/tonkotsuboy_com/articles/margin-inline_auto
 
 https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/position-area_value
 
+## 画面端ではみ出さない配置（position-try-fallbacks）
+
+ポップオーバーを表示するとき、画面外にはみ出してしまうことがあります。`position-try-fallbacks`を使うと、はみ出す場合に自動で代替位置へ切り替わります。これもFirefox 147で全ブラウザ対応しました。
+
+```css
+.popover {
+  position-anchor: --my-anchor;
+  position-area: block-end; /* デフォルト: 下に表示 */
+
+  /* はみ出したら上下を反転 */
+  position-try-fallbacks: flip-block;
+}
+```
+
+| 値 | 動作 |
+|---|---|
+| `flip-block` | 上下を反転 |
+| `flip-inline` | 左右を反転 |
+| `flip-block flip-inline` | 両方を反転 |
+
+これで、画面端でも常に見える位置にポップオーバーが表示されます。
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/position-try-fallbacks
+
 # 実例
 
 ## サブメニューナビゲーション
