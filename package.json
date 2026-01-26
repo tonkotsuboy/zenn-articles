@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "prettier": "^3.8.0",
-    "zenn-cli": "^0.3.1"
+    "zenn-cli": "^0.4.1"
   },
   "volta": {
     "node": "25.2.1"

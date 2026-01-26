@@ -12,8 +12,8 @@ importers:
         specifier: ^3.8.0
         version: 3.8.0
       zenn-cli:
-        specifier: ^0.3.1
-        version: 0.3.1
+        specifier: ^0.4.1
+        version: 0.4.1
     devDependencies:
       textlint:
         specifier: ^15.5.0
@@ -1137,6 +1137,9 @@ packages:
   package-json-from-dist@1.0.1:
     resolution: {integrity: sha512-UEZIS3/by4OC8vL3P2dTXRETpebLI2NiI5vIrjaD/5UtrkFX/tNbwjTSRAGC/+7CAo2pIcBaRgWmcBBHcsaCIw==}
 
+  package-manager-detector@1.6.0:
+    resolution: {integrity: sha512-61A5ThoTiDG/C8s8UMZwSorAGwMJ0ERVGj2OjoW5pAalsNOg15+iQiPzrLJ4jhZ1HJzmC2PIHT2oEiH3R5fzNA==}
+
   parse-entities@2.0.0:
     resolution: {integrity: sha512-kkywGpCcRYhqQIchaWqZ875wzpS/bMKhz5HnN3p7wveJTkTtyAB/AlnS0f8DFSqYW1T82t6yEAkEcB+A1I3MbQ==}
 
@@ -1693,8 +1696,8 @@ packages:
     resolution: {integrity: sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==}
     engines: {node: '>=0.4'}
 
-  zenn-cli@0.3.1:
-    resolution: {integrity: sha512-SPy649mxDlmADxHs6mYkk1hLFx/UyH7qc4nrKiKnxUIMbzFAsvB9IYkkCeGB6FU5y1wysSPCHffS7QX4tlYeBg==}
+  zenn-cli@0.4.1:
+    resolution: {integrity: sha512-zK6/VxIcue72msrIvJXGbWOqLvQ2gbzpIFli7gmdLj4PxU2ZL9l8Ye6PUPsvjMI/ZHAFgiWdxOVEEcjphBdbZg==}
     engines: {node: '>=22.0.0'}
     hasBin: true
 
@@ -3084,6 +3087,8 @@ snapshots:
 
   package-json-from-dist@1.0.1: {}
 
+  package-manager-detector@1.6.0: {}
+
   parse-entities@2.0.0:
     dependencies:
       character-entities: 1.2.4
@@ -3958,9 +3963,10 @@ snapshots:
 
   xtend@4.0.2: {}
 
-  zenn-cli@0.3.1:
+  zenn-cli@0.4.1:
     dependencies:
       open: 10.2.0
+      package-manager-detector: 1.6.0
 
   zlibjs@0.3.1: {}
 
