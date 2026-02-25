@@ -16,7 +16,7 @@ publication_name: ubie_dev
 
 ## 概要
 
-Remote Controlは、ローカルPCで動いているClaude Codeのセッションを、[claude.ai/code](https://claude.ai/code)やClaudeモバイルアプリ（[iOS](https://apps.apple.com/us/app/claude-by-anthropic/id6473753684) / [Android](https://play.google.com/store/apps/details?id=com.anthropic.claude)）から操作できる機能です。
+Remote Controlは、ローカルPCで動いているClaude Codeのセッションを、Claudeモバイルアプリ（[iOS](https://apps.apple.com/us/app/claude-by-anthropic/id6473753684) / [Android](https://play.google.com/store/apps/details?id=com.anthropic.claude)）やClaudeデスクトップアプリから操作できる機能です。
 
 セッションはあくまでローカルのPC上で動き続けるため、ファイルシステムやMCPサーバー、プロジェクト設定はそのまま利用できます。PCでカリッカリにチューニングした設定や、いろんなところから集めた秘蔵のスキルがそのまま活用できるということです。
 会話はすべてのデバイスでリアルタイムに同期され、ネットワーク切断やスリープ後も自動で再接続します。
