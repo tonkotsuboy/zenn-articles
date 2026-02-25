@@ -34,7 +34,7 @@ Remote Controlは、ローカルPCで動いているClaude Codeのセッショ�
 
 https://code.claude.com/docs/en/remote-control
 
-執筆時点（2025/02/25）ではresearch previewとして提供されており、**ProまたはMaxプラン**で利用できます。Team・Enterpriseプランでは利用できません。私は[会社ではClaude Code使い放題のAPIキー](https://x.com/tonkotsuboy_com/status/2014603660463104447)ですが、まだ使えなかったので、個人のMaxプランで試しました。
+執筆時点（2025/02/25）ではresearch previewとして提供されており、Maxプランで利用できます。Team・Enterpriseプランでは利用できません。私は[会社ではClaude Code使い放題のAPIキー](https://x.com/tonkotsuboy_com/status/2014603660463104447)ですが、まだ使えなかったので、個人のMaxプランで試しました。
 
 おすすめの設定はつぎのとおり。Claude Codeを起動後、`/config`コマンドを実行すると、「Enable Remote Control for all sessions」という項目があります。これを`true` にしておきます。こうすることで、今後の全セッションが、 スマートフォンにインストールしたClaudeアプリから確認や追加指示ができるようになります。
 
