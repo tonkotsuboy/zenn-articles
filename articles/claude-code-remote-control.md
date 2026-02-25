@@ -32,13 +32,13 @@ Remote Controlは、ローカルPCで動いているClaude Codeのセッショ�
 
 https://code.claude.com/docs/en/remote-control
 
-筆者は、全セッションでリモートコントロールを有効にしたいので、次の手順を使いました。 Claude Codeを起動後、`/config`コマンドを実行すると、「Enable Remote Control for all sessions」という項目があります。これを`true` にしておきます。
+執筆時点（2025/02/25）ではresearch previewとして提供されており、**ProまたはMaxプラン**で利用できます（Team・Enterpriseプランでは利用不可）。筆者は[会社ではClaude Code使い放題のAPIキー](https://x.com/tonkotsuboy_com/status/2014603660463104447)ですが、まだ使えなかったので、個人のMaxプランで試しました。
+
+おすすめの設定はつぎのとおり。Claude Codeを起動後、`/config`コマンドを実行すると、「Enable Remote Control for all sessions」という項目があります。これを`true` にしておきます。こうすることで、今後の全セッションが、 スマートフォンにインストールしたClaudeアプリから確認や追加指示ができるようになります。
 
 ![](/images/claude-code-remote-control/config-enable-remote-control.png)
 
 - 参考: https://code.claude.com/docs/en/remote-control#enable-remote-control-for-all-sessions
-
-こうすることで、今後の全セッションが、 スマートフォンにインストールしたClaudeアプリから確認や追加指示ができるようになります。
 
 # 実際に動作している様子
 
@@ -71,16 +71,9 @@ iPhoneのClaudeアプリを確認すると、"ローカルの"パソコンのセ
 
 Remote Control利用時、ローカルのClaude Codeは**アウトバウンド（外向き）のHTTPSリクエストのみ**を発行します。つまり、PCから外部のサーバーへ通信するだけで、外部からPCへの接続（インバウンド）を受け付けるポートは一切開きません。自分のPCが直接インターネットに晒されることはないということです。
 
-スマホとPC間のメッセージは、AnthropicのAPIサーバーを中継してやりとりされます。通信はすべてHTTPS（TLS）で暗号化されており、通常のClaude利用時と同等のセキュリティです。また、認証に使われるトークンは用途ごとに分かれた短命なもので、一定時間で自動的に無効化されます。
+スマホとPC間のメッセージは、AnthropicのAPIサーバーを中継してやりとりされます。通信はすべてHTTPS（TLS）で暗号化されており、通常のClaude利用時と同等のセキュリティです。また、認証に使われるトークンは用途ごとに分かれた短命なもので、一定時間で自動的に無効化されます。なお、同時に接続できるリモートセッションは1つのみで、ターミナルを閉じたり`claude`プロセスを停止するとセッションが終了します。
 
 - 参考: https://code.claude.com/docs/en/security
-
-
-# 制限事項
-
-- 同時に接続できるリモートセッションは**1つ**のみ
-- ターミナルを閉じる、または`claude`プロセスを停止するとセッションが終了する
-- PCがネットワークに接続できない状態が**約10分以上**続くと、セッションがタイムアウトして終了する
 
 
 # さいごに
