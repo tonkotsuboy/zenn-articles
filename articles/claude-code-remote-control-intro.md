@@ -12,6 +12,8 @@ publication_name: ubie_dev
 
 本日登場したClaude CodeのRemote Control機能を使えば、ローカルのパソコンで動いているClaude Codeのセッションを、スマホから確認したり、追加指示を出したりできるようになります。
 
+![](/images/claude-code-remote-control/pc-iphone-side-by-side.jpg)
+
 ## 概要
 
 Remote Controlは、ローカルPCで動いているClaude Codeのセッションを、[claude.ai/code](https://claude.ai/code)やClaudeモバイルアプリ（[iOS](https://apps.apple.com/us/app/claude-by-anthropic/id6473753684) / [Android](https://play.google.com/store/apps/details?id=com.anthropic.claude)）から操作できる機能です。
