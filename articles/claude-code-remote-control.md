@@ -1,8 +1,8 @@
 ---
 title: "Claude Code Remote Controlが登場。旅行先や子育てしながらスマホでローカルコードの開発をしよう"
-emoji: "👴"
+emoji: "📲"
 type: "tech" # tech: 技術記事 / idea: アイデア
-topics:  ["typescript", "javascript", "tsgo"]
+topics: ["claudecode", "ai"]
 published: true
 publication_name: ubie_dev
 ---
@@ -12,10 +12,18 @@ publication_name: ubie_dev
 
 本日登場したClaude CodeのRemote Control機能を使えば、ローカルのパソコンで動いているClaude Codeのセッションを、スマホから確認したり、追加指示を出したりできるようになります。
 
-
-## 利用シーン
-
 ## 概要
+
+Remote Controlは、ローカルPCで動いているClaude Codeのセッションを、[claude.ai/code](https://claude.ai/code)やClaudeモバイルアプリ（[iOS](https://apps.apple.com/us/app/claude-by-anthropic/id6473753684) / [Android](https://play.google.com/store/apps/details?id=com.anthropic.claude)）から操作できる機能です。
+
+セッションはあくまでローカルのPC上で動き続けるため、ファイルシステムやMCPサーバー、プロジェクト設定はそのまま利用できます。PCでカリッカリにチューニングした設定や、いろんなところから集めた秘蔵のスキルがそのまま活用できるということです。
+会話はすべてのデバイスでリアルタイムに同期され、ネットワーク切断やスリープ後も自動で再接続します。
+
+利用シーンは無限大です。
+
+- デスクで始めた作業の進捗を、ソファや別の部屋からスマホで確認する
+- 長時間かかるタスクを走らせたまま外出し、スマホから追加の指示を出す
+- 電車の中や子どもの寝かしつけ中に、手元のスマホでコードの修正を依頼する
 
 
 ## 設定方法
@@ -24,26 +32,19 @@ publication_name: ubie_dev
 
 https://code.claude.com/docs/en/remote-control
 
-筆者は、全セッションでリモートコントロールを有効にしたいので、次の手順を使いました。
-Claude Codeを起動後、`/config`コマンドを実行を実行すると、「Enable Remote Control for all sessions」という項目があります。これを`true` にしておきます。
-
+筆者は、全セッションでリモートコントロールを有効にしたいので、次の手順を使いました。 Claude Codeを起動後、`/config`コマンドを実行すると、「Enable Remote Control for all sessions」という項目があります。これを`true` にしておきます。
 
 ![](/images/claude-code-remote-control/config-enable-remote-control.png)
 
-
 - 参考: https://code.claude.com/docs/en/remote-control#enable-remote-control-for-all-sessions
 
-
-スマートフォンにインストールしたClaudeアプリから、該当セッションを確認できるようになります。
-
+こうすることで、今後の全セッションが、 スマートフォンにインストールしたClaudeアプリから確認や追加指示ができるようになります。
 
 # 実際に動作している様子
-
 
 ## パソコンの作業をスマートフォンで確認する
 
 次の例では、パソコンからあるリポジトリにおいてHTMLの修正を依頼している様子です。「メインのテキストエリアを中央に表示して。」と命令すると、その作業が行われます。
-
 
 キャプチャーはPCです。
 
@@ -51,25 +52,39 @@ Claude Codeを起動後、`/config`コマンドを実行を実行すると、「
 
 iPhoneのClaudeアプリを確認すると、"ローカルの"パソコンのセッションの様子が確認できます。リモート環境ではなく、普段作業しているパソコンのセッションが見れていることがポイントです。
 
-![](/images/claude-code-remote-control/iphone-session.png)
+![](/images/claude-code-remote-control/iphone-session.png =320x)
 
 
 パソコンとスマートフォンを同時に並べるとこんな感じです。
 
-![](/images/claude-code-remote-control/pc-iphone-side-by-side.png)
-
+![](/images/claude-code-remote-control/pc-iphone-side-by-side.jpg)
 
 ## スマートフォンから追加の指示を出す
 
 これが筆者の一番うれしいポイント。スマートフォンから作業中のセッションに対して追加の指示を出せます。iPhoneから「あと、背景明るくしてほしい」と依頼します。すると、同期されたPCのセッションで作業が行われます。すごすぎる。
 
-（動画）
+![](/images/claude-code-remote-control/sp_1.png =320x)
+
+![](/images/claude-code-remote-control/sp_2.png =320x)
+
+# 接続の仕組みとセキュリティ
+
+Remote Control利用時、ローカルのClaude Codeは**アウトバウンド（外向き）のHTTPSリクエストのみ**を発行します。つまり、PCから外部のサーバーへ通信するだけで、外部からPCへの接続（インバウンド）を受け付けるポートは一切開きません。自分のPCが直接インターネットに晒されることはないということです。
+
+スマホとPC間のメッセージは、AnthropicのAPIサーバーを中継してやりとりされます。通信はすべてHTTPS（TLS）で暗号化されており、通常のClaude利用時と同等のセキュリティです。また、認証に使われるトークンは用途ごとに分かれた短命なもので、一定時間で自動的に無効化されます。
+
+- 参考: https://code.claude.com/docs/en/security
 
 
+# 制限事項
+
+- 同時に接続できるリモートセッションは**1つ**のみ
+- ターミナルを閉じる、または`claude`プロセスを停止するとセッションが終了する
+- PCがネットワークに接続できない状態が**約10分以上**続くと、セッションがタイムアウトして終了する
 
 
+# さいごに
 
+筆者は昔、Devinを使ってソファーに座りながらSlack上からDevinに作業指示を出していました。しかし、Claude Codeがカリカリに育った今、リモート環境ではなく育ちすきったClaude Codeをローカルでそのまま動かしたいと考えていました。巷には、サードパーティーツールを使ったり、なにか難しい設定をしてClaude Codeをスマートフォンから操作できるようにする方法がありますが、私はどれもやってきませんでした。設定が面倒くさかったのと、どうせClaude Codeがそのうち公式で対応するだろうと思っていたからです。
 
-
-
-
+今回のRemote Controlの登場で、ついに夢が叶いました。これからはスキマ時間に贔屓の野球チームの結果を見たりジャンププラスでチェンソーマンの続きを読む前に、ローカルのClaude Codeに仕事を依頼します。

@@ -9,7 +9,6 @@ This is a Zenn.dev article management repository for publishing technical conten
 - `articles_en/` - English translations or English-specific content  
 - `books/` - Zenn book publications
 - `images/` - Article images organized by article slug
-- `.kiro/` - AI-assisted content specification and design documents
 
 ### Article Format Standards
 
