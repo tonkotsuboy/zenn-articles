@@ -28,7 +28,7 @@ https://code.claude.com/docs/en/remote-control
 Claude Codeを起動後、`/config`コマンドを実行を実行すると、「Enable Remote Control for all sessions」という項目があります。これを`true` にしておきます。
 
 
-![](img.png)
+![](/images/claude-code-remote-control/config-enable-remote-control.png)
 
 
 - 参考: https://code.claude.com/docs/en/remote-control#enable-remote-control-for-all-sessions
@@ -47,16 +47,16 @@ Claude Codeを起動後、`/config`コマンドを実行を実行すると、「
 
 キャプチャーはPCです。
 
-![img_2.png](img_2.png)
+![](/images/claude-code-remote-control/pc-session.png)
 
 iPhoneのClaudeアプリを確認すると、"ローカルの"パソコンのセッションの様子が確認できます。リモート環境ではなく、普段作業しているパソコンのセッションが見れていることがポイントです。
 
-![iphone_session.png](iphone_session.png)
+![](/images/claude-code-remote-control/iphone-session.png)
 
 
 パソコンとスマートフォンを同時に並べるとこんな感じです。
 
-![img_1.png](img_1.png)
+![](/images/claude-code-remote-control/pc-iphone-side-by-side.png)
 
 
 ## スマートフォンから追加の指示を出す
