@@ -85,3 +85,9 @@ Remote Control利用時、ローカルのClaude Codeは**アウトバウンド�
 今回のRemote Controlの登場で、ついに夢が叶いました。これからはスキマ時間に贔屓の野球チームの結果を見たりジャンププラスでチェンソーマンの続きを読む前に、ローカルのClaude Codeに仕事を依頼します。
 
 @[tweet](https://x.com/twitter/status/2026461458960363976)
+
+3/11に、Claude Codeのイベントを行います。ぜひご参加ください。
+
+鹿野さんに聞く！AIは速いのに、人間が遅い？Claude Codeをさらに加速させる私の推しツール
+
+https://findy.connpass.com/event/384179/
