@@ -88,6 +88,4 @@ Remote Control利用時、ローカルのClaude Codeは**アウトバウンド�
 
 3/11に、Claude Codeのイベントを行います。ぜひご参加ください。
 
-鹿野さんに聞く！AIは速いのに、人間が遅い？Claude Codeをさらに加速させる私の推しツール
-
 https://findy.connpass.com/event/384179/
