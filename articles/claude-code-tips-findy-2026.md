@@ -20,12 +20,8 @@ Claude Codeの開発を加速させるための推しスキル・ツール・設
 
 Raycastショートカット + スニペットを使う
 
-
-## ターミナルの起動
-
 - Raycastとは、様々な機能を呼び出せるランチャーアプリ
   - Alfredやspotlightみたいなもの
-- 最近、Windows Betaが出た
 - Raycastを使い、hotkeyキー1発でアプリを起動できるようにする
   -  Windowsでも動作する
 - 私は `⌥⌘T` で起動させている
@@ -35,14 +31,11 @@ Raycastショートカット + スニペットを使う
 
 https://www.raycast.com/
 
-
 ## Claude Codeの起動
 
 - スニペットを使う
 - 私はRaycastのスニペット機能を使っている
-  - （おそらく）macOS限定
 - 短い入力（例`c;`）でClaude Codeを起動できるように
-
 
 ![Claude Codeの起動](/images/claude-code-tips-findy-2026/raycast-snippet.png)
 
@@ -52,6 +45,7 @@ https://www.raycast.com/
 
 - `claude 依頼したいタスク` と入力すると、Claude Code起動後にタスクが実行される
 - Claude Code起動待ちの短い時間を撲滅
+- スペースや改行が入るとうまくうごかない。すなおに`claude`を起動しよう
 
 1. タスクを依頼する
 
@@ -285,7 +279,9 @@ https://github.com/anthropics/claude-code/tree/main/plugins/feature-dev
 ![/btwコマンドの呼び出し例](/images/claude-code-tips-findy-2026/btw-command.png)
 
 
-# 寝ながらスマホで作業を依頼したい → Remote Control
+# 寝ながらスマホで作業を依頼したい
+
+Remote Controlを使う
 
 Claude Code Remote Controlを使うと、スマホのClaude.aiアプリからClaude Codeに作業指示を出せる。
 
@@ -306,7 +302,7 @@ cmuxを使う
 
 https://www.cmux.dev/
 
-
+https://x.com/tonkotsuboy_com/status/2028458464801108212
 
 # npm, pnpm, yarn等のパッケージマネージャーの違いに悩みたくない
 
@@ -388,6 +384,7 @@ Obsidian
   ← 日本語ハイライト + 画像をMarkdownで保存
 ```
 
+https://x.com/tonkotsuboy_com/status/2031199612976115758
 
 # 最後に
 
