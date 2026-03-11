@@ -16,7 +16,7 @@ https://findy.connpass.com/event/384179/
 Claude Codeの開発を加速させるための推しスキル・ツール・設定を紹介しています。
 
 
-# Claude Codeを素早く起動したい
+# Claude Codeのためにターミナルを素早く起動したい
 
 Raycastショートカット + スニペットを使う
 
@@ -31,7 +31,7 @@ Raycastショートカット + スニペットを使う
 
 https://www.raycast.com/
 
-## Claude Codeの起動
+# Claude Codeを素早く起動したい
 
 - スニペットを使う
 - 私はRaycastのスニペット機能を使っている
@@ -40,12 +40,12 @@ https://www.raycast.com/
 ![Claude Codeの起動](/images/claude-code-tips-findy-2026/raycast-snippet.png)
 
 
+https://www.raycast.com/core-features/snippets
 
-## 最初のタスクの依頼
+# Claude Codeの起動と同時にタスクを実行したい
 
 - `claude 依頼したいタスク` と入力すると、Claude Code起動後にタスクが実行される
 - Claude Code起動待ちの短い時間を撲滅
-- スペースや改行が入るとうまくうごかない。すなおに`claude`を起動しよう
 
 1. タスクを依頼する
 
@@ -56,9 +56,20 @@ https://www.raycast.com/
 ![Claude Codeが起動し、タスクが始まる](/images/claude-code-tips-findy-2026/raycast-task-started.png)
 
 
-https://www.raycast.com/
+## スペースや改行の含まれたタスクを依頼する
 
-https://www.raycast.com/core-features/snippets
+`"`で囲めばOK
+
+依頼例
+
+```bash
+$ claude "https://github.com/tonkotsuboy/fugafuga/pull/97 の
+レビューを確認し、必要に応じて返信しておいて。
+
+レビュー結果についてSlackで私宛にtimes-kano-とんこつで投稿して"
+```
+
+![img.png](/images/claude-code-tips-findy-2026/long-task.png)
 
 
 # Claude Codeに画像や画像内文字を伝えたい
