@@ -208,34 +208,6 @@ https://github.com/peco/peco
 https://zenn.dev/obregonia1/articles/e82868e8f66793
 
 
-# npm, pnpm, yarn等のパッケージマネージャーの違いに悩みたくない
-
-niを使う
-
-- 複数プロジェクトを扱っていると npm / yarn / pnpm / bun / deno が混在する
-  - コマンドの違いを毎回調べるのはムダ
-- niを使えば、一つのコマンドで環境に応じたパッケージマネージャーを実行してくれる
-- niはロックファイル（`package-lock.json`, `yarn.lock`, `pnpm-lock.yaml` 等）を検出して、自動的に適切なパッケージマネージャーのコマンドに変換してくれる
-
-
-例
-
-```bash
-# インストール (package.jsonに応じてnpm/yarn/pnpm/bunを自動選択)
-ni
-
-# パッケージを追加
-ni vite
-ni パッケージ名 -D  # 開発依存
-
-# スクリプト実行
-nr dev    # npm run dev / yarn dev / pnpm dev / bun dev
-nr build  # npm run build / ...
-```
-
-https://github.com/antfu-collective/ni
-
-
 # Claude Codeから画像を大量生成したい
 
 nano-banana-2-skillを使う
@@ -263,7 +235,6 @@ nano-banana-2-skillを使う
 https://github.com/kingbootoshi/nano-banana-2-skill
 
 https://furoku.github.io/bananaX/projects/infographic-evaluation/
-
 
 
 # もっとスキルを探したい
@@ -323,7 +294,6 @@ Obsidian
 おそらく時間的に紹介できないもの
 
 
-
 # 手戻りを減らしたい
 
 - feature-dev
@@ -360,6 +330,35 @@ cmuxを使う
 - 複数の作業をClaude Codeに依頼したいときに便利
 
 https://www.cmux.dev/
+
+
+
+# npm, pnpm, yarn等のパッケージマネージャーの違いに悩みたくない
+
+niを使う
+
+- 複数プロジェクトを扱っていると npm / yarn / pnpm / bun / deno が混在する
+  - コマンドの違いを毎回調べるのはムダ
+- niを使えば、一つのコマンドで環境に応じたパッケージマネージャーを実行してくれる
+- niはロックファイル（`package-lock.json`, `yarn.lock`, `pnpm-lock.yaml` 等）を検出して、自動的に適切なパッケージマネージャーのコマンドに変換してくれる
+
+
+例
+
+```bash
+# インストール (package.jsonに応じてnpm/yarn/pnpm/bunを自動選択)
+ni
+
+# パッケージを追加
+ni vite
+ni パッケージ名 -D  # 開発依存
+
+# スクリプト実行
+nr dev    # npm run dev / yarn dev / pnpm dev / bun dev
+nr build  # npm run build / ...
+```
+
+https://github.com/antfu-collective/ni
 
 
 # 関連記事
