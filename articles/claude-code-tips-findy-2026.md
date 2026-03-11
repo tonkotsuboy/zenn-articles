@@ -181,17 +181,16 @@ https://github.com/tonkotsuboy/multi-folder-git-clone
 ghq + pecoを使う
 
 - ghq
-  - クローン先をGitHub流の `org/リポジトリ名` 構造で統一管理する
+  - `ghq get` でクローンすると `~/src/github.com/org/repo` のような統一構造で保存される
+  - 「どこにクローンするか」を毎回考えなくていい
+  - `ghq list` で管理下のリポジトリ一覧をパス形式で出力できる
 - peco
-  - ◯◯をするツール
+  - ghqが管理するリポジトリ一覧をインタラクティブに絞り込み検索できるフィルタツール
+  - 選んだディレクトリに即移動
+- 私は前述の自作ツールでクローンしており、ghqでクローンはしていない。
+  - ただし `ghq list` は設定したルートディレクトリを自動スキャンしてくれるため、クローン方法を問わず既存のリポジトリを認識してくれる。これをもとにpecoで検索してる
 
-https://github.com/x-motemen/ghq
-
-https://github.com/peco/peco
-
-
-
-## pecoの設定
+次の設定を、`~./zshrc` にしている
 
 ```bash
 function g() {
@@ -202,13 +201,22 @@ function g() {
 }
 ```
 
+https://github.com/x-motemen/ghq
+
+https://github.com/peco/peco
+
+https://zenn.dev/obregonia1/articles/e82868e8f66793
+
+
 # npm, pnpm, yarn等のパッケージマネージャーの違いに悩みたくない
 
 niを使う
 
 - 複数プロジェクトを扱っていると npm / yarn / pnpm / bun / deno が混在する
-  - コマンドの違いを毎回調べるのはムダ。
+  - コマンドの違いを毎回調べるのはムダ
 - niを使えば、一つのコマンドで環境に応じたパッケージマネージャーを実行してくれる
+- はロックファイル（`package-lock.json`, `yarn.lock`, `pnpm-lock.yaml` 等）を検出して、自動的に適切なパッケージマネージャーのコマンドに変換してくれる
+
 
 例
 
@@ -227,10 +235,6 @@ nr build  # npm run build / ...
 
 https://github.com/antfu-collective/ni
 
-
-## **ni**のパッケージマネージャー抽出の仕組み
-
-**ni** はロックファイル（`package-lock.json`, `yarn.lock`, `pnpm-lock.yaml` 等）を検出して、自動的に適切なパッケージマネージャーのコマンドに変換してくれる。
 
 # Claude Codeから画像を大量生成したい
 
