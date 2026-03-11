@@ -31,7 +31,7 @@ Raycastショートカット + スニペットを使う
 - 私は `⌥⌘T` で起動させている
   - ターミナルのT
 
-![ターミナルの起動](/images/claude-code-tips-findy-2026/Capture-20260311-at09.27.png)
+![ターミナルの起動](/images/claude-code-tips-findy-2026/raycast-hotkey.png)
 
 https://www.raycast.com/
 
@@ -44,7 +44,7 @@ https://www.raycast.com/
 - 短い入力（例`c;`）でClaude Codeを起動できるように
 
 
-![Claude Codeの起動](/images/claude-code-tips-findy-2026/Capture-20260311-at09.29.png)
+![Claude Codeの起動](/images/claude-code-tips-findy-2026/raycast-snippet.png)
 
 
 
@@ -55,11 +55,11 @@ https://www.raycast.com/
 
 1. タスクを依頼する
 
-![タスクを依頼する](/images/claude-code-tips-findy-2026/Capture-20260311-at09.25.png)
+![タスクを依頼する](/images/claude-code-tips-findy-2026/raycast-task-request.png)
 
 2. Claude Codeが起動し、タスクが始まる
 
-![Claude Codeが起動し、タスクが始まる](/images/claude-code-tips-findy-2026/Capture-20260311-at09.25-1.png)
+![Claude Codeが起動し、タスクが始まる](/images/claude-code-tips-findy-2026/raycast-task-started.png)
 
 
 https://www.raycast.com/
@@ -97,11 +97,11 @@ https://cleanshot.com/
 
 実行例
 
-![実行例1](/images/claude-code-tips-findy-2026/image.png)
+![実行例1](/images/claude-code-tips-findy-2026/upload-image-to-pr-1.png)
 
-![実行例2](/images/claude-code-tips-findy-2026/image-1.png)
+![実行例2](/images/claude-code-tips-findy-2026/upload-image-to-pr-2.png)
 
-![実行例3](/images/claude-code-tips-findy-2026/image-2.png)
+![実行例3](/images/claude-code-tips-findy-2026/upload-image-to-pr-3.png)
 
 
 https://github.com/tonkotsuboy/github-upload-image-to-pr
@@ -125,7 +125,7 @@ https://github.com/tonkotsuboy/github-upload-image-to-pr
 - 私の表示は次のとおり
 
 
-![ステータスライン](/images/claude-code-tips-findy-2026/image-3.png)
+![ステータスライン](/images/claude-code-tips-findy-2026/statusline.png)
 
 
 ```
@@ -164,12 +164,12 @@ Raycastの自作ツール「Multi-Folder Git Clone」を使う
 - 同じリポジトリを複数クローンにしつつ、自動採番するツールを作った
 
 
-![Multi-Folder Git Clone 1](/images/claude-code-tips-findy-2026/image-4.png)
+![Multi-Folder Git Clone 1](/images/claude-code-tips-findy-2026/multi-clone-1.png)
 
 
-![Multi-Folder Git Clone 2](/images/claude-code-tips-findy-2026/image-5.png)
+![Multi-Folder Git Clone 2](/images/claude-code-tips-findy-2026/multi-clone-2.png)
 
-![Multi-Folder Git Clone 3](/images/claude-code-tips-findy-2026/image-6.png)
+![Multi-Folder Git Clone 3](/images/claude-code-tips-findy-2026/multi-clone-3.png)
 
 
 
@@ -287,7 +287,7 @@ https://grok.com/
   - `control G` で編集できる
 
 
-![公式ドキュメントのAskAI機能](/images/claude-code-tips-findy-2026/Capture-20260311-at09.19.png)
+![公式ドキュメントのAskAI機能](/images/claude-code-tips-findy-2026/docs-ask-ai.png)
 
 
 https://docs.anthropic.com/ja/docs/claude-code/overview
