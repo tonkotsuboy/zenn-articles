@@ -237,62 +237,6 @@ https://github.com/kingbootoshi/nano-banana-2-skill
 https://furoku.github.io/bananaX/projects/infographic-evaluation/
 
 
-# もっとスキルを探したい
-
-スキルマーケットプレイス（skillsmp.com）や、最近はGrok検索も便利
-
-- skillsmp.com: スキルのマーケットプレイス。カテゴリ別にスキルを検索・インストールできる
-- Grok（X/Twitterの検索AI）: 世界中のユーザーがXに投稿した有用なスキルをリアルタイム検索できる
-- Slack AI: 社内の人が活用してる生のスキルを検索
-
-
-https://skillsmp.com/
-
-https://grok.com/
-
-
-# Claude Codeを理解したい
-
-公式ドキュメントのAskAI機能が便利
-
-- Claude Codeの公式ドキュメントには Ask AI 機能が搭載されている
-- ドキュメントページ右下の「Ask AI」ボタンから、ドキュメント全体を対象にした質問ができる
-- 野良の記事を頑張って探すより、一次ソースを使って調べるほうがわかりやすい
-
-
-![公式ドキュメントのAskAI機能](/images/claude-code-tips-findy-2026/docs-ask-ai.png)
-
-
-https://docs.anthropic.com/ja/docs/claude-code/overview
-
-
-# Claude Codeの最新情報を追いたい
-
-XをRSS化し、obsidianに貯める
-
-- Xでは開発者がTipsや最新情報を発信している
-- Xのタイムラインを眺めると無駄情報が多く、メンタルが削られる
-- ブックマークやリスト機能は、どんどん更新されて見逃しちゃう
-- 以下のパイプラインを自作した
-
-```
-RSSHub (Docker)
-  ↓ XのアカウントをRSSフィードに変換
-Gemini API
-  ↓ 英語ツイートを日本語に翻訳
-ハイライト生成スクリプト
-  ↓ 毎朝8:00に1日分のツイートをまとめ
-nano-banana CLI (Gemini Flash)
-  ↓ サムネイル画像を自動生成
-Obsidian
-  ← 日本語ハイライト + 画像をMarkdownで保存
-```
-
-
----
-
-おそらく時間的に紹介できないもの
-
 
 
 # 手戻りを減らしたい
@@ -327,7 +271,6 @@ Claude Codeのfeature-devプラグインを使う
 https://github.com/anthropics/claude-code/tree/main/plugins/feature-dev
 
 
-
 # あるコンテキストを持ったまま、複数の会話をしたい
 
 `/btw`、`/fork`、`/rewind`、`ccresume`を使う
@@ -337,7 +280,7 @@ https://github.com/anthropics/claude-code/tree/main/plugins/feature-dev
 - `/rewind`: 会話を巻き戻せる
 
 
-`/btw`　の呼び出し例
+`/btw` の呼び出し例
 
 ![/btwコマンドの呼び出し例](/images/claude-code-tips-findy-2026/btw-command.png)
 
@@ -393,6 +336,64 @@ nr build  # npm run build / ...
 https://github.com/antfu-collective/ni
 
 
-# 関連記事
 
-https://findy-code.io/media/articles/aisaji-tonkotsuboy_com
+# もっとスキルを探したい
+
+スキルマーケットプレイス（skillsmp.com）や、最近はGrok検索も便利
+
+- skillsmp.com: スキルのマーケットプレイス。カテゴリ別にスキルを検索・インストールできる
+- Grok（X/Twitterの検索AI）: 世界中のユーザーがXに投稿した有用なスキルをリアルタイム検索できる
+- Slack AI: 社内の人が活用してる生のスキルを検索
+
+
+https://skillsmp.com/
+
+https://grok.com/
+
+
+# Claude Codeを理解したい
+
+公式ドキュメントのAskAI機能が便利
+
+- Claude Codeの公式ドキュメントには Ask AI 機能が搭載されている
+- ドキュメントページ右下の「Ask AI」ボタンから、ドキュメント全体を対象にした質問ができる
+- 野良の記事を頑張って探すより、一次ソースを使って調べるほうがわかりやすい
+
+
+![公式ドキュメントのAskAI機能](/images/claude-code-tips-findy-2026/docs-ask-ai.png)
+
+
+https://docs.anthropic.com/ja/docs/claude-code/overview
+
+
+# Claude Codeの最新情報を追いたい
+
+XをRSS化し、obsidianに貯める
+
+- Xでは開発者がTipsや最新情報を発信している
+- Xのタイムラインを眺めると無駄情報が多く、メンタルが削られる
+- ブックマークやリスト機能は、どんどん更新されて見逃しちゃう
+- 以下のパイプラインを自作した
+
+```
+RSSHub (Docker)
+  ↓ XのアカウントをRSSフィードに変換
+Gemini API
+  ↓ 英語ツイートを日本語に翻訳
+ハイライト生成スクリプト
+  ↓ 毎朝8:00に1日分のツイートをまとめ
+nano-banana CLI (Gemini Flash)
+  ↓ サムネイル画像を自動生成
+Obsidian
+  ← 日本語ハイライト + 画像をMarkdownで保存
+```
+
+
+# 最後に
+
+ここで紹介したものはほんの一部。
+ぜひ皆さんの推しツール・スキル・設定を教えてください！知りたいです😍
+
+また、Ubieでは、エンジニアはもちろんデザイナー、PO、管理職、人事にいたるまで、全員がClaude Codeを導入し、あらゆる業務を行っています。ぜひ一緒にUbieでAIネイティブな生活をしましょう。
+
+https://recruit.ubie.life/
