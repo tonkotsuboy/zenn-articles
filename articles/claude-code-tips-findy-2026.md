@@ -8,6 +8,13 @@ published: false
 
 ---
 
+本記事は、Findyイベント「鹿野さんに聞く！Claude Codeをさらに加速させる私の推しツール」の登壇資料です。
+
+https://findy.connpass.com/event/384179/
+
+
+Claude Codeの開発を加速させるための推しスキル・ツール・設定を紹介しています。
+
 
 # Claude Codeを素早く起動したい
 
@@ -238,47 +245,36 @@ nano-banana-2-skillを使う
 
 呼び出し例
 
-```bash
-TODO
-```
+
+![nano-banana呼び出し例1](/images/claude-code-tips-findy-2026/nano-banana.png)
+
+![nano-banana呼び出し例2](/images/claude-code-tips-findy-2026/nano-banana-3.png)
+
+
+![nano-banana呼び出し例3](/images/claude-code-tips-findy-2026/nano-banana-1.png)
+
+![nano-banana呼び出し例4](/images/claude-code-tips-findy-2026/nano-banana-2.png)
+
 
 https://github.com/kingbootoshi/nano-banana-2-skill
 
 https://furoku.github.io/bananaX
 
 
-# 手戻りを減らしたい
-
-- feature-dev
-- interview
 
 # もっとスキルを探したい
 
 スキルマーケットプレイス（skillsmp.com）や、最近はGrok検索も便利
 
 - **skillsmp.com**: スキルのマーケットプレイス。カテゴリ別にスキルを検索・インストールできる
-
-https://skillsmp.com/
-
 - **Grok（X/Twitterの検索AI）**: 世界中のユーザーがXに投稿した有用なスキルをリアルタイム検索できる
 - Slack AI: 社内の人が活用してる生のスキルを検索
 
-## スキルとは（補足）
 
-- `~/.claude/skills/` ディレクトリに置いたMarkdownファイルがスキルになる
-- 自然言語で書ける
-- 自動で呼び出してくれる
+https://skillsmp.com/
 
-```markdown
----
-name: my-skill
-description: このスキルが呼び出される条件の説明
-allowed-tools: Bash(git:*), Read, Write
----
+https://grok.com/
 
-# スキルの指示内容
-...
-```
 
 # Claude Codeを理解したい
 
@@ -292,7 +288,6 @@ allowed-tools: Bash(git:*), Read, Write
 
 
 ![公式ドキュメントのAskAI機能](/images/claude-code-tips-findy-2026/Capture-20260311-at09.19.png)
-
 
 
 https://docs.anthropic.com/ja/docs/claude-code/overview
@@ -320,7 +315,18 @@ Obsidian
   ← 日本語ハイライト + 画像をMarkdownで保存
 ```
 
-# おまけ:　時間の関係で登壇中に紹介しきれなかったもの
+
+---
+
+おそらく時間的に紹介できないもの
+
+
+
+# 手戻りを減らしたい
+
+- feature-dev
+- interview
+
 
 
 # あるコンテキストを持ったまま、複数の会話をしたい
@@ -342,8 +348,6 @@ Claude Code Remote Controlを使うと、スマホのClaude.aiアプリからCla
 https://zenn.dev/ubie_dev/articles/claude-code-remote-control-intro
 
 
-
-
 # 複数の作業をClaude Codeに依頼したい
 
 cmuxを使う
@@ -355,3 +359,8 @@ cmuxを使う
 - 複数の作業をClaude Codeに依頼したいときに便利
 
 https://www.cmux.dev/
+
+
+# 関連記事
+
+https://findy-code.io/media/articles/aisaji-tonkotsuboy_com
