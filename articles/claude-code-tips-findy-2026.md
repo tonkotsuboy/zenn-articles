@@ -76,7 +76,7 @@ CleanShot Xを使う
 - コピペできないテキスト
   - OCR機能を使ってテキストをコピーできる
   - PDF、画像内文字、他アプリのUIなどの中にある文字を貼り付けたい
-  - 画像を貼り付けて読み取らせるよもトークン使用量が少ない
+  - 画像を貼り付けて読み取らせるよりもトークン使用量が少ない
 - CleanShot XはmacOS専用。Windowsの情報求む
 
 https://cleanshot.com/
@@ -161,7 +161,7 @@ Raycastの自作ツール「Multi-Folder Git Clone」を使う
 - worktreeはNOT FOR MEだった
   - エディターで追いづらい、見づらい
   - worktreeを使うのなら`npx vibe-kanban` がよさそう
-- 同じリポジトリを複数クローンにしつつ、自動採番するツールを作った
+- 同じリポジトリを複数フォルダにクローンしつつ、自動採番するツールを作った
 
 
 ![Multi-Folder Git Clone 1](/images/claude-code-tips-findy-2026/multi-clone-1.png)
@@ -181,7 +181,7 @@ https://github.com/tonkotsuboy/multi-folder-git-clone
 ghq + pecoを使う
 
 - ghq
-  - `ghq get` でクローンすると `~/src/github.com/org/repo` のような統一構造で保存される
+  - `ghq get` でクローンすると `~/git/github.com/org/repo` のような統一構造で保存される（保存先は `ghq.root` の設定値に依存。デフォルトは `~/ghq`）
   - 「どこにクローンするか」を毎回考えなくていい
   - `ghq list` で管理下のリポジトリ一覧をパス形式で出力できる
 - peco
@@ -190,7 +190,7 @@ ghq + pecoを使う
 - 私は前述の自作ツールでクローンしており、ghqでクローンはしていない。
   - ただし `ghq list` は設定したルートディレクトリを自動スキャンしてくれるため、クローン方法を問わず既存のリポジトリを認識してくれる。これをもとにpecoで検索してる
 
-次の設定を、`~./zshrc` にしている
+次の設定を、`~/.zshrc` にしている
 
 ```bash
 function g() {
@@ -242,7 +242,7 @@ nano-banana-2-skillを使う
 
 - nano-bananaは高品質だが、画像を作るために、Geminiアプリから起動するのは面倒
 - nano-banana-2-skillを使えば、Claude Code上から画像をつくれる
-- 試行錯誤して画像ができる修正
+- 試行錯誤しながら画像を修正できる
 - 複数枚同時生成に対応できる
 - 画像スタイル指定は、プロンプト集を使う
   - 日本語インフォグラフィックにはbananaXが便利
@@ -262,7 +262,7 @@ nano-banana-2-skillを使う
 
 https://github.com/kingbootoshi/nano-banana-2-skill
 
-https://furoku.github.io/bananaX
+https://furoku.github.io/bananaX/projects/infographic-evaluation/
 
 
 
@@ -287,8 +287,6 @@ https://grok.com/
 - Claude Codeの公式ドキュメントには Ask AI 機能が搭載されている
 - ドキュメントページ右下の「Ask AI」ボタンから、ドキュメント全体を対象にした質問ができる
 - 野良の記事を頑張って探すより、一次ソースを使って調べるほうがわかりやすい
-- 私はこのAI機能で、`[Pasted text #1 +19 lines]`みたいに展開されてしまった長いテキストの編集方法を知った
-  - `control G` で編集できる
 
 
 ![公式ドキュメントのAskAI機能](/images/claude-code-tips-findy-2026/docs-ask-ai.png)
@@ -337,7 +335,7 @@ Obsidian
 
 `/btw`、`/fork`、`/rewind`、`ccresume`を使う
 
-- `/btw`: 会話履歴に追加せずに素早く質問
+- `/btw`: メインタスクを中断せずにサイドで素早く質問
 - `/fork`: 会話を分岐させる
 - `/rewind`: 会話を巻き戻せる
 - `ccresume`: 過去の会話を見やすくできるツール
