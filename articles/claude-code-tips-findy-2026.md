@@ -42,25 +42,23 @@ https://www.raycast.com/
 
 https://www.raycast.com/core-features/snippets
 
-# Claude Codeの起動と同時にタスクを実行したい
+# Claude Codeの起動と同時にプロンプトを実行したい
 
-- `claude 依頼したいタスク` と入力すると、Claude Code起動後にタスクが実行される
+- `claude 依頼したいプロンプト` と入力すると、Claude Code起動後にプロンプトが実行される
 - Claude Code起動待ちの短い時間を撲滅
 
-1. タスクを依頼する
+1. プロンプトを入力する
 
-![タスクを依頼する](/images/claude-code-tips-findy-2026/raycast-task-request.png)
+![プロンプトを入力する](/images/claude-code-tips-findy-2026/raycast-task-request.png)
 
-2. Claude Codeが起動し、タスクが始まる
+2. Claude Codeが起動し、プロンプトが実行される
 
-![Claude Codeが起動し、タスクが始まる](/images/claude-code-tips-findy-2026/raycast-task-started.png)
+![Claude Codeが起動し、プロンプトが実行される](/images/claude-code-tips-findy-2026/raycast-task-started.png)
 
 
-## スペースや改行の含まれたタスクを依頼する
+## スペースや改行の含まれたプロンプトを入力する
 
 `"`で囲めばOK
-
-依頼例
 
 ```bash
 $ claude "https://github.com/tonkotsuboy/fugafuga/pull/97 の
@@ -69,7 +67,7 @@ $ claude "https://github.com/tonkotsuboy/fugafuga/pull/97 の
 レビュー結果についてSlackで私宛にtimes-kano-とんこつで投稿して"
 ```
 
-![img.png](/images/claude-code-tips-findy-2026/long-task.png)
+![img.png](/images/claude-code-tips-findy-2026/long-prompt-2.png)
 
 
 # Claude Codeに画像や画像内文字を伝えたい
