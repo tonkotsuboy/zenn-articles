@@ -1,10 +1,10 @@
 ---
-
-title: "Claude Codeを加速させる私の推しスキル・ツール・設定"
-emoji: "🚀"
+title: "Claude Codeを加速させる私の推しスキル・ツール・設定（Findyイベント登壇資料）"
+emoji: "🌹"
 type: "tech"
 topics: ["claudecode", "ai", "raycast", "githubactions", "productivity"]
-published: false
+published: true
+publication_name: ubie_dev
 
 ---
 
