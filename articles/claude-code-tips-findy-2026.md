@@ -72,7 +72,7 @@ https://www.raycast.com/core-features/snippets
 CleanShot Xを使う
 
 - スクショ
-  - **CleanShot X** でスクリーン上の任意の領域をスクショしてClaude Codeに貼り付け
+  - CleanShot X でスクリーン上の任意の領域をスクショしてClaude Codeに貼り付け
 - コピペできないテキスト
   - OCR機能を使ってテキストをコピーできる
   - PDF、画像内文字、他アプリのUIなどの中にある文字を貼り付けたい
@@ -88,7 +88,7 @@ https://cleanshot.com/
 自作スキル「upload-image-to-pr」を使う
 
 - PRのdescriptionに画像を貼り付けられる自作スキル
-- **GitHub APIには画像を直接アップロードするエンドポイントが存在しない**
+- GitHub APIには画像を直接アップロードするエンドポイントが存在しない
 - 仕組み
   - Chrome DevTools MCPかPlaywrightを使いページを開く
   - コメント欄に一度画像をアップロード
@@ -112,7 +112,7 @@ https://github.com/tonkotsuboy/github-upload-image-to-pr
 2. ブラウザにログインしておく
 3. コメント欄の `<input type="file">` に画像ファイルをアップロード
 4. GitHubがアップロードした画像に `https://github.com/user-attachments/assets/...` という永続URLを発行
-5. そのURLを取得し、**テキストエリアをクリアしてコメントは送信しない**（URLだけを使う）
+5. そのURLを取得し、テキストエリアをクリアしてコメントは送信しない（URLだけを使う）
 6. `gh pr edit` CLIでPR説明文にURLを埋め込む
 
 
@@ -215,7 +215,7 @@ niを使う
 - 複数プロジェクトを扱っていると npm / yarn / pnpm / bun / deno が混在する
   - コマンドの違いを毎回調べるのはムダ
 - niを使えば、一つのコマンドで環境に応じたパッケージマネージャーを実行してくれる
-- はロックファイル（`package-lock.json`, `yarn.lock`, `pnpm-lock.yaml` 等）を検出して、自動的に適切なパッケージマネージャーのコマンドに変換してくれる
+- niはロックファイル（`package-lock.json`, `yarn.lock`, `pnpm-lock.yaml` 等）を検出して、自動的に適切なパッケージマネージャーのコマンドに変換してくれる
 
 
 例
@@ -270,8 +270,8 @@ https://furoku.github.io/bananaX
 
 スキルマーケットプレイス（skillsmp.com）や、最近はGrok検索も便利
 
-- **skillsmp.com**: スキルのマーケットプレイス。カテゴリ別にスキルを検索・インストールできる
-- **Grok（X/Twitterの検索AI）**: 世界中のユーザーがXに投稿した有用なスキルをリアルタイム検索できる
+- skillsmp.com: スキルのマーケットプレイス。カテゴリ別にスキルを検索・インストールできる
+- Grok（X/Twitterの検索AI）: 世界中のユーザーがXに投稿した有用なスキルをリアルタイム検索できる
 - Slack AI: 社内の人が活用してる生のスキルを検索
 
 
@@ -284,7 +284,7 @@ https://grok.com/
 
 公式ドキュメントのAskAI機能が便利
 
-- Claude Codeの公式ドキュメントには **Ask AI** 機能が搭載されている
+- Claude Codeの公式ドキュメントには Ask AI 機能が搭載されている
 - ドキュメントページ右下の「Ask AI」ボタンから、ドキュメント全体を対象にした質問ができる
 - 野良の記事を頑張って探すより、一次ソースを使って調べるほうがわかりやすい
 - 私はこのAI機能で、`[Pasted text #1 +19 lines]`みたいに展開されてしまった長いテキストの編集方法を知った
@@ -301,7 +301,7 @@ https://docs.anthropic.com/ja/docs/claude-code/overview
 
 XをRSS化し、obsidianに貯める
 
-- Xでは開発者がTipsや最新所補
+- Xでは開発者がTipsや最新情報を発信している
 - Xのタイムラインを眺めると無駄情報が多く、メンタルが削られる
 - ブックマークやリスト機能は、どんどん更新されて見逃しちゃう
 - 以下のパイプラインを自作した
@@ -357,8 +357,7 @@ https://zenn.dev/ubie_dev/articles/claude-code-remote-control-intro
 cmuxを使う
 
 
-- **cmux** は複数のClaude Codeを並列で動かすための
-- acOSネイティブターミナル
+- cmux は複数のClaude Codeを並列で動かすためのmacOSネイティブターミナル
 - サイドバーにタグを表示でき、Claude Codeのタスクが完了したら通知される
 - 複数の作業をClaude Codeに依頼したいときに便利
 
