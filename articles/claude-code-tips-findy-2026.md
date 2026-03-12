@@ -2,7 +2,7 @@
 title: "Claude Codeを加速させる私の推しスキル・ツール・設定（Findyイベント登壇資料）"
 emoji: "🌹"
 type: "tech"
-topics: ["claudecode", "ai", "raycast", "githubactions", "productivity"]
+topics: ["claudecode", "claud", "ai", "raycast"]
 published: true
 publication_name: ubie_dev
 
@@ -278,40 +278,48 @@ https://github.com/anthropics/claude-code/tree/main/plugins/feature-dev
 
 `/btw`、`/fork`、`/rewind`、`ccresume`を使う
 
-- `/btw`: メインタスクを中断せずにサイドで素早く質問
-- `/fork`: 会話を分岐させる
-- `/rewind`: 会話を巻き戻せる
+## `/btw`
 
-
-`/btw` の呼び出し例
+- コンテキストを消費せずに、素早く質問できる
+- そういえばこの技術の最近の流行り技術ってなんだっけ？みたいな質問に便利。
 
 ![/btwコマンドの呼び出し例](/images/claude-code-tips-findy-2026/btw-command.png)
+
+## `/fork`
+
+- 会話を分岐させる
+- ここまでの会話コンテキストを踏まえて、複数作業を並列で進めてほしいときに便利
+
+![img.png](/images/claude-code-tips-findy-2026/fork.png)
+
+- セッションIDが発行されるので、そのIDを使って会話を分岐させる
+  - ちなみに、`-r` で開始できるとか出力されるけど、多分出力がバグで`--resume ID`じゃないと動かない
+
+```bash
+claude --resume ID
+```
+
+## `/rewind`
+
+- 会話を巻き戻せる
+- あのときの会話まで戻って作業をやり直したいみたいなときによく使っている。
+  - うん、すぐ行く、走っていく
+
+
+![img_1.png](/images/claude-code-tips-findy-2026/rewind.png)
+
 
 
 # 寝ながらスマホで作業を依頼したい
 
 Remote Controlを使う
 
-Claude Code Remote Controlを使うと、スマホのClaude.aiアプリからClaude Codeに作業指示を出せる。
-
-- スマホからタスクを投げる → PCのClaude Codeが実行 → 結果をスマホで確認
+- Claude Code Remote Controlを使うと、スマホのClaude.aiアプリからClaude Codeに作業指示を出せる
+- Claude Codeのローカルセッションが動くので、カリカリに育て上げたローカルでしか動かないスキルも使える
 - 寝ながら、移動中、風呂の中から開発作業を依頼できる
 
 https://zenn.dev/ubie_dev/articles/claude-code-remote-control-intro
 
-
-# 複数の作業をClaude Codeに依頼したい
-
-cmuxを使う
-
-
-- cmux は複数のClaude Codeを並列で動かすためのmacOSネイティブターミナル
-- サイドバーにタグを表示でき、Claude Codeのタスクが完了したら通知される
-- 複数の作業をClaude Codeに依頼したいときに便利
-
-https://www.cmux.dev/
-
-https://x.com/tonkotsuboy_com/status/2028458464801108212
 
 # npm, pnpm, yarn等のパッケージマネージャーの違いに悩みたくない
 
@@ -321,7 +329,6 @@ niを使う
   - コマンドの違いを毎回調べるのはムダ
 - niを使えば、一つのコマンドで環境に応じたパッケージマネージャーを実行してくれる
 - niはロックファイル（`package-lock.json`, `yarn.lock`, `pnpm-lock.yaml` 等）を検出して、自動的に適切なパッケージマネージャーのコマンドに変換してくれる
-
 
 例
 
@@ -341,14 +348,17 @@ nr build  # npm run build / ...
 https://github.com/antfu-collective/ni
 
 
-
 # もっとスキルを探したい
 
 スキルマーケットプレイス（skillsmp.com）や、最近はGrok検索も便利
 
 - skillsmp.com: スキルのマーケットプレイス。カテゴリ別にスキルを検索・インストールできる
 - Grok（X/Twitterの検索AI）: 世界中のユーザーがXに投稿した有用なスキルをリアルタイム検索できる
-- Slack AI: 社内の人が活用してる生のスキルを検索
+
+Grokでエージェントスキルを探している様子。
+ブログ化されてない情報を見つけたり、名前のユーザーの反応を見れて便利。
+
+![img.png](/images/claude-code-tips-findy-2026/grok.png)
 
 
 https://skillsmp.com/
@@ -366,7 +376,6 @@ https://grok.com/
 
 
 ![公式ドキュメントのAskAI機能](/images/claude-code-tips-findy-2026/docs-ask-ai.png)
-
 
 https://docs.anthropic.com/ja/docs/claude-code/overview
 
