@@ -19,7 +19,7 @@ https://zenn.dev/ubie_dev/articles/typescript7-goodbye-legacy
 
 本記事では、`tsgo`を実際にインストールする手順と、本当に10倍高速化されるのかを検証します。
 
-# TypeScript 7でコンパイラがGo言語へ
+## TypeScript 7でコンパイラがGo言語へ
 
 現在のTypeScriptのコンパイラは、TypeScriptで記述されています。TypeScriptは開発現場で広く利用されていますが、プロジェクトの大規模化に伴い、ビルド時間や型チェック時間の長さが課題となっています。この課題に対処するため、TypeScriptチームはコンパイラをネイティブコードであるGo言語へ移植する作業を進めています。**新しいコンパイラは、TypeScript 7としてリリースされる予定です**。
 
@@ -40,7 +40,7 @@ MicrosoftのDev Blogs記事「[A 10x Faster TypeScript](https://devblogs.microso
 
 筆者は本当に10倍高速化されたのか？ と疑っていたのですが、実際に手元でtsgoが試せるようになったので早速検証してみます。
 
-# tsgoのインストール手順
+## tsgoのインストール手順
 
 `tsgo`のインストール手順は次の通りです。新しくリリースされた [@typescript/native-preview](https://www.npmjs.com/package/@typescript/native-preview)パッケージをインストールします。
 
@@ -81,7 +81,7 @@ npx tsc --init
 }
 ```
 
-# 長いTypeScriptコードを使って、`tsc`と`tsgo`のコンパイル速度を比較してみた
+## 長いTypeScriptコードを使って、`tsc`と`tsgo`のコンパイル速度を比較してみた
 
 実際に、ある程度の規模のTypeScriptコードを`tsc`と`tsgo`でコンパイルし、その速度を比較してみましょう。
 
@@ -1018,7 +1018,7 @@ Total time:     0.026s
 
 https://github.com/tonkotsuboy/tsgo-playground
 
-# 結果: 本当に10倍高速化された
+## 結果: 本当に10倍高速化された
 
 | 計測項目                    | tsc (従来) | tsgo (Native Preview) | tsgoによる改善  |
 | --------------------------- | ---------- | --------------------- | --------------- |
@@ -1028,13 +1028,13 @@ https://github.com/tonkotsuboy/tsgo-playground
 
 上記の比較を見ると、`tsc`の合計処理時間（`Total time`）が**0.28s**であるのに対し、`tsgo`の合計処理時間（`Total time`）が**0.026s**でとなり、10.8倍の高速化が達成されていることがわかります。また、型チェックにかかる時間（`Check time`）が`tsc`では0.10sであるのに対して、`tsgo`では**0.003s**と30倍ほど高速化されています。メモリ使用量も`tsc`が**68645K**であるのに対し、`tsgo`が**23733K**と、約2.9倍の効率化が達成されています。
 
-# 10倍高速化の触れ込みは本当だった
+## 10倍高速化の触れ込みは本当だった
 
 今回は、tsgoのインストール手順と、コンパイル速度の比較を行いました。小規模な例ではありましたが、「10倍高速化」という触れ込みは本当であることが確認できました。TypeScript 7のリリースが待たれるばかりです。なお、`tsgo`コマンドが`tsc`コマンドとして使えるようになるのは、2025年末までの予定とのことです。その開発速度の早さにも驚きです。
 
 余談ですが、本日は[TSKaigi 2025](https://2025.tskaigi.org/)が開催されており、会場では各所でtsgoの話題で盛り上がっていました。TypeScript好きの開発者が大注目のアップデートですね。
 
-# 関連記事
+## 関連記事
 
 https://devblogs.microsoft.com/typescript/announcing-typescript-native-previews/
 

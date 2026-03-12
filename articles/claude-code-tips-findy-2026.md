@@ -16,7 +16,7 @@ https://findy.connpass.com/event/384179/
 Claude Codeの開発を加速させるための推しスキル・ツール・設定を紹介しています。
 
 
-# Claude Codeのためにターミナルを素早く起動したい
+## Claude Codeのためにターミナルを素早く起動したい
 
 Raycastショートカット + スニペットを使う
 
@@ -31,7 +31,7 @@ Raycastショートカット + スニペットを使う
 
 https://www.raycast.com/
 
-# Claude Codeを素早く起動したい
+## Claude Codeを素早く起動したい
 
 - スニペットを使う
 - 私はRaycastのスニペット機能を使っている
@@ -42,7 +42,7 @@ https://www.raycast.com/
 
 https://www.raycast.com/core-features/snippets
 
-# Claude Codeの起動と同時にプロンプトを実行したい
+## Claude Codeの起動と同時にプロンプトを実行したい
 
 - `claude 依頼したいプロンプト` と入力すると、Claude Code起動後にプロンプトが実行される
 - Claude Code起動待ちの短い時間を撲滅
@@ -56,7 +56,7 @@ https://www.raycast.com/core-features/snippets
 ![Claude Codeが起動し、プロンプトが実行される](/images/claude-code-tips-findy-2026/raycast-task-started.png)
 
 
-## スペースや改行の含まれたプロンプトを入力する
+### スペースや改行の含まれたプロンプトを入力する
 
 `"`で囲めばOK
 
@@ -70,7 +70,7 @@ $ claude "https://github.com/tonkotsuboy/fugafuga/pull/97 の
 ![img.png](/images/claude-code-tips-findy-2026/long-prompt-2.png)
 
 
-# Claude Codeに画像や画像内文字を伝えたい
+## Claude Codeに画像や画像内文字を伝えたい
 
 CleanShot Xを使う
 
@@ -86,7 +86,7 @@ https://cleanshot.com/
 
 
 
-# GitHubのPRにスクショを貼り付けたい
+## GitHubのPRにスクショを貼り付けたい
 
 自作スキル「upload-image-to-pr」を使う
 
@@ -109,7 +109,7 @@ https://cleanshot.com/
 
 https://github.com/tonkotsuboy/github-upload-image-to-pr
 
-## 詳細補足
+### 詳細補足
 
 1. ブラウザ自動化（Playwright MCP / Chrome DevTools MCP）でPRページを開く
 2. ブラウザにログインしておく
@@ -119,7 +119,7 @@ https://github.com/tonkotsuboy/github-upload-image-to-pr
 6. `gh pr edit` CLIでPR説明文にURLを埋め込む
 
 
-# 現在の作業環境を迷わず把握したい
+## 現在の作業環境を迷わず把握したい
 
 ステータスラインを使う
 
@@ -139,7 +139,7 @@ https://github.com/tonkotsuboy/github-upload-image-to-pr
 
 
 
-## 補足
+### 補足
 
 - `~/.claude/settings.json` に設定値が追加される
 - 設定の実体は `statusline.sh`
@@ -156,7 +156,7 @@ https://github.com/tonkotsuboy/github-upload-image-to-pr
 ```
 
 
-# 一つのリポジトリをたくさんクローンして並行作業したい
+## 一つのリポジトリをたくさんクローンして並行作業したい
 
 Raycastの自作ツール「Multi-Folder Git Clone」を使う
 
@@ -179,7 +179,7 @@ Raycastの自作ツール「Multi-Folder Git Clone」を使う
 https://github.com/tonkotsuboy/multi-folder-git-clone
 
 
-# リポジトリ間を素早く移動したい
+## リポジトリ間を素早く移動したい
 
 ghq + pecoを使う
 
@@ -211,7 +211,7 @@ https://github.com/peco/peco
 https://zenn.dev/obregonia1/articles/e82868e8f66793
 
 
-# Claude Codeから画像を大量生成したい
+## Claude Codeから画像を大量生成したい
 
 nano-banana-2-skillを使う
 
@@ -242,7 +242,7 @@ https://furoku.github.io/bananaX/projects/infographic-evaluation/
 
 
 
-# 手戻りを減らしたい
+## 手戻りを減らしたい
 
 Claude Codeのfeature-devプラグインを使う
 
@@ -274,18 +274,18 @@ Claude Codeのfeature-devプラグインを使う
 https://github.com/anthropics/claude-code/tree/main/plugins/feature-dev
 
 
-# あるコンテキストを持ったまま、複数の会話をしたい
+## あるコンテキストを持ったまま、複数の会話をしたい
 
 `/btw`、`/fork`、`/rewind`、`ccresume`を使う
 
-## `/btw`
+### `/btw`
 
 - コンテキストを消費せずに、素早く質問できる
 - そういえばこの技術の最近の流行り技術ってなんだっけ？みたいな質問に便利。
 
 ![/btwコマンドの呼び出し例](/images/claude-code-tips-findy-2026/btw-command.png)
 
-## `/fork`
+### `/fork`
 
 - 会話を分岐させる
 - ここまでの会話コンテキストを踏まえて、複数作業を並列で進めてほしいときに便利
@@ -299,7 +299,7 @@ https://github.com/anthropics/claude-code/tree/main/plugins/feature-dev
 claude --resume ID
 ```
 
-## `/rewind`
+### `/rewind`
 
 - 会話を巻き戻せる
 - あのときの会話まで戻って作業をやり直したいみたいなときによく使っている。
@@ -310,7 +310,7 @@ claude --resume ID
 
 
 
-# 寝ながらスマホで作業を依頼したい
+## 寝ながらスマホで作業を依頼したい
 
 Remote Controlを使う
 
@@ -321,7 +321,7 @@ Remote Controlを使う
 https://zenn.dev/ubie_dev/articles/claude-code-remote-control-intro
 
 
-# npm, pnpm, yarn等のパッケージマネージャーの違いに悩みたくない
+## npm, pnpm, yarn等のパッケージマネージャーの違いに悩みたくない
 
 niを使う
 
@@ -348,7 +348,7 @@ nr build  # npm run build / ...
 https://github.com/antfu-collective/ni
 
 
-# もっとスキルを探したい
+## もっとスキルを探したい
 
 スキルマーケットプレイス（skillsmp.com）や、最近はGrok検索も便利
 
@@ -366,7 +366,7 @@ https://skillsmp.com/
 https://grok.com/
 
 
-# Claude Codeを理解したい
+## Claude Codeを理解したい
 
 公式ドキュメントのAskAI機能が便利
 
@@ -380,7 +380,7 @@ https://grok.com/
 https://docs.anthropic.com/ja/docs/claude-code/overview
 
 
-# Claude Codeの最新情報を追いたい
+## Claude Codeの最新情報を追いたい
 
 XをRSS化し、obsidianに貯める
 
@@ -404,7 +404,7 @@ Obsidian
 
 https://x.com/tonkotsuboy_com/status/2031199612976115758
 
-# 最後に
+## 最後に
 
 ここで紹介したものはほんの一部。
 ぜひ皆さんの推しツール・スキル・設定を教えてください！知りたいです😍
