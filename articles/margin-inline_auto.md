@@ -28,7 +28,7 @@ published: true
 
 本記事では、`margin-inline: auto;` によるデモを紹介したあと、`margin-inline`とは何かについて解説します。
 
-# 簡単なデモで動作を確認する
+## 簡単なデモで動作を確認する
 
 簡単なデモで動作を確認してみましょう。次のように、 `.container` 要素の中に `.box` 要素を配置します。
 
@@ -54,7 +54,7 @@ published: true
 
 - [別ウインドウで開く](https://codepen.io/tonkotsuboy/pen/LYXYjYx)
 
-# `margin-inline` とは
+## `margin-inline` とは
 
 `margin-inline` はCSSの「論理プロパティ」で、要素の「インライン方向」のマージンを設定するためのものです。
 
@@ -73,7 +73,7 @@ published: true
 
 `margin-inline`とは、`margin-inline-start`（インライン先頭）と`margin-inline-end`（インライン末尾）のショートハンドです。`margin-inline: auto;` を指定することで、インラインのマージンの先頭と末尾を `auto` として、中央揃えを実現しているというわけです。
 
-# 実用的なデモ
+## 実用的なデモ
 
 `margin-inline: auto;` を使って、コンテンツを中央揃えするデモを作ってみましょう。
 
@@ -127,7 +127,7 @@ main section {
 
 - [別ウインドウで開く](https://codepen.io/tonkotsuboy/pen/OJBKBKx)
 
-# `margin: 0 auto;` ではだめなのか？
+## `margin: 0 auto;` ではだめなのか？
 
 筆者的には避けたいです。
 
@@ -141,12 +141,12 @@ main section {
 インライン方向の中央揃えを指定したいだけなのに、`margin-top: 0;`と`margin-bottom: 0`も指定してしまうと、予期せぬスタイルの上書きを考慮しないとなりません。
 
 
-# `margin-inline`は書字方向によって変わることに注意
+## `margin-inline`は書字方向によって変わることに注意
 
 `margin-inline`は、書字方向によって向きが変わることには注意が必要です。 筆者は、英語・日本語横書きのコンテンツを作ることがほとんどなので気にしたことはありませんが、人によっては縦書きのコンテンツを作ることがあるかもしれません。 その場合、`margin-inline: auto;` は縦方向の中央揃えになるので注意をしましょう。
 
 
-# CSS Gridでも中央揃えは可能
+## CSS Gridでも中央揃えは可能
 
 「実用的なデモ」の中央揃えは、CSS Gridを使っても実現できます。
 
@@ -167,7 +167,7 @@ CSS Gridによる中央揃えについては、次の記事で詳しく解説し
 
 https://zenn.dev/tonkotsuboy_com/articles/css-grid-centering
 
-# 対応ブラウザ
+## 対応ブラウザ
 
 `margin-inline`は全ブラウザで対応済みです。Safariも14.1と古いバージョンから対応しているので、安心して使えると言っていいでしょう。
 
