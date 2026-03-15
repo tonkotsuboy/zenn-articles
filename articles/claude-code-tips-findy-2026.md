@@ -8,6 +8,11 @@ publication_name: ubie_dev
 
 ---
 
+2026/03/12 アーカイブ動画が公開されました
+https://findy-code.io/events/eGsLcRQTBp4u9?fr=event_archive_20260311
+
+---
+
 本記事は、Findyイベント「鹿野さんに聞く！Claude Codeをさらに加速させる私の推しツール」の登壇資料です。
 
 https://findy.connpass.com/event/384179/
@@ -412,3 +417,6 @@ https://x.com/tonkotsuboy_com/status/2031199612976115758
 また、Ubieでは、エンジニアはもちろんデザイナー、PO、管理職、人事にいたるまで、全員がClaude Codeを導入し、あらゆる業務を行っています。ぜひ一緒にUbieでAIネイティブな生活をしましょう。
 
 https://recruit.ubie.life/
+
+4/24にCSS NiteでClaude Codeのイベントを行います。こちらもぜひご参加ください。
+https://cssnite.doorkeeper.jp/events/195497
