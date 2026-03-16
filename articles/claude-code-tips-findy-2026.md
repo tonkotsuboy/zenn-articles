@@ -8,11 +8,6 @@ publication_name: ubie_dev
 
 ---
 
-2026/03/12 アーカイブ動画が公開されました
-https://findy-code.io/events/eGsLcRQTBp4u9?fr=event_archive_20260311
-
----
-
 本記事は、Findyイベント「鹿野さんに聞く！Claude Codeをさらに加速させる私の推しツール」の登壇資料です。
 
 https://findy.connpass.com/event/384179/
@@ -408,6 +403,13 @@ Obsidian
 ```
 
 https://x.com/tonkotsuboy_com/status/2031199612976115758
+
+## アーカイブ動画
+
+2026/03/12 アーカイブ動画が公開されました。
+
+https://findy-code.io/events/eGsLcRQTBp4u9?fr=event_archive_20260311
+
 
 ## 最後に
 
