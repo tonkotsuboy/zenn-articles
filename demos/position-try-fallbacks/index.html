@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>position-try-fallbacks</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, ::before, ::after {
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-base: #f8fafc;
+      --bg-white: #ffffff;
+      --border-light: #e2e8f0;
+      --border-medium: #cbd5e1;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #94a3b8;
+      --accent: #3b82f6;
+      --accent-light: #60a5fa;
+      --accent-bg: #eff6ff;
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+
+    body {
+      margin: 0;
+      font-family: "Zen Kaku Gothic New", system-ui, sans-serif;
+      background: var(--bg-base);
+      color: var(--text-primary);
+      min-height: 100vh;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 48px 24px;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 6px 14px;
+      background: var(--accent-bg);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 600;
+      border-radius: 100px;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    .description {
+      margin: 0;
+      color: var(--text-secondary);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .demo-cell {
+      margin-bottom: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-white);
+      border: 1px solid var(--border-light);
+      border-radius: 16px;
+      padding: 48px 24px;
+      min-height: 180px;
+    }
+
+    .trigger-button {
+      padding: 14px 24px;
+      background: var(--accent);
+      border: none;
+      border-radius: 10px;
+      color: #fff;
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .trigger-button:hover {
+      background: var(--accent-light);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .trigger-button:active {
+      transform: translateY(0px);
+    }
+
+    /* アンカーを定義 */
+    #anchor-bottom {
+      anchor-name: --anchor-bottom;
+    }
+
+    /* ポップオーバーの共通スタイル */
+    .popover-content {
+      margin: 0;
+      padding: 16px 20px;
+      background: var(--bg-white);
+      border: 1px solid var(--border-light);
+      border-radius: 12px;
+      box-shadow: var(--shadow-lg);
+      width: max-content;
+      max-width: 280px;
+      /* 修正: position: absolute → 削除してUAデフォルトのfixedを使う */
+      inset: unset;
+      opacity: 0;
+      transform: scale(0.95);
+      transition: opacity 0.2s, transform 0.2s, overlay 0.2s allow-discrete, display 0.2s allow-discrete;
+    }
+
+    .popover-content:popover-open {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    @starting-style {
+      .popover-content:popover-open {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+    }
+
+    .popover-content p {
+      margin: 0 0 8px;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .popover-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    .popover-content code {
+      display: inline-block;
+      background: var(--accent-bg);
+      color: var(--accent);
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    /* ポップオーバーの位置指定 */
+    .popover-bottom {
+      position-anchor: --anchor-bottom;
+      position-area: block-end;
+      position-try-fallbacks: flip-block;
+    }
+
+    .code-section {
+      background: var(--bg-white);
+      border: 1px solid var(--border-light);
+      border-radius: 16px;
+      padding: 28px;
+    }
+
+    .code-section h2 {
+      margin: 0 0 20px;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .code-block {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 20px;
+      background: var(--text-primary);
+      border-radius: 12px;
+      font-family: "SF Mono", "Fira Code", monospace;
+      font-size: 0.85rem;
+      overflow-x: auto;
+    }
+
+    .code-block code {
+      color: #e2e8f0;
+      white-space: pre;
+    }
+
+    .code-block code.comment {
+      color: #64748b;
+    }
+
+    .code-block code.highlight {
+      color: #4ade80;
+    }
+
+    @media (max-width: 768px) {
+      .demo-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="hero">
+      <span class="badge">CSS Anchor Positioning</span>
+      <h1>position-try-fallbacks</h1>
+      <p class="description">ボタンをクリックすると、それぞれ異なる位置にポップオーバーが表示されます。</p>
+    </div>
+
+    <div class="demo-cell">
+      <button id="anchor-bottom" popovertarget="popover-bottom" class="trigger-button">
+        下に表示
+      </button>
+      <div id="popover-bottom" popover class="popover-content popover-bottom">
+        <p><code>position-area: block-end</code></p>
+        <p>ボタンの下に表示されます</p>
+      </div>
+    </div>
+
+    <div class="code-section">
+      <h2>コード例</h2>
+      <div class="code-block">
+        <code class="comment">/* アンカーを定義 */</code>
+        <code>#anchor-top { anchor-name: --anchor-top; }</code>
+        <code></code>
+        <code class="comment">/* ポップオーバーの位置を指定 */</code>
+        <code>.popover-top {</code>
+        <code>  position-anchor: --anchor-top;</code>
+        <code>  position-area: block-start;</code>
+        <code class="comment">  /* はみ出したら上下を反転 */</code>
+        <code class="highlight">  position-try-fallbacks: flip-block;</code>
+        <code>}</code>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

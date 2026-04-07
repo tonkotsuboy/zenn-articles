@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>position-try-fallbacks リサイズテスト</title>
+  <style>
+    *, ::before, ::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 300px;
+      background: #f8fafc;
+    }
+
+    .info {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      background: #0f172a;
+      color: #fff;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 14px;
+      line-height: 1.6;
+      z-index: 1;
+    }
+
+    #anchor-btn {
+      anchor-name: --anchor;
+      padding: 14px 28px;
+      background: #3b82f6;
+      border: none;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .popover-box {
+      inset: unset;
+      margin: 0;
+      padding: 16px 20px;
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+      width: max-content;
+      max-width: 280px;
+
+      position-anchor: --anchor;
+      position-area: block-end;
+      position-try-fallbacks: flip-block;
+    }
+
+    .popover-box p { margin: 0; font-size: 0.9rem; color: #475569; }
+  </style>
+</head>
+<body>
+  <div class="info">
+    <strong>テスト手順：</strong><br>
+    1. ボタンをクリックしてポップオーバー表示<br>
+    2. ウィンドウの高さを縮めると上にflip！<br>
+    3. 高さを戻すと下に戻る
+  </div>
+
+  <button id="anchor-btn" popovertarget="my-popover">下に表示</button>
+  <div id="my-popover" popover class="popover-box">
+    <p><code>position-area: block-end</code></p>
+    <p>flip-blockで上下反転します</p>
+  </div>
+</body>
+</html>

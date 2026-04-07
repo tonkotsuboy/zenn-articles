@@ -240,6 +240,14 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/position-area_
 
 これで、画面端でも常に見える位置にポップオーバーが表示されます。
 
+
+@[tweet](https://x.com/tonkotsuboy_com/status/2041489933362487542)
+
+
+https://codepen.io/tonkotsuboy/pen/azmjxWM
+
+- [別ウインドウで開く](https://codepen.io/tonkotsuboy/pen/azmjxWM)
+
 https://developer.mozilla.org/en-US/docs/Web/CSS/position-try-fallbacks
 
 ## 実例
