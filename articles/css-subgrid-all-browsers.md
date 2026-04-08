@@ -6,7 +6,9 @@ topics: [ "css" ]
 published: true
 ---
 
-2023/9/12にChrome 117、9/15にEdge 117がリリースされ、CSSのSubgridが全ブラウザに対応しました。
+CSS Subgridは、2023年9月から全主要ブラウザで実装されていましたが、2026年3月15日に正式にBaseline Widely Availableとなりました。これで安心してプロダクションで使えます🌻
+
+---
 
 Subgridとは、CSS Gridで新しく使えるようになった機能の1つ。行列（グリッド）を入れ子にして、親行列の行や列に子行列を整列させることが可能です。
 
@@ -333,6 +335,8 @@ https://cssnite.jp/archives/post_3023.html
 - [サブグリッド - MDN](https://developer.mozilla.org/ja/docs/Web/CSS/CSS_grid_layout/Subgrid)
 - [CSS Grid Layout Module Level 2 - subgrid](https://drafts.csswg.org/css-grid/#subgrids)
 - [Hello Subgrid! CSSConf.eu](https://noti.st/rachelandrew/i6gUcF/hello-subgrid)
+- [Web platform features explorer](https://web-platform-dx.github.io/web-features-explorer/features/subgrid/)
+
 
 ## スペシャルサンクス
 
