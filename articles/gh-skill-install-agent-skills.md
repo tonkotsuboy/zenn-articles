@@ -7,11 +7,11 @@ published: true
 publication_name: ubie_dev
 ---
 
-AIエージェント向けのスキル（Agent Skills）、みなさんどう管理していますか？
+AIエージェント向けのスキル（Agent Skills）、みなさんはどう管理していますか？
 
 2026/04/16、GitHub公式CLIの`gh`に、スキルをパッケージ管理する新しいサブコマンド`gh skill`が追加されました。GitHubのリポジトリに公開されているスキルを`gh`経由でインストール・アップデート・公開できます。筆者はこれまで`npx skills`でスキルをインストール・管理してきましたが、`gh skill`の方が安全面でよさそうなので乗り換えることにしました。
 
-実際に`gh skill`を触ってみた様子を紹介します。
+本記事では、メリットや実際の動作を紹介します。
 
 
 https://github.blog/changelog/2026-04-16-manage-agent-skills-with-github-cli/
