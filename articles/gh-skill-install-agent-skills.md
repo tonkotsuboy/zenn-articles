@@ -64,7 +64,7 @@ $ gh skill preview tonkotsuboy/x-impact-checker
 >
 > https://github.blog/changelog/2026-04-16-manage-agent-skills-with-github-cli/
 
-実際には、中身を読んで判断するのも大変なので、`gh skill preview`で読んだ中身をチェックするスキルを作って運用するとよいでしょう。
+実際には、中身を読んで判断するのも大変なので、`gh skill preview`で読んだ中身をチェックするスキルを作って運用するのがいいのではないかと考えています。
 
 ### 2. `install`でスキルをインストール
 
@@ -81,7 +81,14 @@ $ gh skill install tonkotsuboy/x-impact-checker
 ![Claude Code向けに~/.claude/skills配下へインストールされた様子](/images/gh-skill-install-agent-skills/gh-skill-install-complete.png)
 
 
-バージョン指定を省略したときは、最新のタグが優先的に選ばれます。バージョンを指定してインストールすることも可能です。
+バージョン指定を省略したときは、最新のタグが優先的に選ばれます。
+
+特定のバージョンに固定してスキルをインストールすることも可能です。次の例では、v2.0.5を指定してインストールしています。
+
+```bash
+$ gh skill install tonkotsuboy/x-impact-checker --pin v2.0.5
+```
+
 
 ### 3. 配置先の確認
 
@@ -186,4 +193,6 @@ agentskills.ioは、`SKILL.md`が備えるべき命名規則やfrontmatterの項
 男は黙って`gh skill`を使いましょう。
 
 https://github.blog/changelog/2026-04-16-manage-agent-skills-with-github-cli/
+
+https://github.com/tonkotsuboy/x-impact-checker
 
