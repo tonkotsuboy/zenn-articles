@@ -1,19 +1,27 @@
 ---
-title: "GitHubがスキル管理ツール「gh skill」をリリース。安全だったのでnpx skillsから乗り換えた"
+title: "gh skillが登場。GitHub公式のスキル管理ツールにnpx skillsから乗り換えた"
 emoji: "🐙"
 type: "tech"
 topics: ["github", "claudecode", "ai", "agentskills"]
-published: false
+published: true
 publication_name: ubie_dev
 ---
 
-スキル（Agent Skills）は現代のAIエージェント開発に必須です。では、そのスキルの管理はどうすればよいのでしょう？
+AIエージェント向けのスキル（Agent Skills）、みなさんどう管理していますか？
 
 2026/04/16、GitHub公式CLIの`gh`に、スキルをパッケージ管理する新しいサブコマンド`gh skill`が追加されました。GitHubのリポジトリに公開されているスキルを`gh`経由でインストール・アップデート・公開できます。筆者はこれまで`npx skills`でスキルをインストール・管理してきましたが、`gh skill`の方が安全面でよさそうなので乗り換えることにしました。
 
-本記事では、`gh skill`の基本とメリットを実際の実行結果とともに解説します。
+実際に`gh skill`を触ってみた様子を紹介します。
 
-[https://github.blog/changelog/2026-04-16-manage-agent-skills-with-github-cli/](https://github.blog/changelog/2026-04-16-manage-agent-skills-with-github-cli/)
+
+https://github.blog/changelog/2026-04-16-manage-agent-skills-with-github-cli/
+
+
+## 3行まとめ
+
+- `gh skill install スキル`でスキルをインストールできる
+- `gh skill publish スキル`で自作スキルを仕様に沿って公開できる
+- 改ざん検知・バージョン固定・由来情報の埋め込みなど、サプライチェーン対策が組み込み済み
 
 ## 環境準備
 
@@ -25,7 +33,7 @@ $ gh --version
 // https://github.com/cli/cli/releases/tag/v2.90.0
 ```
 
-`$gh skill --help`でサブコマンドの一覧を確認すると、次のコマンドが使えることがわかります。
+`$ gh skill --help`でサブコマンドの一覧を確認すると、次のコマンドが使えることがわかります。
 
 - `search`: GitHub上に公開されているスキルを検索する
 - `preview`: インストール前に`SKILL.md`の中身を確認する
@@ -47,16 +55,16 @@ $ gh skill preview tonkotsuboy/x-impact-checker
 
 確認ダイアログを進めると、スキルの中身が出力されます。この時点ではスキルはインストールされません。
 
-![](2026-04-17-17-07-50.png)
+![gh skill previewでSKILL.mdの中身を確認している画面](/images/gh-skill-install-agent-skills/gh-skill-preview-output.png)
 
-`gh skill`がカバーしてくれるのは、スキルのインストール経路やバージョン情報まで。プロンプトインジェクション（AIへの命令文を不正に混ぜ込み、意図しない挙動を引き起こす攻撃）は、インストール前に中身を読まないと防げません。これは`gh skills`にかかわらず、スキルをインストールするときに行うべきことです。
+`gh skill`がカバーしてくれるのは、スキルのインストール経路やバージョン情報まで。プロンプトインジェクション（AIへの命令文を不正に混ぜ込み、意図しない挙動を引き起こす攻撃）は、インストール前に中身を読まないと防げません。これは`gh skill`にかかわらず、スキルをインストールするときに行うべきことです。
 
-> Skills are not verified by GitHub and may contain prompt injections, hidden instructions, or malicious scripts. We strongly recommend inspecting the content of skills before installation.
-> （意訳：スキルはGitHubによって検証されていません。プロンプトインジェクションや隠された命令、悪意のあるスクリプトが含まれてい可能性があります。インストール前にスキルの中身を確認することを強く推奨します）
+> Skills are installed at your own discretion. They are not verified by GitHub and may contain prompt injections, hidden instructions, or malicious scripts. We strongly recommend inspecting the content of skills before installation,
+> （意訳：スキルはGitHubによって検証されていません。プロンプトインジェクションや隠された命令、悪意のあるスクリプトが含まれている可能性があります。インストール前にスキルの中身を確認することを強く推奨します）
 >
 > https://github.blog/changelog/2026-04-16-manage-agent-skills-with-github-cli/
 
-実際には、中身を読んで判断するのも大変なので、`gh skills`で読んだ中身をチェックするスキルを作って運用するとよいでしょう。 
+実際には、中身を読んで判断するのも大変なので、`gh skill preview`で読んだ中身をチェックするスキルを作って運用するとよいでしょう。
 
 ### 2. `install`でスキルをインストール
 
@@ -65,13 +73,12 @@ $ gh skill preview tonkotsuboy/x-impact-checker
 
 ```bash
 $ gh skill install tonkotsuboy/x-impact-checker
-
 ```
 
-![alt text](Capture-20260417-at20.04.png)
+![gh skill installでインストール先エージェントを選ぶ対話プロンプト](/images/gh-skill-install-agent-skills/gh-skill-install-select-agent.png)
 
 
-![alt text](Capture-20260417-at20.05.png)
+![Claude Code向けに~/.claude/skills配下へインストールされた様子](/images/gh-skill-install-agent-skills/gh-skill-install-complete.png)
 
 
 バージョン指定を省略したときは、最新のタグが優先的に選ばれます。バージョンを指定してインストールすることも可能です。
@@ -85,7 +92,7 @@ $ ls ~/.claude/skills/x-impact-checker/
 SKILL.md  references
 ```
 
-`npx skills`の場合はスキルファイルは `~/.agents` に配置され、`~/.claude/skills/`にはシンボリックリンクが配置される挙動でしたが、`gh skills` の場合は指定したエージェント分すきるファイルがコピーされます。
+`npx skills`の場合はスキルファイルは `~/.agents` に配置され、`~/.claude/skills/`にはシンボリックリンクが配置される挙動でしたが、`gh skill`の場合は指定したエージェント分スキルファイルがコピーされます。
 
 なお、スキルの仕様を公開している[agentskills.io](https://agentskills.io/home)では、スキルをローカルのどこに置くかまでは規定していません。`npx skills`は自前ディレクトリ`~/.agents/skills/`を正とする設計、`gh skill`は各エージェントの純正ディレクトリ（Claude Codeなら`~/.claude/skills/`）に直接置く設計となっています。
 
@@ -105,7 +112,7 @@ $ gh skill update
 
 `gh skill`は、一度入れたスキルが知らないうちに書き換わらないように、4つの仕組みを用意しています。
 
-- Immutable Release: 公開後のリリース内容をリポジトリの管理者でも書き換えられなくする設定
+- Immutable Releases: 公開後のリリース内容をリポジトリの管理者でも書き換えられなくする設定
 - Tree SHA による検知: スキルフォルダ全体のハッシュ値（Tree SHA※）を`SKILL.md`に記録し、リモートの中身が変わると検出できる
 - Version Pinning: `--pin`で特定のタグ・コミットに固定する。`update`でも自動更新されない
 - Portable Provenance: 由来情報（provenance / プロベナンス）を`SKILL.md`自体に埋め込むので、ファイルを別環境にコピーしても由来情報がついて回る
@@ -168,14 +175,13 @@ agentskills.ioは、`SKILL.md`が備えるべき命名規則やfrontmatterの項
 
 筆者が公開を試したときも、tag protectionが有効になっていないリポジトリで実行するとwarningが出ました。次のようにtag protectionを有効化することで解決しました。
 
-![alt text](Capture-20260417-at20.58.png)
+![GitHubリポジトリ設定画面でtag protectionのRulesetを有効化する](/images/gh-skill-install-agent-skills/github-tag-protection-rule.png)
 
 
 # さいごに
 
 
-
-`gh skill`を使うと、スキルのインストール・更新・公開までを安全に行なえます。筆者は`npx skills`を気に入って使っていましたが、あまりに手軽に何のチェックもなしにインストールできるので、昨今の◯◯の事情を鑑みるとより安全な管理方法がないかを考えていました。今回GitHubがリリースした`gh skill`はその一つの答えとなるもので、スキル管理の新しい選択肢の一つとなりうるでしょう。個人的には、スキルのインストール・更新のみならず、公開時のセキュリティチェックまでやってくれるのが助かるなと思いました。
+`gh skill`を使うと、スキルのインストール・更新・公開までを安全に行なえます。筆者は`npx skills`を気に入って使っていましたが、昨今のサプライチェーン攻撃などを見ていると、安全な管理方法がないかを考えていました。今回GitHubがリリースした`gh skill`はその一つの答えとなるもので、スキル管理の新しい選択肢の一つとなりうるでしょう。個人的にはスキルのインストール・更新のみならず、公開時のセキュリティチェックまでやってくれるのが助かりました。
 
 男は黙って`gh skill`を使いましょう。
 
