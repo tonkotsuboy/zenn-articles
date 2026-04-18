@@ -419,6 +419,3 @@ https://findy-code.io/events/eGsLcRQTBp4u9?fr=event_archive_20260311
 また、Ubieでは、エンジニアはもちろんデザイナー、PO、管理職、人事にいたるまで、全員がClaude Codeを導入し、あらゆる業務を行っています。ぜひ一緒にUbieでAIネイティブな生活をしましょう。
 
 https://recruit.ubie.life/
-
-4/24にCSS NiteでClaude Codeのイベントを行います。こちらもぜひご参加ください。
-https://cssnite.doorkeeper.jp/events/195497

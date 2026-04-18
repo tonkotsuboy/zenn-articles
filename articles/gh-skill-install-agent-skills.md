@@ -196,3 +196,7 @@ https://github.blog/changelog/2026-04-16-manage-agent-skills-with-github-cli/
 
 https://github.com/tonkotsuboy/x-impact-checker
 
+4/29にCSS Nite「Claude Codeとフロントエンド開発 ──全社員がAIエージェントを活用するUbieの実践事例」にて登壇します。ぜひご参加ください。
+
+https://cssnite.doorkeeper.jp/events/195497
+
