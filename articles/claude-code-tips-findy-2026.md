@@ -72,7 +72,7 @@ $ claude "https://github.com/tonkotsuboy/fugafuga/pull/97 の
 
 ## Claude Codeに画像や画像内文字を伝えたい
 
-CleanShot Xを使う
+### macOSの場合はCleanShot Xを使う
 
 - スクショ
   - CleanShot X でスクリーン上の任意の領域をスクショしてClaude Codeに貼り付け
@@ -80,11 +80,18 @@ CleanShot Xを使う
   - OCR機能を使ってテキストをコピーできる
   - PDF、画像内文字、他アプリのUIなどの中にある文字を貼り付けたい
   - 画像を貼り付けて読み取らせるよりもトークン使用量が少ない
-- CleanShot XはmacOS専用。Windowsの情報求む
+- CleanShot XはmacOS専用
 
 https://cleanshot.com/
 
+### Windowsの場合はSnipping Toolを使う
 
+- Windowsの場合は、標準の「Snipping Tool」を使う
+  - `Windows + Shift + S` で起動し、任意領域のスクショも、スクショのOCRもできる
+  - 沖さん（[@448jp](https://x.com/448jp)）にコメントいただきました。ありがとうございます
+    - https://zenn.dev/ubie_dev/articles/claude-code-tips-findy-2026#comment-a403ac079daca7
+
+https://apps.microsoft.com/detail/9mz95kl8mr0l?hl=ja-JP&gl=JP
 
 ## GitHubのPRにスクショを貼り付けたい
 
