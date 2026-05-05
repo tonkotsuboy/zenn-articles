@@ -8,13 +8,15 @@
   "scripts": {
     "preview": "zenn preview",
     "lint": "textlint articles/**/*.md",
-    "lint:fix": "textlint --fix articles/**/*.md"
+    "lint:fix": "textlint --fix articles/**/*.md",
+    "prepare": "lefthook install || true"
   },
   "dependencies": {
     "prettier": "^3.8.3",
     "zenn-cli": "^0.4.7"
   },
   "devDependencies": {
+    "lefthook": "^2.1.6",
     "textlint": "^15.6.0",
     "textlint-filter-rule-comments": "^1.3.0",
     "textlint-rule-preset-ja-technical-writing": "^12.0.2",
