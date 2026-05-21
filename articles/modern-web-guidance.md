@@ -175,3 +175,12 @@ https://developer.chrome.com/docs/modern-web-guidance?hl=ja
 https://developer.chrome.com/docs/modern-web-guidance/get-started?hl=ja
 
 https://www.youtube.com/live/aqmpZocmR8o?si=INSdqS8hKXAZlu3S&t=2512
+
+
+## 続編： Modern Web GuidanceからCSSのDos/Don'tsを学ぼう
+
+
+記事内にも書いた通り、Modern Web GuidanceのリポジトリはGoogleが推奨するベストプラクティスの宝庫。その中でもCSSのDos/Don'tsにしぼり、次の記事で解説しました。
+
+https://zenn.dev/ubie_dev/articles/modern-css-dos-donts
+
