@@ -7,8 +7,11 @@ published: true
 publication_name: ubie_dev
 ---
 
+結論、Modern Web Guidanceのドキュメントから、Googleが推奨するCSSのやるべきこと・やってはいけないことをまとめました。
 
-先日、Googleがリリースした「Modern Web Guidance」スキルを使うと、AIエージェントが最新のWeb機能でコードを書けるようになります。
+---
+
+Googleがリリースした「Modern Web Guidance」スキルを使うと、AIエージェントが最新のWeb機能でコードを書けるようになります。
 
 https://zenn.dev/ubie_dev/articles/modern-web-guidance
 
