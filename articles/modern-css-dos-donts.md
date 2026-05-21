@@ -21,26 +21,6 @@ https://zenn.dev/ubie_dev/articles/modern-web-guidance
 
 https://github.com/GoogleChrome/modern-web-guidance/blob/main/skills/modern-web-guidance/guides/css-layout/css-layout.md
 
-GridやSubgridの項目を抜粋すると、次のようなDos / Don'tsの記述があります。
-
-> Do:
-> - Use grid-template-areas for complex page-level layouts — area names are self-documenting and the declaration can be aligned in rows and columns for at-a-glance readability.
-> - Use repeat(auto-fit, minmax(200px, 1fr)) for responsive card grids that stretch filled tracks to fill the row, or auto-fill to preserve empty repeated tracks at their min size.
-> 
-> Do not:
-> - Don't expect auto-fit/auto-fill track size to come from item content — it comes from the repeat() size argument.
-> - Don't use grid-auto-flow: dense on interactive content. It packs items efficiently but reorders them visually, breaking DOM-order keyboard tab flow.
-
-訳すと次のとおりです。
-
-> やるべきこと（Do）:
-> - 複雑なページレベルのレイアウトには`grid-template-areas`を使う。領域名がそれ自体で説明になり、宣言を行と列に揃えて書けば構造が一目で分かる
-> - レスポンシブなカードグリッドには`repeat(auto-fit, minmax(200px, 1fr))`を使う。埋まったトラックを伸ばして行いっぱいに広げる。空の繰り返しトラックを最小サイズのまま残すなら`auto-fill`
->
-> やってはいけないこと（Do not）:
-> - `auto-fit`/`auto-fill`のトラックサイズが項目の中身から決まると思わない。`repeat()`のサイズ引数から決まる
-> - 操作できるコンテンツに`grid-auto-flow: dense`を使わない。効率よく詰め込めるが見た目の順序が変わり、DOM順のキーボードのタブ移動が崩れる
-
 本記事は、Google Chromeチームが公開するModern Web Guidance（Apache License 2.0）の各ガイドをもとに、次の方針でまとめました。
 
 - 複数のガイドに散らばったCSSの指針を横断し、現時点で全ブラウザ対応した機能だけを抽出
