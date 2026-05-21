@@ -12,8 +12,8 @@ importers:
         specifier: ^3.8.3
         version: 3.8.3
       zenn-cli:
-        specifier: ^0.4.7
-        version: 0.4.7
+        specifier: ^0.4.8
+        version: 0.4.8
     devDependencies:
       lefthook:
         specifier: ^2.1.6
@@ -1738,8 +1738,8 @@ packages:
     resolution: {integrity: sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==}
     engines: {node: '>=0.4'}
 
-  zenn-cli@0.4.7:
-    resolution: {integrity: sha512-PkCvxOmP5bvSRx+cGFaXBkOABUez0XVioq91X39oziUppwDPFiT47qlNPX3In8W0/ySASq0ur49TkOTtv5fiIw==}
+  zenn-cli@0.4.8:
+    resolution: {integrity: sha512-DIJv1udDCyHd6AqoBaQDjTMs/3fo1KUCpumgyy/X8Yt1SKB/egLmhhNmePGukkIhUZDld1+RLoMWOEBky6njwg==}
     engines: {node: '>=22.0.0'}
     hasBin: true
 
@@ -4014,7 +4014,7 @@ snapshots:
 
   xtend@4.0.2: {}
 
-  zenn-cli@0.4.7:
+  zenn-cli@0.4.8:
     dependencies:
       open: 10.2.0
       package-manager-detector: 1.6.0
