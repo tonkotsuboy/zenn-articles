@@ -83,7 +83,7 @@ https://caniuse.com/css-variables
 
 https://caniuse.com/css-logical-props
 
-https://github.com/GoogleChrome/modern-web-guidance/blob/main/skills/modern-web-guidance/guides/css/css.md#1-foundations
+> 原典: [Modern Web Guidance / CSS — 1. Foundations](https://github.com/GoogleChrome/modern-web-guidance/blob/main/skills/modern-web-guidance/guides/css/css.md#1-foundations)
 
 ## レイアウトの基礎（Fundamentals）
 
@@ -123,7 +123,7 @@ body.centered { display: grid; place-content: center; min-block-size: 100dvb; }
 
 https://caniuse.com/intrinsic-width
 
-https://github.com/GoogleChrome/modern-web-guidance/blob/main/skills/modern-web-guidance/guides/css-layout/css-layout.md#1-fundamentals
+> 原典: [Modern Web Guidance / CSS Layout — 1. Fundamentals](https://github.com/GoogleChrome/modern-web-guidance/blob/main/skills/modern-web-guidance/guides/css-layout/css-layout.md#1-fundamentals)
 
 ## Flexbox
 
@@ -171,7 +171,7 @@ Flexboxは1次元のレイアウトです。要素は主軸（main）に沿っ�
 
 https://caniuse.com/flexbox
 
-https://github.com/GoogleChrome/modern-web-guidance/blob/main/skills/modern-web-guidance/guides/css-layout/css-layout.md#2-flexbox
+> 原典: [Modern Web Guidance / CSS Layout — 2. Flexbox](https://github.com/GoogleChrome/modern-web-guidance/blob/main/skills/modern-web-guidance/guides/css-layout/css-layout.md#2-flexbox)
 
 https://speakerdeck.com/tonkotsuboy_com/css-gridflexboxno-zui-jin-nojin-hua-tomirai
 
@@ -234,7 +234,7 @@ https://caniuse.com/css-grid
 
 https://caniuse.com/css-subgrid
 
-https://github.com/GoogleChrome/modern-web-guidance/blob/main/skills/modern-web-guidance/guides/css-layout/css-layout.md#3-grid-and-subgrid
+> 原典: [Modern Web Guidance / CSS Layout — 3. Grid and subgrid](https://github.com/GoogleChrome/modern-web-guidance/blob/main/skills/modern-web-guidance/guides/css-layout/css-layout.md#3-grid-and-subgrid)
 
 https://zenn.dev/tonkotsuboy_com/articles/css-subgrid-all-browsers
 
@@ -289,7 +289,7 @@ https://zenn.dev/tonkotsuboy_com/articles/css-subgrid-all-browsers
 
 https://caniuse.com/css-container-queries
 
-https://github.com/GoogleChrome/modern-web-guidance/blob/main/skills/modern-web-guidance/guides/css-layout/css-layout.md#4-container-queries
+> 原典: [Modern Web Guidance / CSS Layout — 4. Container queries](https://github.com/GoogleChrome/modern-web-guidance/blob/main/skills/modern-web-guidance/guides/css-layout/css-layout.md#4-container-queries)
 
 https://zenn.dev/tonkotsuboy_com/articles/css-container-query
 
@@ -329,7 +329,7 @@ anchor positioningは、トリガー要素にオーバーレイを空間的に�
 
 https://caniuse.com/css-anchor-positioning
 
-https://github.com/GoogleChrome/modern-web-guidance/blob/main/skills/modern-web-guidance/guides/css-layout/css-layout.md#5-native-overlays-anchor-positioning-and-stacking-contexts
+> 原典: [Modern Web Guidance / CSS Layout — 5. Native overlays, anchor positioning & stacking contexts](https://github.com/GoogleChrome/modern-web-guidance/blob/main/skills/modern-web-guidance/guides/css-layout/css-layout.md#5-native-overlays-anchor-positioning-and-stacking-contexts)
 
 https://zenn.dev/ubie_dev/articles/anchor-positioning-popover
 
@@ -425,7 +425,7 @@ https://caniuse.com/css-overscroll-behavior
 
 https://caniuse.com/css-line-clamp
 
-https://github.com/GoogleChrome/modern-web-guidance/blob/main/skills/modern-web-guidance/guides/css-layout/css-layout.md#6-overflow-tracking-and-layout-stability
+> 原典: [Modern Web Guidance / CSS Layout — 6. Overflow tracking and layout stability](https://github.com/GoogleChrome/modern-web-guidance/blob/main/skills/modern-web-guidance/guides/css-layout/css-layout.md#6-overflow-tracking-and-layout-stability)
 
 ## ビューポートの扱い（Viewport mechanics）
 
@@ -461,7 +461,7 @@ https://caniuse.com/viewport-unit-variants
 
 https://caniuse.com/viewport-unit-variants
 
-https://github.com/GoogleChrome/modern-web-guidance/blob/main/skills/modern-web-guidance/guides/css-layout/css-layout.md#7-viewport-mechanics-and-track-distribution
+> 原典: [Modern Web Guidance / CSS Layout — 7. Viewport mechanics and track distribution](https://github.com/GoogleChrome/modern-web-guidance/blob/main/skills/modern-web-guidance/guides/css-layout/css-layout.md#7-viewport-mechanics-and-track-distribution)
 
 ## 継承とカスケード
 
@@ -471,7 +471,7 @@ https://github.com/GoogleChrome/modern-web-guidance/blob/main/skills/modern-web-
 
 ■ やるべきこと（Dos）
 
-- 詳細度の管理にはカスケードレイヤーや`:where()`を使う。カスケードの挙動が予測しやすくなり、書き手の意図どおりに振る舞う
+- 詳細度の管理にはカスケードレイヤー（`@layer`）や`:where()`を使う。カスケードの挙動が予測しやすくなり、書き手の意図どおりに振る舞う
 
 ■ やってはいけないこと（Don'ts）
 
@@ -512,7 +512,7 @@ https://caniuse.com/css-cascade-layers
 }
 ```
 
-https://github.com/GoogleChrome/modern-web-guidance/blob/main/skills/modern-web-guidance/guides/css/css.md#2-inheritance-and-the-cascade
+> 原典: [Modern Web Guidance / CSS — 2. Inheritance and the cascade](https://github.com/GoogleChrome/modern-web-guidance/blob/main/skills/modern-web-guidance/guides/css/css.md#2-inheritance-and-the-cascade)
 
 ## セレクタとスコープ（Selectors and scoping）
 
@@ -764,7 +764,7 @@ https://caniuse.com/css-nesting
 }
 ```
 
-https://github.com/GoogleChrome/modern-web-guidance/blob/main/skills/modern-web-guidance/guides/css/css.md#3-selectors-and-scoping
+> 原典: [Modern Web Guidance / CSS — 3. Selectors and scoping](https://github.com/GoogleChrome/modern-web-guidance/blob/main/skills/modern-web-guidance/guides/css/css.md#3-selectors-and-scoping)
 
 ## インタラクティブ性（Interactivity）
 
@@ -861,7 +861,7 @@ https://caniuse.com/css-logical-props
 
 https://caniuse.com/css-touch-action
 
-https://github.com/GoogleChrome/modern-web-guidance/blob/main/skills/modern-web-guidance/guides/css/css.md#4-interactivity
+> 原典: [Modern Web Guidance / CSS — 4. Interactivity](https://github.com/GoogleChrome/modern-web-guidance/blob/main/skills/modern-web-guidance/guides/css/css.md#4-interactivity)
 
 ## デザイントークンとテーマ（Design Tokens and Theming）
 
@@ -1126,7 +1126,7 @@ input[type="range"]::-webkit-slider-thumb {
 <button type="submit">送信</button>
 ```
 
-https://github.com/GoogleChrome/modern-web-guidance/blob/main/skills/modern-web-guidance/guides/css/css.md#5-design-tokens-and-theming
+> 原典: [Modern Web Guidance / CSS — 5. Design tokens and theming](https://github.com/GoogleChrome/modern-web-guidance/blob/main/skills/modern-web-guidance/guides/css/css.md#5-design-tokens-and-theming)
 
 ### 高コントラスト設定には`prefers-contrast`で対応する
 
@@ -1189,7 +1189,7 @@ input:-webkit-autofill:focus-visible {
 
 https://caniuse.com/mdn-css_selectors_autofill
 
-https://github.com/GoogleChrome/modern-web-guidance/blob/main/skills/modern-web-guidance/guides/forms/autofill-highlight-inputs.md#how-to-implement
+> 原典: [Modern Web Guidance / Forms — Autofill highlight inputs](https://github.com/GoogleChrome/modern-web-guidance/blob/main/skills/modern-web-guidance/guides/forms/autofill-highlight-inputs.md#how-to-implement)
 
 ## レスポンシブデザイン（Responsive design）
 
@@ -1240,7 +1240,7 @@ https://caniuse.com/mdn-css_properties_aspect-ratio
 
 https://caniuse.com/css-math-functions
 
-https://github.com/GoogleChrome/modern-web-guidance/blob/main/skills/modern-web-guidance/guides/css/css.md#6-responsive-design
+> 原典: [Modern Web Guidance / CSS — 6. Responsive design](https://github.com/GoogleChrome/modern-web-guidance/blob/main/skills/modern-web-guidance/guides/css/css.md#6-responsive-design)
 
 ## タイポグラフィ（Typography）
 
@@ -1304,7 +1304,7 @@ body {
 
 https://caniuse.com/css-text-wrap-balance
 
-https://github.com/GoogleChrome/modern-web-guidance/blob/main/skills/modern-web-guidance/guides/css/css.md#7-typography
+> 原典: [Modern Web Guidance / CSS — 7. Typography](https://github.com/GoogleChrome/modern-web-guidance/blob/main/skills/modern-web-guidance/guides/css/css.md#7-typography)
 
 ### 折り返しを止めるなら`text-wrap: nowrap`を使う
 
@@ -1498,7 +1498,7 @@ https://caniuse.com/mdn-css_types_color_oklch
 
 https://caniuse.com/css-gradients
 
-https://github.com/GoogleChrome/modern-web-guidance/blob/main/skills/modern-web-guidance/guides/css/css.md#8-visual-effects
+> 原典: [Modern Web Guidance / CSS — 8. Visual effects](https://github.com/GoogleChrome/modern-web-guidance/blob/main/skills/modern-web-guidance/guides/css/css.md#8-visual-effects)
 
 ## アニメーションとトランジション（Transitions & animations）
 
@@ -1642,7 +1642,7 @@ progress:not([value]) {
 
 https://caniuse.com/prefers-reduced-motion
 
-https://github.com/GoogleChrome/modern-web-guidance/blob/main/skills/modern-web-guidance/guides/css/css.md#9-transitions--animations
+> 原典: [Modern Web Guidance / CSS — 9. Transitions & animations](https://github.com/GoogleChrome/modern-web-guidance/blob/main/skills/modern-web-guidance/guides/css/css.md#9-transitions--animations)
 
 ### バネ・バウンドには`linear()`イージングを使う
 
@@ -1783,7 +1783,7 @@ button.save::before {
 
 https://caniuse.com/css-gencontent
 
-https://github.com/GoogleChrome/modern-web-guidance/blob/main/skills/modern-web-guidance/guides/css/css.md#10-generated-content
+> 原典: [Modern Web Guidance / CSS — 10. Generated content](https://github.com/GoogleChrome/modern-web-guidance/blob/main/skills/modern-web-guidance/guides/css/css.md#10-generated-content)
 
 ## さいごに
 
