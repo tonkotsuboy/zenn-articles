@@ -12,7 +12,7 @@
     "prepare": "lefthook install || true"
   },
   "dependencies": {
-    "prettier": "^3.8.3",
+    "prettier": "^3.8.4",
     "zenn-cli": "^0.4.8"
   },
   "devDependencies": {
