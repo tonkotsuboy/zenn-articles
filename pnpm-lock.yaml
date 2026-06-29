@@ -9,11 +9,11 @@ importers:
   .:
     dependencies:
       prettier:
-        specifier: ^3.8.3
-        version: 3.8.3
+        specifier: ^3.9.1
+        version: 3.9.1
       zenn-cli:
-        specifier: ^0.4.8
-        version: 0.4.8
+        specifier: ^0.5.2
+        version: 0.5.2
     devDependencies:
       lefthook:
         specifier: ^2.1.9
@@ -1237,8 +1237,8 @@ packages:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
 
-  prettier@3.8.3:
-    resolution: {integrity: sha512-7igPTM53cGHMW8xWuVTydi2KO233VFiTNyF5hLJqpilHfmn8C8gPf+PS7dUT64YcXFbiMGZxS9pCSxL/Dxm/Jw==}
+  prettier@3.9.1:
+    resolution: {integrity: sha512-ppiDo2CSwexck1eyZUwJHg/N3nf1+6IRCv7W/VJ5vaLnVCmB7+3CdRfMwoCHBBX6xTrREDTksZ4OZl5SSf4zXA==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -1727,8 +1727,8 @@ packages:
     resolution: {integrity: sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==}
     engines: {node: '>=0.4'}
 
-  zenn-cli@0.4.8:
-    resolution: {integrity: sha512-DIJv1udDCyHd6AqoBaQDjTMs/3fo1KUCpumgyy/X8Yt1SKB/egLmhhNmePGukkIhUZDld1+RLoMWOEBky6njwg==}
+  zenn-cli@0.5.2:
+    resolution: {integrity: sha512-HwZDjkZ8b2BExSwJKE4ERqm3e6+W9J8yNGHbOdKAmUWz4+Z9akGTijFFdK2QsPHp3E1acaGmKvE1jE5MZkLO0A==}
     engines: {node: '>=22.0.0'}
     hasBin: true
 
@@ -3189,7 +3189,7 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  prettier@3.8.3: {}
+  prettier@3.9.1: {}
 
   prh@5.4.4:
     dependencies:
@@ -3998,7 +3998,7 @@ snapshots:
 
   xtend@4.0.2: {}
 
-  zenn-cli@0.4.8:
+  zenn-cli@0.5.2:
     dependencies:
       open: 10.2.0
       package-manager-detector: 1.6.0
