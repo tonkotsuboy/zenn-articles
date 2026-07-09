@@ -1032,10 +1032,6 @@ https://github.com/tonkotsuboy/tsgo-playground
 
 今回は、tsgoのインストール手順と、コンパイル速度の比較を行いました。小規模な例ではありましたが、「10倍高速化」という触れ込みは本当であることが確認できました。
 
-2026年4月にはTypeScript 7.0のベータ版が公開され、今後2か月以内（2026年6月〜7月）に正式リリースされる予定です。
-
-https://devblogs.microsoft.com/typescript/announcing-typescript-7-0-beta/
-
 余談ですが、本日は[TSKaigi 2025](https://2025.tskaigi.org/)が開催されており、会場では各所でtsgoの話題で盛り上がっていました。TypeScript好きの開発者が大注目のアップデートですね。
 
 ## 関連記事
@@ -1043,4 +1039,18 @@ https://devblogs.microsoft.com/typescript/announcing-typescript-7-0-beta/
 https://devblogs.microsoft.com/typescript/announcing-typescript-native-previews/
 
 https://devblogs.microsoft.com/typescript/typescript-native-port/
+
+---
+
+（2026/07/09 追記）
+
+TypeScript 7が正式リリースされました。
+
+https://devblogs.microsoft.com/typescript/announcing-typescript-7-0/
+
+TypeScript 7に対応した『TypeScriptコードレシピ集』を出版しました🌻
+
+https://www.amazon.co.jp/dp/4297156288
+
+https://kano.codes/entry/ts-code-recipe
 
