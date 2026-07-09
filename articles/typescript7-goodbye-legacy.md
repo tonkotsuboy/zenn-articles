@@ -146,11 +146,7 @@ After
 
 ## さいごに
 
-TypeScript 7は、ネイティブコンパイラーによるパフォーマンス向上だけでなく、長年の「今もう誰も使ってないだろう…」という設定とサヨナラするメジャーアップデートになります。
-
-2026年4月にはTypeScript 7.0のベータ版が公開されました。今後2か月以内（2026年6月〜7月）に正式リリースされる予定です。登場まであと少し。首を長くして待ちましょう。
-
-https://devblogs.microsoft.com/typescript/announcing-typescript-7-0-beta/
+TypeScript 7は、ネイティブコンパイラーによるパフォーマンス向上だけでなく、長年の「今もう誰も使ってないだろう…」という設定とサヨナラするメジャーアップデートです。
 
 参考記事
 
@@ -161,3 +157,17 @@ https://zenn.dev/ubie_dev/articles/typescript7-tsgo-whatsnew
 この記事は Ubie Tech Advent Calendar 2025 の 4日目の記事です。
 
 https://adventar.org/calendars/12070
+
+---
+
+（2026/07/09 追記）
+
+TypeScript 7が正式リリースされました。
+
+https://devblogs.microsoft.com/typescript/announcing-typescript-7-0/
+
+TypeScript 7に対応した『TypeScriptコードレシピ集』を出版しました🌻
+
+https://www.amazon.co.jp/dp/4297156288
+
+https://kano.codes/entry/ts-code-recipe
