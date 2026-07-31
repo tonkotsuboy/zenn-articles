@@ -1,5 +1,5 @@
 ---
-title: "GitHubのスタックプルリクエストが登場。gh stackで数珠つなぎPRを操る"
+title: "GitHubにスタックプルリクエストが登場。gh stackでPRを分割して積み上げよう"
 emoji: "🧱"
 type: "tech"
 topics: ["github", "git", "cli"]
