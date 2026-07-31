@@ -1,6 +1,6 @@
 ---
 title: "GitHubにスタックプルリクエストが登場。gh stackでPRを分割して積み上げよう"
-emoji: "🧱"
+emoji: "🔗"
 type: "tech"
 topics: ["github", "git", "cli"]
 published: true
