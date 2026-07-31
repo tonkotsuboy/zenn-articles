@@ -33,6 +33,12 @@ Based on analysis of existing articles, maintain these characteristics:
 - **技術的正確性**: Maintain technical accuracy while keeping explanations accessible
 - **実用性重視**: Provide actionable information readers can immediately use
 
+### 読点（、）のルール
+- 読点は基本的に使わない。どうしても必要なときだけ入れる
+- 1文に読点が複数必要になったら、それは1文に情報を詰め込みすぎているサイン。文を「。」で分割する
+- 文頭の接続詞や副詞（「たとえば」「さらに」「また」など）の直後の読点は原則つけない
+- 列挙や主題提示など、読点がないと誤読する箇所だけは残してよい
+
 ### Markdown Heading Rules
 - **大見出し**: Use `#`（h1）for main section headings in articles
 - **小見出し**: Use `##`（h2）for subsections
