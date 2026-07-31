@@ -213,4 +213,8 @@ _GitHub上でPR #452〜454がスタックとして表示されている画面_
 
 私はPRやコミットを細かくするのが好きです。一方で、PRのスタックにはdescriptionの記載、rebase、targetの指定など、面倒くさい作業が多くありました。GitHubがスタックプルリクエストとしてこの課題を解決してくれたとき、「この操作、私以外にもやってたのか！」と正直おどろきました。AIエージェント時代に大量のPRが作られる現代において、スタックプルリクエストは必須の機能。ぜひ皆さんもgh stackコマンドをインストールして使いましょう！
 
+
+@[tweet](https://x.com/tonkotsuboy_com/status/2083007010933756349)
+
+
 https://github.blog/changelog/2026-07-30-stacked-pull-requests-are-now-in-public-preview/
