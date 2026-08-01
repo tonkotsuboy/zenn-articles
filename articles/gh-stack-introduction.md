@@ -9,11 +9,12 @@ publication_name: ubie_dev
 
 GitHubでPRを細かく作り、前のブランチに対して数珠つなぎのようにPRを作る私が大歓喜！ GitHubに「スタックプルリクエスト」機能が来ました💐
 
-## 3行まとめ
+## 4行まとめ
 
 - 大きな変更を、順序付きの小さなPR群（スタック）に分割して扱える機能がGitHub公式で登場
 - `gh extension install github/gh-stack`でCLIから使える
 - `gh stack sync`でスタックのrebase, pushまで一発でできる
+- AIエージェント用に`gh-stack`スキルがあるので自然言語でスタックPRの操作が可能
 
 ## 巨大な1つのプルリクエストは悪
 
@@ -228,6 +229,7 @@ _GitHub上でPR #452〜454がスタックとして表示されている画面_
 
 私はPRやコミットを細かくするのが好きです。一方で、PRのスタックにはdescriptionの記載、rebase、targetの指定など、面倒くさい作業が多くありました。GitHubがスタックプルリクエストとしてこの課題を解決してくれたとき、「この操作、私以外にもやってたのか！」と正直おどろきました。AIエージェント時代に大量のPRが作られる現代において、スタックプルリクエストは必須の機能。ぜひ皆さんもgh stackコマンドをインストールして使いましょう！
 
+![結論](/images/gh-stack/conclusion.png)
 
 @[tweet](https://x.com/tonkotsuboy_com/status/2083007010933756349)
 
