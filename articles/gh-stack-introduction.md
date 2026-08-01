@@ -1,5 +1,5 @@
 ---
-title: "GitHubにスタックプルリクエストが登場。gh stackでPRを分割して積み上げよう"
+title: "GitHubにスタック型プルリクエストが登場。gh stackでPRを分割して積み上げよう"
 emoji: "🔗"
 type: "tech"
 topics: ["github", "git", "cli"]
@@ -7,11 +7,11 @@ published: true
 publication_name: ubie_dev
 ---
 
-GitHubでPRを細かく作り、前のブランチに対して数珠つなぎのようにPRを作る私が大歓喜！ GitHubに「スタックプルリクエスト」機能が来ました💐
+GitHubでPRを細かく作り、前のブランチに対して数珠つなぎのようにPRを作る私が大歓喜！ GitHubに「スタック型プルリクエスト（Stacked pull requests）」が来ました💐
 
 ## 4行まとめ
 
-- 大きな変更を、順序付きの小さなPR群（スタック）に分割して扱える機能がGitHub公式で登場
+- 大きな変更を順序付きの小さなPR群に分割して扱える「スタック型プルリクエスト」がGitHub公式で登場
 - `gh extension install github/gh-stack`でCLIから使える
 - `gh stack sync`でスタックのrebase, pushまで一発でできる
 - AIエージェント用に`gh-stack`スキルがあるので自然言語でスタックPRの操作が可能
@@ -58,15 +58,13 @@ branch1 -> branch2 -> branch3のように、PRのマージ先を都度設定し�
 
 PR1でレビューが有り、コードを更新したとします。今度はその更新をPR2, PR3, ...と後続のPRに反映する必要があります。私はrebase派なのですが、都度rebaseし、force pushしていくのが面倒です。
 
-これらを解決するのが、GitHub公式が公開した「スタックプルリクエスト」です。
-
+これらを解決するのが、GitHub公式が公開した「スタック型プルリクエスト」です。
 
 ![数珠つなぎPRの課題](/images/gh-stack/pr-stack-problem.png)
 
+## スタック型プルリクエストとは
 
-## スタックプルリクエストとは
-
-スタックプルリクエストは、1つの大きな変更を「土台のブランチ→その上に積んだブランチ→さらにその上のブランチ…」という順序で積み重ね、各層を1つのPRとして扱う仕組みです。私が勝手に「数珠つなぎプルリクエスト」とよんでいたものです。
+スタック型プルリクエストは、1つの大きな変更を「土台のブランチ→その上に積んだブランチ→さらにその上のブランチ…」という順序で積み重ね、各層を1つのPRとして扱う仕組みです。私が勝手に「数珠つなぎプルリクエスト」とよんでいたものです。
 
 ```
 main (trunk)
@@ -81,15 +79,15 @@ GitHubの公式アナウンスでは、次のように説明されています�
 
 > Stacked pull requests break large changes into small, reviewable pull requests. They're an ordered series of pull requests that each represent focused layers of your change.
 >
-> （意訳：スタックプルリクエストは、大きな変更を小さくレビュー可能なプルリクエストに分割します。それぞれが変更の焦点を絞った層を表す、順序付きのプルリクエストのシリーズです）
+> （意訳：スタック型プルリクエストは、大きな変更を小さくレビュー可能なプルリクエストに分割します。それぞれが変更の焦点を絞った層を表す、順序付きのプルリクエストのシリーズです）
 >
 > https://github.blog/changelog/2026-07-30-stacked-pull-requests-are-now-in-public-preview/
 
 GitHubのWeb画面・CLI・モバイルアプリ・GitHub Copilotエージェントなどで利用できます。
 
-## スタックプルリクエストがGitHubのUIで動いている様子
+## スタック型プルリクエストがGitHubのUIで動いている様子
 
-スタックプルリクエストで作成したPRは、次のように画面の上部に、複数のPRがスタックとして表示されます。どのPRがどの層にいるのかが一目瞭然です。
+スタック型プルリクエストで作成したPRは、次のように画面の上部に、複数のPRがスタックとして表示されます。どのPRがどの層にいるのかが一目瞭然です。
 
 ![](/images/gh-stack/pr-review.png)
 
@@ -99,7 +97,7 @@ GitHubのWeb画面・CLI・モバイルアプリ・GitHub Copilotエージェン
 
 ## 導入方法
 
-スタックプルリクエストはパブリックプレビューとして提供されており、全リポジトリへ数日かけて段階的にロールアウト中です。CLIからは`gh`の`github/gh-stack`エクステンションをインストールすることで利用できます。
+CLIからは`gh`の`github/gh-stack`エクステンションをインストールすることで利用できます。
 
 ```bash
 gh extension install github/gh-stack
@@ -118,6 +116,7 @@ gh stack github/gh-stack v0.1.0
 gh skill install github/gh-stack
 ```
 
+
 確認コマンド
 
 ```bash
@@ -125,8 +124,11 @@ $ gh skill list | grep gh-stack
 gh-stack  claude-code     user  github/gh-stack
 gh-stack  codex           user  github/gh-stack
 gh-stack  cursor          user  github/gh-stack
-gh-stack  github-copilot  user  github/gh-stack
 ```
+
+なお、`gh skill install` はGitHub公式のスキルインストール方法です。
+
+https://zenn.dev/ubie_dev/articles/gh-skill-install-agent-skills
 
 ## 実際に使ってみる
 
@@ -202,7 +204,7 @@ _GitHub上でPR #452〜454がスタックとして表示されている画面_
 
 ## スタックPRを勝手にrebaseしてくれる（`gh stack sync`）
 
-私が思わず唸った機能です。PR1の変更をした後、その変更をスタックされたPR2, PR3に反映したいケースは頻出します。手動の場合は、都度rebaseしてforce pushしたのですが、スタックプルリクエストなら一発です。
+私が思わず唸った機能です。PR1の変更をした後、その変更をスタックされたPR2, PR3に反映したいケースは頻出します。手動の場合は、都度rebaseしてforce pushしたのですが、スタック型プルリクエストなら一発です。
 
 `gh stack sync` を実行すると、次の操作が一括で行われます。
 
@@ -218,7 +220,7 @@ _GitHub上でPR #452〜454がスタックとして表示されている画面_
 
 ## AIエージェントで自然言語で操作する
 
-実際の現場では、Claude CodeやCodex経由でスタックプルリクエスト操作をすることが多いでしょう。前述のgh-stackスキル（`gh skill install github/gh-stack`）を使えば、細かいコマンドを覚えず、自然言語で操作できます。
+実際の現場では、Claude CodeやCodex経由で操作することが多いでしょう。前述のgh-stackスキル（`gh skill install github/gh-stack`）を使えば、細かいコマンドを覚えず、自然言語で操作できます。
 
 - スタックPRを作って
 - スタックPRを全部rebaseして
@@ -227,7 +229,7 @@ _GitHub上でPR #452〜454がスタックとして表示されている画面_
 
 ## 最後に
 
-私はPRやコミットを細かくするのが好きです。一方で、PRのスタックにはdescriptionの記載、rebase、targetの指定など、面倒くさい作業が多くありました。GitHubがスタックプルリクエストとしてこの課題を解決してくれたとき、「この操作、私以外にもやってたのか！」と正直おどろきました。AIエージェント時代に大量のPRが作られる現代において、スタックプルリクエストは必須の機能。ぜひ皆さんもgh stackコマンドをインストールして使いましょう！
+私はPRやコミットを細かくするのが好きです。一方で、PRのスタックにはdescriptionの記載、rebase、targetの指定など、面倒くさい作業が多くありました。GitHubがスタック型プルリクエストとしてこの課題を解決してくれたとき、「この操作、私以外にもやってたのか！」と正直おどろきました。AIエージェント時代に大量のPRが作られる現代において、スタック型プルリクエストは必須の機能。ぜひ皆さんもgh stackコマンドをインストールして使いましょう！
 
 ![結論](/images/gh-stack/conclusion.png)
 
