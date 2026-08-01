@@ -1,0 +1,4 @@
+allowBuilds:
+  # lefthook の postinstall は `lefthook install` を実行するだけ。
+  # package.json の prepare スクリプトで同じことをしているため不要。
+  lefthook: false
